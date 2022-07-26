@@ -6,6 +6,8 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
 
-    opens com.example.structural_balancesymulations_and_visualisation to javafx.fxml;
-    exports com.example.structural_balancesymulations_and_visualisation;
+    opens com.example.project to javafx.fxml;
+    exports com.example.project;
+    exports com.example.project.startwindow;
+    opens com.example.project.startwindow to javafx.fxml;
 }
