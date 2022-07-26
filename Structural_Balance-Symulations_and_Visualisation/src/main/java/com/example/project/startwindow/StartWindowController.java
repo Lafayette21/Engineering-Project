@@ -8,7 +8,7 @@ public class StartWindowController {
     @FXML
     private Button startButton;
 
-    public void start(ActionEvent event){
+    public void start(ActionEvent event) {
 
     }
 
