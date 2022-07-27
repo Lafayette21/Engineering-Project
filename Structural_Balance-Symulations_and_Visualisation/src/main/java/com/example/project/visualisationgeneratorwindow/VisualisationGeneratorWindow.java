@@ -18,11 +18,15 @@ public class VisualisationGeneratorWindow {
         this.primaryStage = primaryStage;
     }
 
-    public void initializeStage() throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(VisualisationGeneratorWindow.class.getResource("StartScene.fxml")));
-        scene = new Scene(root);
+    public void initializeStage() {
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(VisualisationGeneratorWindow.class.getResource("VisualisationGeneratorScene.fxml")));
+            scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 }
