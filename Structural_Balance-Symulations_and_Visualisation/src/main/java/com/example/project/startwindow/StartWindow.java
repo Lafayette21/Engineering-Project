@@ -18,12 +18,15 @@ public class StartWindow {
         this.primaryStage = primaryStage;
     }
 
-    public void initializeStage() throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(StartWindow.class.getResource("StartScene.fxml")));
-        scene = new Scene(root);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public void initializeStage() {
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(StartWindow.class.getResource("StartScene.fxml")));
+            scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException("Cannot Initialize stage");
+        }
     }
 
 }

@@ -25,7 +25,7 @@ public class VisualisationGeneratorWindow {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Cannot Initialize stage - Problem");
         }
 
     }
