@@ -8,7 +8,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        StartWindow.initialize(primaryStage);
+        new StartWindow(primaryStage).initializeStage();
     }
 
     public static void main(String[] args) {

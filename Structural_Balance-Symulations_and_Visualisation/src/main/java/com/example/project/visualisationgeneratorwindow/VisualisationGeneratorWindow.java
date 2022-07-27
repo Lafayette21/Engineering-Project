@@ -1,4 +1,4 @@
-package com.example.project.startwindow;
+package com.example.project.visualisationgeneratorwindow;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,22 +8,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class StartWindow {
+public class VisualisationGeneratorWindow {
 
     private Stage primaryStage;
     private Parent root;
     private Scene scene;
 
-    public StartWindow(Stage primaryStage) {
+    public VisualisationGeneratorWindow(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
     public void initializeStage() throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(StartWindow.class.getResource("StartScene.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(VisualisationGeneratorWindow.class.getResource("StartScene.fxml")));
         scene = new Scene(root);
 
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 }
