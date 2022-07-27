@@ -12,7 +12,7 @@ public class StartWindowController {
     private Button startButton;
 
     public void start(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         new VisualisationGeneratorWindow(stage).initializeStage();
     }
 

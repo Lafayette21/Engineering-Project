@@ -7,7 +7,7 @@ public class VisualisationGeneratorWindowController {
     @FXML
     private Slider actorsSlider;
 
-    public void cos(){
+    public void cos() {
 
     }
 }
