@@ -1,5 +1,6 @@
 package com.example.project.controller;
 
+import com.example.project.Resource;
 import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,27 +10,27 @@ import javafx.scene.layout.AnchorPane;
 import java.util.HashMap;
 
 public class ScreenController extends AnchorPane {
-    private HashMap<String, Node> screens = new HashMap<>();
+    private HashMap<Resource, Node> screens = new HashMap<>();
 
     public ScreenController() {
         super();
     }
 
-    public void addScreen(String name, Node screen) {
-        screens.put(name, screen);
+    public void addScreen(Resource resource, Node screen) {
+        screens.put(resource, screen);
     }
 
-    public Node getScreen(String name) {
-        return screens.get(name);
+    public Node getScreen(Resource resource) {
+        return screens.get(resource);
     }
 
-    public boolean loadScreen(String screenName, String resourceName) {
+    public boolean loadScreen(Resource resource) {
         try {
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resourceName));
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource.getResourceName()));
             Parent loadedScreen = (Parent) myLoader.load();
             ControlledScreen myScreenController = ((ControlledScreen) myLoader.getController());
             myScreenController.setScreenParent(this);
-            addScreen(screenName, loadedScreen);
+            addScreen(resource, loadedScreen);
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -37,15 +38,15 @@ public class ScreenController extends AnchorPane {
         }
     }
 
-    public boolean setScreen(final String screenName) {
-        if (screens.get(screenName) != null) {
+    public boolean setScreen(Resource resource) {
+        if (screens.get(resource) != null) {
             final DoubleProperty opacity = opacityProperty();
 
             if (!getChildren().isEmpty()) {
                 getChildren().remove(0);
-                getChildren().add(0, screens.get(screenName));
+                getChildren().add(0, screens.get(resource));
             } else {
-                getChildren().add(screens.get(screenName));
+                getChildren().add(screens.get(resource));
             }
             return true;
         } else {
@@ -54,8 +55,8 @@ public class ScreenController extends AnchorPane {
         }
     }
 
-    public boolean unloadScreen(String screenName) {
-        if (screens.remove(screenName) == null) {
+    public boolean unloadScreen(Resource resource) {
+        if (screens.remove(resource) == null) {
             System.out.println("Screen didn't exist");
             return false;
         } else {
