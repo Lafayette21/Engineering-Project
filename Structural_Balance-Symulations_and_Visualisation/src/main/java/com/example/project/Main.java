@@ -14,11 +14,12 @@ public class Main extends Application {
     public static String visualisationGenerator = "VisualisationGenerator";
     public static String visualisationGeneratorResourceName = "VisualisationGeneratorScreen.fxml";
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         ScreenController mainController = new ScreenController();
-        mainController.loadScreen(startScreen,startScreenResourceName);
-        mainController.loadScreen(visualisationGenerator,visualisationGeneratorResourceName);
+        mainController.loadScreen(startScreen, startScreenResourceName);
+        mainController.loadScreen(visualisationGenerator, visualisationGeneratorResourceName);
 
         mainController.setScreen(startScreen);
 

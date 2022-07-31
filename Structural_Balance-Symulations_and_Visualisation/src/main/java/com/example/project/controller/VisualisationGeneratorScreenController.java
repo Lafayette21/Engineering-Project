@@ -1,6 +1,6 @@
 package com.example.project.controller;
 
-public class VisualisationGeneratorScreenController implements ControlledScreen{
+public class VisualisationGeneratorScreenController implements ControlledScreen {
 
     ScreenController controller;
 

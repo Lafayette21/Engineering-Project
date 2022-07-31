@@ -15,35 +15,35 @@ public class ScreenController extends AnchorPane {
         super();
     }
 
-    public void addScreen(String name,Node screen){
-        screens.put(name,screen);
+    public void addScreen(String name, Node screen) {
+        screens.put(name, screen);
     }
 
-    public Node getScreen(String name){
+    public Node getScreen(String name) {
         return screens.get(name);
     }
 
-    public boolean loadScreen(String screenName,String resourceName){
+    public boolean loadScreen(String screenName, String resourceName) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resourceName));
             Parent loadedScreen = (Parent) myLoader.load();
             ControlledScreen myScreenController = ((ControlledScreen) myLoader.getController());
             myScreenController.setScreenParent(this);
-            addScreen(screenName,loadedScreen);
+            addScreen(screenName, loadedScreen);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
     }
 
-    public boolean setScreen(final String screenName){
-        if (screens.get(screenName)!= null){
+    public boolean setScreen(final String screenName) {
+        if (screens.get(screenName) != null) {
             final DoubleProperty opacity = opacityProperty();
 
-            if (!getChildren().isEmpty()){
+            if (!getChildren().isEmpty()) {
                 getChildren().remove(0);
-                getChildren().add(0,screens.get(screenName));
+                getChildren().add(0, screens.get(screenName));
             } else {
                 getChildren().add(screens.get(screenName));
             }
@@ -54,8 +54,8 @@ public class ScreenController extends AnchorPane {
         }
     }
 
-    public boolean unloadScreen(String screenName){
-        if (screens.remove(screenName) == null){
+    public boolean unloadScreen(String screenName) {
+        if (screens.remove(screenName) == null) {
             System.out.println("Screen didn't exist");
             return false;
         } else {
