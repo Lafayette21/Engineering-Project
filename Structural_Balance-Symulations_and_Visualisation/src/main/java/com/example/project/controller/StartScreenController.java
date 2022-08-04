@@ -7,16 +7,16 @@ import javafx.scene.control.Button;
 
 public class StartScreenController implements ControlledScreen {
 
-    private MainApplicationScreenController controller;
+    private MainApplicationScreenController parentController;
 
     @FXML
     private Button startButton;
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
-        controller = screenParent;
+        parentController = screenParent;
     }
 
     public void changeScreenToVisualisationGenerator(ActionEvent event){
-        controller.setScreen(Resource.VisualisationGenerator);
+        parentController.setScreen(Resource.VisualisationGenerator);
     }
 }

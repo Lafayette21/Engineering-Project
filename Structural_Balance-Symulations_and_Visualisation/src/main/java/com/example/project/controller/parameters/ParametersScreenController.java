@@ -15,8 +15,4 @@ public class ParametersScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parametersListView.getItems().addAll("Aktorzy","Połączenia","Symulacja");
     }
-
-    public ListView<String> getParametersListView() {
-        return parametersListView;
-    }
 }

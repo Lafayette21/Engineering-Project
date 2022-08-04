@@ -1,8 +1,12 @@
 package com.example.project.controller.parameters;
 
-public class ActorsParametersScreenController {
+import com.example.project.controller.VisualisationGeneratorScreenController;
 
-    public void cos() {
+public class ActorsParametersScreenController implements ParameterControlledScreen{
 
+    private VisualisationGeneratorScreenController screenParent;
+    @Override
+    public void setScreenParent(VisualisationGeneratorScreenController screenParent) {
+        this.screenParent=screenParent;
     }
 }
