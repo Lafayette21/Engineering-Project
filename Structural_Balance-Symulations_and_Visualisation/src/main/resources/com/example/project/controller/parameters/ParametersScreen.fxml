@@ -13,7 +13,7 @@
                   <ListView fx:id="parametersListView" prefHeight="377.6" prefWidth="169.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-            <fx:include fx:id="actorsScreen" source="ActorsScreen.fxml" />
+            <fx:include fx:id="actorsScreen" source="ActorsParametersScreen.fxml" />
         </items>
       </SplitPane>
    </children>
