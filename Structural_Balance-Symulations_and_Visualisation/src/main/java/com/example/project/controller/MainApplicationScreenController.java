@@ -9,10 +9,10 @@ import javafx.scene.layout.AnchorPane;
 
 import java.util.HashMap;
 
-public class ScreenController extends AnchorPane {
+public class MainApplicationScreenController extends AnchorPane {
     private HashMap<Resource, Node> screens = new HashMap<>();
 
-    public ScreenController() {
+    public MainApplicationScreenController() {
         super();
     }
 

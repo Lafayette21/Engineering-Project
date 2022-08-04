@@ -12,7 +12,7 @@
         <tabs>
           <Tab text="Parameters">
                <content>
-                  <fx:include fx:id="parametersScreen" source="ParametersScreen.fxml" />
+                  <fx:include fx:id="parametersScreen" source="parameters/ParametersScreen.fxml" />
                </content>
           </Tab>
           <Tab text="Visualisation">

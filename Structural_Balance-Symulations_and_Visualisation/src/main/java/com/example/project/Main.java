@@ -1,6 +1,6 @@
 package com.example.project;
 
-import com.example.project.controller.ScreenController;
+import com.example.project.controller.MainApplicationScreenController;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ScreenController mainController = new ScreenController();
+        MainApplicationScreenController mainController = new MainApplicationScreenController();
         mainController.loadScreen(Resource.StartWindow);
         mainController.loadScreen(Resource.VisualisationGenerator);
 
