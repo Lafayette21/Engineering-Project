@@ -2,6 +2,8 @@ package com.example.project;
 
 import com.example.project.controller.parameters.ParametersScreenController;
 
+import java.util.Optional;
+
 public enum Resource {
     StartWindow("StartScreen.fxml"),
     VisualisationGenerator("VisualisationGeneratorScreen.fxml"),

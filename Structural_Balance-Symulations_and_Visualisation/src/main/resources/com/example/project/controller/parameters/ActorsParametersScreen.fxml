@@ -4,9 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="actorsScreen" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.project.controller.parameters.ActorsParametersScreenController">
+<AnchorPane fx:id="actorsScreen" prefHeight="261.0" prefWidth="268.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ActorsParametersScreenController">
    <children>
       <Label layoutX="173.0" layoutY="128.0" text="Elo">
          <font>
