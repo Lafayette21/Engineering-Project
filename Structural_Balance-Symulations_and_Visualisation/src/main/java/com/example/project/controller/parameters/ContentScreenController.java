@@ -7,7 +7,7 @@ public class ContentScreenController implements ParameterControlledScreen{
     ParametersScreenController screenParent;
 
     public void setContent(Resource resource){
-        screenParent.setScreen(resource);
+        screenParent.setContentScreen(resource);
     }
 
     @Override

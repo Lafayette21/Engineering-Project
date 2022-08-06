@@ -1,7 +1,7 @@
 package com.example.project.controller;
 
 public class VisualisationScreenController {
-    public void cos(){
+    public void cos() {
 
     }
 }

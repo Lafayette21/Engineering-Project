@@ -1,7 +1,6 @@
 package com.example.project;
 
 import com.example.project.controller.MainApplicationScreenController;
-import com.example.project.controller.parameters.ParametersScreenController;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -18,7 +17,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 
     private MainApplicationScreenController createAndSetMainApplicationController() {
         MainApplicationScreenController mainController = new MainApplicationScreenController();

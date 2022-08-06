@@ -1,8 +1,6 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
-import com.example.project.controller.ControlledScreen;
-import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -16,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ParametersScreenController implements Initializable {
@@ -27,21 +24,21 @@ public class ParametersScreenController implements Initializable {
 
     private Map<Resource, Node> parameterScreens = new HashMap<>();
 
-    public void addScreen(Resource resource, Node screen) {
+    public void addParameterScreen(Resource resource, Node screen) {
         parameterScreens.put(resource, screen);
     }
 
-    public Node getScreen(Resource resource) {
+    public Node getParameterScreen(Resource resource) {
         return parameterScreens.get(resource);
     }
 
-    public boolean loadScreen(Resource resource) {
+    public boolean loadParametersScreen(Resource resource) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource.getResourceFileName()));
             Parent loadedScreen = (Parent) myLoader.load();
-            ParameterControlledScreen myScreenController = ((ParameterControlledScreen) myLoader.getController());
-            myScreenController.setScreenParent(this);
-            addScreen(resource, loadedScreen);
+            ParameterControlledScreen parameterControlledScreen = ((ParameterControlledScreen) myLoader.getController());
+            parameterControlledScreen.setScreenParent(this);
+            addParameterScreen(resource, loadedScreen);
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -49,9 +46,9 @@ public class ParametersScreenController implements Initializable {
         }
     }
 
-    public boolean setScreen(Resource resource) {
+    public boolean setContentScreen(Resource resource) {
         if (parameterScreens.get(resource) != null) {
-            if (contentScreen==null){
+            if (contentScreen == null) {
                 contentScreen = new AnchorPane();
             }
             if (!contentScreen.getChildren().isEmpty()) {
@@ -80,32 +77,41 @@ public class ParametersScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createAndPrepareParametersScreenController();
 
+        createParametersLisView();
+
+        parametersListView.getSelectionModel().selectedItemProperty().addListener(new ContentScreenChangeListener());
+    }
+
+    private void createAndPrepareParametersScreenController() {
+        this.loadParametersScreen(Resource.ActorParameters);
+        this.loadParametersScreen(Resource.ConnectionParameters);
+        this.loadParametersScreen(Resource.SimulationParameters);
+
+        this.setContentScreen(Resource.ActorParameters);
+    }
+
+    private void createParametersLisView() {
         parametersListView.getItems()
                 .addAll(Resource.ActorParameters.getResourceName(),
                         Resource.ConnectionParameters.getResourceName(),
                         Resource.SimulationParameters.getResourceName());
+    }
 
-        parametersListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String selected) {
-                if (selected.equals("Aktorzy")){
-                    setScreen(Resource.ActorParameters);
-                }
-                if (selected.equals("Połączenia")){
-                    setScreen(Resource.ConnectionParameters);
-                }
-                if (selected.equals("Symulacja")){
-                    setScreen(Resource.SimulationParameters);
-                }
+    class ContentScreenChangeListener implements ChangeListener<String> {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (newValue.equals("Aktorzy")) {
+                setContentScreen(Resource.ActorParameters);
             }
-        });
+            if (newValue.equals("Połączenia")) {
+                setContentScreen(Resource.ConnectionParameters);
+            }
+            if (newValue.equals("Symulacja")) {
+                setContentScreen(Resource.SimulationParameters);
+            } else {
+                throw new IllegalStateException("Resource not found");
+            }
+        }
     }
 
-    private void createAndPrepareParametersScreenController() {
-        this.loadScreen(Resource.ActorParameters);
-        this.loadScreen(Resource.ConnectionParameters);
-        this.loadScreen(Resource.SimulationParameters);
-
-        this.setScreen(Resource.SimulationParameters);
-    }
 }
