@@ -1,7 +1,6 @@
 package com.example.project.controller;
 
 import com.example.project.Resource;
-import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.HashMap;
 
 public class MainApplicationScreenController extends AnchorPane {
-    private HashMap<Resource, Node> screens = new HashMap<>();
+    private final HashMap<Resource, Node> screens = new HashMap<>();
 
     public MainApplicationScreenController() {
         super();
@@ -20,15 +19,11 @@ public class MainApplicationScreenController extends AnchorPane {
         screens.put(resource, screen);
     }
 
-    public Node getScreen(Resource resource) {
-        return screens.get(resource);
-    }
-
     public boolean loadScreen(Resource resource) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource.getResourceFileName()));
-            Parent loadedScreen = (Parent) myLoader.load();
-            ControlledScreen myScreenController = ((ControlledScreen) myLoader.getController());
+            Parent loadedScreen = myLoader.load();
+            ControlledScreen myScreenController = myLoader.getController();
             myScreenController.setScreenParent(this);
             addScreen(resource, loadedScreen);
             return true;
@@ -40,8 +35,6 @@ public class MainApplicationScreenController extends AnchorPane {
 
     public boolean setScreen(Resource resource) {
         if (screens.get(resource) != null) {
-            final DoubleProperty opacity = opacityProperty();
-
             if (!getChildren().isEmpty()) {
                 getChildren().remove(0);
                 getChildren().add(0, screens.get(resource));
