@@ -6,14 +6,14 @@
 
 <AnchorPane fx:id="parametersScreen" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ParametersScreenController">
    <children>
-      <SplitPane dividerPositions="0.5" layoutX="14.0" layoutY="14.0" prefHeight="379.0" prefWidth="578.0">
+      <SplitPane dividerPositions="0.2" layoutX="14.0" layoutY="14.0" prefHeight="380.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="113.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="158.0" SplitPane.resizableWithParent="false">
                <children>
-                  <ListView fx:id="parametersListView" prefHeight="377.6" prefWidth="169.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ListView fx:id="parametersListView" fixedCellSize="50.0" prefHeight="350.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contentScreen" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="contentScreen" prefHeight="350.0" prefWidth="300.0" />
         </items>
       </SplitPane>
    </children>

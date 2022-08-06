@@ -54,8 +54,6 @@ public class ParametersScreenController implements Initializable {
             }
             if (newValue.equals("Symulacja")) {
                 contentScreensHandler.setContentScreen(Resource.SimulationParameters);
-            } else {
-                throw new IllegalStateException("Resource not found");
             }
         }
     }
