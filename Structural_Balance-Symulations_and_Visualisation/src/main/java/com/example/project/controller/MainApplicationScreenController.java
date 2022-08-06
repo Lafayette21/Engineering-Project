@@ -26,7 +26,7 @@ public class MainApplicationScreenController extends AnchorPane {
 
     public boolean loadScreen(Resource resource) {
         try {
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource.getResourceName()));
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource.getResourceFileName()));
             Parent loadedScreen = (Parent) myLoader.load();
             ControlledScreen myScreenController = ((ControlledScreen) myLoader.getController());
             myScreenController.setScreenParent(this);

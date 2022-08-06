@@ -1,6 +1,7 @@
 package com.example.project;
 
 import com.example.project.controller.MainApplicationScreenController;
+import com.example.project.controller.VisualisationGeneratorScreenController;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class Main extends Application {
         mainController.loadScreen(Resource.VisualisationGenerator);
 
         mainController.setScreen(Resource.StartWindow);
+
 
         Group root = new Group();
         root.getChildren().addAll(mainController);

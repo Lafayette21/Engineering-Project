@@ -4,10 +4,10 @@ import com.example.project.controller.VisualisationGeneratorScreenController;
 
 public class SimulationParametersScreenController implements ParameterControlledScreen {
 
-    private VisualisationGeneratorScreenController screenParent;
+    private ParametersScreenController screenParent;
 
     @Override
-    public void setScreenParent(VisualisationGeneratorScreenController screenParent) {
+    public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
     }
 }

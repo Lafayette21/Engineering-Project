@@ -1,16 +1,29 @@
 package com.example.project;
 
+import com.example.project.controller.parameters.ParametersScreenController;
+
 public enum Resource {
     StartWindow("StartScreen.fxml"),
     VisualisationGenerator("VisualisationGeneratorScreen.fxml"),
-    ActorParameters("ActorsParametersScreen.fxml"),
-    ConnectionParameters("ConnectionParametersScreen.fxml"),
-    SimulationParameters("SimulationParametersScreen.fxml");
+    Parameters("ParametersScreen.fxml"),
+    ActorParameters("ActorsParametersScreen.fxml","Aktorzy"),
+    ConnectionParameters("ConnectionParametersScreen.fxml","Połączenia"),
+    SimulationParameters("SimulationParametersScreen.fxml","Symulacja");
 
+    private String resourceFileName;
     private String resourceName;
 
-    Resource(String resourceName) {
+    Resource(String resourceFileName) {
+        this.resourceFileName = resourceFileName;
+    }
+
+    Resource(String resourceFileName, String resourceName) {
+        this.resourceFileName = resourceFileName;
         this.resourceName = resourceName;
+    }
+
+    public String getResourceFileName() {
+        return resourceFileName;
     }
 
     public String getResourceName() {

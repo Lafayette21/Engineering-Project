@@ -1,12 +1,11 @@
 package com.example.project.controller.parameters;
 
-import com.example.project.controller.VisualisationGeneratorScreenController;
+public class ActorsParametersScreenController implements ParameterControlledScreen {
 
-public class ActorsParametersScreenController implements ParameterControlledScreen{
+    private ParametersScreenController screenParent;
 
-    private VisualisationGeneratorScreenController screenParent;
     @Override
-    public void setScreenParent(VisualisationGeneratorScreenController screenParent) {
-        this.screenParent=screenParent;
+    public void setScreenParent(ParametersScreenController screenParent) {
+        this.screenParent = screenParent;
     }
 }
