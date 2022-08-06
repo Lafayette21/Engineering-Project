@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationGeneratorScreenController">
+   <children>
+      <TabPane layoutX="14.0" layoutY="11.0" prefHeight="369.0" prefWidth="564.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Parameters">
+               <content>
+                  <fx:include fx:id="parametersScreen" source="parameters/ParametersScreen.fxml" />
+               </content>
+          </Tab>
+          <Tab text="Visualisation">
+               <content>
+                  <fx:include fx:id="visualisationScreen" source="VisualisationScreen.fxml" />
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
