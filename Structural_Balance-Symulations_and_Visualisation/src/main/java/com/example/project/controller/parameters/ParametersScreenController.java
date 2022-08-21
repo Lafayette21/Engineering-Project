@@ -1,6 +1,7 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
+import com.example.project.parametervalues.ParameterValue;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -9,13 +10,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ParametersScreenController implements Initializable {
-    @FXML
-    private AnchorPane contentScreen;
-    @FXML
-    private ListView<String> parametersListView;
+    @FXML private AnchorPane contentScreen;
+    @FXML private ListView<String> parametersListView;
 
     private final ContentScreensHandler contentScreensHandler = new ContentScreensHandler(this);
 
@@ -25,7 +26,7 @@ public class ParametersScreenController implements Initializable {
 
         createParametersLisView();
 
-        parametersListView.getSelectionModel().selectedItemProperty().addListener(new ContentScreenChangeListener());
+        parametersListView.getSelectionModel().selectedItemProperty().addListener(new ContentScreenChangeListener(contentScreensHandler));
     }
 
     private void createAndPrepareParametersScreenController() {
@@ -43,22 +44,22 @@ public class ParametersScreenController implements Initializable {
                         Resource.SimulationParameters.getResourceName());
     }
 
-    class ContentScreenChangeListener implements ChangeListener<String> {
-        @Override
-        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            if (newValue.equals("Aktorzy")) {
-                contentScreensHandler.setContentScreen(Resource.ActorParameters);
-            }
-            if (newValue.equals("Połączenia")) {
-                contentScreensHandler.setContentScreen(Resource.ConnectionParameters);
-            }
-            if (newValue.equals("Symulacja")) {
-                contentScreensHandler.setContentScreen(Resource.SimulationParameters);
-            }
-        }
-    }
-
     AnchorPane getContentScreen() {
         return contentScreen;
+    }
+}
+
+record ContentScreenChangeListener(ContentScreensHandler contentScreensHandler) implements ChangeListener<String> {
+    @Override
+    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+        if (newValue.equals("Aktorzy")) {
+            contentScreensHandler.setContentScreen(Resource.ActorParameters);
+        }
+        if (newValue.equals("Połączenia")) {
+            contentScreensHandler.setContentScreen(Resource.ConnectionParameters);
+        }
+        if (newValue.equals("Symulacja")) {
+            contentScreensHandler.setContentScreen(Resource.SimulationParameters);
+        }
     }
 }
