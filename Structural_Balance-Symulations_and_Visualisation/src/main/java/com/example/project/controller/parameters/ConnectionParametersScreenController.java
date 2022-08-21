@@ -1,6 +1,6 @@
 package com.example.project.controller.parameters;
 
-import com.example.project.dto.ConnectionsParametersValues;
+import com.example.project.parametervalues.ConnectionsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;

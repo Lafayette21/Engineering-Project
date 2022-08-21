@@ -2,7 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersScreenController;
-import com.example.project.dto.ParameterValue;
+import com.example.project.parametervalues.ParameterValue;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
