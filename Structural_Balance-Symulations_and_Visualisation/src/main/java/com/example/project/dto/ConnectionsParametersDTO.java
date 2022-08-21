@@ -1,19 +1,22 @@
 package com.example.project.dto;
 
 public class ConnectionsParametersDTO implements DTO {
-    double connectionCreationPercentRatio;
-    double positiveToNegativePercentRatio;
+    int connectionCreationPercentRatio;
+    int positiveToNegativePercentRatio;
 
-    public ConnectionsParametersDTO(double connectionCreationPercentRatio, double positiveToNegativePercentRatio) {
-        this.connectionCreationPercentRatio = connectionCreationPercentRatio;
-        this.positiveToNegativePercentRatio = positiveToNegativePercentRatio;
-    }
-
-    public double getConnectionCreationPercentRatio() {
+    public int getConnectionCreationPercentRatio() {
         return connectionCreationPercentRatio;
     }
 
-    public double getPositiveToNegativePercentRatio() {
+    public void setConnectionCreationPercentRatio(int connectionCreationPercentRatio) {
+        this.connectionCreationPercentRatio = connectionCreationPercentRatio;
+    }
+
+    public int getPositiveToNegativePercentRatio() {
         return positiveToNegativePercentRatio;
+    }
+
+    public void setPositiveToNegativePercentRatio(int positiveToNegativePercentRatio) {
+        this.positiveToNegativePercentRatio = positiveToNegativePercentRatio;
     }
 }

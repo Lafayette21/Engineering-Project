@@ -1,5 +1,8 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.dto.ConnectionsParametersDTO;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
@@ -31,6 +34,13 @@ public class ConnectionParametersScreenController implements ParameterControlled
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setSpinnerValueFactory(connectionPercentSpinner);
         setSpinnerValueFactory(positiveToNegativeRatioSpinner);
+
+        ConnectionsParametersDTO parametersDTO = new ConnectionsParametersDTO();
+
+        connectionPercentSpinner.valueProperty()
+                .addListener(new ConnectionPercentChangeListener(parametersDTO));
+        positiveToNegativeRatioSpinner.valueProperty()
+                .addListener(new PositiveToNegativeRatioChangeListener(parametersDTO));
     }
 
     public void setSpinnerValueFactory(Spinner<Integer> spinner) {
@@ -39,5 +49,18 @@ public class ConnectionParametersScreenController implements ParameterControlled
 
         spinner.setValueFactory(valueFactory);
     }
+}
 
+record ConnectionPercentChangeListener(ConnectionsParametersDTO parametersDTO) implements ChangeListener<Integer> {
+    @Override
+    public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+        parametersDTO.setConnectionCreationPercentRatio(newValue);
+    }
+}
+
+record PositiveToNegativeRatioChangeListener(ConnectionsParametersDTO parametersDTO) implements ChangeListener<Integer> {
+    @Override
+    public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+        parametersDTO.setPositiveToNegativePercentRatio(newValue);
+    }
 }
