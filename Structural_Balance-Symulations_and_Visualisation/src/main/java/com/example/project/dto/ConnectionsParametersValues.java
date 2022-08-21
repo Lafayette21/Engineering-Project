@@ -1,6 +1,6 @@
 package com.example.project.dto;
 
-public class ConnectionsParametersDTO implements DTO {
+public class ConnectionsParametersValues implements ParameterValue {
     int connectionCreationPercentRatio;
     int positiveToNegativePercentRatio;
 

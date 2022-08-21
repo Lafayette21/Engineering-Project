@@ -1,6 +1,6 @@
 package com.example.project.controller.parameters;
 
-import com.example.project.dto.ConnectionsParametersDTO;
+import com.example.project.dto.ConnectionsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -35,7 +35,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
         setSpinnerValueFactory(connectionPercentSpinner);
         setSpinnerValueFactory(positiveToNegativeRatioSpinner);
 
-        ConnectionsParametersDTO parametersDTO = new ConnectionsParametersDTO();
+        ConnectionsParametersValues parametersDTO = new ConnectionsParametersValues();
 
         connectionPercentSpinner.valueProperty()
                 .addListener(new ConnectionPercentChangeListener(parametersDTO));
@@ -51,14 +51,14 @@ public class ConnectionParametersScreenController implements ParameterControlled
     }
 }
 
-record ConnectionPercentChangeListener(ConnectionsParametersDTO parametersDTO) implements ChangeListener<Integer> {
+record ConnectionPercentChangeListener(ConnectionsParametersValues parametersDTO) implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
         parametersDTO.setConnectionCreationPercentRatio(newValue);
     }
 }
 
-record PositiveToNegativeRatioChangeListener(ConnectionsParametersDTO parametersDTO) implements ChangeListener<Integer> {
+record PositiveToNegativeRatioChangeListener(ConnectionsParametersValues parametersDTO) implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
         parametersDTO.setPositiveToNegativePercentRatio(newValue);
