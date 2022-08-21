@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="simulationParametersScrenn" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.SimulationParametersScreenController">
+<AnchorPane fx:id="simulationParametersScrenn" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.SimulationParametersScreenController">
    <children>
-      <Label layoutX="83.0" layoutY="137.0" text="Label">
+      <Label layoutX="90.0" layoutY="23.0" text="Ustawienia Symulacji">
          <font>
-            <Font size="29.0" />
+            <Font size="24.0" />
          </font>
       </Label>
+      <Label layoutX="25.0" layoutY="79.0" text="Ilość kroków: ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="130.0" text="Parametr wygaszania:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="stepNumberTextField" layoutX="234.0" layoutY="82.0" prefHeight="26.0" prefWidth="143.0" />
+      <TextField fx:id="anneaingTextField" layoutX="234.0" layoutY="132.0" prefHeight="26.0" prefWidth="143.0" />
    </children>
 </AnchorPane>

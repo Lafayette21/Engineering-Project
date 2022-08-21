@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="actorsScreen" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ActorsParametersScreenController">
    <children>
-      <Label layoutX="31.0" layoutY="34.0" text="Ilość aktorów: ">
+      <Label layoutX="22.0" layoutY="80.0" text="Ilość aktorów: ">
          <font>
-            <Font size="20.0" />
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Slider fx:id="actorsNumberSlider" layoutX="169.0" layoutY="80.0" majorTickUnit="10.0" minorTickCount="2" prefHeight="38.0" prefWidth="222.0" showTickLabels="true" showTickMarks="true" value="3.0" />
+      <Label layoutX="96.0" layoutY="25.0" text="Ustawienia aktorów">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
    </children>
