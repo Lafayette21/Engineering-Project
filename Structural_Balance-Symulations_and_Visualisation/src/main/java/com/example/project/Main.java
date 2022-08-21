@@ -11,11 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         MainApplicationScreenController mainController = createAndSetMainApplicationController();
 
-        Group root = new Group();
-        root.getChildren().addAll(mainController);
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        prepareStartScreen(primaryStage, mainController);
     }
 
     private MainApplicationScreenController createAndSetMainApplicationController() {
@@ -25,6 +21,14 @@ public class Main extends Application {
 
         mainController.setScreen(Resource.StartWindow);
         return mainController;
+    }
+
+    private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
+        Group root = new Group();
+        root.getChildren().addAll(mainController);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

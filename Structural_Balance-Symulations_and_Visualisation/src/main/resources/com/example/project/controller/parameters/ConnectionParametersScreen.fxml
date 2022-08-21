@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="connectionParametersScreen" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ConnectionParametersScreenController">
+<AnchorPane fx:id="connectionParametersScreen" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ConnectionParametersScreenController">
    <children>
-      <Label layoutX="78.0" layoutY="152.0" text="Połączenia">
+      <Label layoutX="93.0" layoutY="28.0" text="Ustawienia połączeń">
          <font>
-            <Font size="31.0" />
+            <Font size="24.0" />
          </font>
       </Label>
+      <Label layoutX="31.0" layoutY="198.0" text="Procent pozytywnych do negatywnych">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="81.0" text="Procent połączeń">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Spinner fx:id="connectionPercentSpinner" editable="true" layoutX="126.0" layoutY="140.0" prefHeight="26.0" prefWidth="150.0" />
+      <Spinner fx:id="positiveToNegativeRatioSpinner" editable="true" layoutX="126.0" layoutY="260.0" prefHeight="26.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

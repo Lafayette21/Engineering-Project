@@ -10,7 +10,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private Slider actorsNumberSlider;
 
 
-
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;

@@ -8,7 +8,7 @@ public enum Resource {
     ConnectionParameters("ConnectionParametersScreen.fxml", "Połączenia"),
     SimulationParameters("SimulationParametersScreen.fxml", "Symulacja");
 
-    private String resourceFileName;
+    private final String resourceFileName;
     private String resourceName;
 
     Resource(String resourceFileName) {
