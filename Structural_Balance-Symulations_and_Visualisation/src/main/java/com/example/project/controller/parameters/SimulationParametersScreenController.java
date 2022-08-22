@@ -1,9 +1,13 @@
 package com.example.project.controller.parameters;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-public class SimulationParametersScreenController implements ParameterControlledScreen {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SimulationParametersScreenController implements ParameterControlledScreen, Initializable {
     private ParametersScreenController screenParent;
 
     @FXML
@@ -14,5 +18,10 @@ public class SimulationParametersScreenController implements ParameterControlled
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

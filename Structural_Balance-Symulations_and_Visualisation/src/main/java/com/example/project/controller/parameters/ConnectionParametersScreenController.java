@@ -1,6 +1,5 @@
 package com.example.project.controller.parameters;
 
-import com.example.project.Resource;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,8 +17,10 @@ public class ConnectionParametersScreenController implements ParameterControlled
     private static final int INITIAL_SPINNER_VALUE = 0;
     private static final int STEP_SPINNER_VALUE = 5;
 
-    @FXML private Spinner<Integer> connectionPercentSpinner;
-    @FXML private Spinner<Integer> positiveToNegativeRatioSpinner;
+    @FXML
+    private Spinner<Integer> connectionPercentSpinner;
+    @FXML
+    private Spinner<Integer> positiveToNegativeRatioSpinner;
 
     ParametersScreenController screenParent;
 

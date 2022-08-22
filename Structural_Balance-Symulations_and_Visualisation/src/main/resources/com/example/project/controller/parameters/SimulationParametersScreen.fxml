@@ -17,12 +17,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="130.0" text="Parametr wygaszania:">
+      <Label layoutX="25.0" layoutY="181.0" text="Parametr wygaszania:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="stepNumberTextField" layoutX="234.0" layoutY="82.0" prefHeight="26.0" prefWidth="143.0" />
-      <TextField fx:id="anneaingTextField" layoutX="234.0" layoutY="132.0" prefHeight="26.0" prefWidth="143.0" />
+      <TextField fx:id="stepNumberTextField" layoutX="143.0" layoutY="125.0" prefHeight="26.0" prefWidth="143.0" />
+      <TextField fx:id="anneaingTextField" layoutX="143.0" layoutY="242.0" prefHeight="26.0" prefWidth="143.0" />
    </children>
 </AnchorPane>
