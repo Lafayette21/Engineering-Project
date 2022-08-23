@@ -42,7 +42,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
                 .addListener(new PositiveToNegativeRatioChangeListener(parametersDTO));
     }
 
-    public void setSpinnerValueFactory(Spinner<Integer> spinner) {
+    private void setSpinnerValueFactory(Spinner<Integer> spinner) {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory
                 .IntegerSpinnerValueFactory(MIN_SPINNER_VALUE, MAX_SPINNER_VALUE, INITIAL_SPINNER_VALUE, STEP_SPINNER_VALUE);
 
@@ -57,8 +57,7 @@ record ConnectionPercentChangeListener(ConnectionsParametersValues parametersDTO
     }
 }
 
-record PositiveToNegativeRatioChangeListener(ConnectionsParametersValues parametersDTO)
-        implements ChangeListener<Integer> {
+record PositiveToNegativeRatioChangeListener(ConnectionsParametersValues parametersDTO) implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
         parametersDTO.setPositiveToNegativePercentRatio(newValue);
