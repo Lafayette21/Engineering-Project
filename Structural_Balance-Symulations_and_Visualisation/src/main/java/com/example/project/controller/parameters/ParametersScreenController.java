@@ -1,7 +1,6 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
-import com.example.project.parametervalues.ParameterValue;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -10,15 +9,17 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ParametersScreenController implements Initializable {
-    @FXML private AnchorPane contentScreen;
-    @FXML private ListView<String> parametersListView;
+    @FXML
+    private AnchorPane contentScreen;
+    @FXML
+    private ListView<String> parametersListView;
 
     private final ContentScreensHandler contentScreensHandler = new ContentScreensHandler(this);
+
+    private final ParametersValueHandler parametersValueHandler = new ParametersValueHandler();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,6 +47,10 @@ public class ParametersScreenController implements Initializable {
 
     AnchorPane getContentScreen() {
         return contentScreen;
+    }
+
+    public ParametersValueHandler getParametersValueHandler() {
+        return parametersValueHandler;
     }
 }
 

@@ -1,6 +1,8 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.Resource;
 import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.parametervalues.ParameterValue;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -34,12 +36,12 @@ public class ConnectionParametersScreenController implements ParameterControlled
         setSpinnerValueFactory(connectionPercentSpinner);
         setSpinnerValueFactory(positiveToNegativeRatioSpinner);
 
-        ConnectionsParametersValues parametersDTO = new ConnectionsParametersValues();
+        ConnectionsParametersValues parametersValues = new ConnectionsParametersValues();
 
         connectionPercentSpinner.valueProperty()
-                .addListener(new ConnectionPercentChangeListener(parametersDTO));
+                .addListener(new ConnectionPercentChangeListener(parametersValues));
         positiveToNegativeRatioSpinner.valueProperty()
-                .addListener(new PositiveToNegativeRatioChangeListener(parametersDTO));
+                .addListener(new PositiveToNegativeRatioChangeListener(parametersValues));
     }
 
     private void setSpinnerValueFactory(Spinner<Integer> spinner) {
@@ -50,16 +52,19 @@ public class ConnectionParametersScreenController implements ParameterControlled
     }
 }
 
-record ConnectionPercentChangeListener(ConnectionsParametersValues parametersDTO) implements ChangeListener<Integer> {
+record ConnectionPercentChangeListener(ConnectionsParametersValues parametersValues)
+        implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-        parametersDTO.setConnectionCreationPercentRatio(newValue);
+        parametersValues.setConnectionCreationPercentRatio(newValue);
     }
 }
 
-record PositiveToNegativeRatioChangeListener(ConnectionsParametersValues parametersDTO) implements ChangeListener<Integer> {
+record PositiveToNegativeRatioChangeListener(ConnectionsParametersValues parametersValues)
+        implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-        parametersDTO.setPositiveToNegativePercentRatio(newValue);
+        parametersValues.setPositiveToNegativePercentRatio(newValue);
     }
 }
+
