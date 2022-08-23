@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -12,11 +13,16 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Slider fx:id="actorsNumberSlider" layoutX="169.0" layoutY="80.0" majorTickUnit="10.0" minorTickCount="2" prefHeight="38.0" prefWidth="222.0" showTickLabels="true" showTickMarks="true" value="3.0" />
+      <Slider fx:id="actorsNumberSlider" layoutX="44.0" layoutY="121.0" majorTickUnit="10.0" minorTickCount="2" prefHeight="38.0" prefWidth="222.0" showTickLabels="true" showTickMarks="true" value="3.0" />
       <Label layoutX="96.0" layoutY="25.0" text="Ustawienia aktorów">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <TextField fx:id="actorsNumberTextField" alignment="CENTER" editable="false" layoutX="293.0" layoutY="111.0" prefHeight="40.0" prefWidth="53.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

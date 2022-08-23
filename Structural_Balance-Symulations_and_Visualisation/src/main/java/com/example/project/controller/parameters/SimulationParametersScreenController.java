@@ -64,7 +64,6 @@ record StepNumberSpinnerChangeListener(SimulationParametersValues simulationPara
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
         simulationParametersValues.setNumberOfSteps(newValue);
-        System.out.println(newValue);
     }
 }
 
@@ -72,6 +71,5 @@ record AnnealingSpinnerChangeListener(SimulationParametersValues simulationParam
     @Override
     public void changed(ObservableValue<? extends Double> observable, Double oldValue, Double newValue) {
         simulationParametersValues.setAnnealingValue(newValue);
-        System.out.println(newValue);
     }
 }
