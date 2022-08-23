@@ -8,16 +8,15 @@
    <children>
       <TabPane layoutX="14.0" layoutY="11.0" prefHeight="369.0" prefWidth="564.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Parameters">
+          <Tab text="Parametry">
                <content>
                   <fx:include fx:id="parametersScreen" source="parameters/ParametersScreen.fxml" />
                </content>
           </Tab>
-          <Tab text="Visualisation">
+          <Tab text="Podsumowanie">
                <content>
-                  <fx:include fx:id="visualisationScreen" source="VisualisationScreen.fxml" />
-               </content>
-          </Tab>
+                  <fx:include source="SummaryScreen.fxml" />
+               </content></Tab>
         </tabs>
       </TabPane>
    </children>

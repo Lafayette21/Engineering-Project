@@ -1,6 +1,6 @@
 package com.example.project.controller;
 
-public class VisualisationScreenController {
+public class SummaryScreenController {
     public void cos() {
 
     }

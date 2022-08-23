@@ -10,7 +10,7 @@ public class VisualisationGeneratorScreenController extends AnchorPane implement
     @FXML
     private ParametersScreenController parametersScreenController;
     @FXML
-    private VisualisationScreenController visualisationScreenController;
+    private SummaryScreenController summaryScreenController;
 
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
