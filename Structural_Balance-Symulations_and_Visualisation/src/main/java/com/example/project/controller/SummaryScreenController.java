@@ -3,7 +3,10 @@ package com.example.project.controller;
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersScreenController;
 import com.example.project.controller.parameters.ParametersValueHandler;
+import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.parametervalues.ParameterValue;
+import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -13,11 +16,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SummaryScreenController implements Initializable {
-
-    @FXML
-    private Label testLabel;
-
     private ParametersScreenController parametersScreenController;
+
+    @FXML private Label connectionPercentageLabel;
+    @FXML private Label posToNegPercentageLabel;
+    @FXML private Label actorsNumberLabel;
+    @FXML private Label stepNumberLabel;
+    @FXML private Label annealingLabel;
 
     public void injectParametersScreenController(ParametersScreenController parametersScreenController) {
         this.parametersScreenController = parametersScreenController;
@@ -26,14 +31,43 @@ public class SummaryScreenController implements Initializable {
     public void updateScreenValues(){
         ParametersValueHandler valueHandler = parametersScreenController.getParametersValueHandler();
         try{
-            ConnectionsParametersValues connectionsParametersValues =
-                    (ConnectionsParametersValues) valueHandler.getParameterValueByResource(Resource.ConnectionParameters);
-            String text = String.valueOf(connectionsParametersValues.positiveToNegativePercentRatio());
-            testLabel.setText(text);
+            updateConnectionParameters(valueHandler);
+            updateActorsParameters(valueHandler);
+            updateSimulationParameters(valueHandler);
         } catch (NullPointerException e){
             showAlert();
         }
+    }
 
+    private void updateConnectionParameters(ParametersValueHandler valueHandler) {
+        ConnectionsParametersValues parametersValues =
+                (ConnectionsParametersValues) valueHandler.getParameterValueByResource(Resource.ConnectionParameters);
+
+        String connectionPercentage = String.valueOf(parametersValues.connectionCreationPercentRatio());
+        String posToNegPercentage = String.valueOf(parametersValues.positiveToNegativePercentRatio());
+
+        connectionPercentageLabel.setText(connectionPercentage);
+        posToNegPercentageLabel.setText(posToNegPercentage);
+    }
+
+    private void updateActorsParameters(ParametersValueHandler valueHandler) {
+        ActorsParametersValues parameterValue =
+                (ActorsParametersValues) valueHandler.getParameterValueByResource(Resource.ActorParameters);
+
+        String actorsNumber = String.valueOf(parameterValue.actorNumber());
+
+        actorsNumberLabel.setText(actorsNumber);
+    }
+
+    private void updateSimulationParameters(ParametersValueHandler valueHandler) {
+        SimulationParametersValues parameterValue =
+                (SimulationParametersValues) valueHandler.getParameterValueByResource(Resource.SimulationParameters);
+
+        String stepNumber = String.valueOf(parameterValue.numberOfSteps());
+        String annealing = String.valueOf(parameterValue.annealingValue());
+
+        stepNumberLabel.setText(stepNumber);
+        annealingLabel.setText(annealing);
     }
 
     private void showAlert() {
