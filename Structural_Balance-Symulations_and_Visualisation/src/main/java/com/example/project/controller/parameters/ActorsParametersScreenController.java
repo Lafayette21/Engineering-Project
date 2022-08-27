@@ -29,8 +29,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ActorsParametersValues actorsParametersValues = new ActorsParametersValues();
 
-        screenParent.getParametersValueHandler();
-
         actorsNumberSlider.valueProperty()
                 .addListener(new ActorsNumberSliderChangeListener(actorsParametersValues,actorsNumberTextField));
     }

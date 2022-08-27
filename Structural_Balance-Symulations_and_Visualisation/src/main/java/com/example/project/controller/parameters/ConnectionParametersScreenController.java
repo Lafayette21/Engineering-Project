@@ -23,7 +23,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
     @FXML
     private Spinner<Integer> positiveToNegativeRatioSpinner;
 
-    ParametersScreenController screenParent;
+    ParametersScreenController screenParent = new ParametersScreenController();
 
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
@@ -38,7 +38,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
         ConnectionsParametersValues parametersValues = new ConnectionsParametersValues();
 
         connectionPercentSpinner.valueProperty()
-                .addListener(new ConnectionPercentChangeListener(parametersValues));
+                .addListener(new ConnectionPercentChangeListener(parametersValues, screenParent));
         positiveToNegativeRatioSpinner.valueProperty()
                 .addListener(new PositiveToNegativeRatioChangeListener(parametersValues));
     }
@@ -51,11 +51,15 @@ public class ConnectionParametersScreenController implements ParameterControlled
     }
 }
 
-record ConnectionPercentChangeListener(ConnectionsParametersValues parametersValues)
+record ConnectionPercentChangeListener(ConnectionsParametersValues parametersValues, ParametersScreenController screenController)
         implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
         parametersValues.setConnectionCreationPercentRatio(newValue);
+        ParametersValueHandler parametersValueHandler = screenController.getParametersValueHandler();
+        parametersValueHandler.updateValues(Resource.ConnectionParameters, parametersValues);
+        ConnectionsParametersValues parameterValueByResource = (ConnectionsParametersValues) parametersValueHandler.getParameterValueByResource(Resource.ConnectionParameters);
+        System.out.println(parameterValueByResource.getConnectionCreationPercentRatio());
     }
 }
 

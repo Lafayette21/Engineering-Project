@@ -18,6 +18,7 @@ public class ParametersScreenController implements Initializable {
     private ListView<String> parametersListView;
 
     private final ContentScreensHandler contentScreensHandler = new ContentScreensHandler(this);
+
     private final ParametersValueHandler parametersValueHandler = new ParametersValueHandler();
 
     @Override
@@ -26,7 +27,8 @@ public class ParametersScreenController implements Initializable {
 
         createParametersLisView();
 
-        parametersListView.getSelectionModel().selectedItemProperty().addListener(new ContentScreenChangeListener(contentScreensHandler));
+        parametersListView.getSelectionModel().selectedItemProperty()
+                .addListener(new ContentScreenChangeListener(contentScreensHandler));
     }
 
     private void createAndPrepareParametersScreenController() {
@@ -56,13 +58,17 @@ public class ParametersScreenController implements Initializable {
 record ContentScreenChangeListener(ContentScreensHandler contentScreensHandler) implements ChangeListener<String> {
     @Override
     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        if (newValue.equals("Aktorzy")) {
+        String actorsResourceName = Resource.ActorParameters.getResourceName();
+        String connectionResourceName = Resource.ConnectionParameters.getResourceName();
+        String simulationResourceName = Resource.SimulationParameters.getResourceName();
+
+        if (newValue.equals(actorsResourceName)) {
             contentScreensHandler.setContentScreen(Resource.ActorParameters);
         }
-        if (newValue.equals("Połączenia")) {
+        if (newValue.equals(connectionResourceName)) {
             contentScreensHandler.setContentScreen(Resource.ConnectionParameters);
         }
-        if (newValue.equals("Symulacja")) {
+        if (newValue.equals(simulationResourceName)) {
             contentScreensHandler.setContentScreen(Resource.SimulationParameters);
         }
     }
