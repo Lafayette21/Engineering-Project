@@ -1,10 +1,12 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.Resource;
 import com.example.project.parametervalues.ActorsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
@@ -18,7 +20,15 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private Slider actorsNumberSlider;
     @FXML
     private TextField actorsNumberTextField;
+    @FXML
+    private Button updateButton;
 
+    public void updateParameterValues(){
+        ParametersValueHandler valueHandler = screenParent.getParametersValueHandler();
+        ActorsParametersValues parametersValues =
+                new ActorsParametersValues((int) actorsNumberSlider.getValue());
+        valueHandler.updateValues(Resource.ActorParameters, parametersValues);
+    }
 
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
@@ -27,20 +37,17 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ActorsParametersValues actorsParametersValues = new ActorsParametersValues();
-
         actorsNumberSlider.valueProperty()
-                .addListener(new ActorsNumberSliderChangeListener(actorsParametersValues,actorsNumberTextField));
+                .addListener(new ActorsNumberSliderChangeListener(actorsNumberTextField));
     }
 }
 
-record ActorsNumberSliderChangeListener(ActorsParametersValues actorsParametersValues,TextField actorsNumberTextField)
+record ActorsNumberSliderChangeListener(TextField actorsNumberTextField)
         implements ChangeListener<Number>{
     @Override
     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-        int actorsNumber = newValue.intValue();
+        String value = String.valueOf(newValue.intValue());
 
-        actorsParametersValues.setActorsNumber(actorsNumber);
-        actorsNumberTextField.setText(String.valueOf(actorsNumber));
+        actorsNumberTextField.setText(value);
     }
 }
