@@ -1,5 +1,6 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.Resource;
 import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,17 +25,17 @@ public class SimulationParametersScreenController implements ParameterControlled
         this.screenParent = screenParent;
     }
 
+    public void updateParametersValues(){
+        ParametersValueHandler valueHandler = screenParent.getParametersValueHandler();
+        SimulationParametersValues simulationParametersValues =
+                new SimulationParametersValues(stepNumberSpinner.getValue(), annealingSpinner.getValue());
+        valueHandler.updateValues(Resource.SimulationParameters, simulationParametersValues);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         stepNumberSpinner.setValueFactory(createStepNumberSpinnerValueFactory());
         annealingSpinner.setValueFactory(createAnnealingSpinnerValueFactory());
-
-        SimulationParametersValues simulationParametersValues = new SimulationParametersValues();
-
-        stepNumberSpinner.valueProperty()
-                .addListener(new StepNumberSpinnerChangeListener(simulationParametersValues));
-        annealingSpinner.valueProperty()
-                .addListener(new AnnealingSpinnerChangeListener(simulationParametersValues));
     }
 
     private SpinnerValueFactory<Integer> createStepNumberSpinnerValueFactory() {
@@ -57,19 +58,5 @@ public class SimulationParametersScreenController implements ParameterControlled
         return new SpinnerValueFactory
                 .DoubleSpinnerValueFactory(minAnnealingValue, maxAnnealingValue,
                 initialAnnealingValue, spinnerIncreaseValue);
-    }
-}
-
-record StepNumberSpinnerChangeListener(SimulationParametersValues simulationParametersValues) implements ChangeListener<Integer>{
-    @Override
-    public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-        simulationParametersValues.setNumberOfSteps(newValue);
-    }
-}
-
-record AnnealingSpinnerChangeListener(SimulationParametersValues simulationParametersValues) implements ChangeListener<Double>{
-    @Override
-    public void changed(ObservableValue<? extends Double> observable, Double oldValue, Double newValue) {
-        simulationParametersValues.setAnnealingValue(newValue);
     }
 }
