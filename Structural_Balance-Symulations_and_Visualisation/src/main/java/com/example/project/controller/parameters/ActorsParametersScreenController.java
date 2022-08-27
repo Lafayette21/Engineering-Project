@@ -1,7 +1,6 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.parametervalues.ActorsParametersValues;
-import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -30,12 +29,15 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ActorsParametersValues actorsParametersValues = new ActorsParametersValues();
 
+        screenParent.getParametersValueHandler();
+
         actorsNumberSlider.valueProperty()
                 .addListener(new ActorsNumberSliderChangeListener(actorsParametersValues,actorsNumberTextField));
     }
 }
 
-record ActorsNumberSliderChangeListener(ActorsParametersValues actorsParametersValues,TextField actorsNumberTextField) implements ChangeListener<Number>{
+record ActorsNumberSliderChangeListener(ActorsParametersValues actorsParametersValues,TextField actorsNumberTextField)
+        implements ChangeListener<Number>{
     @Override
     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
         int actorsNumber = newValue.intValue();

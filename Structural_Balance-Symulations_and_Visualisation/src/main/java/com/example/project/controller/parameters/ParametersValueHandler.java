@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParametersValueHandler {
-    private Map<Resource, ParameterValue> parameterValueMap = new HashMap<>();
+    private final Map<Resource, ParameterValue> parameterValueMap = new HashMap<>();
 
     public void updateValues(Resource resource, ParameterValue parameterValue) {
         if (parameterValueMap.containsKey(resource)) {

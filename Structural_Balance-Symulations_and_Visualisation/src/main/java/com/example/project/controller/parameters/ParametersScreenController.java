@@ -18,7 +18,6 @@ public class ParametersScreenController implements Initializable {
     private ListView<String> parametersListView;
 
     private final ContentScreensHandler contentScreensHandler = new ContentScreensHandler(this);
-
     private final ParametersValueHandler parametersValueHandler = new ParametersValueHandler();
 
     @Override
