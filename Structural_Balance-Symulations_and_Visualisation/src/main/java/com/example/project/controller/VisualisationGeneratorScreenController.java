@@ -17,8 +17,6 @@ public class VisualisationGeneratorScreenController extends AnchorPane implement
     @FXML
     private SummaryScreenController summaryScreenController;
 
-    @FXML private TabPane settingsTabPane;
-
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         controller = screenParent;

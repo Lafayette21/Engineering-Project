@@ -38,6 +38,8 @@ public class ConnectionParametersScreenController implements ParameterControlled
         ConnectionsParametersValues connectionsParametersValues =
                 new ConnectionsParametersValues(connectionPercentSpinner.getValue(), positiveToNegativeRatioSpinner.getValue());
         valueHandler.updateValues(Resource.ConnectionParameters, connectionsParametersValues);
+
+        SuccesAlertFactory.createAndShow();
     }
 
     @Override

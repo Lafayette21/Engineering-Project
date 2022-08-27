@@ -28,6 +28,8 @@ public class ActorsParametersScreenController implements ParameterControlledScre
         ActorsParametersValues parametersValues =
                 new ActorsParametersValues((int) actorsNumberSlider.getValue());
         valueHandler.updateValues(Resource.ActorParameters, parametersValues);
+
+        SuccesAlertFactory.createAndShow();
     }
 
     @Override
