@@ -4,9 +4,9 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersScreenController;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.parametervalues.ParameterValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import java.net.URL;
@@ -24,12 +24,22 @@ public class SummaryScreenController implements Initializable {
     }
 
     public void updateScreenValues(){
-        ParametersValueHandler parametersValueHandler = parametersScreenController.getParametersValueHandler();
-        ConnectionsParametersValues parameterValueByResource =
-                (ConnectionsParametersValues) parametersValueHandler.getParameterValueByResource(Resource.ConnectionParameters);
+        ParametersValueHandler valueHandler = parametersScreenController.getParametersValueHandler();
+        try{
+            ConnectionsParametersValues connectionsParametersValues =
+                    (ConnectionsParametersValues) valueHandler.getParameterValueByResource(Resource.ConnectionParameters);
+            String text = String.valueOf(connectionsParametersValues.positiveToNegativePercentRatio());
+            testLabel.setText(text);
+        } catch (NullPointerException e){
+            showAlert();
+        }
 
-        String text = String.valueOf(parameterValueByResource.getConnectionCreationPercentRatio());
-        testLabel.setText(text);
+    }
+
+    private void showAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Część z parametrów nie była jeszcze ustawiona. Ustaw je aby móc zobaczyć podsumowanie");
+        alert.showAndWait();
     }
 
     @Override
