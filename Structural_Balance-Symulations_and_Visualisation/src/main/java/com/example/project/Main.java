@@ -18,6 +18,7 @@ public class Main extends Application {
         MainApplicationScreenController mainController = new MainApplicationScreenController();
         mainController.loadScreen(Resource.StartWindow);
         mainController.loadScreen(Resource.VisualisationGenerator);
+        mainController.loadScreen(Resource.Visualisation);
 
         mainController.setScreen(Resource.StartWindow);
         return mainController;

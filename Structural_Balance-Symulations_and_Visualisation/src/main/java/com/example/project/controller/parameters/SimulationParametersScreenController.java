@@ -2,8 +2,6 @@ package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
 import com.example.project.parametervalues.SimulationParametersValues;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
@@ -25,7 +23,7 @@ public class SimulationParametersScreenController implements ParameterControlled
         this.screenParent = screenParent;
     }
 
-    public void updateParametersValues(){
+    public void updateParametersValues() {
         ParametersValueHandler valueHandler = screenParent.getParametersValueHandler();
         SimulationParametersValues simulationParametersValues =
                 new SimulationParametersValues(stepNumberSpinner.getValue(), annealingSpinner.getValue());
@@ -47,8 +45,7 @@ public class SimulationParametersScreenController implements ParameterControlled
         final int spinnerIncreaseValue = 25;
 
         return new SpinnerValueFactory
-                .IntegerSpinnerValueFactory(minStepValue, maxStepValue,
-                initialSpinnerValue, spinnerIncreaseValue);
+                .IntegerSpinnerValueFactory(minStepValue, maxStepValue, initialSpinnerValue, spinnerIncreaseValue);
     }
 
     private SpinnerValueFactory<Double> createAnnealingSpinnerValueFactory() {
@@ -58,7 +55,7 @@ public class SimulationParametersScreenController implements ParameterControlled
         final double spinnerIncreaseValue = 0.1;
 
         return new SpinnerValueFactory
-                .DoubleSpinnerValueFactory(minAnnealingValue, maxAnnealingValue,
-                initialAnnealingValue, spinnerIncreaseValue);
+                .DoubleSpinnerValueFactory(minAnnealingValue, maxAnnealingValue, initialAnnealingValue,
+                spinnerIncreaseValue);
     }
 }

@@ -2,8 +2,6 @@ package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
 import com.example.project.parametervalues.ConnectionsParametersValues;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

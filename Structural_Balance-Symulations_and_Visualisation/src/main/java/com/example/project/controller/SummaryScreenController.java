@@ -5,7 +5,6 @@ import com.example.project.controller.parameters.ParametersScreenController;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.parametervalues.ParameterValue;
 import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,24 +16,34 @@ import java.util.ResourceBundle;
 
 public class SummaryScreenController implements Initializable {
     private ParametersScreenController parametersScreenController;
+    private VisualisationGeneratorScreenController screenParent;
 
-    @FXML private Label connectionPercentageLabel;
-    @FXML private Label posToNegPercentageLabel;
-    @FXML private Label actorsNumberLabel;
-    @FXML private Label stepNumberLabel;
-    @FXML private Label annealingLabel;
+    @FXML
+    private Label connectionPercentageLabel;
+    @FXML
+    private Label posToNegPercentageLabel;
+    @FXML
+    private Label actorsNumberLabel;
+    @FXML
+    private Label stepNumberLabel;
+    @FXML
+    private Label annealingLabel;
 
     public void injectParametersScreenController(ParametersScreenController parametersScreenController) {
         this.parametersScreenController = parametersScreenController;
     }
 
-    public void updateScreenValues(){
+    public void injectParentScreenController(VisualisationGeneratorScreenController screenParent) {
+        this.screenParent = screenParent;
+    }
+
+    public void updateScreenValues() {
         ParametersValueHandler valueHandler = parametersScreenController.getParametersValueHandler();
-        try{
+        try {
             updateConnectionParameters(valueHandler);
             updateActorsParameters(valueHandler);
             updateSimulationParameters(valueHandler);
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             showAlert();
         }
     }
@@ -74,6 +83,10 @@ public class SummaryScreenController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("Część z parametrów nie była jeszcze ustawiona. Ustaw je aby móc zobaczyć podsumowanie");
         alert.showAndWait();
+    }
+
+    public void generateSimulation(){
+        screenParent.changeScreenToVisualisationScreen();
     }
 
     @Override
