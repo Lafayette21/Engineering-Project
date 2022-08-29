@@ -4,11 +4,12 @@ public enum Resource {
     StartWindow("StartScreen.fxml"),
     VisualisationGenerator("VisualisationGeneratorScreen.fxml"),
     Parameters("ParametersScreen.fxml"),
+    Visualisation("VisualisationScreen.fxml"),
     ActorParameters("ActorsParametersScreen.fxml", "Aktorzy"),
     ConnectionParameters("ConnectionParametersScreen.fxml", "Połączenia"),
     SimulationParameters("SimulationParametersScreen.fxml", "Symulacja");
 
-    private String resourceFileName;
+    private final String resourceFileName;
     private String resourceName;
 
     Resource(String resourceFileName) {

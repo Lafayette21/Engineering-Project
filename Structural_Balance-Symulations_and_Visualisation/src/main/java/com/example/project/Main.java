@@ -8,23 +8,28 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         MainApplicationScreenController mainController = createAndSetMainApplicationController();
 
-        Group root = new Group();
-        root.getChildren().addAll(mainController);
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        prepareStartScreen(primaryStage, mainController);
     }
 
     private MainApplicationScreenController createAndSetMainApplicationController() {
         MainApplicationScreenController mainController = new MainApplicationScreenController();
         mainController.loadScreen(Resource.StartWindow);
         mainController.loadScreen(Resource.VisualisationGenerator);
+        mainController.loadScreen(Resource.Visualisation);
 
         mainController.setScreen(Resource.StartWindow);
         return mainController;
+    }
+
+    private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
+        Group root = new Group();
+        root.getChildren().addAll(mainController);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
