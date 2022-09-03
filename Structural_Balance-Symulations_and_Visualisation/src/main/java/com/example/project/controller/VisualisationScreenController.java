@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class VisualisationController implements ControlledScreen, Initializable {
+public class VisualisationScreenController implements ControlledScreen, Initializable {
     private MainApplicationScreenController screenParent;
 
     private ParametersValueHandler parametersValueHandler;

@@ -28,7 +28,7 @@ public class VisualisationGeneratorScreenController extends AnchorPane implement
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Resource.Visualisation.getResourceFileName()));
             loader.load();
-            VisualisationController controller = loader.getController();
+            VisualisationScreenController controller = loader.getController();
             controller.setParametersValueHandler(parametersScreenController.getParametersValueHandler());
         } catch (IOException e) {
             throw new RuntimeException(e);
