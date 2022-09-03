@@ -1,4 +1,4 @@
-package com.example.project.visualisation.screen;
+package com.example.project.visualisation.actorshandler;
 
 import javafx.scene.layout.AnchorPane;
 

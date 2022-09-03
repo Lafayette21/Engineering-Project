@@ -1,4 +1,4 @@
-package com.example.project.visualisation.screen;
+package com.example.project.visualisation.actorshandler;
 
 import javafx.scene.layout.AnchorPane;
 
@@ -10,6 +10,6 @@ public class NinetyActorsHandler extends ActorHandler{
 
     @Override
     public void organizeActors(AnchorPane panel) {
-
+        
     }
 }
