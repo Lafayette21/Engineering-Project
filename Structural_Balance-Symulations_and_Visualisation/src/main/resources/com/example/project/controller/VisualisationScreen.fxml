@@ -11,8 +11,8 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="visualisationPanel" layoutX="106.0" layoutY="71.0" prefHeight="305.0" prefWidth="485.0">
-         <fx:include  source="VisualisationPanel.fxml" />
+      <AnchorPane layoutX="106.0" layoutY="71.0" prefHeight="305.0" prefWidth="485.0">
+         <fx:include fx:id="visualisationPanel" source="VisualisationPanel.fxml" />
       </AnchorPane>
    </children>
 </AnchorPane>
