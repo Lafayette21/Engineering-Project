@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.visualisation.actorshandler.ActorHandler;
+import com.example.project.visualisation.screen.VisualisationGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +15,6 @@ import java.util.ResourceBundle;
 public class VisualisationScreenController implements ControlledScreen, Initializable {
     private MainApplicationScreenController screenParent;
     private ParametersValueHandler parametersValueHandler;
-    private ActorHandler actorsHandler;
 
     @FXML
     private AnchorPane visualisationPanel;
@@ -22,11 +22,13 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
     private Button generateButton;
 
     public void generateVisualisation(ActionEvent event) {
-
+        parametersValueHandler = getParametersValueHandler();
+        VisualisationGenerator generator = new VisualisationGenerator(parametersValueHandler, visualisationPanel);
+        generator.generate(parametersValueHandler);
     }
 
-    public void setParametersValueHandler(ParametersValueHandler parametersValueHandler) {
-        this.parametersValueHandler = parametersValueHandler;
+    private ParametersValueHandler getParametersValueHandler() {
+        return (ParametersValueHandler) screenParent.getUserData();
     }
 
     @Override

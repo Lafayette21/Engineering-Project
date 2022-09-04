@@ -17,9 +17,12 @@ public class VisualisationGenerator {
         this.visualisationPanel = visualisationPanel;
     }
 
-    public void generate(ParametersValueHandler parametersValueHandler, AnchorPane visualisationPanel) {
+    public void generate(ParametersValueHandler parametersValueHandler) {
         int actorsNumber = getActorsNumber(parametersValueHandler);
         actorHandler = prepareActorsHandler(actorsNumber);
+
+        RowDrawer rowDrawer = new RowDrawer(20);
+        rowDrawer.draw(visualisationPanel);
     }
 
     private ActorHandler prepareActorsHandler(int actorsNumber) {
