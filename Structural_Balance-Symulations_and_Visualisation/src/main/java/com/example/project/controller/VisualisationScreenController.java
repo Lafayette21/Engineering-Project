@@ -1,8 +1,11 @@
 package com.example.project.controller;
 
 import com.example.project.controller.parameters.ParametersValueHandler;
+import com.example.project.visualisation.actorshandler.ActorHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -10,11 +13,17 @@ import java.util.ResourceBundle;
 
 public class VisualisationScreenController implements ControlledScreen, Initializable {
     private MainApplicationScreenController screenParent;
-
     private ParametersValueHandler parametersValueHandler;
+    private ActorHandler actorsHandler;
 
     @FXML
     private AnchorPane visualisationPanel;
+    @FXML
+    private Button generateButton;
+
+    public void generateVisualisation(ActionEvent event) {
+
+    }
 
     public void setParametersValueHandler(ParametersValueHandler parametersValueHandler) {
         this.parametersValueHandler = parametersValueHandler;
