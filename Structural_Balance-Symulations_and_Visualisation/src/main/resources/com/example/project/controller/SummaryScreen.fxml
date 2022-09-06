@@ -71,12 +71,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="228.0" layoutY="150.0" text="Ilość aktorów">
+      <Label layoutX="228.0" layoutY="150.0" text="Ilość rzędów">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="actorsNumberLabel" layoutX="342.0" layoutY="150.0" text="0">
+      <Label fx:id="rowNumberLabel" layoutX="342.0" layoutY="150.0" text="0">
          <font>
             <Font size="16.0" />
          </font>
@@ -86,5 +86,15 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <Label layoutX="228.0" layoutY="187.0" text="Ilość kolumn">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="columnNumberLabel" layoutX="342.0" layoutY="187.0" text="0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

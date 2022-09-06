@@ -23,7 +23,9 @@ public class SummaryScreenController implements Initializable {
     @FXML
     private Label posToNegPercentageLabel;
     @FXML
-    private Label actorsNumberLabel;
+    private Label rowNumberLabel;
+    @FXML
+    private Label columnNumberLabel;
     @FXML
     private Label stepNumberLabel;
     @FXML
@@ -63,9 +65,11 @@ public class SummaryScreenController implements Initializable {
         ActorsParametersValues parameterValue =
                 (ActorsParametersValues) valueHandler.getParameterValueByResource(Resource.ActorParameters);
 
-        String actorsNumber = String.valueOf(parameterValue.actorNumber());
+        String rowNumber = String.valueOf(parameterValue.rowNumber());
+        String columnNumber = String.valueOf(parameterValue.columnNumber());
 
-        actorsNumberLabel.setText(actorsNumber);
+        rowNumberLabel.setText(rowNumber);
+        columnNumberLabel.setText(columnNumber);
     }
 
     private void updateSimulationParameters(ParametersValueHandler valueHandler) {

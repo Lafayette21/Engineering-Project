@@ -15,15 +15,6 @@ public class VisualisationGenerator {
     }
 
     public void generate(ParametersValueHandler parametersValueHandler) {
-        int actorsNumber = getActorsNumber(parametersValueHandler);
 
     }
-
-    private int getActorsNumber(ParametersValueHandler parametersValueHandler) {
-        ActorsParametersValues parameterValue =
-                (ActorsParametersValues) parametersValueHandler.getParameterValueByResource(Resource.ActorParameters);
-        return parameterValue.actorNumber();
-    }
-
-
 }
