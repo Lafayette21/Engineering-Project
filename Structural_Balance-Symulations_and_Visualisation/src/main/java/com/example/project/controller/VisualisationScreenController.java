@@ -1,7 +1,6 @@
 package com.example.project.controller;
 
 import com.example.project.controller.parameters.ParametersValueHandler;
-import com.example.project.visualisation.actorshandler.ActorHandler;
 import com.example.project.visualisation.screen.VisualisationGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
