@@ -73,7 +73,8 @@ public class VisualisationGenerator {
     }
 
     private void drawHorizontalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
-        ConnectionDrawer connectionDrawer = new ConnectionDrawer(visualisationPanel);
+        ConnectionDrawer connectionDrawer =
+                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
 
         Point2D beginPoint =
                 new Point2D(distanceX + (curColumn - 1) * distanceX, distanceY + (curRow - 1) * distanceY);
@@ -84,7 +85,8 @@ public class VisualisationGenerator {
     }
 
     private void drawVerticalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
-        ConnectionDrawer connectionDrawer = new ConnectionDrawer(visualisationPanel);
+        ConnectionDrawer connectionDrawer =
+                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
 
         Point2D beginPoint =
                 new Point2D(distanceX + (curColumn - 1) * distanceX, distanceY + (curRow - 1) * distanceY);
@@ -95,7 +97,8 @@ public class VisualisationGenerator {
     }
 
     private void drawDiagonalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
-        ConnectionDrawer connectionDrawer = new ConnectionDrawer(visualisationPanel);
+        ConnectionDrawer connectionDrawer =
+                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
 
         drawUpLeftDownRight(distanceX, distanceY, curRow, curColumn, connectionDrawer);
         drawDownLeftUpRight(distanceX, distanceY, curRow, curColumn, connectionDrawer);
@@ -120,7 +123,8 @@ public class VisualisationGenerator {
     }
 
     private void addMissingConnections(double distanceX, double distanceY, int rowNumber, int columnNumber) {
-        ConnectionDrawer connectionDrawer = new ConnectionDrawer(visualisationPanel);
+        ConnectionDrawer connectionDrawer =
+                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
         addConnectionsToLastRow(distanceX, distanceY, rowNumber, columnNumber, connectionDrawer);
         addConnectionsToLastColumn(distanceX, distanceY, rowNumber, columnNumber, connectionDrawer);
     }
