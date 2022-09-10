@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class VisualisationScreenController implements ControlledScreen, Initializable {
+public class VisualisationScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent;
     private ParametersValueHandler parametersValueHandler;
 
@@ -32,17 +32,16 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
     }
 
     public void changeScreenToVisualisationGeneratorScreen(){
+        clearVisualisationPanel();
         screenParent.setScreen(Resource.VisualisationGenerator);
+    }
+
+    private void clearVisualisationPanel() {
+        visualisationPanel.getChildren().clear();
     }
 
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }

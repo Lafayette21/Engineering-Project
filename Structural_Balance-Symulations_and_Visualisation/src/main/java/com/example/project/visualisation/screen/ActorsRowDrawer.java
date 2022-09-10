@@ -5,7 +5,7 @@ import javafx.scene.shape.Circle;
 
 import java.util.stream.IntStream;
 
-public record RowDrawer(double distance, int numberOfElements, double beginXPosition, double beginYPosition) {
+public record ActorsRowDrawer(double distance, int numberOfElements, double beginXPosition, double beginYPosition) {
     public void draw(AnchorPane panel) {
         IntStream.range(0, numberOfElements)
                 .mapToObj(this::createPoint)
