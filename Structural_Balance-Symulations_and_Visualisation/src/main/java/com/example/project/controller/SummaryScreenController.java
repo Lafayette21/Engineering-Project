@@ -7,14 +7,10 @@ import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class SummaryScreenController implements Initializable {
+public class SummaryScreenController {
     private ParametersScreenController parametersScreenController;
     private VisualisationGeneratorScreenController screenParent;
 
@@ -89,12 +85,7 @@ public class SummaryScreenController implements Initializable {
         alert.showAndWait();
     }
 
-    public void generateSimulation(){
+    public void generateSimulation() {
         screenParent.changeScreenToVisualisationScreen();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Dupa");
     }
 }
