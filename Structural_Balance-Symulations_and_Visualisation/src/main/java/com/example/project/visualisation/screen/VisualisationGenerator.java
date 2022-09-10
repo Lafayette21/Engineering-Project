@@ -16,7 +16,7 @@ public class VisualisationGenerator {
     private int rowNumber;
     private int columnNumber;
     private int connectionCreationPercentRatio;
-    int positiveToNegativePercentRatio;
+    private int positiveToNegativePercentRatio;
 
     public VisualisationGenerator(ParametersValueHandler parametersValueHandler, AnchorPane visualisationPanel) {
         this.parametersValueHandler = parametersValueHandler;
@@ -24,45 +24,44 @@ public class VisualisationGenerator {
     }
 
     public void generate(ParametersValueHandler parametersValueHandler) {
-        clearVisualisationPanel();
+        clearCanvas();
+        setParametersValues(parametersValueHandler);
+        drawToCanvas();
+    }
+
+    private void setParametersValues(ParametersValueHandler parametersValueHandler) {
         ActorsParametersValues actorParameters = (ActorsParametersValues)
                 parametersValueHandler.getParameterValueByResource(Resource.ActorParameters);
         ConnectionsParametersValues connectionParameters = (ConnectionsParametersValues)
                 parametersValueHandler.getParameterValueByResource(Resource.ConnectionParameters);
 
-        drawActorsToCanvas(actorParameters);
-        drawConnectionsToCanvas(actorParameters, connectionParameters);
-
+        rowNumber = actorParameters.rowNumber();
+        columnNumber = actorParameters.columnNumber();
+        connectionCreationPercentRatio = connectionParameters.connectionCreationPercentRatio();
+        positiveToNegativePercentRatio = connectionParameters.positiveToNegativePercentRatio();
     }
 
-    private void clearVisualisationPanel() {
-        visualisationPanel.getChildren().clear();
-    }
-
-    private void drawActorsToCanvas(ActorsParametersValues actorParameters) {
-        int columnNumber = actorParameters.columnNumber();
-        int rowNumber = actorParameters.rowNumber();
-
+    private void drawToCanvas() {
         double width = visualisationPanel.getWidth();
         double height = visualisationPanel.getHeight();
         double distanceX = width / (columnNumber + 1);
         double distanceY = height / (rowNumber + 1);
+        drawActorsToCanvas(distanceX,distanceY);
+        drawConnectionsToCanvas(distanceX,distanceY);
+    }
 
+    private void clearCanvas() {
+        visualisationPanel.getChildren().clear();
+    }
+
+    private void drawActorsToCanvas(double distanceX, double distanceY) {
         IntStream.range(0, rowNumber)
                 .mapToObj(i ->
                         new ActorsRowDrawer(distanceX, columnNumber, distanceX, distanceY + i * distanceY))
                 .forEachOrdered(actorsRowDrawer -> actorsRowDrawer.draw(visualisationPanel));
     }
 
-    private void drawConnectionsToCanvas(ActorsParametersValues actorParameters, ConnectionsParametersValues connectionParameters) {
-        int columnNumber = actorParameters.columnNumber();
-        int rowNumber = actorParameters.rowNumber();
-
-        double width = visualisationPanel.getWidth();
-        double height = visualisationPanel.getHeight();
-        double distanceX = width / (columnNumber + 1);
-        double distanceY = height / (rowNumber + 1);
-
+    private void drawConnectionsToCanvas(double distanceX, double distanceY) {
         for (int curRow = 1; curRow < rowNumber; curRow++) {
             for (int curColumn = 1; curColumn < columnNumber; curColumn++) {
                 drawHorizontalConnections(distanceX, distanceY, curRow, curColumn);
