@@ -46,8 +46,8 @@ public class VisualisationGenerator {
         double height = visualisationPanel.getHeight();
         double distanceX = width / (columnNumber + 1);
         double distanceY = height / (rowNumber + 1);
-        drawActorsToCanvas(distanceX,distanceY);
         drawConnectionsToCanvas(distanceX,distanceY);
+        drawActorsToCanvas(distanceX,distanceY);
     }
 
     private void clearCanvas() {
