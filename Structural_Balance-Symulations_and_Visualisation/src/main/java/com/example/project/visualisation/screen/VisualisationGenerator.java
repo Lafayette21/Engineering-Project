@@ -4,6 +4,7 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.visualisation.ConnectionMatrix;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
@@ -39,6 +40,9 @@ public class VisualisationGenerator {
         columnNumber = actorParameters.columnNumber();
         connectionCreationPercentRatio = connectionParameters.connectionCreationPercentRatio();
         positiveToNegativePercentRatio = connectionParameters.positiveToNegativePercentRatio();
+        //For debug perpouse
+        ConnectionMatrix connectionMatrix = new ConnectionMatrix(rowNumber, columnNumber);
+        connectionMatrix.createConnections(connectionCreationPercentRatio);
     }
 
     private void drawToCanvas() {
