@@ -21,13 +21,7 @@ public class ConnectionMatrix {
     }
 
     public void createConnections(int connectionCreationPercentage) {
-        Map<Integer,Integer> actorsRelations = new HashMap<>();
-        IntStream.range(0,numberOfActors).map()
-
     }
-
-    List<Integer> getNeighboursOfActor()
-
     private void setMatrixElement(int verticalPosition, int horizontalPosition, int connectionCreationPercentage) {
         int randomNumber = new Random().nextInt(UPPER_BOUND_FOR_RANDOM_GENERATOR);
         if (randomNumber < connectionCreationPercentage &&
