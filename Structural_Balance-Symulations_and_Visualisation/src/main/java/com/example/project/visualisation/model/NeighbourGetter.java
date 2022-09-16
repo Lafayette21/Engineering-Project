@@ -3,6 +3,7 @@ package com.example.project.visualisation.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NeighbourGetter {
     private final int columnNumber;
@@ -14,11 +15,13 @@ public class NeighbourGetter {
     }
 
     public List<Integer> getNeighbours(Actor actor) {
+        Integer actorId = actor.getActorId();
+
         ArrayList<Integer> neighboursList = new ArrayList<>();
-        neighboursList.addAll(getSameRowNeighbours(actor.getActorId()));
-        neighboursList.addAll(getUpperRowNeighbours(actor.getActorId()));
-        neighboursList.addAll(getLowerRowNeighbours(actor.getActorId()));
-        return neighboursList;
+        neighboursList.addAll(getSameRowNeighbours(actorId));
+        neighboursList.addAll(getUpperRowNeighbours(actorId));
+        neighboursList.addAll(getLowerRowNeighbours(actorId));
+        return neighboursList.stream().sorted(Integer::compareTo).collect(Collectors.toList());
     }
 
     private List<Integer> getSameRowNeighbours(int actorId) {
@@ -43,7 +46,7 @@ public class NeighbourGetter {
     }
 
     private boolean upperRowExists(int upperNeighbourId) {
-        return upperNeighbourId < 0;
+        return upperNeighbourId > 0;
     }
 
     private List<Integer> getNeighboursFromUpperRow(int upperNeighbourId) {
@@ -69,7 +72,7 @@ public class NeighbourGetter {
     }
 
     private boolean lowerRowExists(int lowerNeighbourId) {
-        return lowerNeighbourId < columnNumber * rowNumber;
+        return lowerNeighbourId <= columnNumber * rowNumber;
     }
 
     private List<Integer> getNeighboursFromLowerRow(int lowerNeighbourId) {
@@ -87,11 +90,11 @@ public class NeighbourGetter {
 
     }
 
-    private boolean existsLeftNeighbour(int leftUpperNeighbourId) {
-        return leftUpperNeighbourId > 0;
+    private boolean existsLeftNeighbour(int leftNeighbourId) {
+        return leftNeighbourId % columnNumber > 0;
     }
 
-    private boolean existsRightNeighbour(int rightUpperNeighbourId) {
-        return rightUpperNeighbourId < columnNumber;
+    private boolean existsRightNeighbour(int rightNeighbourId) {
+        return (rightNeighbourId - 1) % columnNumber > 0;
     }
 }
