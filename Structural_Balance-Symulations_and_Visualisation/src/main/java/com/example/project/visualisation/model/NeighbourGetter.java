@@ -14,19 +14,21 @@ public class NeighbourGetter {
     }
 
     public List<Integer> getNeighbours(Actor actor) {
-        List<Integer> sameRowNeighbours = getSameRowNeighbours(actor.getActorId());
-        List<Integer> upperRowNeighbours = getUpperRowNeighbours(actor.getActorId());
-        return List.of();
+        ArrayList<Integer> neighboursList = new ArrayList<>();
+        neighboursList.addAll(getSameRowNeighbours(actor.getActorId()));
+        neighboursList.addAll(getUpperRowNeighbours(actor.getActorId()));
+        neighboursList.addAll(getLowerRowNeighbours(actor.getActorId()));
+        return neighboursList;
     }
 
     private List<Integer> getSameRowNeighbours(int actorId) {
         ArrayList<Integer> sameRowNeighbours = new ArrayList<>();
         int leftNeighbourId = actorId - 1;
         int rightNeighbourId = actorId + 1;
-        if (isLeftNeighbour(leftNeighbourId)) {
+        if (existsLeftNeighbour(leftNeighbourId)) {
             sameRowNeighbours.add(leftNeighbourId);
         }
-        if (isRightNeighbour(rightNeighbourId)) {
+        if (existsRightNeighbour(rightNeighbourId)) {
             sameRowNeighbours.add(rightNeighbourId);
         }
         return Collections.unmodifiableList(sameRowNeighbours);
@@ -48,22 +50,48 @@ public class NeighbourGetter {
         ArrayList<Integer> neighboursList = new ArrayList<>();
         int leftUpperNeighbourId = upperNeighbourId - 1;
         int rightUpperNeighbourId = upperNeighbourId + 1;
-        if (isLeftNeighbour(leftUpperNeighbourId)) {
+        if (existsLeftNeighbour(leftUpperNeighbourId)) {
             neighboursList.add(leftUpperNeighbourId);
         }
-        if (isRightNeighbour(rightUpperNeighbourId)) {
+        if (existsRightNeighbour(rightUpperNeighbourId)) {
             neighboursList.add(rightUpperNeighbourId);
         }
         neighboursList.add(upperNeighbourId);
         return neighboursList;
     }
 
-    private boolean isRightNeighbour(int rightUpperNeighbourId) {
-        return rightUpperNeighbourId < columnNumber;
+    private List<Integer> getLowerRowNeighbours(int actorId) {
+        int lowerNeighbourId = actorId + columnNumber;
+        if (lowerRowExists(lowerNeighbourId)) {
+            return getNeighboursFromLowerRow(lowerNeighbourId);
+        }
+        return Collections.emptyList();
     }
 
-    private boolean isLeftNeighbour(int leftUpperNeighbourId) {
+    private boolean lowerRowExists(int lowerNeighbourId) {
+        return lowerNeighbourId < columnNumber * rowNumber;
+    }
+
+    private List<Integer> getNeighboursFromLowerRow(int lowerNeighbourId) {
+        ArrayList<Integer> neighboursList = new ArrayList<>();
+        int leftLowerNeighbourId = lowerNeighbourId - 1;
+        int rightLowerNeighbourId = lowerNeighbourId + 1;
+        if (existsLeftNeighbour(leftLowerNeighbourId)) {
+            neighboursList.add(leftLowerNeighbourId);
+        }
+        if (existsRightNeighbour(rightLowerNeighbourId)) {
+            neighboursList.add(rightLowerNeighbourId);
+        }
+        neighboursList.add(lowerNeighbourId);
+        return neighboursList;
+
+    }
+
+    private boolean existsLeftNeighbour(int leftUpperNeighbourId) {
         return leftUpperNeighbourId > 0;
     }
 
+    private boolean existsRightNeighbour(int rightUpperNeighbourId) {
+        return rightUpperNeighbourId < columnNumber;
+    }
 }
