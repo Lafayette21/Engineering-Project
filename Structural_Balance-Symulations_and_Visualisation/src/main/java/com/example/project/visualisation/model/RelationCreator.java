@@ -28,7 +28,7 @@ public class RelationCreator {
         NeighbourGetter neighbourGetter = createNeighbourGetter();
         List<Integer> neighbours = neighbourGetter.getNeighbours(actor);
         return neighbours.stream()
-                .map(neighbourId->createRelation(actor,getActorById(neighbourId)))
+                .map(neighbourId -> createRelation(actor, getActorById(neighbourId)))
                 .collect(Collectors.toList());
     }
 
@@ -38,26 +38,32 @@ public class RelationCreator {
         return new NeighbourGetter(rowNumber, columnNumber);
     }
 
+    private Actor getActorById(int actorId) {
+        return actorList.get(actorId - 1);
+    }
+
     private Relation createRelation(Actor firstActor, Actor secondActor) {
         int connectionCreationPercent = connectionsParametersValues.connectionCreationPercentRatio();
         int posToNegPercent = connectionsParametersValues.positiveToNegativePercentRatio();
 
         int randomConnection = new Random().nextInt(0, 100);
-        if (randomConnection > connectionCreationPercent) {
+        if (!existsConnection(connectionCreationPercent, randomConnection)) {
             return new Relation(firstActor, secondActor, RelationType.NONE);
         } else {
             int randomPosToNeg = new Random().nextInt(0, 100);
-            if (randomPosToNeg < posToNegPercent) {
+            if (isPositive(posToNegPercent, randomPosToNeg)) {
                 return new Relation(firstActor, secondActor, RelationType.POSITIVE);
             } else {
-                return new Relation(firstActor, secondActor, RelationType.POSITIVE);
+                return new Relation(firstActor, secondActor, RelationType.NEGATIVE);
             }
         }
     }
 
-    private Actor getActorById(int actorId) {
-        return actorList.get(actorId);
+    private boolean existsConnection(int connectionCreationPercent, int randomConnection) {
+        return randomConnection < connectionCreationPercent;
     }
 
-
+    private boolean isPositive(int posToNegPercent, int randomPosToNeg) {
+        return randomPosToNeg < posToNegPercent;
+    }
 }

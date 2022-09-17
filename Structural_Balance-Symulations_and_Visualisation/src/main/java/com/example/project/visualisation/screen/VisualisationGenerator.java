@@ -40,9 +40,6 @@ public class VisualisationGenerator {
         columnNumber = actorParameters.columnNumber();
         connectionCreationPercentRatio = connectionParameters.connectionCreationPercentRatio();
         positiveToNegativePercentRatio = connectionParameters.positiveToNegativePercentRatio();
-        //For debug perpouse
-        ConnectionMatrix connectionMatrix = new ConnectionMatrix(rowNumber, columnNumber);
-        connectionMatrix.createConnections(connectionCreationPercentRatio);
     }
 
     private void drawToCanvas() {
