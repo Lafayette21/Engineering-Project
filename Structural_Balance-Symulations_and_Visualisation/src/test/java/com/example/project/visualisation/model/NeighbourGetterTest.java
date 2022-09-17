@@ -5,15 +5,12 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class NeighbourGetterTest {
     private static final int ROW_NUMBER = 3;
     private static final int COLUMN_NUMBER = 3;
 
     NeighbourGetter neighbourGetter = new NeighbourGetter(ROW_NUMBER, COLUMN_NUMBER);
-
 
     @Test
     public void shouldReturnListOfNeighboursWhenActorInTheMiddle() {
@@ -112,12 +109,5 @@ public class NeighbourGetterTest {
         List<Integer> expectedNeighbours = List.of(2, 5, 6);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
-    }
-
-
-    private Actor mockActor(int actorsId) {
-        Actor actor = mock(Actor.class);
-        when(actor.getActorId()).thenReturn(actorsId);
-        return actor;
     }
 }

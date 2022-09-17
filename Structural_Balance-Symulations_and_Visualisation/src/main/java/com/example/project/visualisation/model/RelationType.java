@@ -5,5 +5,9 @@ public enum RelationType {
     NEGATIVE("Negative"),
     NONE("None");
 
-    RelationType(String relationName) {}
+    private final String relationName;
+
+    RelationType(String relationName) {
+        this.relationName = relationName;
+    }
 }
