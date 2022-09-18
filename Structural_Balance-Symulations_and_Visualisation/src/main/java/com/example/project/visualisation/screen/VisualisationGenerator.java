@@ -4,10 +4,15 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.visualisation.ConnectionMatrix;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.model.RelationCreator;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class VisualisationGenerator {
@@ -18,6 +23,9 @@ public class VisualisationGenerator {
     private int columnNumber;
     private int connectionCreationPercentRatio;
     private int positiveToNegativePercentRatio;
+    private List<Actor> actorList;
+    private Set<Relation> relations;
+
 
     public VisualisationGenerator(ParametersValueHandler parametersValueHandler, AnchorPane visualisationPanel) {
         this.parametersValueHandler = parametersValueHandler;
@@ -27,6 +35,7 @@ public class VisualisationGenerator {
     public void generate(ParametersValueHandler parametersValueHandler) {
         clearCanvas();
         setParametersValues(parametersValueHandler);
+
         drawToCanvas();
     }
 
@@ -40,6 +49,16 @@ public class VisualisationGenerator {
         columnNumber = actorParameters.columnNumber();
         connectionCreationPercentRatio = connectionParameters.connectionCreationPercentRatio();
         positiveToNegativePercentRatio = connectionParameters.positiveToNegativePercentRatio();
+        createActorsAndRelations(actorParameters, connectionParameters);
+    }
+
+    private void createActorsAndRelations(ActorsParametersValues actorParameters,
+                                          ConnectionsParametersValues connectionParameters) {
+        int numberOfActors = rowNumber * columnNumber;
+        actorList = IntStream.range(1, numberOfActors + 1)
+                .mapToObj(Actor::new).collect(Collectors.toList());
+        RelationCreator relationCreator = new RelationCreator(actorParameters, connectionParameters, actorList);
+        relations = relationCreator.createRelations();
     }
 
     private void drawToCanvas() {
@@ -47,8 +66,19 @@ public class VisualisationGenerator {
         double height = visualisationPanel.getHeight();
         double distanceX = width / (columnNumber + 1);
         double distanceY = height / (rowNumber + 1);
-        drawConnectionsToCanvas(distanceX,distanceY);
-        drawActorsToCanvas(distanceX,distanceY);
+        setActorsPositions(distanceX, distanceY);
+        drawActorsToCanvas(distanceX, distanceY);
+        drawConnectionsToCanvas(distanceX, distanceY);
+    }
+    //TODO fix actors positions some are null right now
+    private void setActorsPositions(double distanceX, double distanceY) {
+        for (int i = 1; i <= rowNumber; i++) {
+            for (int j = 1; j <= columnNumber; j++) {
+                int index = i * j - 1;
+                Actor actor = actorList.get(index);
+                actor.setPosition(new Point2D(distanceX * j, distanceY * i));
+            }
+        }
     }
 
     private void clearCanvas() {
@@ -75,7 +105,7 @@ public class VisualisationGenerator {
 
     private void drawHorizontalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
         ConnectionDrawer connectionDrawer =
-                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
+                new ConnectionDrawer(visualisationPanel, connectionCreationPercentRatio, positiveToNegativePercentRatio);
 
         Point2D beginPoint =
                 new Point2D(distanceX + (curColumn - 1) * distanceX, distanceY + (curRow - 1) * distanceY);
@@ -87,7 +117,7 @@ public class VisualisationGenerator {
 
     private void drawVerticalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
         ConnectionDrawer connectionDrawer =
-                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
+                new ConnectionDrawer(visualisationPanel, connectionCreationPercentRatio, positiveToNegativePercentRatio);
 
         Point2D beginPoint =
                 new Point2D(distanceX + (curColumn - 1) * distanceX, distanceY + (curRow - 1) * distanceY);
@@ -99,7 +129,7 @@ public class VisualisationGenerator {
 
     private void drawDiagonalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
         ConnectionDrawer connectionDrawer =
-                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
+                new ConnectionDrawer(visualisationPanel, connectionCreationPercentRatio, positiveToNegativePercentRatio);
 
         drawUpLeftDownRight(distanceX, distanceY, curRow, curColumn, connectionDrawer);
         drawDownLeftUpRight(distanceX, distanceY, curRow, curColumn, connectionDrawer);
@@ -125,7 +155,7 @@ public class VisualisationGenerator {
 
     private void addMissingConnections(double distanceX, double distanceY, int rowNumber, int columnNumber) {
         ConnectionDrawer connectionDrawer =
-                new ConnectionDrawer(visualisationPanel,connectionCreationPercentRatio,positiveToNegativePercentRatio);
+                new ConnectionDrawer(visualisationPanel, connectionCreationPercentRatio, positiveToNegativePercentRatio);
         addConnectionsToLastRow(distanceX, distanceY, rowNumber, columnNumber, connectionDrawer);
         addConnectionsToLastColumn(distanceX, distanceY, rowNumber, columnNumber, connectionDrawer);
     }

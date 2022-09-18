@@ -1,13 +1,21 @@
 package com.example.project.visualisation.model;
 
+import javafx.scene.paint.Color;
+
 public enum RelationType {
-    POSITIVE("Positive"),
-    NEGATIVE("Negative"),
-    NONE("None");
+    POSITIVE("Positive",Color.RED),
+    NEGATIVE("Negative",Color.BLUE),
+    NONE("None",Color.GRAY);
 
     private final String relationName;
+    private final Color color;
 
-    RelationType(String relationName) {
+    RelationType(String relationName, Color color) {
         this.relationName = relationName;
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
