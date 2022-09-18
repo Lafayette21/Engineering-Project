@@ -22,7 +22,23 @@ public class RelationCreator {
     public Set<Relation> createRelations() {
         List<Relation> relations = new ArrayList<>();
         actorList.stream().map(this::createRelationsForActor).forEach(relations::addAll);
-        return new HashSet<>(relations);
+        return getFilteredOutRelations(relations);
+    }
+
+    private HashSet<Relation> getFilteredOutRelations(List<Relation> relations) {
+        HashSet<Relation> relationSet = new HashSet<>();
+        for (int i = 0; i < relations.size(); i++) {
+            for (int j = i + 1; j < relations.size(); j++) {
+                if (isRedundant(relations, i, j)){
+                    relationSet.add(relations.get(i));
+                }
+            }
+        }
+        return relationSet;
+    }
+
+    private boolean isRedundant(List<Relation> relations, int i, int j) {
+        return relations.get(i).equals(relations.get(j));
     }
 
 
