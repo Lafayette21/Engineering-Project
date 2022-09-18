@@ -16,8 +16,7 @@ public class Actor {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Actor)) return false;
-        Actor actor = (Actor) o;
+        if (!(o instanceof Actor actor)) return false;
         return actorId.equals(actor.actorId);
     }
 

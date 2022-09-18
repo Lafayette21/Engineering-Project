@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -32,8 +33,8 @@ public class RelationCreatorTest {
                 new ConnectionsParametersValues(CONNECTION_CREATION_PERCENTAGE, POS_TO_NEG_PERCENTAGE);
 
         relationCreator = new RelationCreator(actorsParametersValues, connectionsParametersValues, actorList);
-        Map<Actor, List<Relation>> actorRelationsMap = relationCreator.createRelations();
+        Set<Relation> relationList = relationCreator.createRelations();
 
-        assertThat(actorRelationsMap).hasSize(4);
+        assertThat(relationList).hasSize(6);
     }
 }

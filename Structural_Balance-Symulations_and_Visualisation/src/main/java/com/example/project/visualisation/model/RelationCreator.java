@@ -3,12 +3,12 @@ package com.example.project.visualisation.model;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RelationCreator {
+    private static final int LOWER_BOUND_FOR_RANDOM_GENERATION = 0;
+    private static final int UPPER_BOUND_FOR_RANDOM_GENERATION = 100;
     private final ActorsParametersValues actorsParametersValues;
     private final ConnectionsParametersValues connectionsParametersValues;
     private final List<Actor> actorList;
@@ -19,10 +19,12 @@ public class RelationCreator {
         this.actorList = actorList;
     }
 
-    public Map<Actor, List<Relation>> createRelations() {
-        return actorList.stream()
-                .collect(Collectors.toMap(actor -> actor, this::createRelationsForActor));
+    public Set<Relation> createRelations() {
+        List<Relation> relations = new ArrayList<>();
+        actorList.stream().map(this::createRelationsForActor).forEach(relations::addAll);
+        return new HashSet<>(relations);
     }
+
 
     private List<Relation> createRelationsForActor(Actor actor) {
         NeighbourGetter neighbourGetter = createNeighbourGetter();
@@ -46,16 +48,12 @@ public class RelationCreator {
         int connectionCreationPercent = connectionsParametersValues.connectionCreationPercentRatio();
         int posToNegPercent = connectionsParametersValues.positiveToNegativePercentRatio();
 
-        int randomConnection = new Random().nextInt(0, 100);
+        int randomConnection =
+                new Random().nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
         if (!existsConnection(connectionCreationPercent, randomConnection)) {
             return new Relation(firstActor, secondActor, RelationType.NONE);
         } else {
-            int randomPosToNeg = new Random().nextInt(0, 100);
-            if (isPositive(posToNegPercent, randomPosToNeg)) {
-                return new Relation(firstActor, secondActor, RelationType.POSITIVE);
-            } else {
-                return new Relation(firstActor, secondActor, RelationType.NEGATIVE);
-            }
+            return createRelationWithType(firstActor, secondActor, posToNegPercent);
         }
     }
 
@@ -63,7 +61,18 @@ public class RelationCreator {
         return randomConnection < connectionCreationPercent;
     }
 
+    private Relation createRelationWithType(Actor firstActor, Actor secondActor, int posToNegPercent) {
+        int randomPosToNeg =
+                new Random().nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
+        if (isPositive(posToNegPercent, randomPosToNeg)) {
+            return new Relation(firstActor, secondActor, RelationType.POSITIVE);
+        } else {
+            return new Relation(firstActor, secondActor, RelationType.NEGATIVE);
+        }
+    }
+
     private boolean isPositive(int posToNegPercent, int randomPosToNeg) {
         return randomPosToNeg < posToNegPercent;
     }
+
 }
