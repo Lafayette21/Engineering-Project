@@ -10,6 +10,7 @@ import com.example.project.visualisation.model.RelationCreator;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -54,9 +55,6 @@ public class VisualisationGenerator {
 
     private void createActorsAndRelations(ActorsParametersValues actorParameters,
                                           ConnectionsParametersValues connectionParameters) {
-        int numberOfActors = rowNumber * columnNumber;
-        actorList = IntStream.range(1, numberOfActors + 1)
-                .mapToObj(Actor::new).collect(Collectors.toList());
         RelationCreator relationCreator = new RelationCreator(actorParameters, connectionParameters, actorList);
         relations = relationCreator.createRelations();
     }
@@ -66,19 +64,17 @@ public class VisualisationGenerator {
         double height = visualisationPanel.getHeight();
         double distanceX = width / (columnNumber + 1);
         double distanceY = height / (rowNumber + 1);
-        setActorsPositions(distanceX, distanceY);
         drawActorsToCanvas(distanceX, distanceY);
         drawConnectionsToCanvas(distanceX, distanceY);
     }
-    //TODO fix actors positions some are null right now
-    private void setActorsPositions(double distanceX, double distanceY) {
-        for (int i = 1; i <= rowNumber; i++) {
-            for (int j = 1; j <= columnNumber; j++) {
-                int index = i * j - 1;
-                Actor actor = actorList.get(index);
-                actor.setPosition(new Point2D(distanceX * j, distanceY * i));
+
+    private Actor getActorById(int actorId) {
+        for (Actor actor : actorList) {
+            if (actor.getActorId() == actorId) {
+                return actor;
             }
         }
+        throw new RuntimeException(String.format("Actor with id {} not found",actorId));
     }
 
     private void clearCanvas() {
