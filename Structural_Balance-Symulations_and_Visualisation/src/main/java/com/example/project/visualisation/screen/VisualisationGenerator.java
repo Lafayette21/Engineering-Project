@@ -86,14 +86,15 @@ public class VisualisationGenerator {
     }
 
     private void drawConnectionsToCanvas(double distanceX, double distanceY) {
-        for (int curRow = 1; curRow < rowNumber; curRow++) {
-            for (int curColumn = 1; curColumn < columnNumber; curColumn++) {
-                drawHorizontalConnections(distanceX, distanceY, curRow, curColumn);
-                drawVerticalConnections(distanceX, distanceY, curRow, curColumn);
-                drawDiagonalConnections(distanceX, distanceY, curRow, curColumn);
-            }
-        }
-        addMissingConnections(distanceX, distanceY, rowNumber, columnNumber);
+        NewConnectionDrawer.draw(relations,visualisationPanel);
+//        for (int curRow = 1; curRow < rowNumber; curRow++) {
+//            for (int curColumn = 1; curColumn < columnNumber; curColumn++) {
+//                drawHorizontalConnections(distanceX, distanceY, curRow, curColumn);
+//                drawVerticalConnections(distanceX, distanceY, curRow, curColumn);
+//                drawDiagonalConnections(distanceX, distanceY, curRow, curColumn);
+//            }
+//        }
+//        addMissingConnections(distanceX, distanceY, rowNumber, columnNumber);
     }
 
     private void drawHorizontalConnections(double distanceX, double distanceY, int curRow, int curColumn) {
