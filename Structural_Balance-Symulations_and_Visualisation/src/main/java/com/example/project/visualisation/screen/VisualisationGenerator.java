@@ -67,7 +67,8 @@ public class VisualisationGenerator {
         double height = visualisationPanel.getHeight();
         double distanceX = width / (columnNumber + 1);
         double distanceY = height / (rowNumber + 1);
-        drawActorsToCanvas(distanceX, distanceY);
+
+        ActorDrawer.draw(actorList,visualisationPanel);
         drawConnectionsToCanvas(distanceX, distanceY);
     }
 
@@ -82,13 +83,6 @@ public class VisualisationGenerator {
 
     private void clearCanvas() {
         visualisationPanel.getChildren().clear();
-    }
-
-    private void drawActorsToCanvas(double distanceX, double distanceY) {
-        IntStream.range(0, rowNumber)
-                .mapToObj(i ->
-                        new ActorsRowDrawer(distanceX, columnNumber, distanceX, distanceY + i * distanceY))
-                .forEachOrdered(actorsRowDrawer -> actorsRowDrawer.draw(visualisationPanel));
     }
 
     private void drawConnectionsToCanvas(double distanceX, double distanceY) {
