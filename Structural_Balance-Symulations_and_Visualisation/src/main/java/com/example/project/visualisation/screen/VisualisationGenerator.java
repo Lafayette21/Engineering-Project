@@ -4,16 +4,12 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
-import com.example.project.visualisation.model.RelationCreator;
+import com.example.project.visualisation.model.*;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class VisualisationGenerator {
@@ -24,6 +20,7 @@ public class VisualisationGenerator {
     private int columnNumber;
     private int connectionCreationPercentRatio;
     private int positiveToNegativePercentRatio;
+    private CanvasPointsDistance canvasPointsDistance;
     private List<Actor> actorList;
     private Set<Relation> relations;
 
@@ -36,7 +33,6 @@ public class VisualisationGenerator {
     public void generate(ParametersValueHandler parametersValueHandler) {
         clearCanvas();
         setParametersValues(parametersValueHandler);
-
         drawToCanvas();
     }
 
@@ -50,13 +46,17 @@ public class VisualisationGenerator {
         columnNumber = actorParameters.columnNumber();
         connectionCreationPercentRatio = connectionParameters.connectionCreationPercentRatio();
         positiveToNegativePercentRatio = connectionParameters.positiveToNegativePercentRatio();
-        createActorsAndRelations(actorParameters, connectionParameters);
+        canvasPointsDistance = getCanvasPointsDistance();
+        actorList = ActorFactory.createActors(actorParameters, canvasPointsDistance);
+        relations = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
     }
 
-    private void createActorsAndRelations(ActorsParametersValues actorParameters,
-                                          ConnectionsParametersValues connectionParameters) {
-        RelationCreator relationCreator = new RelationCreator(actorParameters, connectionParameters, actorList);
-        relations = relationCreator.createRelations();
+    private CanvasPointsDistance getCanvasPointsDistance() {
+        double width = visualisationPanel.getWidth();
+        double height = visualisationPanel.getHeight();
+        double distanceX = width / (columnNumber + 1);
+        double distanceY = height / (rowNumber + 1);
+        return new CanvasPointsDistance(distanceX, distanceY);
     }
 
     private void drawToCanvas() {
@@ -74,7 +74,7 @@ public class VisualisationGenerator {
                 return actor;
             }
         }
-        throw new RuntimeException(String.format("Actor with id {} not found",actorId));
+        throw new RuntimeException(String.format("Actor with id {} not found", actorId));
     }
 
     private void clearCanvas() {
