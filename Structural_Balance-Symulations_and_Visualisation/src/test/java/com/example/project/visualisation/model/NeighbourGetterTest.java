@@ -1,5 +1,6 @@
 package com.example.project.visualisation.model;
 
+import com.example.project.visualisation.util.NeighbourGetter;
 import org.junit.Test;
 
 import java.util.List;

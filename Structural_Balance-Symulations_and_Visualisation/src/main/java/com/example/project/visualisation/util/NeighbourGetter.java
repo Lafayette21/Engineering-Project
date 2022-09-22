@@ -1,4 +1,6 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
+
+import com.example.project.visualisation.model.Actor;
 
 import java.util.ArrayList;
 import java.util.Collections;

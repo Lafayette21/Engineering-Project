@@ -5,6 +5,8 @@ import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import com.example.project.visualisation.model.*;
+import com.example.project.visualisation.util.ActorFactory;
+import com.example.project.visualisation.util.RelationCreator;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 

@@ -1,7 +1,10 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
 
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.model.RelationType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,8 +21,8 @@ public class RelationCreator {
     }
 
     public static Set<Relation> createRelations(ActorsParametersValues actorValues,
-                                         ConnectionsParametersValues connectionValues,
-                                         List<Actor> actorList) {
+                                                ConnectionsParametersValues connectionValues,
+                                                List<Actor> actorList) {
         setParameterValues(actorValues, connectionValues, actorList);
         List<Relation> relations = new ArrayList<>();
         actorList.stream().map(RelationCreator::createRelationsForActor).forEach(relations::addAll);

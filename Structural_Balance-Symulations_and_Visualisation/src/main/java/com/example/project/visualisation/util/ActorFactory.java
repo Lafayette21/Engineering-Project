@@ -1,6 +1,7 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
 
 import com.example.project.parametervalues.ActorsParametersValues;
+import com.example.project.visualisation.model.Actor;
 import javafx.geometry.Point2D;
 
 import java.util.Iterator;
