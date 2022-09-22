@@ -6,7 +6,6 @@ public class RelationshipValuesMatrix {
 
     public RelationshipValuesMatrix(ConnectionMatrix connectionMatrix) {
         this.connectionMatrix = connectionMatrix;
-        matrix = createMatrix(connectionMatrix.getNumberOfActors());
     }
 
     private int[][] createMatrix(int numberOfActors) {

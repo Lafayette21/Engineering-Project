@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationController">
+<AnchorPane maxHeight="550.0" maxWidth="600.0" minHeight="550.0" minWidth="600.0" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationScreenController">
    <children>
-      <Label layoutX="286.0" layoutY="162.0" text="Hello">
+      <Label layoutX="32.0" layoutY="24.0" text="Hello">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="138.0" layoutY="14.0" maxHeight="400.0" maxWidth="400.0" prefHeight="400.0" prefWidth="400.0">
+         <fx:include fx:id="visualisationPanel" source="VisualisationPanel.fxml" />
+      </AnchorPane>
+      <Button fx:id="generateButton" layoutX="32.0" layoutY="78.0" mnemonicParsing="false" onAction="#generateVisualisation" prefHeight="27.0" prefWidth="87.0" text="Stwórz nową" />
+      <Button fx:id="returnButton" layoutX="18.0" layoutY="124.0" mnemonicParsing="false" onAction="#changeScreenToVisualisationGeneratorScreen" prefHeight="27.0" prefWidth="116.0" text="Zmień parametry" />
    </children>
 </AnchorPane>

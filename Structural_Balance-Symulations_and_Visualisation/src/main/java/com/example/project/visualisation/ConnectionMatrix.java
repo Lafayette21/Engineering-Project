@@ -1,40 +1,41 @@
 package com.example.project.visualisation;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class ConnectionMatrix {
     private static final int UPPER_BOUND_FOR_RANDOM_GENERATOR = 100;
-    private final int numberOfActors;
+    private final int rowNumber;
+    private final int columnNumber;
     private final int[][] matrix;
+    private final int numberOfActors;
 
-    public ConnectionMatrix(int numberOfActors) {
-        this.numberOfActors = numberOfActors;
+    public ConnectionMatrix(int rowNumber, int columnNumber) {
+        this.rowNumber = rowNumber;
+        this.columnNumber = columnNumber;
+        this.numberOfActors = rowNumber * columnNumber;
         matrix = new int[numberOfActors][numberOfActors];
     }
 
-    public int getNumberOfActors() {
-        return numberOfActors;
-    }
-
     public void createConnections(int connectionCreationPercentage) {
-        for (int vertical = 0; vertical < numberOfActors; vertical++) {
-            for (int horizontal = 0; horizontal < vertical; horizontal++) {
-                if (!isDiagonal(vertical, horizontal)) {
-                    setMatrixElement(vertical, horizontal, connectionCreationPercentage);
-                }
-            }
-        }
     }
-
-    private boolean isDiagonal(int vertical, int horizontal) {
-        return vertical == horizontal;
-    }
-
     private void setMatrixElement(int verticalPosition, int horizontalPosition, int connectionCreationPercentage) {
         int randomNumber = new Random().nextInt(UPPER_BOUND_FOR_RANDOM_GENERATOR);
-        if (randomNumber < connectionCreationPercentage) {
+        if (randomNumber < connectionCreationPercentage &&
+                isNeighbour(verticalPosition + 1, horizontalPosition + 1)) {
             matrix[verticalPosition][horizontalPosition] = 1;
             matrix[horizontalPosition][verticalPosition] = 1;
         }
+    }
+
+    private boolean isNeighbour(int vertical, int horizontal) {
+        return isNeighbourInTheSameRow(vertical, horizontal);
+    }
+
+    private boolean isNeighbourInTheSameRow(int vertical, int horizontal) {
+        return vertical == horizontal + 1 || vertical == horizontal - 1;
     }
 }

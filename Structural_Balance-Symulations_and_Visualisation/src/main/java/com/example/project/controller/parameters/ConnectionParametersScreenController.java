@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class ConnectionParametersScreenController implements ParameterControlledScreen, Initializable {
     private static final int MIN_SPINNER_VALUE = 0;
     private static final int MAX_SPINNER_VALUE = 100;
-    private static final int INITIAL_SPINNER_VALUE = 0;
+    private static final int INITIAL_SPINNER_VALUE = 50;
     private static final int STEP_SPINNER_VALUE = 5;
 
     @FXML
