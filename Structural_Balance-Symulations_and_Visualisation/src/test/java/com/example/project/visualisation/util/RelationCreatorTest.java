@@ -1,7 +1,9 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
 
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.util.RelationCreator;
 import org.junit.Test;
 

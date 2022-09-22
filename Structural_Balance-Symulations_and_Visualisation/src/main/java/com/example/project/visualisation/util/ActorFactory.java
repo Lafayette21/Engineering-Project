@@ -19,7 +19,8 @@ public class ActorFactory {
         throw new RuntimeException("Class ActorFactory cannot be instantiated");
     }
 
-    public static List<Actor> createActors(ActorsParametersValues actorsParametersValues, CanvasPointsDistance canvasPointsDistance){
+    public static List<Actor> createActors(ActorsParametersValues actorsParametersValues,
+                                           CanvasPointsDistance canvasPointsDistance){
         setNumberOfRowsAndColumns(actorsParametersValues);
         createActors();
         setActorsPositions(canvasPointsDistance);
