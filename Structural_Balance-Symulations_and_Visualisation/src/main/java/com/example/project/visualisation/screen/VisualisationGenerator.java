@@ -12,7 +12,6 @@ import com.example.project.visualisation.util.RelationCreator;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
-import java.util.Set;
 
 public class VisualisationGenerator {
     private final AnchorPane visualisationPanel;

@@ -6,9 +6,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ActorDrawer {
+    private static final int RADIUS = 8;
+
     private ActorDrawer() {
         throw new RuntimeException("Class ActorDrawer cannot be instantiated");
     }
@@ -20,15 +21,15 @@ public class ActorDrawer {
                 .forEach(point -> addPointToCanvas(point, panel));
     }
 
-    private static boolean addPointToCanvas(Circle point, AnchorPane panel) {
-        return panel.getChildren().add(point);
+    private static void addPointToCanvas(Circle point, AnchorPane panel) {
+        panel.getChildren().add(point);
     }
 
     private static Circle createPoint(Point2D position) {
         Circle circle = new Circle();
         circle.setCenterX(position.getX());
         circle.setCenterY(position.getY());
-        circle.setRadius(8);
+        circle.setRadius(RADIUS);
         return circle;
     }
 

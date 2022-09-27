@@ -6,7 +6,10 @@ import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.model.RelationType;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RelationCreator {
@@ -21,8 +24,8 @@ public class RelationCreator {
     }
 
     public static List<Relation> createRelations(ActorsParametersValues actorValues,
-                                                ConnectionsParametersValues connectionValues,
-                                                List<Actor> actorList) {
+                                                 ConnectionsParametersValues connectionValues,
+                                                 List<Actor> actorList) {
         setParameterValues(actorValues, connectionValues, actorList);
         List<Relation> relations = new ArrayList<>();
         actorList.stream().map(RelationCreator::createRelationsForActor).forEach(relations::addAll);

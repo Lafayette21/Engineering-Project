@@ -5,7 +5,6 @@ import com.example.project.visualisation.model.Relation;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
-import java.util.Set;
 
 public class CanvasDrawer {
     private CanvasDrawer() {

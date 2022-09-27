@@ -8,7 +8,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
 import java.util.List;
-import java.util.Set;
 
 public class ConnectionDrawer {
     private ConnectionDrawer() {
