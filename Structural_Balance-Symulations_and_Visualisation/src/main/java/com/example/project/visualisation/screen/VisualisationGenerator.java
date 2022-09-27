@@ -36,7 +36,7 @@ public class VisualisationGenerator {
                 parametersValueHandler.getParameterValueByResource(Resource.ConnectionParameters);
 
         CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters);
-        
+
         actorList = ActorFactory.createActors(actorParameters, canvasPointsDistance);
         relationSet = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
     }

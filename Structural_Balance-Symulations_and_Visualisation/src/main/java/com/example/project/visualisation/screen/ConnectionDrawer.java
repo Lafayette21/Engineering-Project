@@ -15,7 +15,10 @@ public class ConnectionDrawer {
     }
 
     public static void draw(Set<Relation> relationList, AnchorPane panel) {
-        relationList.stream().map(ConnectionDrawer::getLine).forEach(line -> addLineToPanel(line, panel));
+        for (Relation relation : relationList) {
+            Line line = getLine(relation);
+            addLineToPanel(line, panel);
+        }
     }
 
     private static Line getLine(Relation relation) {
@@ -31,7 +34,7 @@ public class ConnectionDrawer {
     private static Line createLine(Relation relation) {
         Point2D firstActorPosition = relation.getFirstActor().getPosition();
         Point2D secondActorPosition = relation.getSecondActor().getPosition();
-        return new Line(firstActorPosition.getY(), firstActorPosition.getY(),
+        return new Line(firstActorPosition.getX(), firstActorPosition.getY(),
                 secondActorPosition.getX(), secondActorPosition.getY());
     }
 
