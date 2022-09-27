@@ -4,7 +4,8 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.visualisation.model.*;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.util.ActorFactory;
 import com.example.project.visualisation.util.CanvasPointsDistance;
 import com.example.project.visualisation.util.RelationCreator;
@@ -34,16 +35,17 @@ public class VisualisationGenerator {
         ConnectionsParametersValues connectionParameters = (ConnectionsParametersValues)
                 parametersValueHandler.getParameterValueByResource(Resource.ConnectionParameters);
 
-        CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters.rowNumber(), actorParameters.columnNumber());
+        CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters);
+        
         actorList = ActorFactory.createActors(actorParameters, canvasPointsDistance);
         relationSet = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
     }
 
-    private CanvasPointsDistance getCanvasPointsDistance(int rowNumber, int columnNumber) {
+    private CanvasPointsDistance getCanvasPointsDistance(ActorsParametersValues actorsParameter) {
         double width = visualisationPanel.getWidth();
         double height = visualisationPanel.getHeight();
-        double distanceX = width / (columnNumber + 1);
-        double distanceY = height / (rowNumber + 1);
+        double distanceX = width / (actorsParameter.columnNumber() + 1);
+        double distanceY = height / (actorsParameter.rowNumber() + 1);
         return new CanvasPointsDistance(distanceX, distanceY);
     }
 }
