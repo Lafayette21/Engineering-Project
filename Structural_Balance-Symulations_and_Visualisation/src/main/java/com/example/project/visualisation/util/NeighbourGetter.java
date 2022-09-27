@@ -11,9 +11,9 @@ public class NeighbourGetter {
     private final int columnNumber;
     private final int rowNumber;
 
-    public NeighbourGetter(int columnNumber, int rowNumber) {
-        this.columnNumber = columnNumber;
+    public NeighbourGetter(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;
+        this.columnNumber = columnNumber;
     }
 
     public List<Integer> getNeighbours(Actor actor) {
