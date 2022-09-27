@@ -7,10 +7,9 @@ public class Relation {
     private final Actor secondActor;
     private RelationType relationType;
 
-    public Relation(Actor firstActor, Actor secondActor, RelationType relationType) {
+    public Relation(Actor firstActor, Actor secondActor) {
         this.firstActor = firstActor;
         this.secondActor = secondActor;
-        this.relationType = relationType;
     }
 
     public Actor getFirstActor() {

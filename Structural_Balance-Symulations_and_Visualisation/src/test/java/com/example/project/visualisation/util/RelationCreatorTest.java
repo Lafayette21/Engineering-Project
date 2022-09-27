@@ -33,7 +33,7 @@ public class RelationCreatorTest {
         ConnectionsParametersValues connectionsParametersValues =
                 new ConnectionsParametersValues(CONNECTION_CREATION_PERCENTAGE, POS_TO_NEG_PERCENTAGE);
 
-        Set<Relation> relationList =
+        List<Relation> relationList =
                 RelationCreator.createRelations(actorsParametersValues, connectionsParametersValues, actorList);
 
         assertThat(relationList).hasSize(11);

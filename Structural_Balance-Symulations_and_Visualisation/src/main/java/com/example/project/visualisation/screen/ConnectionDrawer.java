@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
+import java.util.List;
 import java.util.Set;
 
 public class ConnectionDrawer {
@@ -14,7 +15,7 @@ public class ConnectionDrawer {
         throw new RuntimeException("Class ConnectionDrawer cannot be instantiated");
     }
 
-    public static void draw(Set<Relation> relationList, AnchorPane panel) {
+    public static void draw(List<Relation> relationList, AnchorPane panel) {
         for (Relation relation : relationList) {
             Line line = getLine(relation);
             addLineToPanel(line, panel);

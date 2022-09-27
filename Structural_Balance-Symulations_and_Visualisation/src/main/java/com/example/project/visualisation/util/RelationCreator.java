@@ -20,13 +20,16 @@ public class RelationCreator {
         throw new RuntimeException("Class RelationCreator cannot be instantiated");
     }
 
-    public static Set<Relation> createRelations(ActorsParametersValues actorValues,
+    public static List<Relation> createRelations(ActorsParametersValues actorValues,
                                                 ConnectionsParametersValues connectionValues,
                                                 List<Actor> actorList) {
         setParameterValues(actorValues, connectionValues, actorList);
         List<Relation> relations = new ArrayList<>();
         actorList.stream().map(RelationCreator::createRelationsForActor).forEach(relations::addAll);
-        return getFilteredOutRelations(relations);
+
+        List<Relation> filteredOutRelations = getFilteredOutRelations(relations);
+        List<Relation> relationsWithTypes = getRelationsWithTypes(filteredOutRelations);
+        return relationsWithTypes;
     }
 
     private static void setParameterValues(ActorsParametersValues actorValues, ConnectionsParametersValues connectionValues, List<Actor> actors) {
@@ -35,28 +38,11 @@ public class RelationCreator {
         actorList = actors;
     }
 
-    private static Set<Relation> getFilteredOutRelations(List<Relation> relations) {
-        HashSet<Relation> relationSet = new HashSet<>();
-        for (int i = 0; i < relations.size(); i++) {
-            for (int j = i + 1; j < relations.size(); j++) {
-                if (isRedundant(relations, i, j)) {
-                    relationSet.add(relations.get(i));
-                }
-            }
-        }
-        return relationSet;
-    }
-
-    private static boolean isRedundant(List<Relation> relations, int i, int j) {
-        return relations.get(i).equals(relations.get(j));
-    }
-
-
     private static List<Relation> createRelationsForActor(Actor actor) {
         NeighbourGetter neighbourGetter = createNeighbourGetter();
         List<Integer> neighbours = neighbourGetter.getNeighbours(actor);
         return neighbours.stream()
-                .map(neighbourId -> createRelation(actor, getActorById(neighbourId)))
+                .map(neighbourId -> new Relation(actor, getActorById(neighbourId)))
                 .collect(Collectors.toList());
     }
 
@@ -70,31 +56,53 @@ public class RelationCreator {
         return actorList.get(actorId - 1);
     }
 
-    private static Relation createRelation(Actor firstActor, Actor secondActor) {
+    private static List<Relation> getFilteredOutRelations(List<Relation> relations) {
+        HashSet<Relation> relationSet = new HashSet<>();
+        for (int i = 0; i < relations.size(); i++) {
+            for (int j = i + 1; j < relations.size(); j++) {
+                if (isRedundant(relations, i, j)) {
+                    relationSet.add(relations.get(i));
+                }
+            }
+        }
+        return new ArrayList<>(relationSet);
+    }
+
+    private static List<Relation> getRelationsWithTypes(List<Relation> relationList) {
+        return relationList.stream().peek(RelationCreator::setRelationType).collect(Collectors.toList());
+    }
+
+    private static boolean isRedundant(List<Relation> relations, int i, int j) {
+        return relations.get(i).equals(relations.get(j));
+    }
+
+    private static void setRelationType(Relation relation) {
         int connectionCreationPercent = connectionsParametersValues.connectionCreationPercentRatio();
         int posToNegPercent = connectionsParametersValues.positiveToNegativePercentRatio();
 
-        int randomConnection =
-                new Random().nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
+        int randomConnection = new Random()
+                .nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
         if (!existsConnection(connectionCreationPercent, randomConnection)) {
-            return new Relation(firstActor, secondActor, RelationType.NONE);
+            relation.setRelationType(RelationType.NONE);
         } else {
-            return createRelationWithType(firstActor, secondActor, posToNegPercent);
+            setRelationTypeForExistingConnection(relation, posToNegPercent);
         }
+
     }
 
     private static boolean existsConnection(int connectionCreationPercent, int randomConnection) {
         return randomConnection < connectionCreationPercent;
     }
 
-    private static Relation createRelationWithType(Actor firstActor, Actor secondActor, int posToNegPercent) {
-        int randomPosToNeg =
-                new Random().nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
+    private static void setRelationTypeForExistingConnection(Relation relation, int posToNegPercent) {
+        int randomPosToNeg = new Random()
+                .nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
         if (isPositive(posToNegPercent, randomPosToNeg)) {
-            return new Relation(firstActor, secondActor, RelationType.POSITIVE);
+            relation.setRelationType(RelationType.POSITIVE);
         } else {
-            return new Relation(firstActor, secondActor, RelationType.NEGATIVE);
+            relation.setRelationType(RelationType.NEGATIVE);
         }
+
     }
 
     private static boolean isPositive(int posToNegPercent, int randomPosToNeg) {

@@ -12,7 +12,7 @@ public class CanvasDrawer {
         throw new RuntimeException("Class Canvas Drawer cannot be instantiated");
     }
 
-    public static void draw(AnchorPane visualisationPanel, List<Actor> actorList, Set<Relation> relationList) {
+    public static void draw(AnchorPane visualisationPanel, List<Actor> actorList, List<Relation> relationList) {
         clearPanel(visualisationPanel);
         ActorDrawer.draw(actorList, visualisationPanel);
         ConnectionDrawer.draw(relationList, visualisationPanel);

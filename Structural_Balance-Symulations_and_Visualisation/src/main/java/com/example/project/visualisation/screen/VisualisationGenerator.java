@@ -18,7 +18,7 @@ public class VisualisationGenerator {
     private final AnchorPane visualisationPanel;
 
     private List<Actor> actorList;
-    private Set<Relation> relationSet;
+    private List<Relation> relationList;
 
     public VisualisationGenerator(AnchorPane visualisationPanel) {
         this.visualisationPanel = visualisationPanel;
@@ -26,7 +26,7 @@ public class VisualisationGenerator {
 
     public void generate(ParametersValueHandler parametersValueHandler) {
         setParametersValues(parametersValueHandler);
-        CanvasDrawer.draw(visualisationPanel, actorList, relationSet);
+        CanvasDrawer.draw(visualisationPanel, actorList, relationList);
     }
 
     private void setParametersValues(ParametersValueHandler parametersValueHandler) {
@@ -38,7 +38,7 @@ public class VisualisationGenerator {
         CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters);
 
         actorList = ActorFactory.createActors(actorParameters, canvasPointsDistance);
-        relationSet = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
+        relationList = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
     }
 
     private CanvasPointsDistance getCanvasPointsDistance(ActorsParametersValues actorsParameter) {
