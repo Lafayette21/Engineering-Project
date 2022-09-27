@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class RelationCreator {
     private static final int LOWER_BOUND_FOR_RANDOM_GENERATION = 0;
     private static final int UPPER_BOUND_FOR_RANDOM_GENERATION = 100;
+
     private static ActorsParametersValues actorsParametersValues;
     private static ConnectionsParametersValues connectionsParametersValues;
     private static List<Actor> actorList;
@@ -90,7 +91,6 @@ public class RelationCreator {
         } else {
             setRelationTypeForExistingConnection(relation, posToNegPercent);
         }
-
     }
 
     private static boolean existsConnection(int connectionCreationPercent, int randomConnection) {
@@ -105,11 +105,9 @@ public class RelationCreator {
         } else {
             relation.setRelationType(RelationType.NEGATIVE);
         }
-
     }
 
     private static boolean isPositive(int posToNegPercent, int randomPosToNeg) {
         return randomPosToNeg < posToNegPercent;
     }
-
 }
