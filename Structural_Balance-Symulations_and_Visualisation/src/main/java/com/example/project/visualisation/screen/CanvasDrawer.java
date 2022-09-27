@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 public class CanvasDrawer {
+    private CanvasDrawer() {
+        throw new RuntimeException("Class Canvas Drawer cannot be instantiated");
+    }
+
     public static void draw(AnchorPane visualisationPanel, List<Actor> actorList, Set<Relation> relationList) {
         clearPanel(visualisationPanel);
         ActorDrawer.draw(actorList, visualisationPanel);

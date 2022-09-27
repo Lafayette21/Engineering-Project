@@ -23,8 +23,8 @@ public class VisualisationScreenController implements ControlledScreen {
 
     public void generateVisualisation() {
         parametersValueHandler = getParametersValueHandler();
-        VisualisationGenerator generator = new VisualisationGenerator(parametersValueHandler, visualisationPanel);
-        generator.generate(parametersValueHandler);
+        VisualisationGenerator visualisationGenerator = new VisualisationGenerator(visualisationPanel);
+        visualisationGenerator.generate(parametersValueHandler);
     }
 
     private ParametersValueHandler getParametersValueHandler() {
