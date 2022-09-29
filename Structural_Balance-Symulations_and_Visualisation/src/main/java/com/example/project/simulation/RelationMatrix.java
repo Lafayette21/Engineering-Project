@@ -29,11 +29,11 @@ public class RelationMatrix {
     private void setRelationInMatrix(Relation relation) {
         int firstActorId = relation.getFirstActor().getActorId();
         int secondActorId = relation.getSecondActor().getActorId();
-        if (isPositive(relation)){
-            setMatrixValue(firstActorId,secondActorId,POSITIVE_RELATION_ANNOTATION);
+        if (isPositive(relation)) {
+            setMatrixValue(firstActorId, secondActorId, POSITIVE_RELATION_ANNOTATION);
         }
-        if (isNegative(relation)){
-            setMatrixValue(firstActorId,secondActorId,NEGATIVE_RELATION_ANNOTATION);
+        if (isNegative(relation)) {
+            setMatrixValue(firstActorId, secondActorId, NEGATIVE_RELATION_ANNOTATION);
         }
     }
 
@@ -45,9 +45,9 @@ public class RelationMatrix {
         return relation.getRelationType().equals(RelationType.POSITIVE);
     }
 
-    private void setMatrixValue(int firstActorId, int secondActorId, int relationAnnotation){
-        matrix[firstActorId-1][secondActorId-1] = relationAnnotation;
-        matrix[secondActorId-1][firstActorId-1] = relationAnnotation;
+    private void setMatrixValue(int firstActorId, int secondActorId, int relationAnnotation) {
+        matrix[firstActorId - 1][secondActorId - 1] = relationAnnotation;
+        matrix[secondActorId - 1][firstActorId - 1] = relationAnnotation;
     }
 
     public int[][] getMatrix() {

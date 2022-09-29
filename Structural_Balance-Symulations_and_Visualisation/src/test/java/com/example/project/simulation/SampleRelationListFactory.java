@@ -11,7 +11,7 @@ public class SampleRelationListFactory {
         throw new RuntimeException("Class SampleRelationListFactory cannot be instantiated");
     }
 
-    public static List<Relation> create(){
+    public static List<Relation> create() {
         return List.of(
                 new Relation(new Actor(1), new Actor(2), RelationType.NEGATIVE),
                 new Relation(new Actor(2), new Actor(3), RelationType.NONE),

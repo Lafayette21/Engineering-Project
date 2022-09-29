@@ -1,8 +1,6 @@
 package com.example.project.simulation;
 
-import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
-import com.example.project.visualisation.model.RelationType;
 import org.junit.Test;
 
 import java.util.List;
@@ -17,7 +15,7 @@ public class RelationMatrixTest {
     private static final int NUMBER_OF_ACTORS = 6;
 
     @Test
-    public void shouldCreateRelationMatrix(){
+    public void shouldCreateRelationMatrix() {
         List<Relation> relationList = SampleRelationListFactory.create();
         RelationMatrix relationMatrix = new RelationMatrix(relationList, NUMBER_OF_ACTORS);
 
