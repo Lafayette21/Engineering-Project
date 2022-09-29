@@ -18,29 +18,13 @@ public class ConnectionMatrixTest {
 
     @Test
     public void shouldCreateConnectionMatrix() {
-        List<Relation> relationList = getRelationList();
+        List<Relation> relationList = SampleRelationListFactory.create();
         ConnectionMatrix connectionMatrix = new ConnectionMatrix(relationList, NUMBER_OF_ACTORS);
 
         int[][] expectedMatrix = getExpectedMatrix();
         int[][] actualMatrix = connectionMatrix.getMatrix();
 
         assertThat(actualMatrix).isEqualTo(expectedMatrix);
-    }
-
-    private List<Relation> getRelationList() {
-        return List.of(
-                new Relation(new Actor(1), new Actor(2), RelationType.NEGATIVE),
-                new Relation(new Actor(2), new Actor(3), RelationType.NONE),
-                new Relation(new Actor(4), new Actor(5), RelationType.POSITIVE),
-                new Relation(new Actor(5), new Actor(6), RelationType.NEGATIVE),
-                new Relation(new Actor(2), new Actor(4), RelationType.NONE),
-                new Relation(new Actor(3), new Actor(5), RelationType.POSITIVE),
-                new Relation(new Actor(1), new Actor(4), RelationType.POSITIVE),
-                new Relation(new Actor(2), new Actor(5), RelationType.NONE),
-                new Relation(new Actor(3), new Actor(6), RelationType.NEGATIVE),
-                new Relation(new Actor(1), new Actor(5), RelationType.POSITIVE),
-                new Relation(new Actor(2), new Actor(6), RelationType.NONE)
-        );
     }
 
     private int[][] getExpectedMatrix() {
