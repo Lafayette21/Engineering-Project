@@ -12,6 +12,12 @@ public class Relation {
         this.secondActor = secondActor;
     }
 
+    public Relation(Actor firstActor, Actor secondActor, RelationType relationType) {
+        this.firstActor = firstActor;
+        this.secondActor = secondActor;
+        this.relationType = relationType;
+    }
+
     public Actor getFirstActor() {
         return firstActor;
     }

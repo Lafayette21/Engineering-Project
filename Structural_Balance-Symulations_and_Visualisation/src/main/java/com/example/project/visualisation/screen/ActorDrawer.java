@@ -32,6 +32,4 @@ public class ActorDrawer {
         circle.setRadius(RADIUS);
         return circle;
     }
-
-
 }
