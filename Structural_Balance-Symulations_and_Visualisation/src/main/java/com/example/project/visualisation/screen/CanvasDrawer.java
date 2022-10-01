@@ -13,8 +13,8 @@ public class CanvasDrawer {
 
     public static void draw(AnchorPane visualisationPanel, List<Actor> actorList, List<Relation> relationList) {
         clearPanel(visualisationPanel);
-        ActorDrawer.draw(actorList, visualisationPanel);
         ConnectionDrawer.draw(relationList, visualisationPanel);
+        ActorDrawer.draw(actorList, visualisationPanel);
     }
 
     private static void clearPanel(AnchorPane visualisationPanel) {

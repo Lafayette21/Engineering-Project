@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConnectionMatrixTest {
     private static final int NUMBER_OF_ACTORS = 6;
-    private static final int EXISTENCE = 1;
-    private static final int NO_EXISTENCE = 0;
+    private static final int EXISTENCE_ANNOTATION = 1;
+    private static final int NON_EXISTENCE_ANNOTATION = 0;
 
 
     @Test
@@ -27,17 +27,17 @@ public class ConnectionMatrixTest {
 
     private int[][] getExpectedMatrix() {
         int[][] matrix = new int[NUMBER_OF_ACTORS][NUMBER_OF_ACTORS];
-        setConnection(matrix, 1, 2, EXISTENCE);
-        setConnection(matrix, 2, 3, NO_EXISTENCE);
-        setConnection(matrix, 4, 5, EXISTENCE);
-        setConnection(matrix, 5, 6, EXISTENCE);
-        setConnection(matrix, 2, 4, NO_EXISTENCE);
-        setConnection(matrix, 3, 5, EXISTENCE);
-        setConnection(matrix, 1, 4, EXISTENCE);
-        setConnection(matrix, 2, 5, NO_EXISTENCE);
-        setConnection(matrix, 3, 6, EXISTENCE);
-        setConnection(matrix, 1, 5, EXISTENCE);
-        setConnection(matrix, 2, 6, NO_EXISTENCE);
+        setConnection(matrix, 1, 2, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 2, 3, NON_EXISTENCE_ANNOTATION);
+        setConnection(matrix, 4, 5, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 5, 6, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 2, 4, NON_EXISTENCE_ANNOTATION);
+        setConnection(matrix, 3, 5, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 1, 4, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 2, 5, NON_EXISTENCE_ANNOTATION);
+        setConnection(matrix, 3, 6, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 1, 5, EXISTENCE_ANNOTATION);
+        setConnection(matrix, 2, 6, NON_EXISTENCE_ANNOTATION);
         return matrix;
     }
 

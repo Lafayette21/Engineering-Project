@@ -1,6 +1,7 @@
 package com.example.project.visualisation.screen;
 
 import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.model.RelationType;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -10,6 +11,8 @@ import javafx.scene.shape.Line;
 import java.util.List;
 
 public class ConnectionDrawer {
+    private static final int STROKE_WIDTH = 4;
+
     private ConnectionDrawer() {
         throw new RuntimeException("Class ConnectionDrawer cannot be instantiated");
     }
@@ -24,10 +27,8 @@ public class ConnectionDrawer {
     private static Line getLine(Relation relation) {
         Line line = createLine(relation);
         line.setStroke(relation.getRelationType().getColor());
-        line.setStrokeWidth(4);
-        line.setOnMousePressed(click -> {
-            line.setStroke(getNewStrokeColor(line));
-        });
+        line.setStrokeWidth(STROKE_WIDTH);
+        line.setOnMousePressed(click -> changeColorAndAdjustRelationType(relation, line));
         return line;
     }
 
@@ -36,6 +37,12 @@ public class ConnectionDrawer {
         Point2D secondActorPosition = relation.getSecondActor().getPosition();
         return new Line(firstActorPosition.getX(), firstActorPosition.getY(),
                 secondActorPosition.getX(), secondActorPosition.getY());
+    }
+
+    private static void changeColorAndAdjustRelationType(Relation relation, Line line) {
+        Paint newStrokeColor = getNewStrokeColor(line);
+        line.setStroke(newStrokeColor);
+        relation.setRelationType(getRelationTypeByColor(newStrokeColor));
     }
 
     private static Paint getNewStrokeColor(Line line) {
@@ -48,7 +55,17 @@ public class ConnectionDrawer {
         return Color.RED;
     }
 
-    private static boolean addLineToPanel(Line line, AnchorPane panel) {
-        return panel.getChildren().add(line);
+    private static RelationType getRelationTypeByColor(Paint color) {
+        if (color.equals(Color.RED)) {
+            return RelationType.POSITIVE;
+        }
+        if (color.equals(Color.BLUE)) {
+            return RelationType.NEGATIVE;
+        }
+        return RelationType.NONE;
+    }
+
+    private static void addLineToPanel(Line line, AnchorPane panel) {
+        panel.getChildren().add(line);
     }
 }
