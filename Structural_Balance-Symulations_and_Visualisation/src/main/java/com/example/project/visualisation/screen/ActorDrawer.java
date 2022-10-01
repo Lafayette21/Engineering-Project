@@ -26,10 +26,10 @@ public class ActorDrawer {
     }
 
     private static Circle createPoint(Point2D position) {
-        Circle circle = new Circle();
-        circle.setCenterX(position.getX());
-        circle.setCenterY(position.getY());
-        circle.setRadius(RADIUS);
-        return circle;
+        Circle point = new Circle();
+        point.setCenterX(position.getX());
+        point.setCenterY(position.getY());
+        point.setRadius(RADIUS);
+        return point;
     }
 }

@@ -5,6 +5,7 @@ public enum Resource {
     VisualisationGenerator("VisualisationGeneratorScreen.fxml"),
     Parameters("ParametersScreen.fxml"),
     Visualisation("VisualisationScreen.fxml"),
+    SimulationFlow("SimulationFlowScreen.fxml"),
     ActorParameters("ActorsParametersScreen.fxml", "Aktorzy"),
     ConnectionParameters("ConnectionParametersScreen.fxml", "Połączenia"),
     SimulationParameters("SimulationParametersScreen.fxml", "Symulacja");
