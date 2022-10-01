@@ -4,6 +4,7 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
+import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.VisualisationGenerator;
 import javafx.fxml.FXML;
@@ -54,10 +55,11 @@ public class VisualisationScreenController implements ControlledScreen {
     }
 
     private SimulationRequiredValuesDTO getSimulationRequiredValuesDTO() {
+        List<Actor> actorList = visualisationGenerator.getActorList();
         List<Relation> relationList = visualisationGenerator.getRelationList();
         SimulationParametersValues simulationParameters =
                 (SimulationParametersValues) parametersValueHandler.getParameterValueByResource(Resource.SimulationParameters);
-        return new SimulationRequiredValuesDTO(relationList, simulationParameters);
+        return new SimulationRequiredValuesDTO(actorList, relationList, simulationParameters);
     }
 
     @Override

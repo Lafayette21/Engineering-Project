@@ -49,6 +49,10 @@ public class VisualisationGenerator {
         return new CanvasPointsDistance(distanceX, distanceY);
     }
 
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
     public List<Relation> getRelationList() {
         return relationList;
     }
