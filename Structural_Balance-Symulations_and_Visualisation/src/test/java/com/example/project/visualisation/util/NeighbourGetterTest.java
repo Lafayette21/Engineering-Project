@@ -1,5 +1,7 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
 
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.util.NeighbourGetter;
 import org.junit.Test;
 
 import java.util.List;

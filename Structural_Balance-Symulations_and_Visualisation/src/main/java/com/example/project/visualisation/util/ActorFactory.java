@@ -1,6 +1,7 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
 
 import com.example.project.parametervalues.ActorsParametersValues;
+import com.example.project.visualisation.model.Actor;
 import javafx.geometry.Point2D;
 
 import java.util.Iterator;
@@ -18,10 +19,11 @@ public class ActorFactory {
         throw new RuntimeException("Class ActorFactory cannot be instantiated");
     }
 
-    public static List<Actor> createActors(ActorsParametersValues actorsParametersValues, CalculatedDistance calculatedDistance){
+    public static List<Actor> createActors(ActorsParametersValues actorsParametersValues,
+                                           CanvasPointsDistance canvasPointsDistance){
         setNumberOfRowsAndColumns(actorsParametersValues);
         createActors();
-        setActorsPositions(calculatedDistance);
+        setActorsPositions(canvasPointsDistance);
         return actorList;
     }
 
@@ -36,9 +38,9 @@ public class ActorFactory {
                 .mapToObj(Actor::new).collect(Collectors.toList());
     }
 
-    private static void setActorsPositions(CalculatedDistance calculatedDistance) {
-        int distanceX = calculatedDistance.distanceX();
-        int distanceY = calculatedDistance.distanceY();
+    private static void setActorsPositions(CanvasPointsDistance canvasPointsDistance) {
+        double distanceX = canvasPointsDistance.distanceX();
+        double distanceY = canvasPointsDistance.distanceY();
 
         Iterator<Actor> actorIterator = actorList.iterator();
         for (int i = 1; i <= numberOfRows; i++) {

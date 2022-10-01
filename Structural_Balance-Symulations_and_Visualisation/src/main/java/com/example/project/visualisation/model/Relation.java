@@ -7,6 +7,11 @@ public class Relation {
     private final Actor secondActor;
     private RelationType relationType;
 
+    public Relation(Actor firstActor, Actor secondActor) {
+        this.firstActor = firstActor;
+        this.secondActor = secondActor;
+    }
+
     public Relation(Actor firstActor, Actor secondActor, RelationType relationType) {
         this.firstActor = firstActor;
         this.secondActor = secondActor;

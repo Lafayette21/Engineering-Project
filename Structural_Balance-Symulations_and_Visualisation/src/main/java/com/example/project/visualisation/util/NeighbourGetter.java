@@ -1,4 +1,6 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
+
+import com.example.project.visualisation.model.Actor;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,9 +11,9 @@ public class NeighbourGetter {
     private final int columnNumber;
     private final int rowNumber;
 
-    public NeighbourGetter(int columnNumber, int rowNumber) {
-        this.columnNumber = columnNumber;
+    public NeighbourGetter(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;
+        this.columnNumber = columnNumber;
     }
 
     public List<Integer> getNeighbours(Actor actor) {
@@ -25,7 +27,7 @@ public class NeighbourGetter {
     }
 
     private List<Integer> getSameRowNeighbours(int actorId) {
-        ArrayList<Integer> sameRowNeighbours = new ArrayList<>();
+        List<Integer> sameRowNeighbours = new ArrayList<>();
         int leftNeighbourId = actorId - 1;
         int rightNeighbourId = actorId + 1;
         if (existsLeftNeighbour(leftNeighbourId)) {
@@ -50,7 +52,7 @@ public class NeighbourGetter {
     }
 
     private List<Integer> getNeighboursFromUpperRow(int upperNeighbourId) {
-        ArrayList<Integer> neighboursList = new ArrayList<>();
+        List<Integer> neighboursList = new ArrayList<>();
         int leftUpperNeighbourId = upperNeighbourId - 1;
         int rightUpperNeighbourId = upperNeighbourId + 1;
         if (existsLeftNeighbour(leftUpperNeighbourId)) {
@@ -76,7 +78,7 @@ public class NeighbourGetter {
     }
 
     private List<Integer> getNeighboursFromLowerRow(int lowerNeighbourId) {
-        ArrayList<Integer> neighboursList = new ArrayList<>();
+        List<Integer> neighboursList = new ArrayList<>();
         int leftLowerNeighbourId = lowerNeighbourId - 1;
         int rightLowerNeighbourId = lowerNeighbourId + 1;
         if (existsLeftNeighbour(leftLowerNeighbourId)) {

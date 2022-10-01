@@ -1,7 +1,10 @@
-package com.example.project.visualisation.model;
+package com.example.project.visualisation.util;
 
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.util.RelationCreator;
 import org.junit.Test;
 
 import java.util.List;
@@ -30,8 +33,8 @@ public class RelationCreatorTest {
         ConnectionsParametersValues connectionsParametersValues =
                 new ConnectionsParametersValues(CONNECTION_CREATION_PERCENTAGE, POS_TO_NEG_PERCENTAGE);
 
-        relationCreator = new RelationCreator(actorsParametersValues, connectionsParametersValues, actorList);
-        Set<Relation> relationList = relationCreator.createRelations();
+        List<Relation> relationList =
+                RelationCreator.createRelations(actorsParametersValues, connectionsParametersValues, actorList);
 
         assertThat(relationList).hasSize(11);
     }

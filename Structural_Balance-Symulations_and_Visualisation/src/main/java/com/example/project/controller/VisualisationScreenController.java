@@ -3,14 +3,9 @@ package com.example.project.controller;
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.visualisation.screen.VisualisationGenerator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class VisualisationScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent;
@@ -20,24 +15,31 @@ public class VisualisationScreenController implements ControlledScreen {
     private AnchorPane visualisationPanel;
     @FXML
     private Button generateButton;
+    @FXML
+    private Button startButton;
 
     public void generateVisualisation() {
         parametersValueHandler = getParametersValueHandler();
-        VisualisationGenerator generator = new VisualisationGenerator(parametersValueHandler, visualisationPanel);
-        generator.generate(parametersValueHandler);
+        VisualisationGenerator visualisationGenerator = new VisualisationGenerator(visualisationPanel);
+        visualisationGenerator.generate(parametersValueHandler);
     }
 
     private ParametersValueHandler getParametersValueHandler() {
         return (ParametersValueHandler) screenParent.getUserData();
     }
 
-    public void changeScreenToVisualisationGeneratorScreen(){
+    public void changeScreenToVisualisationGeneratorScreen() {
         clearVisualisationPanel();
         screenParent.setScreen(Resource.VisualisationGenerator);
     }
 
     private void clearVisualisationPanel() {
         visualisationPanel.getChildren().clear();
+    }
+
+    public void changeToSimulationFlowScreen(){
+        clearVisualisationPanel();
+        screenParent.setScreen(Resource.SimulationFlow);
     }
 
     @Override
