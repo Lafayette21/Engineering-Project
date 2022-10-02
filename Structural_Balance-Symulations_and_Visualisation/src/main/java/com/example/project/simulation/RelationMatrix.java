@@ -53,4 +53,8 @@ public class RelationMatrix {
     public int[][] getMatrix() {
         return matrix;
     }
+
+    public int getNumberOfActors() {
+        return numberOfActors;
+    }
 }
