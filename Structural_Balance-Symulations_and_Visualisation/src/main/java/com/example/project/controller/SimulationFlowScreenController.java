@@ -17,9 +17,11 @@ public class SimulationFlowScreenController implements ControlledScreen {
     @FXML
     private AnchorPane visualisationPanel;
     @FXML
-    private Button previousButton;
-    @FXML
     private Button nextButton;
+    @FXML
+    private Button skipToEndButton;
+    @FXML
+    private Button previousButton;
     @FXML
     private Button downloadButton;
 

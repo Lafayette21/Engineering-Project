@@ -7,8 +7,8 @@
    <children>
       <Button fx:id="nextButton" layoutX="361.0" layoutY="358.0" mnemonicParsing="false" onAction="#nextSimulationStep" text="Następny" />
       <Button fx:id="previousButton" layoutX="255.0" layoutY="358.0" mnemonicParsing="false" onAction="#previousSimulationStep" text="Poprzedni" />
-      <AnchorPane fx:id="visualisationPanel" layoutX="68.0" layoutY="24.0" prefHeight="311.0" prefWidth="486.0" style="-fx-background-color: lightblue;" />
       <Button fx:id="downloadButton" layoutX="68.0" layoutY="358.0" mnemonicParsing="false" onAction="#downloadValues" text="Pobierz start" />
-      <Button fx:id="skipToEndButton" layoutX="458.0" layoutY="358.0" mnemonicParsing="false" onAction="#nextSimulationStep" text="Następny" />
+      <Button fx:id="skipToEndButton" layoutX="458.0" layoutY="358.0" mnemonicParsing="false" onAction="#skipToEnd" text="Do końca" />
+      <AnchorPane fx:id="visualisationPanel" layoutX="68.0" layoutY="24.0" prefHeight="311.0" prefWidth="486.0" style="-fx-background-color: lightblue;"/>
    </children>
 </AnchorPane>
