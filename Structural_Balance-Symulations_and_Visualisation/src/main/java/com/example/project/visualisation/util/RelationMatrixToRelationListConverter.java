@@ -11,14 +11,14 @@ import java.util.List;
 public class RelationMatrixToRelationListConverter {
     private static int[][] matrix;
 
-    public static List<Relation> convert(RelationMatrix relationMatrix, List<Relation> currentRelationList) {
+    public static List<Relation> convert(RelationMatrix relationMatrix, List<Relation> comparationRelationList) {
         matrix = relationMatrix.getMatrix();
         int numberOfActors = relationMatrix.getNumberOfActors();
 
         List<Relation> relations = new ArrayList<>();
         for (int i = 0; i < numberOfActors; i++) {
             for (int j = 0; j < i; j++) {
-                if (existsRelation(currentRelationList, i + 1, j + 1)) {
+                if (existsRelation(comparationRelationList, i + 1, j + 1)) {
                     relations.add(getRelation(i + 1, j + 1));
                 }
             }
