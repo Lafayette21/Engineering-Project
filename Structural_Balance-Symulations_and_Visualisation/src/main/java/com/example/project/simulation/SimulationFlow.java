@@ -66,7 +66,6 @@ public class SimulationFlow {
         }
     }
 
-
     public void previousStep(AnchorPane visualisationPanel) {
         if (isFirstStep()) {
             showAlert(LOWER_LIMIT_HIT_MESSAGE);
