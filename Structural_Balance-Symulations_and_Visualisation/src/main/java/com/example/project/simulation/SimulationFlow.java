@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class SimulationFlow {
     private Map<Integer, List<Relation>> simulationMap = new HashMap<>();
@@ -30,11 +31,8 @@ public class SimulationFlow {
         currentStepNumber += 1;
         if (isMoreThanLastStep()) {
             showAlert("Górny próg symulacji");
-        } else if (simulationMap.containsKey(currentStepNumber)) {
-            currentRelationList = simulationMap.get(currentStepNumber);
         } else {
-            currentRelationList = simulationResolver.getNextStepRelations(currentRelationList);
-            simulationMap.put(currentStepNumber, currentRelationList);
+            moveToNextStep();
         }
         drawToCanvas(visualisationPanel);
     }
@@ -42,6 +40,22 @@ public class SimulationFlow {
     private boolean isMoreThanLastStep() {
         return currentStepNumber > simulationParametersValues.numberOfSteps();
     }
+
+    public void skipToEnd(AnchorPane visualisationPanel) {
+        IntStream.range(0, simulationParametersValues.numberOfSteps() + 1)
+                .forEach(step -> moveToNextStep());
+        drawToCanvas(visualisationPanel);
+    }
+
+    private void moveToNextStep() {
+        if (simulationMap.containsKey(currentStepNumber)) {
+            currentRelationList = simulationMap.get(currentStepNumber);
+        } else {
+            currentRelationList = simulationResolver.getNextStepRelations(currentRelationList);
+            simulationMap.put(currentStepNumber, currentRelationList);
+        }
+    }
+
 
     public void previousStep(AnchorPane visualisationPanel) {
         if (isFirstStep()) {

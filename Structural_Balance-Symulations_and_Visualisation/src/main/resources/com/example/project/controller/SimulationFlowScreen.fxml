@@ -5,9 +5,10 @@
 
 <AnchorPane minHeight="450.0" minWidth="600.0" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.SimulationFlowScreenController">
    <children>
-      <Button fx:id="nextButton" layoutX="433.0" layoutY="358.0" mnemonicParsing="false" onAction="#nextSimulationStep" text="Następny" />
+      <Button fx:id="nextButton" layoutX="361.0" layoutY="358.0" mnemonicParsing="false" onAction="#nextSimulationStep" text="Następny" />
       <Button fx:id="previousButton" layoutX="255.0" layoutY="358.0" mnemonicParsing="false" onAction="#previousSimulationStep" text="Poprzedni" />
       <AnchorPane fx:id="visualisationPanel" layoutX="68.0" layoutY="24.0" prefHeight="311.0" prefWidth="486.0" style="-fx-background-color: lightblue;" />
       <Button fx:id="downloadButton" layoutX="68.0" layoutY="358.0" mnemonicParsing="false" onAction="#downloadValues" text="Pobierz start" />
+      <Button fx:id="skipToEndButton" layoutX="458.0" layoutY="358.0" mnemonicParsing="false" onAction="#nextSimulationStep" text="Następny" />
    </children>
 </AnchorPane>

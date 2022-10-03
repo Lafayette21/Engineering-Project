@@ -34,6 +34,10 @@ public class SimulationFlowScreenController implements ControlledScreen {
         simulationFlow.nextStep(visualisationPanel);
     }
 
+    public void skipToEnd() {
+        simulationFlow.skipToEnd(visualisationPanel);
+    }
+
     public void previousSimulationStep() {
         simulationFlow.previousStep(visualisationPanel);
     }
