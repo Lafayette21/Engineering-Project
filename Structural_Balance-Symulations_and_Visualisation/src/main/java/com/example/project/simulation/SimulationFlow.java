@@ -86,7 +86,7 @@ public class SimulationFlow {
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText(String.format("Pobieranie kroku symulacji nie powiodło się, z powodu: {}", message));
+        alert.setContentText(String.format("Pobieranie kroku symulacji nie powiodło się, z powodu: %s", message));
         alert.showAndWait();
     }
 

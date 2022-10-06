@@ -5,6 +5,7 @@ import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -50,5 +51,6 @@ public class SimulationFlowScreenController implements ControlledScreen {
         List<Relation> relationList = requiredValuesDTO.relationList();
         SimulationParametersValues simulationParametersValues = requiredValuesDTO.simulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, simulationParametersValues);
+        CanvasDrawer.draw(visualisationPanel, actorList, relationList);
     }
 }
