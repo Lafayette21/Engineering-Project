@@ -50,6 +50,15 @@ public class RelationMatrix {
         matrix[secondActorId - 1][firstActorId - 1] = relationAnnotation;
     }
 
+    public int get(int firstActorId, int secondActorId) {
+        return matrix[firstActorId - 1][secondActorId - 1];
+    }
+
+    public void set(int firstActorId, int secondActorId, int value) {
+        matrix[firstActorId - 1][secondActorId - 1] = value;
+        matrix[secondActorId - 1][firstActorId - 1] = value;
+    }
+
     public int[][] getMatrix() {
         return matrix;
     }

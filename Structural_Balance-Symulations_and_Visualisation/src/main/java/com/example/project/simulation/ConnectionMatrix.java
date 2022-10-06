@@ -38,7 +38,27 @@ public class ConnectionMatrix {
         matrix[secondActorId - 1][firstActorId - 1] = RELATION_EXISTENCE_ANNOTATION;
     }
 
-    public int[][] getMatrix() {
+    public int get(int firstActorId, int secondActorId) {
+        return matrix[firstActorId - 1][secondActorId - 1];
+    }
+
+    public boolean existsRelation(int firstActorId, int secondActorId) {
+        return matrix[firstActorId - 1][secondActorId - 1] == RELATION_EXISTENCE_ANNOTATION ||
+                matrix[secondActorId - 1][firstActorId - 1] == RELATION_EXISTENCE_ANNOTATION;
+    }
+
+    public int getNumberOfExistingRelations() {
+        int sum = 0;
+        for (int i = 0; i < numberOfActors; i++) {
+            for (int j = 0; j < i; j++) {
+                sum += matrix[i][j];
+            }
+        }
+        return sum;
+    }
+
+    int[][] getMatrix() {
         return matrix;
     }
+
 }
