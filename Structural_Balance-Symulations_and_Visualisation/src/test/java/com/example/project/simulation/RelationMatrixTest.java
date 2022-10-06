@@ -36,8 +36,6 @@ public class RelationMatrixTest {
         setRelation(matrix, 1, 4, POSITIVE_RELATION_ANNOTATION);
         setRelation(matrix, 2, 5, NON_EXISTENT_RELATION_ANNOTATION);
         setRelation(matrix, 3, 6, NEGATIVE_RELATION_ANNOTATION);
-        setRelation(matrix, 1, 5, POSITIVE_RELATION_ANNOTATION);
-        setRelation(matrix, 2, 6, NON_EXISTENT_RELATION_ANNOTATION);
         return matrix;
     }
 

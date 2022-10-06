@@ -20,7 +20,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(middleActorsId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(1, 2, 3, 4, 6, 7, 8, 9);
+        List<Integer> expectedNeighbours = List.of(2, 3, 4, 6, 7, 8);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }
@@ -31,7 +31,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(leftUpperActorsId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(1, 3, 4, 5, 6);
+        List<Integer> expectedNeighbours = List.of(1, 3, 4, 5);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }
@@ -42,7 +42,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(leftUpperActorsId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(2, 4, 5);
+        List<Integer> expectedNeighbours = List.of(2, 4);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }
@@ -53,7 +53,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(leftActorsId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(1, 2, 5, 7, 8);
+        List<Integer> expectedNeighbours = List.of(1, 2, 5, 7);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }
@@ -75,7 +75,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(bottomActorId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(4, 5, 6, 7, 9);
+        List<Integer> expectedNeighbours = List.of(5, 6, 7, 9);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }
@@ -86,7 +86,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(rightBottomActorsId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(5, 6, 8);
+        List<Integer> expectedNeighbours = List.of(6, 8);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }
@@ -97,7 +97,7 @@ public class NeighbourGetterTest {
         Actor actor = new Actor(rightActorsId);
 
         List<Integer> actualNeighbours = neighbourGetter.getNeighbours(actor);
-        List<Integer> expectedNeighbours = List.of(2, 3, 5, 8, 9);
+        List<Integer> expectedNeighbours = List.of(3, 5, 8, 9);
 
         assertThat(actualNeighbours).isEqualTo(expectedNeighbours);
     }

@@ -36,8 +36,6 @@ public class ConnectionMatrixTest {
         setConnection(matrix, 1, 4, EXISTENCE_ANNOTATION);
         setConnection(matrix, 2, 5, NON_EXISTENCE_ANNOTATION);
         setConnection(matrix, 3, 6, EXISTENCE_ANNOTATION);
-        setConnection(matrix, 1, 5, EXISTENCE_ANNOTATION);
-        setConnection(matrix, 2, 6, NON_EXISTENCE_ANNOTATION);
         return matrix;
     }
 
