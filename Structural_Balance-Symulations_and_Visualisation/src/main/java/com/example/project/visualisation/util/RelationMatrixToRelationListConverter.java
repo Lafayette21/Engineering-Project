@@ -1,5 +1,6 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.simulation.RelationMatrix;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
@@ -12,6 +13,10 @@ import java.util.Optional;
 public class RelationMatrixToRelationListConverter {
     private static int[][] matrix;
     private static List<Relation> relationList;
+
+    private RelationMatrixToRelationListConverter() {
+        throw new InstantiationNotAllowedException();
+    }
 
     public static List<Relation> convert(RelationMatrix relationMatrix, List<Relation> comparativeRelationList) {
         setStaticParameters(relationMatrix, comparativeRelationList);

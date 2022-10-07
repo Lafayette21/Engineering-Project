@@ -1,5 +1,7 @@
 package com.example.project.simulation;
 
+import com.example.project.exception.InstantiationNotAllowedException;
+
 public class SimulationBalanceChecker {
     private static final int BALANCE_ANNOTATION = -1;
 
@@ -7,7 +9,7 @@ public class SimulationBalanceChecker {
     private static RelationMatrix relationMatrix;
 
     private SimulationBalanceChecker() {
-        throw new RuntimeException("Class SimulationBalanceChecker cannot be instantiated");
+        throw new InstantiationNotAllowedException();
     }
 
     public static boolean check(ConnectionMatrix connMatrix, RelationMatrix relMatrix) {

@@ -1,5 +1,6 @@
 package com.example.project.visualisation.screen;
 
+import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.model.RelationType;
 import javafx.geometry.Point2D;
@@ -14,7 +15,7 @@ public class ConnectionDrawer {
     private static final int STROKE_WIDTH = 4;
 
     private ConnectionDrawer() {
-        throw new RuntimeException("Class ConnectionDrawer cannot be instantiated");
+        throw new InstantiationNotAllowedException();
     }
 
     public static void draw(List<Relation> relationList, AnchorPane panel) {
