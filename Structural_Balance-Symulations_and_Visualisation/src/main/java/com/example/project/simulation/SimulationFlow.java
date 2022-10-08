@@ -71,7 +71,7 @@ public class SimulationFlow {
             showAlert(LOWER_LIMIT_HIT_MESSAGE);
         } else {
             currentStepNumber -= 1;
-            simulationMap.get(currentStepNumber);
+            currentRelationList = simulationMap.get(currentStepNumber);
             drawToCanvas(visualisationPanel);
         }
     }

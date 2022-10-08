@@ -1,5 +1,6 @@
 package com.example.project.simulation;
 
+import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.util.RelationMatrixToRelationListConverter;
 
@@ -26,7 +27,8 @@ public class SimulationResolver {
         connectionMatrix = new ConnectionMatrix(currentRelationList, numberOfActors);
         relationMatrix = new RelationMatrix(currentRelationList, numberOfActors);
 
-        if (SimulationBalanceChecker.check(connectionMatrix,relationMatrix)){
+        if (SimulationBalanceChecker.check(connectionMatrix, relationMatrix)) {
+            throw new SimulationBalanceAchievedException();
         }
 
         IntStream.range(0, connectionMatrix.getNumberOfExistingRelations()).forEach(smallStep -> {

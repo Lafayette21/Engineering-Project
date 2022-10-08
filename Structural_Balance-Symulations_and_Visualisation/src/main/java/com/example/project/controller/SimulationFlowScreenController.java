@@ -1,5 +1,6 @@
 package com.example.project.controller;
 
+import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
@@ -7,6 +8,7 @@ import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
@@ -34,11 +36,33 @@ public class SimulationFlowScreenController implements ControlledScreen {
     }
 
     public void nextSimulationStep() {
-        simulationFlow.nextStep(visualisationPanel);
+        try {
+            simulationFlow.nextStep(visualisationPanel);
+        } catch (SimulationBalanceAchievedException e){
+            removeButtonsProperties();
+            showSuccesAlert();
+        }
     }
 
     public void skipToEnd() {
-        simulationFlow.skipToEnd(visualisationPanel);
+        try{
+            simulationFlow.skipToEnd(visualisationPanel);
+        } catch (SimulationBalanceAchievedException e){
+            removeButtonsProperties();
+            showSuccesAlert();
+        }
+    }
+
+    private void removeButtonsProperties() {
+        nextButton.cancelButtonProperty();
+        skipToEndButton.cancelButtonProperty();
+    }
+
+    private void showSuccesAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Siec osiągnęła balans");
+        alert.setTitle("Sukces");
+        alert.showAndWait();
     }
 
     public void previousSimulationStep() {

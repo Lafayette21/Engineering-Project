@@ -27,11 +27,11 @@ public class SimulationBalanceChecker {
     private static double calculateBalanceFactor() {
         double sum = 0;
         double delta = 0;
-        for (int i = 0; i < connectionMatrix.getNumberOfExistingRelations(); i++) {
+        for (int i = 0; i < connectionMatrix.getNumberOfActors(); i++) {
             for (int j = 0; j < i; j++) {
                 for (int k = 0; k < j; k++) {
-                    sum += calculateStepSum(i, j, k);
-                    delta += calculateStepDelta(i, j, k);
+                    sum += calculateStepSum(i + 1, j + 1, k + 1);
+                    delta += calculateStepDelta(i + 1, j + 1, k + 1);
                 }
             }
         }

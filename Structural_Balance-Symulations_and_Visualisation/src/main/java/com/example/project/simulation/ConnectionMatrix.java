@@ -61,4 +61,7 @@ public class ConnectionMatrix {
         return matrix;
     }
 
+    public int getNumberOfActors() {
+        return numberOfActors;
+    }
 }
