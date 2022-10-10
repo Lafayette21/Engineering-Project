@@ -7,6 +7,7 @@ import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
+import com.example.project.visualisation.util.ImageSaver;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -27,6 +28,8 @@ public class SimulationFlowScreenController implements ControlledScreen {
     private Button previousButton;
     @FXML
     private Button downloadButton;
+    @FXML
+    private Button imageSaveButton;
 
     private SimulationFlow simulationFlow;
 
@@ -38,16 +41,16 @@ public class SimulationFlowScreenController implements ControlledScreen {
     public void nextSimulationStep() {
         try {
             simulationFlow.nextStep(visualisationPanel);
-        } catch (SimulationBalanceAchievedException e){
+        } catch (SimulationBalanceAchievedException e) {
             removeButtonsProperties();
             showSuccesAlert();
         }
     }
 
     public void skipToEnd() {
-        try{
+        try {
             simulationFlow.skipToEnd(visualisationPanel);
-        } catch (SimulationBalanceAchievedException e){
+        } catch (SimulationBalanceAchievedException e) {
             removeButtonsProperties();
             showSuccesAlert();
         }
@@ -76,5 +79,9 @@ public class SimulationFlowScreenController implements ControlledScreen {
         SimulationParametersValues simulationParametersValues = requiredValuesDTO.simulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, simulationParametersValues);
         CanvasDrawer.draw(visualisationPanel, actorList, relationList);
+    }
+
+    public void saveImage() {
+        ImageSaver.save(visualisationPanel, simulationFlow.getCurrentStepNumber());
     }
 }

@@ -90,4 +90,7 @@ public class SimulationFlow {
         alert.showAndWait();
     }
 
+    public Integer getCurrentStepNumber() {
+        return currentStepNumber;
+    }
 }

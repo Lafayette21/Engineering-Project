@@ -24,6 +24,8 @@ public class VisualisationScreenController implements ControlledScreen {
     private Button generateButton;
     @FXML
     private Button startButton;
+    @FXML
+    public Button returnButton;
 
     public void generateVisualisation() {
         parametersValueHandler = getParametersValueHandler();
