@@ -7,6 +7,7 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires org.kordamp.ikonli.javafx;
     requires java.desktop;
     requires javafx.swing;
+    requires java.sql;
 
     opens com.example.project to javafx.fxml;
     exports com.example.project;
