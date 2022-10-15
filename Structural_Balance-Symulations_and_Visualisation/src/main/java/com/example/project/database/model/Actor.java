@@ -1,6 +1,4 @@
-package com.example.project.visualisation.model;
-
-import javafx.geometry.Point2D;
+package com.example.project.database.model;
 
 import javax.persistence.*;
 import java.util.Objects;

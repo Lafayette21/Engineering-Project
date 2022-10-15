@@ -1,9 +1,8 @@
 package com.example.project.visualisation.screen;
 
 import com.example.project.exception.InstantiationNotAllowedException;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Position;
-import javafx.geometry.Point2D;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Position;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 

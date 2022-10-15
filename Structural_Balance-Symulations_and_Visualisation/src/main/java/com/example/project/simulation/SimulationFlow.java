@@ -1,8 +1,8 @@
 package com.example.project.simulation;
 
 import com.example.project.parametervalues.SimulationParametersValues;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;

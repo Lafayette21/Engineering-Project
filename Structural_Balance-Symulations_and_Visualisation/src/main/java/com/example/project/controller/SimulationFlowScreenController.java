@@ -5,18 +5,15 @@ import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.util.SimulationBalanceAlert;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
 import com.example.project.util.ImageSaver;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class SimulationFlowScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent;
