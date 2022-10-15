@@ -4,16 +4,19 @@ import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
+import com.example.project.util.SimulationBalanceAlert;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
-import com.example.project.visualisation.util.ImageSaver;
+import com.example.project.util.ImageSaver;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class SimulationFlowScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent;
@@ -42,8 +45,7 @@ public class SimulationFlowScreenController implements ControlledScreen {
         try {
             simulationFlow.nextStep(visualisationPanel);
         } catch (SimulationBalanceAchievedException e) {
-            removeButtonsProperties();
-            showSuccesAlert();
+            new SimulationBalanceAlert().showAndWait();
         }
     }
 
@@ -51,21 +53,8 @@ public class SimulationFlowScreenController implements ControlledScreen {
         try {
             simulationFlow.skipToEnd(visualisationPanel);
         } catch (SimulationBalanceAchievedException e) {
-            removeButtonsProperties();
-            showSuccesAlert();
+            new SimulationBalanceAlert().showAndWait();
         }
-    }
-
-    private void removeButtonsProperties() {
-        nextButton.cancelButtonProperty();
-        skipToEndButton.cancelButtonProperty();
-    }
-
-    private void showSuccesAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Siec osiągnęła balans");
-        alert.setTitle("Sukces");
-        alert.showAndWait();
     }
 
     public void previousSimulationStep() {

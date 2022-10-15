@@ -8,12 +8,15 @@ import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.VisualisationGenerator;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class VisualisationScreenController implements ControlledScreen {
+public class VisualisationScreenController implements ControlledScreen, Initializable {
     private MainApplicationScreenController screenParent;
     private ParametersValueHandler parametersValueHandler;
     private VisualisationGenerator visualisationGenerator;
@@ -67,5 +70,10 @@ public class VisualisationScreenController implements ControlledScreen {
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
