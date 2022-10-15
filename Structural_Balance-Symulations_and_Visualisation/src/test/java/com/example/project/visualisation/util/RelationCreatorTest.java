@@ -36,6 +36,6 @@ public class RelationCreatorTest {
         List<Relation> relationList =
                 RelationCreator.createRelations(actorsParametersValues, connectionsParametersValues, actorList);
 
-        assertThat(relationList).hasSize(11);
+        assertThat(relationList).hasSize(9);
     }
 }

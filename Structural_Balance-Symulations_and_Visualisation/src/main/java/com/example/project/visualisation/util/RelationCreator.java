@@ -1,5 +1,6 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import com.example.project.visualisation.model.Actor;
@@ -21,7 +22,7 @@ public class RelationCreator {
     private static List<Actor> actorList;
 
     private RelationCreator() {
-        throw new RuntimeException("Class RelationCreator cannot be instantiated");
+        throw new InstantiationNotAllowedException();
     }
 
     public static List<Relation> createRelations(ActorsParametersValues actorValues,

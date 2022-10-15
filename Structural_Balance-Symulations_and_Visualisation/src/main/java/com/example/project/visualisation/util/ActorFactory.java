@@ -1,5 +1,6 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.visualisation.model.Actor;
 import javafx.geometry.Point2D;
@@ -16,7 +17,7 @@ public class ActorFactory {
 
 
     private ActorFactory() {
-        throw new RuntimeException("Class ActorFactory cannot be instantiated");
+        throw new InstantiationNotAllowedException();
     }
 
     public static List<Actor> createActors(ActorsParametersValues actorsParametersValues,

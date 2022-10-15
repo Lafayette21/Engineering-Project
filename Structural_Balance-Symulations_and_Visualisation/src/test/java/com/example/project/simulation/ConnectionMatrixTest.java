@@ -13,7 +13,6 @@ public class ConnectionMatrixTest {
     private static final int EXISTENCE_ANNOTATION = 1;
     private static final int NON_EXISTENCE_ANNOTATION = 0;
 
-
     @Test
     public void shouldCreateConnectionMatrix() {
         List<Relation> relationList = SampleRelationListFactory.create();
@@ -23,6 +22,16 @@ public class ConnectionMatrixTest {
         int[][] actualMatrix = connectionMatrix.getMatrix();
 
         assertThat(actualMatrix).isEqualTo(expectedMatrix);
+    }
+    @Test
+    public void shouldGetNumberOfExistingRelations(){
+        List<Relation> relationList = SampleRelationListFactory.create();
+        ConnectionMatrix connectionMatrix = new ConnectionMatrix(relationList, NUMBER_OF_ACTORS);
+
+        int expectedNumberOfRelations = 6;
+        int actualNumberOfRelations = connectionMatrix.getNumberOfExistingRelations();
+
+        assertThat(actualNumberOfRelations).isEqualTo(expectedNumberOfRelations);
     }
 
     private int[][] getExpectedMatrix() {
@@ -36,8 +45,6 @@ public class ConnectionMatrixTest {
         setConnection(matrix, 1, 4, EXISTENCE_ANNOTATION);
         setConnection(matrix, 2, 5, NON_EXISTENCE_ANNOTATION);
         setConnection(matrix, 3, 6, EXISTENCE_ANNOTATION);
-        setConnection(matrix, 1, 5, EXISTENCE_ANNOTATION);
-        setConnection(matrix, 2, 6, NON_EXISTENCE_ANNOTATION);
         return matrix;
     }
 

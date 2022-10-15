@@ -13,6 +13,8 @@ public class MainApplicationScreenController extends AnchorPane {
 
     public MainApplicationScreenController() {
         super();
+        this.setHeight(450.0);
+        this.setWidth(650.0);
     }
 
     public void addScreen(Resource resource, Node screen) {

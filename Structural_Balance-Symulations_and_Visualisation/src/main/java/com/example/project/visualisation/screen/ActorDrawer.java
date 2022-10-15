@@ -1,5 +1,6 @@
 package com.example.project.visualisation.screen;
 
+import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.visualisation.model.Actor;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +12,7 @@ public class ActorDrawer {
     private static final int RADIUS = 8;
 
     private ActorDrawer() {
-        throw new RuntimeException("Class ActorDrawer cannot be instantiated");
+        throw new InstantiationNotAllowedException();
     }
 
     public static void draw(List<Actor> actorList, AnchorPane panel) {

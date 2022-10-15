@@ -48,4 +48,12 @@ public class VisualisationGenerator {
         double distanceY = height / (actorsParameter.rowNumber() + 1);
         return new CanvasPointsDistance(distanceX, distanceY);
     }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public List<Relation> getRelationList() {
+        return relationList;
+    }
 }

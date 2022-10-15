@@ -17,7 +17,7 @@ public class NeighbourGetter {
     }
 
     public List<Integer> getNeighbours(Actor actor) {
-        Integer actorId = actor.getActorId();
+        int actorId = actor.getActorId();
 
         ArrayList<Integer> neighboursList = new ArrayList<>();
         neighboursList.addAll(getSameRowNeighbours(actorId));
@@ -53,11 +53,7 @@ public class NeighbourGetter {
 
     private List<Integer> getNeighboursFromUpperRow(int upperNeighbourId) {
         List<Integer> neighboursList = new ArrayList<>();
-        int leftUpperNeighbourId = upperNeighbourId - 1;
         int rightUpperNeighbourId = upperNeighbourId + 1;
-        if (existsLeftNeighbour(leftUpperNeighbourId)) {
-            neighboursList.add(leftUpperNeighbourId);
-        }
         if (existsRightNeighbour(rightUpperNeighbourId)) {
             neighboursList.add(rightUpperNeighbourId);
         }
@@ -80,12 +76,8 @@ public class NeighbourGetter {
     private List<Integer> getNeighboursFromLowerRow(int lowerNeighbourId) {
         List<Integer> neighboursList = new ArrayList<>();
         int leftLowerNeighbourId = lowerNeighbourId - 1;
-        int rightLowerNeighbourId = lowerNeighbourId + 1;
         if (existsLeftNeighbour(leftLowerNeighbourId)) {
             neighboursList.add(leftLowerNeighbourId);
-        }
-        if (existsRightNeighbour(rightLowerNeighbourId)) {
-            neighboursList.add(rightLowerNeighbourId);
         }
         neighboursList.add(lowerNeighbourId);
         return neighboursList;

@@ -21,9 +21,7 @@ public class SampleRelationListFactory {
                 new Relation(new Actor(3), new Actor(5), RelationType.POSITIVE),
                 new Relation(new Actor(1), new Actor(4), RelationType.POSITIVE),
                 new Relation(new Actor(2), new Actor(5), RelationType.NONE),
-                new Relation(new Actor(3), new Actor(6), RelationType.NEGATIVE),
-                new Relation(new Actor(1), new Actor(5), RelationType.POSITIVE),
-                new Relation(new Actor(2), new Actor(6), RelationType.NONE)
+                new Relation(new Actor(3), new Actor(6), RelationType.NEGATIVE)
         );
     }
 }
