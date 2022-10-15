@@ -1,6 +1,7 @@
 package com.example.project.visualisation.screen;
 
 import com.example.project.exception.InstantiationNotAllowedException;
+import com.example.project.visualisation.model.Position;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.model.RelationType;
 import javafx.geometry.Point2D;
@@ -34,8 +35,8 @@ public class ConnectionDrawer {
     }
 
     private static Line createLine(Relation relation) {
-        Point2D firstActorPosition = relation.getFirstActor().getPosition();
-        Point2D secondActorPosition = relation.getSecondActor().getPosition();
+        Position firstActorPosition = relation.getFirstActor().getPosition();
+        Position secondActorPosition = relation.getSecondActor().getPosition();
         return new Line(firstActorPosition.getX(), firstActorPosition.getY(),
                 secondActorPosition.getX(), secondActorPosition.getY());
     }

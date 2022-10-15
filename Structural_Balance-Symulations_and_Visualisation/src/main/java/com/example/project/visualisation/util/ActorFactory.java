@@ -3,6 +3,7 @@ package com.example.project.visualisation.util;
 import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Position;
 import javafx.geometry.Point2D;
 
 import java.util.Iterator;
@@ -47,7 +48,7 @@ public class ActorFactory {
         for (int i = 1; i <= numberOfRows; i++) {
             for (int j = 1; j <= numberOfColumns; j++) {
                 Actor actor = actorIterator.next();
-                actor.setPosition(new Point2D(distanceX * j, distanceY * i));
+                actor.setPosition(new Position(distanceX * j, distanceY * i));
             }
         }
     }

@@ -2,12 +2,17 @@ package com.example.project.visualisation.model;
 
 import javafx.geometry.Point2D;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "actors")
 public class Actor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final int actorId;
 
-    private Point2D position;
+    private Position position;
 
     public Actor(int actorsId) {
         this.actorId = actorsId;
@@ -17,11 +22,11 @@ public class Actor {
         return actorId;
     }
 
-    public Point2D getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Point2D position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
