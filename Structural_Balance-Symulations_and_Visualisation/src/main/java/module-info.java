@@ -8,7 +8,7 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires java.desktop;
     requires javafx.swing;
     requires java.sql;
-    requires java.persistence;
+    requires jakarta.persistence;
 
     opens com.example.project to javafx.fxml;
     exports com.example.project;
