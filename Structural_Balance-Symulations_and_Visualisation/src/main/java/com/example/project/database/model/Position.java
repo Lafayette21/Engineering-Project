@@ -1,6 +1,7 @@
 package com.example.project.database.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
 @Entity
@@ -9,10 +10,13 @@ public class Position {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Long positionId;
+    @Column(name = "x")
+    private double x;
+    @Column(name = "y")
+    private double y;
 
-    private final double x;
-    private final double y;
+    public Position() {}
 
     public Position(double x, double y) {
         this.x = x;

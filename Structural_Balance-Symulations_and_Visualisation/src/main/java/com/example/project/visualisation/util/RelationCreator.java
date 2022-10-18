@@ -33,11 +33,12 @@ public class RelationCreator {
         actorList.stream().map(RelationCreator::createRelationsForActor).forEach(relations::addAll);
 
         List<Relation> filteredOutRelations = getFilteredOutRelations(relations);
-        List<Relation> relationsWithTypes = getRelationsWithTypes(filteredOutRelations);
-        return relationsWithTypes;
+        return getRelationsWithAplliedTypesTypes(filteredOutRelations);
     }
 
-    private static void setParameterValues(ActorsParametersValues actorValues, ConnectionsParametersValues connectionValues, List<Actor> actors) {
+    private static void setParameterValues(ActorsParametersValues actorValues,
+                                           ConnectionsParametersValues connectionValues,
+                                           List<Actor> actors) {
         actorsParametersValues = actorValues;
         connectionsParametersValues = connectionValues;
         actorList = actors;
@@ -73,7 +74,7 @@ public class RelationCreator {
         return new ArrayList<>(relationSet);
     }
 
-    private static List<Relation> getRelationsWithTypes(List<Relation> relationList) {
+    private static List<Relation> getRelationsWithAplliedTypesTypes(List<Relation> relationList) {
         return relationList.stream().peek(RelationCreator::setRelationType).collect(Collectors.toList());
     }
 

@@ -1,6 +1,7 @@
 package com.example.project.database.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
 @Entity
@@ -8,9 +9,12 @@ import java.util.Objects;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final int actorId;
+    private int actorId;
 
+    @OneToOne
     private Position position;
+
+    public Actor() {}
 
     public Actor(int actorsId) {
         this.actorId = actorsId;
