@@ -4,8 +4,6 @@ import com.example.project.database.model.ActorParameters;
 import jakarta.persistence.Query;
 
 public class ActorParametersRepository extends ParameterRepository {
-    private static final Integer SINGLE_ELEMENT_ID = 1;
-
     public ActorParametersRepository() {
         super();
     }

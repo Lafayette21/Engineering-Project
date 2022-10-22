@@ -51,8 +51,8 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        RepositoryManager repositoryManager1 = RepositoryManager.getInstance();
-        ActorParametersRepository repository = (ActorParametersRepository) repositoryManager1.getParameterRepositoryByResource(Resource.ActorParameters);
+        RepositoryManager repositoryManager = RepositoryManager.getInstance();
+        ActorParametersRepository repository = (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
 
         setSpinnerValueFactory(rowSpinner);
         setSpinnerValueFactory(columnSpinner);
