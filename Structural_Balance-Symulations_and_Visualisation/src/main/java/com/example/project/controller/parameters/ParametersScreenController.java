@@ -28,7 +28,7 @@ public class ParametersScreenController implements Initializable {
         createParametersLisView();
 
         parametersListView.getSelectionModel().selectedItemProperty()
-                .addListener(new ContentScreenChangeListener(contentScreensHandler));
+                .addListener(new ContentScreenChangeListener());
     }
 
     private void createAndPrepareParametersScreenController() {
@@ -53,23 +53,24 @@ public class ParametersScreenController implements Initializable {
     public ParametersValueHandler getParametersValueHandler() {
         return parametersValueHandler;
     }
-}
 
-record ContentScreenChangeListener(ContentScreensHandler contentScreensHandler) implements ChangeListener<String> {
-    @Override
-    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        String actorsResourceName = Resource.ActorParameters.getResourceName();
-        String connectionResourceName = Resource.ConnectionParameters.getResourceName();
-        String simulationResourceName = Resource.SimulationParameters.getResourceName();
+    private class ContentScreenChangeListener implements ChangeListener<String> {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            String actorsResourceName = Resource.ActorParameters.getResourceName();
+            String connectionResourceName = Resource.ConnectionParameters.getResourceName();
+            String simulationResourceName = Resource.SimulationParameters.getResourceName();
 
-        if (newValue.equals(actorsResourceName)) {
-            contentScreensHandler.setContentScreen(Resource.ActorParameters);
-        }
-        if (newValue.equals(connectionResourceName)) {
-            contentScreensHandler.setContentScreen(Resource.ConnectionParameters);
-        }
-        if (newValue.equals(simulationResourceName)) {
-            contentScreensHandler.setContentScreen(Resource.SimulationParameters);
+            if (newValue.equals(actorsResourceName)) {
+                contentScreensHandler.setContentScreen(Resource.ActorParameters);
+            }
+            if (newValue.equals(connectionResourceName)) {
+                contentScreensHandler.setContentScreen(Resource.ConnectionParameters);
+            }
+            if (newValue.equals(simulationResourceName)) {
+                contentScreensHandler.setContentScreen(Resource.SimulationParameters);
+            }
         }
     }
 }
+
