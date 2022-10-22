@@ -1,5 +1,6 @@
 package com.example.project.controller;
 
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationFlow;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class SimulationFlowScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent;
+    private RepositoryManager repositoryManager;
 
     @FXML
     private AnchorPane visualisationPanel;
@@ -36,6 +38,11 @@ public class SimulationFlowScreenController implements ControlledScreen {
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
     public void nextSimulationStep() {

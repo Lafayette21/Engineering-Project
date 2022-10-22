@@ -1,6 +1,7 @@
 package com.example.project.controller;
 
 import com.example.project.Resource;
+import com.example.project.database.repository.RepositoryManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 
 public class MainApplicationScreenController extends AnchorPane {
     private final HashMap<Resource, Node> screens = new HashMap<>();
+    private final RepositoryManager repositoryManager = new RepositoryManager();
 
     public MainApplicationScreenController() {
         super();
@@ -27,6 +29,7 @@ public class MainApplicationScreenController extends AnchorPane {
             Parent loadedScreen = myLoader.load();
             ControlledScreen myScreenController = myLoader.getController();
             myScreenController.setScreenParent(this);
+            myScreenController.setRepositoryManager(repositoryManager);
             addScreen(resource, loadedScreen);
             return true;
         } catch (Exception e) {
@@ -59,5 +62,7 @@ public class MainApplicationScreenController extends AnchorPane {
         }
     }
 
-
+    public RepositoryManager getRepositoryManager() {
+        return repositoryManager;
+    }
 }

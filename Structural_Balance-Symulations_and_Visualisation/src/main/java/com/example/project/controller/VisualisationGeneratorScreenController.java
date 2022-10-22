@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersScreenController;
+import com.example.project.database.repository.RepositoryManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -10,7 +11,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class VisualisationGeneratorScreenController extends AnchorPane implements ControlledScreen, Initializable {
-    MainApplicationScreenController screenController;
+    private MainApplicationScreenController screenController;
+    private RepositoryManager repositoryManager;
 
     @FXML
     private ParametersScreenController parametersScreenController;
@@ -29,6 +31,11 @@ public class VisualisationGeneratorScreenController extends AnchorPane implement
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         screenController = screenParent;
+    }
+
+    @Override
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.database.model.Actor;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 
 public class VisualisationScreenController implements ControlledScreen, Initializable {
     private MainApplicationScreenController screenParent;
+    private RepositoryManager repositoryManager;
     private ParametersValueHandler parametersValueHandler;
     private VisualisationGenerator visualisationGenerator;
 
@@ -70,6 +72,11 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
     @Override
