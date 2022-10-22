@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.hibernate.service.spi.InjectService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private static final int STEP_SPINNER_VALUE = 1;
 
     private ParametersScreenController screenParent;
-    private RepositoryManager repositoryManager;
+
     @FXML
     private TextField actorsNumberTextField;
     @FXML
@@ -55,13 +56,9 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     }
 
     @Override
-    public void setRepositoryManager(RepositoryManager repositoryManager) {
-        this.repositoryManager = repositoryManager;
-    }
-
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ActorParametersRepository repository = new ActorParametersRepository();
+        RepositoryManager repositoryManager1 = RepositoryManager.getInstance();
+        ActorParametersRepository repository = (ActorParametersRepository) repositoryManager1.getParameterRepositoryByResource(Resource.ActorParameters);
 
         setSpinnerValueFactory(rowSpinner);
         setSpinnerValueFactory(columnSpinner);

@@ -26,16 +26,10 @@ public class ConnectionParametersScreenController implements ParameterControlled
     private Button updateButton;
 
     private ParametersScreenController screenParent;
-    private RepositoryManager repositoryManager;
 
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
-    }
-
-    @Override
-    public void setRepositoryManager(RepositoryManager repositoryManager) {
-        this.repositoryManager = repositoryManager;
     }
 
     public void updateParametersValues() {
