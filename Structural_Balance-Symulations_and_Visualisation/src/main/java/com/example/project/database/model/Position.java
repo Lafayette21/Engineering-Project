@@ -1,19 +1,9 @@
 package com.example.project.database.model;
 
-import jakarta.persistence.*;
-
 import java.util.Objects;
-
-@Entity
-@Table(name = "Position")
 public class Position {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long positionId;
-    @Column(name = "x")
     private double x;
-    @Column(name = "y")
     private double y;
 
     public Position() {}
