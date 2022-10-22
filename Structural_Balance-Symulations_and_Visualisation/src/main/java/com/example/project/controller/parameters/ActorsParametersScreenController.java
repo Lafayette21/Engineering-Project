@@ -1,7 +1,11 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
+import com.example.project.database.model.ActorParameters;
+import com.example.project.database.repository.ActorParametersRepository;
 import com.example.project.parametervalues.ActorsParametersValues;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -50,8 +54,16 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ActorParametersRepository repository = new ActorParametersRepository();
+
         setSpinnerValueFactory(rowSpinner);
         setSpinnerValueFactory(columnSpinner);
+
+        ActorParameters initialActorParameters = new ActorParameters(rowSpinner.getValue(), columnSpinner.getValue());
+        repository.registerActorParameters(initialActorParameters);
+
+        rowSpinner.valueProperty().addListener(new RowSpinnerChangeListener(repository));
+        columnSpinner.valueProperty().addListener(new ColumnSpinnerChangeListener(repository));
     }
 
     private void setSpinnerValueFactory(Spinner<Integer> spinner) {
@@ -60,4 +72,40 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
         spinner.setValueFactory(valueFactory);
     }
+
+    private class RowSpinnerChangeListener implements ChangeListener<Integer> {
+        private final ActorParametersRepository repository;
+
+        public RowSpinnerChangeListener(ActorParametersRepository repository) {
+            this.repository = repository;
+        }
+
+        @Override
+        public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            repository.updateNumberOfRow(newValue);
+            setValueOnActorsNumberTextField(repository);
+        }
+    }
+
+    private class ColumnSpinnerChangeListener implements ChangeListener<Integer> {
+        private final ActorParametersRepository repository;
+
+        public ColumnSpinnerChangeListener(ActorParametersRepository repository) {
+            this.repository = repository;
+        }
+
+        @Override
+        public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            repository.updateNumberOfColumns(newValue);
+            setValueOnActorsNumberTextField(repository);
+        }
+    }
+
+    private void setValueOnActorsNumberTextField(ActorParametersRepository repository) {
+        ActorParameters actorParameters = repository.getActorParameters();
+        int numberOfActors = actorParameters.getNumberOfRows() * actorParameters.getNumberOfColumns();
+        actorsNumberTextField.setText(String.valueOf(numberOfActors));
+    }
 }
+
+

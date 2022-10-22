@@ -2,11 +2,14 @@ package com.example.project.database.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
-public class ActorParameters {
+@Table(name = "actor_parameters")
+public class ActorParameters implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long actorParameterId;
+    private Integer actorParameterId;
     @Column(name = "number_of_rows")
     private int numberOfRows;
     @Column(name = "number_of_columns")
@@ -17,6 +20,14 @@ public class ActorParameters {
     public ActorParameters(int numberOfRows, int numberOfColumns) {
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
+    }
+
+    public Integer getActorParameterId() {
+        return actorParameterId;
+    }
+
+    public void setActorParameterId(Integer actorParameterId) {
+        this.actorParameterId = actorParameterId;
     }
 
     public int getNumberOfRows() {
