@@ -3,6 +3,7 @@ package com.example.project.controller.parameters;
 import com.example.project.Resource;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.repository.ActorParametersRepository;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.parametervalues.ActorsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +21,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private static final int STEP_SPINNER_VALUE = 1;
 
     private ParametersScreenController screenParent;
+    private RepositoryManager repositoryManager;
     @FXML
     private TextField actorsNumberTextField;
     @FXML
@@ -50,6 +52,11 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
     @Override

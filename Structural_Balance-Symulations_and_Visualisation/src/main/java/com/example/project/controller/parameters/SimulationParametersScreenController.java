@@ -1,6 +1,7 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import java.util.ResourceBundle;
 
 public class SimulationParametersScreenController implements ParameterControlledScreen, Initializable {
     private ParametersScreenController screenParent;
+    private RepositoryManager repositoryManager;
 
     @FXML
     private Spinner<Integer> stepNumberSpinner;
@@ -21,6 +23,11 @@ public class SimulationParametersScreenController implements ParameterControlled
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
     public void updateParametersValues() {

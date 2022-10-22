@@ -1,6 +1,7 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,11 +25,17 @@ public class ConnectionParametersScreenController implements ParameterControlled
     @FXML
     private Button updateButton;
 
-    ParametersScreenController screenParent = new ParametersScreenController();
+    private ParametersScreenController screenParent;
+    private RepositoryManager repositoryManager;
 
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
+    }
+
+    @Override
+    public void setRepositoryManager(RepositoryManager repositoryManager) {
+        this.repositoryManager = repositoryManager;
     }
 
     public void updateParametersValues() {
