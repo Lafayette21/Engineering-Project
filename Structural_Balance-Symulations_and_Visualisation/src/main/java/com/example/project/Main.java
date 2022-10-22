@@ -2,6 +2,7 @@ package com.example.project;
 
 import com.example.project.controller.MainApplicationScreenController;
 import com.example.project.database.repository.ActorParametersRepository;
+import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -29,6 +30,7 @@ public class Main extends Application {
 
     private void prepareRepositoryManager(RepositoryManager repositoryManager) {
         repositoryManager.registerParameterRepository(Resource.ActorParameters, new ActorParametersRepository());
+        repositoryManager.registerParameterRepository(Resource.ConnectionParameters, new ConnectionParametersRepository());
     }
 
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {

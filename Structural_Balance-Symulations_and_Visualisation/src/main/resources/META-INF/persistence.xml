@@ -2,6 +2,7 @@
     <persistence-unit name="simulation" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.example.project.database.model.ActorParameters</class>
+        <class>com.example.project.database.model.ConnectionParameters</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test"/>

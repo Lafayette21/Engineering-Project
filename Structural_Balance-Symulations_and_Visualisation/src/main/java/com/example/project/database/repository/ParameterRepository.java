@@ -3,6 +3,8 @@ package com.example.project.database.repository;
 import jakarta.persistence.*;
 
 public abstract class ParameterRepository {
+    protected static final Integer SINGLE_ELEMENT_ID = 1;
+
     protected EntityManagerFactory entityManagerFactory;
     @PersistenceContext
     protected EntityManager entityManager;
