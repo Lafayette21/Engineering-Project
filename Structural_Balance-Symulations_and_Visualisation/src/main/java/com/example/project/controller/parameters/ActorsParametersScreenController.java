@@ -44,12 +44,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
         SuccesAlertFactory.createAndShow();
     }
 
-    private void updateActorsNumberTextField(int rowNumber, int columnNumber) {
-        int numberOfActors = rowNumber * columnNumber;
-
-        actorsNumberTextField.setText(String.valueOf(numberOfActors));
-    }
-
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;
@@ -107,7 +101,14 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
     private void setValueOnActorsNumberTextField(ActorParametersRepository repository) {
         ActorParameters actorParameters = repository.getActorParameters();
-        int numberOfActors = actorParameters.getNumberOfRows() * actorParameters.getNumberOfColumns();
+        int numberOfRows = actorParameters.getNumberOfRows();
+        int numberOfColumns = actorParameters.getNumberOfColumns();
+        updateActorsNumberTextField(numberOfRows, numberOfColumns);
+    }
+
+    private void updateActorsNumberTextField(int rowNumber, int columnNumber) {
+        int numberOfActors = rowNumber * columnNumber;
+
         actorsNumberTextField.setText(String.valueOf(numberOfActors));
     }
 }

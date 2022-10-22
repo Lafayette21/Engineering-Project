@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class MainApplicationScreenController extends AnchorPane {
     private final HashMap<Resource, Node> screens = new HashMap<>();
-    private final RepositoryManager repositoryManager = new RepositoryManager();
+    private final RepositoryManager repositoryManager = RepositoryManager.getInstance();
 
     public MainApplicationScreenController() {
         super();

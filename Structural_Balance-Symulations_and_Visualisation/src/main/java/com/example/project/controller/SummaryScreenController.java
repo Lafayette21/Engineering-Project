@@ -3,14 +3,22 @@ package com.example.project.controller;
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersScreenController;
 import com.example.project.controller.parameters.ParametersValueHandler;
+import com.example.project.database.model.ActorParameters;
+import com.example.project.database.repository.ActorParametersRepository;
+import com.example.project.database.repository.ParameterRepository;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
-public class SummaryScreenController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SummaryScreenController implements Initializable {
     private ParametersScreenController parametersScreenController;
     private VisualisationGeneratorScreenController screenParent;
 
@@ -37,9 +45,10 @@ public class SummaryScreenController {
 
     public void updateScreenValues() {
         ParametersValueHandler valueHandler = parametersScreenController.getParametersValueHandler();
+        RepositoryManager repositoryManager = RepositoryManager.getInstance();
         try {
             updateConnectionParameters(valueHandler);
-            updateActorsParameters(valueHandler);
+            updateActorsParameters(repositoryManager);
             updateSimulationParameters(valueHandler);
         } catch (NullPointerException e) {
             showAlert();
@@ -57,12 +66,13 @@ public class SummaryScreenController {
         posToNegPercentageLabel.setText(posToNegPercentage);
     }
 
-    private void updateActorsParameters(ParametersValueHandler valueHandler) {
-        ActorsParametersValues parameterValue =
-                (ActorsParametersValues) valueHandler.getParameterValueByResource(Resource.ActorParameters);
+    private void updateActorsParameters(RepositoryManager repositoryManager) {
+        ActorParametersRepository repository =
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
+        ActorParameters actorParameters = repository.getActorParameters();
 
-        String rowNumber = String.valueOf(parameterValue.rowNumber());
-        String columnNumber = String.valueOf(parameterValue.columnNumber());
+        String rowNumber = String.valueOf(actorParameters.getNumberOfRows());
+        String columnNumber = String.valueOf(actorParameters.getNumberOfColumns());
 
         rowNumberLabel.setText(rowNumber);
         columnNumberLabel.setText(columnNumber);
@@ -87,5 +97,14 @@ public class SummaryScreenController {
 
     public void generateSimulation() {
         screenParent.changeScreenToVisualisationScreen();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        RepositoryManager repositoryManager = RepositoryManager.getInstance();
+        ActorParametersRepository actorParametersRepository =
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
+        ActorParameters actorParameters = actorParametersRepository.getActorParameters();
+        rowNumberLabel.setText(String.valueOf(actorParameters.getNumberOfRows()));
     }
 }
