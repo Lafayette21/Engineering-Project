@@ -19,7 +19,6 @@ import java.util.List;
 
 public class SimulationFlowScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent;
-    private RepositoryManager repositoryManager;
 
     @FXML
     private AnchorPane visualisationPanel;
@@ -39,11 +38,6 @@ public class SimulationFlowScreenController implements ControlledScreen {
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
-    }
-
-    @Override
-    public void setRepositoryManager(RepositoryManager repositoryManager) {
-        this.repositoryManager = repositoryManager;
     }
 
     public void nextSimulationStep() {

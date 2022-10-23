@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class VisualisationScreenController implements ControlledScreen, Initializable {
     private MainApplicationScreenController screenParent;
-    private RepositoryManager repositoryManager;
+    private final RepositoryManager repositoryManager = RepositoryManager.getInstance();
     private VisualisationGenerator visualisationGenerator;
 
     @FXML
@@ -34,7 +34,6 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
     public Button returnButton;
 
     public void generateVisualisation() {
-        repositoryManager = RepositoryManager.getInstance();
         visualisationGenerator = new VisualisationGenerator(visualisationPanel);
         visualisationGenerator.generate(repositoryManager);
     }
@@ -74,11 +73,6 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
-    }
-
-    @Override
-    public void setRepositoryManager(RepositoryManager repositoryManager) {
-        this.repositoryManager = repositoryManager;
     }
 
     @Override

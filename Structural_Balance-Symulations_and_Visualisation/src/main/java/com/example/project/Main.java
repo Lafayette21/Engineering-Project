@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         MainApplicationScreenController mainController = new MainApplicationScreenController();
-        prepareRepositoryManager(mainController.getRepositoryManager());
+        prepareRepositoryManager(RepositoryManager.getInstance());
         loadScreens(mainController);
 
         prepareStartScreen(primaryStage, mainController);

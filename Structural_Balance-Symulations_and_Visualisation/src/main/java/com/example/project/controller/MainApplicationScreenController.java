@@ -10,13 +10,15 @@ import javafx.scene.layout.AnchorPane;
 import java.util.HashMap;
 
 public class MainApplicationScreenController extends AnchorPane {
+    private static final double HEIGHT = 450.0;
+    private static final double WIDTH = 650.0;
+
     private final HashMap<Resource, Node> screens = new HashMap<>();
-    private final RepositoryManager repositoryManager = RepositoryManager.getInstance();
 
     public MainApplicationScreenController() {
         super();
-        this.setHeight(450.0);
-        this.setWidth(650.0);
+        this.setHeight(HEIGHT);
+        this.setWidth(WIDTH);
     }
 
     public void addScreen(Resource resource, Node screen) {
@@ -29,7 +31,6 @@ public class MainApplicationScreenController extends AnchorPane {
             Parent loadedScreen = myLoader.load();
             ControlledScreen myScreenController = myLoader.getController();
             myScreenController.setScreenParent(this);
-            myScreenController.setRepositoryManager(repositoryManager);
             addScreen(resource, loadedScreen);
             return true;
         } catch (Exception e) {
@@ -60,9 +61,5 @@ public class MainApplicationScreenController extends AnchorPane {
         } else {
             return true;
         }
-    }
-
-    public RepositoryManager getRepositoryManager() {
-        return repositoryManager;
     }
 }
