@@ -41,8 +41,6 @@ public class ConnectionParametersScreenController implements ParameterControlled
         ConnectionsParametersValues connectionsParametersValues =
                 new ConnectionsParametersValues(connectionExistenceSpinner.getValue(), positiveRatioSpinner.getValue());
         valueHandler.updateValues(Resource.ConnectionParameters, connectionsParametersValues);
-
-        SuccesAlertFactory.createAndShow();
     }
 
     @Override
@@ -69,7 +67,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
         spinner.setValueFactory(valueFactory);
     }
 
-    private class ConnectionExistencePercentageChangeListener implements ChangeListener<Integer> {
+    private static class ConnectionExistencePercentageChangeListener implements ChangeListener<Integer> {
         ConnectionParametersRepository repository;
 
         public ConnectionExistencePercentageChangeListener(ConnectionParametersRepository repository) {
@@ -82,7 +80,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
         }
     }
 
-    private class PositiveRatioChangeListener implements ChangeListener<Integer> {
+    private static class PositiveRatioChangeListener implements ChangeListener<Integer> {
         ConnectionParametersRepository repository;
 
         public PositiveRatioChangeListener(ConnectionParametersRepository repository) {

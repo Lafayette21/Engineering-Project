@@ -41,7 +41,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
         valueHandler.updateValues(Resource.ActorParameters, parametersValues);
 
         updateActorsNumberTextField(rowNumber, columnNumber);
-        SuccesAlertFactory.createAndShow();
     }
 
     @Override

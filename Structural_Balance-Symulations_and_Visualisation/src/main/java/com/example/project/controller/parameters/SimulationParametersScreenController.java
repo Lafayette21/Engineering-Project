@@ -33,8 +33,6 @@ public class SimulationParametersScreenController implements ParameterControlled
         SimulationParametersValues simulationParametersValues =
                 new SimulationParametersValues(stepNumberSpinner.getValue(), annealingSpinner.getValue());
         valueHandler.updateValues(Resource.SimulationParameters, simulationParametersValues);
-
-        SuccesAlertFactory.createAndShow();
     }
 
     @Override
