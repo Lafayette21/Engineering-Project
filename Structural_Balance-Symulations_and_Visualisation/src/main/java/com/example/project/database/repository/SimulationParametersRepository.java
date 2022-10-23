@@ -29,7 +29,7 @@ public class SimulationParametersRepository extends ParameterRepository{
         entityManager.clear();
     }
 
-    public void updateAnnealingParameter(Integer newAnnealingParameter) {
+    public void updateAnnealingParameter(Double newAnnealingParameter) {
         entityTransaction.begin();
         Query query = entityManager.createQuery("update SimulationParameters set annealingParameter = "
                 + newAnnealingParameter + " where id = " + SINGLE_ELEMENT_ID);
