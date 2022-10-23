@@ -11,7 +11,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import org.hibernate.service.spi.InjectService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,7 +52,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
         ActorParametersRepository repository =
-                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.ACTOR_PARAMETERS);
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.ACTOR_PARAMETERS);
 
         setSpinnerValueFactory(rowSpinner);
         setSpinnerValueFactory(columnSpinner);

@@ -39,7 +39,7 @@ public class SimulationParametersScreenController implements ParameterControlled
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
-        SimulationParametersRepository repository = (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.SIMULATION_PARAMETERS);
+        SimulationParametersRepository repository = (SimulationParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
 
         stepNumberSpinner.setValueFactory(createStepNumberSpinnerValueFactory());
         annealingSpinner.setValueFactory(createAnnealingSpinnerValueFactory());

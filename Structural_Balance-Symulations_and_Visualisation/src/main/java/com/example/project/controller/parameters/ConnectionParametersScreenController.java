@@ -48,7 +48,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
         ConnectionParametersRepository repository =
-                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.CONNECTION_PARAMETERS);
+                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.CONNECTION_PARAMETERS);
 
         setSpinnerValueFactory(connectionExistenceSpinner);
         setSpinnerValueFactory(positiveRatioSpinner);

@@ -60,7 +60,7 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
         List<Actor> actorList = visualisationGenerator.getActorList();
         List<Relation> relationList = visualisationGenerator.getRelationList();
         SimulationParametersRepository simulationParametersRepository =
-                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.SIMULATION_PARAMETERS);
+                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
         SimulationParameters simulationParameters = simulationParametersRepository.getSimulationParameters();
         return new SimulationRequiredValuesDTO(actorList, relationList, simulationParameters);
     }
