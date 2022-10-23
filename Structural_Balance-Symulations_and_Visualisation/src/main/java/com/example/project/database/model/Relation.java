@@ -1,4 +1,4 @@
-package com.example.project.visualisation.model;
+package com.example.project.database.model;
 
 import java.util.Objects;
 

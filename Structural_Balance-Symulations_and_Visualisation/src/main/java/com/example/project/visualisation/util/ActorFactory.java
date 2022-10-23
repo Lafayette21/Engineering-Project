@@ -1,9 +1,10 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.database.model.ActorParameters;
 import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.parametervalues.ActorsParametersValues;
-import com.example.project.visualisation.model.Actor;
-import javafx.geometry.Point2D;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Position;
 
 import java.util.Iterator;
 import java.util.List;
@@ -20,17 +21,17 @@ public class ActorFactory {
         throw new InstantiationNotAllowedException();
     }
 
-    public static List<Actor> createActors(ActorsParametersValues actorsParametersValues,
+    public static List<Actor> createActors(ActorParameters actorParameters,
                                            CanvasPointsDistance canvasPointsDistance){
-        setNumberOfRowsAndColumns(actorsParametersValues);
+        setNumberOfRowsAndColumns(actorParameters);
         createActors();
         setActorsPositions(canvasPointsDistance);
         return actorList;
     }
 
-    private static void setNumberOfRowsAndColumns(ActorsParametersValues actorsParametersValues) {
-        numberOfRows = actorsParametersValues.rowNumber();
-        numberOfColumns = actorsParametersValues.columnNumber();
+    private static void setNumberOfRowsAndColumns(ActorParameters actorParameters) {
+        numberOfRows = actorParameters.getNumberOfRows();
+        numberOfColumns = actorParameters.getNumberOfColumns();
     }
 
     private static void createActors() {
@@ -47,7 +48,7 @@ public class ActorFactory {
         for (int i = 1; i <= numberOfRows; i++) {
             for (int j = 1; j <= numberOfColumns; j++) {
                 Actor actor = actorIterator.next();
-                actor.setPosition(new Point2D(distanceX * j, distanceY * i));
+                actor.setPosition(new Position(distanceX * j, distanceY * i));
             }
         }
     }

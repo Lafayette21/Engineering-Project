@@ -1,8 +1,8 @@
 package com.example.project.simulation;
 
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
-import com.example.project.visualisation.model.RelationType;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Relation;
+import com.example.project.database.model.RelationType;
 
 import java.util.List;
 

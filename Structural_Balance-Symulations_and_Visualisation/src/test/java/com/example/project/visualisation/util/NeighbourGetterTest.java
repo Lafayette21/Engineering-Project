@@ -1,7 +1,6 @@
 package com.example.project.visualisation.util;
 
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.util.NeighbourGetter;
+import com.example.project.database.model.Actor;
 import org.junit.Test;
 
 import java.util.List;

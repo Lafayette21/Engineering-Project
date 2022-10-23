@@ -1,4 +1,4 @@
-package com.example.project.visualisation.util;
+package com.example.project.util;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;

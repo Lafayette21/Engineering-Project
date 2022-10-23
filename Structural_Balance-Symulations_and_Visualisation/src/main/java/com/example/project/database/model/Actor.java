@@ -1,13 +1,12 @@
-package com.example.project.visualisation.model;
-
-import javafx.geometry.Point2D;
+package com.example.project.database.model;
 
 import java.util.Objects;
-
 public class Actor {
-    private final int actorId;
+    private int actorId;
 
-    private Point2D position;
+    private Position position;
+
+    public Actor() {}
 
     public Actor(int actorsId) {
         this.actorId = actorsId;
@@ -17,11 +16,11 @@ public class Actor {
         return actorId;
     }
 
-    public Point2D getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Point2D position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 

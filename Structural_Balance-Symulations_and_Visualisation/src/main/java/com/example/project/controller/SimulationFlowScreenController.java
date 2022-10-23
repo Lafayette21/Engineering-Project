@@ -1,15 +1,17 @@
 package com.example.project.controller;
 
+import com.example.project.database.model.SimulationParameters;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
+import com.example.project.util.SimulationBalanceAlert;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
-import com.example.project.visualisation.util.ImageSaver;
+import com.example.project.util.ImageSaver;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
@@ -42,8 +44,7 @@ public class SimulationFlowScreenController implements ControlledScreen {
         try {
             simulationFlow.nextStep(visualisationPanel);
         } catch (SimulationBalanceAchievedException e) {
-            removeButtonsProperties();
-            showSuccesAlert();
+            new SimulationBalanceAlert().showAndWait();
         }
     }
 
@@ -51,21 +52,8 @@ public class SimulationFlowScreenController implements ControlledScreen {
         try {
             simulationFlow.skipToEnd(visualisationPanel);
         } catch (SimulationBalanceAchievedException e) {
-            removeButtonsProperties();
-            showSuccesAlert();
+            new SimulationBalanceAlert().showAndWait();
         }
-    }
-
-    private void removeButtonsProperties() {
-        nextButton.cancelButtonProperty();
-        skipToEndButton.cancelButtonProperty();
-    }
-
-    private void showSuccesAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Siec osiągnęła balans");
-        alert.setTitle("Sukces");
-        alert.showAndWait();
     }
 
     public void previousSimulationStep() {
@@ -76,7 +64,7 @@ public class SimulationFlowScreenController implements ControlledScreen {
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
-        SimulationParametersValues simulationParametersValues = requiredValuesDTO.simulationParameters();
+        SimulationParameters simulationParametersValues = requiredValuesDTO.simulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, simulationParametersValues);
         CanvasDrawer.draw(visualisationPanel, actorList, relationList);
     }

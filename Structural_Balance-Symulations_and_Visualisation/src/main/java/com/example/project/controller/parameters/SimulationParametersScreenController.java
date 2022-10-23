@@ -1,7 +1,12 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.Resource;
+import com.example.project.database.model.SimulationParameters;
+import com.example.project.database.repository.RepositoryManager;
+import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.parametervalues.SimulationParametersValues;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
@@ -28,14 +33,21 @@ public class SimulationParametersScreenController implements ParameterControlled
         SimulationParametersValues simulationParametersValues =
                 new SimulationParametersValues(stepNumberSpinner.getValue(), annealingSpinner.getValue());
         valueHandler.updateValues(Resource.SimulationParameters, simulationParametersValues);
-
-        SuccesAlertFactory.createAndShow();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        RepositoryManager repositoryManager = RepositoryManager.getInstance();
+        SimulationParametersRepository repository = (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.SimulationParameters);
+
         stepNumberSpinner.setValueFactory(createStepNumberSpinnerValueFactory());
         annealingSpinner.setValueFactory(createAnnealingSpinnerValueFactory());
+
+        SimulationParameters parameters = new SimulationParameters(stepNumberSpinner.getValue(), annealingSpinner.getValue());
+        repository.registerSimulationParameters(parameters);
+
+        stepNumberSpinner.valueProperty().addListener(new NumberOfStepsChangeListener(repository));
+        annealingSpinner.valueProperty().addListener(new AnnealingParameterChangeListener(repository));
     }
 
     private SpinnerValueFactory<Integer> createStepNumberSpinnerValueFactory() {
@@ -57,5 +69,31 @@ public class SimulationParametersScreenController implements ParameterControlled
         return new SpinnerValueFactory
                 .DoubleSpinnerValueFactory(minAnnealingValue, maxAnnealingValue, initialAnnealingValue,
                 spinnerIncreaseValue);
+    }
+
+    private static class NumberOfStepsChangeListener implements ChangeListener<Integer> {
+        private final SimulationParametersRepository repository;
+
+        public NumberOfStepsChangeListener(SimulationParametersRepository repository) {
+            this.repository = repository;
+        }
+
+        @Override
+        public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            repository.updateNumberOfSteps(newValue);
+        }
+    }
+
+    private static class AnnealingParameterChangeListener implements ChangeListener<Double> {
+        private final SimulationParametersRepository repository;
+
+        public AnnealingParameterChangeListener(SimulationParametersRepository repository) {
+            this.repository = repository;
+        }
+
+        @Override
+        public void changed(ObservableValue<? extends Double> observableValue, Double oldValue, Double newValue) {
+            repository.updateAnnealingParameter(newValue);
+        }
     }
 }

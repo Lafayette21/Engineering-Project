@@ -1,11 +1,7 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.database.model.*;
 import com.example.project.exception.InstantiationNotAllowedException;
-import com.example.project.parametervalues.ActorsParametersValues;
-import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
-import com.example.project.visualisation.model.RelationType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,29 +13,30 @@ public class RelationCreator {
     private static final int LOWER_BOUND_FOR_RANDOM_GENERATION = 0;
     private static final int UPPER_BOUND_FOR_RANDOM_GENERATION = 100;
 
-    private static ActorsParametersValues actorsParametersValues;
-    private static ConnectionsParametersValues connectionsParametersValues;
+    private static ActorParameters actorsParametersValues;
+    private static ConnectionParameters connectionsParametersValues;
     private static List<Actor> actorList;
 
     private RelationCreator() {
         throw new InstantiationNotAllowedException();
     }
 
-    public static List<Relation> createRelations(ActorsParametersValues actorValues,
-                                                 ConnectionsParametersValues connectionValues,
+    public static List<Relation> createRelations(ActorParameters actorValues,
+                                                 ConnectionParameters connectionValues,
                                                  List<Actor> actorList) {
         setParameterValues(actorValues, connectionValues, actorList);
         List<Relation> relations = new ArrayList<>();
         actorList.stream().map(RelationCreator::createRelationsForActor).forEach(relations::addAll);
 
         List<Relation> filteredOutRelations = getFilteredOutRelations(relations);
-        List<Relation> relationsWithTypes = getRelationsWithTypes(filteredOutRelations);
-        return relationsWithTypes;
+        return getRelationsWithAppliedTypesTypes(filteredOutRelations);
     }
 
-    private static void setParameterValues(ActorsParametersValues actorValues, ConnectionsParametersValues connectionValues, List<Actor> actors) {
-        actorsParametersValues = actorValues;
-        connectionsParametersValues = connectionValues;
+    private static void setParameterValues(ActorParameters actorParameters,
+                                           ConnectionParameters connectionParameters,
+                                           List<Actor> actors) {
+        actorsParametersValues = actorParameters;
+        connectionsParametersValues = connectionParameters;
         actorList = actors;
     }
 
@@ -52,9 +49,9 @@ public class RelationCreator {
     }
 
     private static NeighbourGetter createNeighbourGetter() {
-        int rowNumber = actorsParametersValues.rowNumber();
-        int columnNumber = actorsParametersValues.columnNumber();
-        return new NeighbourGetter(rowNumber, columnNumber);
+        int numberOfRows = actorsParametersValues.getNumberOfRows();
+        int numberOfColumns = actorsParametersValues.getNumberOfColumns();
+        return new NeighbourGetter(numberOfRows, numberOfColumns);
     }
 
     private static Actor getActorById(int actorId) {
@@ -73,7 +70,7 @@ public class RelationCreator {
         return new ArrayList<>(relationSet);
     }
 
-    private static List<Relation> getRelationsWithTypes(List<Relation> relationList) {
+    private static List<Relation> getRelationsWithAppliedTypesTypes(List<Relation> relationList) {
         return relationList.stream().peek(RelationCreator::setRelationType).collect(Collectors.toList());
     }
 
@@ -82,15 +79,15 @@ public class RelationCreator {
     }
 
     private static void setRelationType(Relation relation) {
-        int connectionCreationPercent = connectionsParametersValues.connectionCreationPercentRatio();
-        int posToNegPercent = connectionsParametersValues.positiveToNegativePercentRatio();
+        int connectionExistencePercentage = connectionsParametersValues.getConnectionExistencePercentage();
+        int positiveRatio = connectionsParametersValues.getPositiveConnectionsPercentage();
 
         int randomConnection = new Random()
                 .nextInt(LOWER_BOUND_FOR_RANDOM_GENERATION, UPPER_BOUND_FOR_RANDOM_GENERATION);
-        if (!existsConnection(connectionCreationPercent, randomConnection)) {
+        if (!existsConnection(connectionExistencePercentage, randomConnection)) {
             relation.setRelationType(RelationType.NONE);
         } else {
-            setRelationTypeForExistingConnection(relation, posToNegPercent);
+            setRelationTypeForExistingConnection(relation, positiveRatio);
         }
     }
 

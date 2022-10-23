@@ -1,8 +1,8 @@
 package com.example.project.visualisation.screen;
 
 import com.example.project.exception.InstantiationNotAllowedException;
-import com.example.project.visualisation.model.Actor;
-import javafx.geometry.Point2D;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Position;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
@@ -26,7 +26,7 @@ public class ActorDrawer {
         panel.getChildren().add(point);
     }
 
-    private static Circle createPoint(Point2D position) {
+    private static Circle createPoint(Position position) {
         Circle point = new Circle();
         point.setCenterX(position.getX());
         point.setCenterY(position.getY());

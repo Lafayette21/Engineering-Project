@@ -1,8 +1,8 @@
 package com.example.project.simulation;
 
-import com.example.project.parametervalues.SimulationParametersValues;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Relation;
+import com.example.project.database.model.SimulationParameters;
 import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
@@ -18,21 +18,21 @@ public class SimulationFlow {
 
     private final Map<Integer, List<Relation>> simulationMap = new HashMap<>();
 
-    private final SimulationParametersValues simulationParametersValues;
+    private final SimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
     private Integer currentStepNumber = 1;
     private SimulationResolver simulationResolver;
 
-    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParametersValues simulationParametersValues) {
+    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
-        this.simulationParametersValues = simulationParametersValues;
-        setSimulationResolver(actorList, simulationParametersValues);
+        this.simulationParameters = simulationParameters;
+        setSimulationResolver(actorList, simulationParameters);
     }
 
-    private void setSimulationResolver(List<Actor> actorList, SimulationParametersValues simulationParametersValues) {
-        double annealingParameter = simulationParametersValues.annealingValue();
+    private void setSimulationResolver(List<Actor> actorList, SimulationParameters simulationParametersValues) {
+        double annealingParameter = simulationParametersValues.getAnnealingParameter();
         int numberOfActors = actorList.size();
         simulationResolver = new SimulationResolver(annealingParameter, numberOfActors);
     }
@@ -48,11 +48,11 @@ public class SimulationFlow {
     }
 
     private boolean isMoreThanLastStep() {
-        return currentStepNumber > simulationParametersValues.numberOfSteps();
+        return currentStepNumber > simulationParameters.getNumberOfSteps();
     }
 
     public void skipToEnd(AnchorPane visualisationPanel) {
-        IntStream.range(0, simulationParametersValues.numberOfSteps() + 1)
+        IntStream.range(0, simulationParameters.getNumberOfSteps() + 1)
                 .forEach(step -> moveToNextStep());
         drawToCanvas(visualisationPanel);
     }

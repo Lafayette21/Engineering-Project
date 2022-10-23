@@ -1,7 +1,7 @@
 package com.example.project.simulation;
 
 import com.example.project.exception.SimulationBalanceAchievedException;
-import com.example.project.visualisation.model.Relation;
+import com.example.project.database.model.Relation;
 import com.example.project.visualisation.util.RelationMatrixToRelationListConverter;
 
 import java.util.List;

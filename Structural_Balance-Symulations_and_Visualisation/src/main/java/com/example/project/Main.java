@@ -1,6 +1,10 @@
 package com.example.project;
 
 import com.example.project.controller.MainApplicationScreenController;
+import com.example.project.database.repository.ActorParametersRepository;
+import com.example.project.database.repository.ConnectionParametersRepository;
+import com.example.project.database.repository.RepositoryManager;
+import com.example.project.database.repository.SimulationParametersRepository;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -9,20 +13,26 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        MainApplicationScreenController mainController = createAndSetMainApplicationController();
+        MainApplicationScreenController mainController = new MainApplicationScreenController();
+        prepareRepositoryManager(RepositoryManager.getInstance());
+        loadScreens(mainController);
 
         prepareStartScreen(primaryStage, mainController);
     }
 
-    private MainApplicationScreenController createAndSetMainApplicationController() {
-        MainApplicationScreenController mainController = new MainApplicationScreenController();
+    private void loadScreens(MainApplicationScreenController mainController) {
         mainController.loadScreen(Resource.StartWindow);
         mainController.loadScreen(Resource.VisualisationGenerator);
         mainController.loadScreen(Resource.Visualisation);
         mainController.loadScreen(Resource.SimulationFlow);
 
         mainController.setScreen(Resource.StartWindow);
-        return mainController;
+    }
+
+    private void prepareRepositoryManager(RepositoryManager repositoryManager) {
+        repositoryManager.registerParameterRepository(Resource.ActorParameters, new ActorParametersRepository());
+        repositoryManager.registerParameterRepository(Resource.ConnectionParameters, new ConnectionParametersRepository());
+        repositoryManager.registerParameterRepository(Resource.SimulationParameters, new SimulationParametersRepository());
     }
 
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {

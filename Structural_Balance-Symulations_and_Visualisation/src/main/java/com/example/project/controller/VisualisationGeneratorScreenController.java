@@ -10,14 +10,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class VisualisationGeneratorScreenController extends AnchorPane implements ControlledScreen, Initializable {
-    MainApplicationScreenController screenController;
+    private MainApplicationScreenController screenController;
 
     @FXML
     private ParametersScreenController parametersScreenController;
     @FXML
     private SummaryScreenController summaryScreenController;
 
-    public void changeScreenToVisualisationScreen(){
+    public void changeScreenToVisualisationScreen() {
         sendParameterValueHandler();
         screenController.setScreen(Resource.Visualisation);
     }

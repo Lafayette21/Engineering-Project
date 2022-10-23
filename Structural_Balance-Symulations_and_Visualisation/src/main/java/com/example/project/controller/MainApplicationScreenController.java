@@ -1,6 +1,7 @@
 package com.example.project.controller;
 
 import com.example.project.Resource;
+import com.example.project.database.repository.RepositoryManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,12 +10,15 @@ import javafx.scene.layout.AnchorPane;
 import java.util.HashMap;
 
 public class MainApplicationScreenController extends AnchorPane {
+    private static final double HEIGHT = 450.0;
+    private static final double WIDTH = 650.0;
+
     private final HashMap<Resource, Node> screens = new HashMap<>();
 
     public MainApplicationScreenController() {
         super();
-        this.setHeight(450.0);
-        this.setWidth(650.0);
+        this.setHeight(HEIGHT);
+        this.setWidth(WIDTH);
     }
 
     public void addScreen(Resource resource, Node screen) {
@@ -58,6 +62,4 @@ public class MainApplicationScreenController extends AnchorPane {
             return true;
         }
     }
-
-
 }
