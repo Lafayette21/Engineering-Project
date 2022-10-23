@@ -1,5 +1,7 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.database.model.ActorParameters;
+import com.example.project.database.model.ConnectionParameters;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import com.example.project.database.model.Actor;
@@ -26,13 +28,13 @@ public class RelationCreatorTest {
         List<Actor> actorList = IntStream.range(1, NUMBER_OF_ACTORS + 1)
                 .mapToObj(Actor::new)
                 .collect(Collectors.toList());
-        ActorsParametersValues actorsParametersValues =
-                new ActorsParametersValues(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS);
-        ConnectionsParametersValues connectionsParametersValues =
-                new ConnectionsParametersValues(CONNECTION_CREATION_PERCENTAGE, POS_TO_NEG_PERCENTAGE);
+        ActorParameters actorParameters =
+                new ActorParameters(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS);
+        ConnectionParameters connectionParameters =
+                new ConnectionParameters(CONNECTION_CREATION_PERCENTAGE, POS_TO_NEG_PERCENTAGE);
 
         List<Relation> relationList =
-                RelationCreator.createRelations(actorsParametersValues, connectionsParametersValues, actorList);
+                RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
 
         assertThat(relationList).hasSize(9);
     }

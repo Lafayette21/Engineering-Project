@@ -1,5 +1,6 @@
 package com.example.project.controller;
 
+import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.RepositoryManager;
 import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.parametervalues.SimulationParametersValues;
@@ -69,7 +70,7 @@ public class SimulationFlowScreenController implements ControlledScreen {
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
-        SimulationParametersValues simulationParametersValues = requiredValuesDTO.simulationParameters();
+        SimulationParameters simulationParametersValues = requiredValuesDTO.simulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, simulationParametersValues);
         CanvasDrawer.draw(visualisationPanel, actorList, relationList);
     }

@@ -2,6 +2,12 @@ package com.example.project.visualisation.screen;
 
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
+import com.example.project.database.model.ActorParameters;
+import com.example.project.database.model.ConnectionParameters;
+import com.example.project.database.repository.ActorParametersRepository;
+import com.example.project.database.repository.ConnectionParametersRepository;
+import com.example.project.database.repository.RepositoryManager;
+import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.parametervalues.ConnectionsParametersValues;
 import com.example.project.database.model.Actor;
@@ -23,16 +29,19 @@ public class VisualisationGenerator {
         this.visualisationPanel = visualisationPanel;
     }
 
-    public void generate(ParametersValueHandler parametersValueHandler) {
-        setParametersValues(parametersValueHandler);
+    public void generate(RepositoryManager repositoryManager) {
+        setParametersValues(repositoryManager);
         CanvasDrawer.draw(visualisationPanel, actorList, relationList);
     }
 
-    private void setParametersValues(ParametersValueHandler parametersValueHandler) {
-        ActorsParametersValues actorParameters = (ActorsParametersValues)
-                parametersValueHandler.getParameterValueByResource(Resource.ActorParameters);
-        ConnectionsParametersValues connectionParameters = (ConnectionsParametersValues)
-                parametersValueHandler.getParameterValueByResource(Resource.ConnectionParameters);
+    private void setParametersValues(RepositoryManager repositoryManager) {
+        ActorParametersRepository actorParametersRepository =
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
+        ActorParameters actorParameters = actorParametersRepository.getActorParameters();
+
+        ConnectionParametersRepository connectionParametersRepository =
+                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ConnectionParameters);
+        ConnectionParameters connectionParameters = connectionParametersRepository.getConnectionParameters();
 
         CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters);
 
@@ -40,11 +49,11 @@ public class VisualisationGenerator {
         relationList = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
     }
 
-    private CanvasPointsDistance getCanvasPointsDistance(ActorsParametersValues actorsParameter) {
+    private CanvasPointsDistance getCanvasPointsDistance(ActorParameters actorsParameters) {
         double width = visualisationPanel.getWidth();
         double height = visualisationPanel.getHeight();
-        double distanceX = width / (actorsParameter.columnNumber() + 1);
-        double distanceY = height / (actorsParameter.rowNumber() + 1);
+        double distanceX = width / (actorsParameters.getNumberOfColumns() + 1);
+        double distanceY = height / (actorsParameters.getNumberOfRows() + 1);
         return new CanvasPointsDistance(distanceX, distanceY);
     }
 

@@ -1,5 +1,6 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.database.model.ActorParameters;
 import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.database.model.Actor;
@@ -20,17 +21,17 @@ public class ActorFactory {
         throw new InstantiationNotAllowedException();
     }
 
-    public static List<Actor> createActors(ActorsParametersValues actorsParametersValues,
+    public static List<Actor> createActors(ActorParameters actorParameters,
                                            CanvasPointsDistance canvasPointsDistance){
-        setNumberOfRowsAndColumns(actorsParametersValues);
+        setNumberOfRowsAndColumns(actorParameters);
         createActors();
         setActorsPositions(canvasPointsDistance);
         return actorList;
     }
 
-    private static void setNumberOfRowsAndColumns(ActorsParametersValues actorsParametersValues) {
-        numberOfRows = actorsParametersValues.rowNumber();
-        numberOfColumns = actorsParametersValues.columnNumber();
+    private static void setNumberOfRowsAndColumns(ActorParameters actorParameters) {
+        numberOfRows = actorParameters.getNumberOfRows();
+        numberOfColumns = actorParameters.getNumberOfColumns();
     }
 
     private static void createActors() {

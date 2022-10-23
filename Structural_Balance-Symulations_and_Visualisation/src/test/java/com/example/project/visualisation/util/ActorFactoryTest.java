@@ -1,5 +1,6 @@
 package com.example.project.visualisation.util;
 
+import com.example.project.database.model.ActorParameters;
 import com.example.project.parametervalues.ActorsParametersValues;
 import com.example.project.database.model.Actor;
 import com.example.project.database.model.Position;
@@ -17,7 +18,7 @@ public class ActorFactoryTest {
 
     @Test
     public void shouldCreateActors() {
-        ActorsParametersValues actorValues = new ActorsParametersValues(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS);
+        ActorParameters actorValues = new ActorParameters(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS);
         CanvasPointsDistance pointsDistance = new CanvasPointsDistance(DISTANCE_X, DISTANCE_Y);
 
         List<Actor> actualActorsList = ActorFactory.createActors(actorValues, pointsDistance);
