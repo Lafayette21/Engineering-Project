@@ -1,9 +1,15 @@
 package com.example.project.database.model;
 
-import java.util.Objects;
-public class Actor {
-    private int actorId;
+import jakarta.persistence.*;
 
+import java.util.Objects;
+@Entity
+@Table
+public class Actor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int actorId;
+    @OneToOne
     private Position position;
 
     public Actor() {}
