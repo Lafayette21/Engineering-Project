@@ -30,9 +30,9 @@ public class Main extends Application {
     }
 
     private void prepareRepositoryManager(RepositoryManager repositoryManager) {
-        repositoryManager.registerParameterRepository(Resource.ActorParameters, new ActorParametersRepository());
-        repositoryManager.registerParameterRepository(Resource.ConnectionParameters, new ConnectionParametersRepository());
-        repositoryManager.registerParameterRepository(Resource.SimulationParameters, new SimulationParametersRepository());
+        repositoryManager.registerParameterRepository(RepositoryName.ACTOR_PARAMETERS, new ActorParametersRepository());
+        repositoryManager.registerParameterRepository(RepositoryName.CONNECTION_PARAMETERS, new ConnectionParametersRepository());
+        repositoryManager.registerParameterRepository(RepositoryName.SIMULATION_PARAMETERS, new SimulationParametersRepository());
     }
 
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {

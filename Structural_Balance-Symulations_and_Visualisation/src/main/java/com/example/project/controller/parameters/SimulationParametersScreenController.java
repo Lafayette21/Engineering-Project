@@ -1,5 +1,6 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.RepositoryName;
 import com.example.project.Resource;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.RepositoryManager;
@@ -38,7 +39,7 @@ public class SimulationParametersScreenController implements ParameterControlled
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
-        SimulationParametersRepository repository = (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.SimulationParameters);
+        SimulationParametersRepository repository = (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.SIMULATION_PARAMETERS);
 
         stepNumberSpinner.setValueFactory(createStepNumberSpinnerValueFactory());
         annealingSpinner.setValueFactory(createAnnealingSpinnerValueFactory());

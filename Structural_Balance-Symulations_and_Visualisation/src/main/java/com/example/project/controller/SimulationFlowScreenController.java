@@ -1,16 +1,14 @@
 package com.example.project.controller;
 
-import com.example.project.database.model.SimulationParameters;
-import com.example.project.database.repository.RepositoryManager;
-import com.example.project.exception.SimulationBalanceAchievedException;
-import com.example.project.parametervalues.SimulationParametersValues;
-import com.example.project.simulation.SimulationFlow;
-import com.example.project.simulation.SimulationRequiredValuesDTO;
-import com.example.project.util.SimulationBalanceAlert;
 import com.example.project.database.model.Actor;
 import com.example.project.database.model.Relation;
-import com.example.project.visualisation.screen.CanvasDrawer;
+import com.example.project.database.model.SimulationParameters;
+import com.example.project.exception.SimulationBalanceAchievedException;
+import com.example.project.simulation.SimulationFlow;
+import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.util.ImageSaver;
+import com.example.project.util.SimulationBalanceAlert;
+import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;

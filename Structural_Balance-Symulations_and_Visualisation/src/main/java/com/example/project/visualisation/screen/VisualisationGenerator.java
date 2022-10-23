@@ -1,5 +1,6 @@
 package com.example.project.visualisation.screen;
 
+import com.example.project.RepositoryName;
 import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.database.model.ActorParameters;
@@ -36,11 +37,11 @@ public class VisualisationGenerator {
 
     private void setParametersValues(RepositoryManager repositoryManager) {
         ActorParametersRepository actorParametersRepository =
-                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.ACTOR_PARAMETERS);
         ActorParameters actorParameters = actorParametersRepository.getActorParameters();
 
         ConnectionParametersRepository connectionParametersRepository =
-                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ConnectionParameters);
+                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.CONNECTION_PARAMETERS);
         ConnectionParameters connectionParameters = connectionParametersRepository.getConnectionParameters();
 
         CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters);

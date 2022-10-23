@@ -1,14 +1,13 @@
 package com.example.project.controller;
 
+import com.example.project.RepositoryName;
 import com.example.project.Resource;
-import com.example.project.controller.parameters.ParametersValueHandler;
+import com.example.project.database.model.Actor;
+import com.example.project.database.model.Relation;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.RepositoryManager;
 import com.example.project.database.repository.SimulationParametersRepository;
-import com.example.project.parametervalues.SimulationParametersValues;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
-import com.example.project.database.model.Actor;
-import com.example.project.database.model.Relation;
 import com.example.project.visualisation.screen.VisualisationGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,10 +37,6 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
         visualisationGenerator.generate(repositoryManager);
     }
 
-    private ParametersValueHandler getParametersValueHandler() {
-        return (ParametersValueHandler) screenParent.getUserData();
-    }
-
     public void changeScreenToVisualisationGeneratorScreen() {
         clearVisualisationPanel();
         screenParent.setScreen(Resource.VisualisationGenerator);
@@ -65,7 +60,7 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
         List<Actor> actorList = visualisationGenerator.getActorList();
         List<Relation> relationList = visualisationGenerator.getRelationList();
         SimulationParametersRepository simulationParametersRepository =
-                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.SimulationParameters);
+                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.SIMULATION_PARAMETERS);
         SimulationParameters simulationParameters = simulationParametersRepository.getSimulationParameters();
         return new SimulationRequiredValuesDTO(actorList, relationList, simulationParameters);
     }

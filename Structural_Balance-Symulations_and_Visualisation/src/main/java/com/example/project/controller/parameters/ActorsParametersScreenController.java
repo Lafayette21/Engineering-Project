@@ -1,5 +1,6 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.RepositoryName;
 import com.example.project.Resource;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.repository.ActorParametersRepository;
@@ -51,7 +52,8 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
-        ActorParametersRepository repository = (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
+        ActorParametersRepository repository =
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(RepositoryName.ACTOR_PARAMETERS);
 
         setSpinnerValueFactory(rowSpinner);
         setSpinnerValueFactory(columnSpinner);

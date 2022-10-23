@@ -1,12 +1,14 @@
 package com.example.project.database.repository;
 
+import com.example.project.RepositoryName;
 import com.example.project.Resource;
 
 import java.util.HashMap;
 import java.util.Map;
 public final class RepositoryManager {
     private static RepositoryManager repositoryManagerInstance;
-    private final Map<Resource, ParameterRepository> parameterRepositoryMap = new HashMap<>();
+    private final Map<RepositoryName, ParameterRepository> parameterRepositoryMap = new HashMap<>();
+    private final Map<RepositoryName, EntityRepository> entityRepositoryMap = new HashMap<>();
 
     private RepositoryManager() {}
 
@@ -17,11 +19,11 @@ public final class RepositoryManager {
         return repositoryManagerInstance;
     }
 
-    public void registerParameterRepository(Resource resource, ParameterRepository parameterRepository){
-        parameterRepositoryMap.put(resource,parameterRepository);
+    public void registerParameterRepository(RepositoryName repositoryName, ParameterRepository parameterRepository){
+        parameterRepositoryMap.put(repositoryName,parameterRepository);
     }
 
-    public ParameterRepository getParameterRepositoryByResource(Resource resource){
-        return parameterRepositoryMap.get(resource);
+    public ParameterRepository getParameterRepositoryByResource(RepositoryName repositoryName){
+        return parameterRepositoryMap.get(repositoryName);
     }
 }

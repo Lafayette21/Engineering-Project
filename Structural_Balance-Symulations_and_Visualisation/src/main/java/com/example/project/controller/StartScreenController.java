@@ -1,8 +1,6 @@
 package com.example.project.controller;
 
 import com.example.project.Resource;
-import com.example.project.database.repository.RepositoryManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -16,7 +14,7 @@ public class StartScreenController implements ControlledScreen {
         parentController = screenParent;
     }
 
-    public void changeScreenToVisualisationGenerator(ActionEvent event) {
+    public void changeScreenToVisualisationGenerator() {
         parentController.setScreen(Resource.VisualisationGenerator);
     }
 }
