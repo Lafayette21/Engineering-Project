@@ -4,11 +4,12 @@ import com.example.project.Resource;
 import com.example.project.controller.parameters.ParametersScreenController;
 import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.database.model.ActorParameters;
+import com.example.project.database.model.ConnectionParameters;
+import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.ActorParametersRepository;
-import com.example.project.database.repository.ParameterRepository;
+import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
-import com.example.project.parametervalues.ActorsParametersValues;
-import com.example.project.parametervalues.ConnectionsParametersValues;
+import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,23 +45,20 @@ public class SummaryScreenController implements Initializable {
     }
 
     public void updateScreenValues() {
-        ParametersValueHandler valueHandler = parametersScreenController.getParametersValueHandler();
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
-        try {
-            updateConnectionParameters(valueHandler);
-            updateActorsParameters(repositoryManager);
-            updateSimulationParameters(valueHandler);
-        } catch (NullPointerException e) {
-            showAlert();
-        }
+
+        updateConnectionParameters(repositoryManager);
+        updateActorsParameters(repositoryManager);
+        updateSimulationParameters(repositoryManager);
     }
 
-    private void updateConnectionParameters(ParametersValueHandler valueHandler) {
-        ConnectionsParametersValues parametersValues =
-                (ConnectionsParametersValues) valueHandler.getParameterValueByResource(Resource.ConnectionParameters);
+    private void updateConnectionParameters(RepositoryManager repositoryManager) {
+        ConnectionParametersRepository repository =
+                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ConnectionParameters);
+        ConnectionParameters connectionParameters = repository.getConnectionParameters();
 
-        String connectionPercentage = String.valueOf(parametersValues.connectionCreationPercentRatio());
-        String posToNegPercentage = String.valueOf(parametersValues.positiveToNegativePercentRatio());
+        String connectionPercentage = String.valueOf(connectionParameters.getConnectionExistencePercentage());
+        String posToNegPercentage = String.valueOf(connectionParameters.getPositiveConnectionsPercentage());
 
         connectionPercentageLabel.setText(connectionPercentage);
         posToNegPercentageLabel.setText(posToNegPercentage);
@@ -78,21 +76,16 @@ public class SummaryScreenController implements Initializable {
         columnNumberLabel.setText(columnNumber);
     }
 
-    private void updateSimulationParameters(ParametersValueHandler valueHandler) {
-        SimulationParametersValues parameterValue =
-                (SimulationParametersValues) valueHandler.getParameterValueByResource(Resource.SimulationParameters);
+    private void updateSimulationParameters(RepositoryManager repositoryManager) {
+        SimulationParametersRepository repository =
+                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.SimulationParameters);
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
 
-        String stepNumber = String.valueOf(parameterValue.numberOfSteps());
-        String annealing = String.valueOf(parameterValue.annealingValue());
+        String stepNumber = String.valueOf(simulationParameters.getNumberOfSteps());
+        String annealing = String.valueOf(simulationParameters.getAnnealingParameter());
 
         stepNumberLabel.setText(stepNumber);
         annealingLabel.setText(annealing);
-    }
-
-    private void showAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Część z parametrów nie była jeszcze ustawiona. Ustaw je aby móc zobaczyć podsumowanie");
-        alert.showAndWait();
     }
 
     public void generateSimulation() {
@@ -102,9 +95,8 @@ public class SummaryScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
-        ActorParametersRepository actorParametersRepository =
-                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
-        ActorParameters actorParameters = actorParametersRepository.getActorParameters();
-        rowNumberLabel.setText(String.valueOf(actorParameters.getNumberOfRows()));
+        updateActorsParameters(repositoryManager);
+        updateConnectionParameters(repositoryManager);
+        updateSimulationParameters(repositoryManager);
     }
 }
