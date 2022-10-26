@@ -1,63 +1,21 @@
 package com.example.project.visualisation.screen;
 
-import com.example.project.RepositoryName;
-import com.example.project.database.model.ActorParameters;
-import com.example.project.database.model.ConnectionParameters;
-import com.example.project.database.repository.ActorParametersRepository;
-import com.example.project.database.repository.ConnectionParametersRepository;
-import com.example.project.database.repository.RepositoryManager;
 import com.example.project.database.model.Actor;
 import com.example.project.database.model.Relation;
-import com.example.project.visualisation.util.ActorFactory;
-import com.example.project.visualisation.util.CanvasPointsDistance;
-import com.example.project.visualisation.util.RelationCreator;
+import com.example.project.exception.InstantiationNotAllowedException;
+import com.example.project.visualisation.util.SimulationRequiredParametersHandler;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
 
 public class VisualisationGenerator {
-    private final AnchorPane visualisationPanel;
-
-    private List<Actor> actorList;
-    private List<Relation> relationList;
-
-    public VisualisationGenerator(AnchorPane visualisationPanel) {
-        this.visualisationPanel = visualisationPanel;
+    private VisualisationGenerator() {
+        throw new InstantiationNotAllowedException();
     }
 
-    public void generate(RepositoryManager repositoryManager) {
-        setParametersValues(repositoryManager);
+    public static void generate(SimulationRequiredParametersHandler simulationRequiredParametersHandler, AnchorPane visualisationPanel) {
+        List<Actor> actorList = simulationRequiredParametersHandler.getActorList();
+        List<Relation> relationList = simulationRequiredParametersHandler.getRelationList();
         CanvasDrawer.draw(visualisationPanel, actorList, relationList);
-    }
-
-    private void setParametersValues(RepositoryManager repositoryManager) {
-        ActorParametersRepository actorParametersRepository =
-                (ActorParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.ACTOR_PARAMETERS);
-        ActorParameters actorParameters = actorParametersRepository.getActorParameters();
-
-        ConnectionParametersRepository connectionParametersRepository =
-                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.CONNECTION_PARAMETERS);
-        ConnectionParameters connectionParameters = connectionParametersRepository.getConnectionParameters();
-
-        CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters);
-
-        actorList = ActorFactory.createActors(actorParameters, canvasPointsDistance);
-        relationList = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
-    }
-
-    private CanvasPointsDistance getCanvasPointsDistance(ActorParameters actorsParameters) {
-        double width = visualisationPanel.getWidth();
-        double height = visualisationPanel.getHeight();
-        double distanceX = width / (actorsParameters.getNumberOfColumns() + 1);
-        double distanceY = height / (actorsParameters.getNumberOfRows() + 1);
-        return new CanvasPointsDistance(distanceX, distanceY);
-    }
-
-    public List<Actor> getActorList() {
-        return actorList;
-    }
-
-    public List<Relation> getRelationList() {
-        return relationList;
     }
 }
