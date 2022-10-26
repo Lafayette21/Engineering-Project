@@ -3,13 +3,8 @@ package com.example.project.database.model;
 import jakarta.persistence.*;
 
 import java.util.Objects;
-@Entity
-@Table
 public class Actor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int actorId;
-    @OneToOne
     private Position position;
 
     public Actor() {}

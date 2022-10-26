@@ -32,9 +32,7 @@ public class SimulationRequiredParametersHandler {
         CanvasPointsDistance canvasPointsDistance = getCanvasPointsDistance(actorParameters, visualisationPanel);
 
         actorList = ActorFactory.createActors(actorParameters, canvasPointsDistance);
-//        registerActorsToDatabase();
         relationList = RelationCreator.createRelations(actorParameters, connectionParameters, actorList);
-        //TODO register relations to Database
     }
 
     private CanvasPointsDistance getCanvasPointsDistance(ActorParameters actorsParameters, AnchorPane visualisationPanel) {
@@ -43,15 +41,6 @@ public class SimulationRequiredParametersHandler {
         double distanceX = width / (actorsParameters.getNumberOfColumns() + 1);
         double distanceY = height / (actorsParameters.getNumberOfRows() + 1);
         return new CanvasPointsDistance(distanceX, distanceY);
-    }
-
-    private void registerActorsToDatabase(){
-        ActorRepository actorRepository = (ActorRepository) repositoryManager.getEntityRepositoryByName(RepositoryName.ACTOR);
-        PositionRepository positionRepository = (PositionRepository) repositoryManager.getEntityRepositoryByName(RepositoryName.POSITION);
-
-        actorList.stream()
-                .peek(actor -> positionRepository.registerPosition(actor.getPosition()))
-                .forEach(actorRepository::registerActor);
     }
 
     public List<Actor> getActorList() {
