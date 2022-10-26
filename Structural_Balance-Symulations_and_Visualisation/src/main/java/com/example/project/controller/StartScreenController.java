@@ -1,22 +1,21 @@
 package com.example.project.controller;
 
 import com.example.project.Resource;
-import com.example.project.database.repository.RepositoryManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class StartScreenController implements ControlledScreen {
-    private MainApplicationScreenController parentController;
+    private MainApplicationScreenController screenController = MainApplicationScreenController.getInstance();
 
     @FXML private Button startButton;
 
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
-        parentController = screenParent;
+        screenController = screenParent;
     }
 
-    public void changeScreenToVisualisationGenerator(ActionEvent event) {
-        parentController.setScreen(Resource.VisualisationGenerator);
+    public void changeScreenToVisualisationGenerator() {
+        screenController.loadScreen(Resource.VisualisationGenerator);
+        screenController.setScreen(Resource.VisualisationGenerator);
     }
 }

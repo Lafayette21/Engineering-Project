@@ -1,9 +1,8 @@
-package com.example.project.database.model;
+package com.example.project.visualisation.model;
 
 import java.util.Objects;
 public class Actor {
     private int actorId;
-
     private Position position;
 
     public Actor() {}

@@ -1,9 +1,9 @@
 package com.example.project.visualisation.screen;
 
 import com.example.project.exception.InstantiationNotAllowedException;
-import com.example.project.database.model.Position;
-import com.example.project.database.model.Relation;
-import com.example.project.database.model.RelationType;
+import com.example.project.visualisation.model.Position;
+import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.model.RelationType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;

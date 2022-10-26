@@ -2,9 +2,9 @@ package com.example.project.visualisation.util;
 
 import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.simulation.RelationMatrix;
-import com.example.project.database.model.Actor;
-import com.example.project.database.model.Relation;
-import com.example.project.database.model.RelationType;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
+import com.example.project.visualisation.model.RelationType;
 
 import java.util.ArrayList;
 import java.util.List;

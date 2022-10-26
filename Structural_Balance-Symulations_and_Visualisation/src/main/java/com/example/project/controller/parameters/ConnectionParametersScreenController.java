@@ -1,5 +1,6 @@
 package com.example.project.controller.parameters;
 
+import com.example.project.RepositoryName;
 import com.example.project.Resource;
 import com.example.project.database.model.ConnectionParameters;
 import com.example.project.database.repository.ConnectionParametersRepository;
@@ -47,7 +48,7 @@ public class ConnectionParametersScreenController implements ParameterControlled
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
         ConnectionParametersRepository repository =
-                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ConnectionParameters);
+                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.CONNECTION_PARAMETERS);
 
         setSpinnerValueFactory(connectionExistenceSpinner);
         setSpinnerValueFactory(positiveRatioSpinner);

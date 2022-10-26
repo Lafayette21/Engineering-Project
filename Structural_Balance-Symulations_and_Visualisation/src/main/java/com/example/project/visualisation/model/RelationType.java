@@ -1,4 +1,4 @@
-package com.example.project.database.model;
+package com.example.project.visualisation.model;
 
 import javafx.scene.paint.Color;
 

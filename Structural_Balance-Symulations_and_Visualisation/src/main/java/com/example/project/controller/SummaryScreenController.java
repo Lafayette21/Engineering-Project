@@ -1,8 +1,7 @@
 package com.example.project.controller;
 
-import com.example.project.Resource;
+import com.example.project.RepositoryName;
 import com.example.project.controller.parameters.ParametersScreenController;
-import com.example.project.controller.parameters.ParametersValueHandler;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.model.ConnectionParameters;
 import com.example.project.database.model.SimulationParameters;
@@ -10,10 +9,8 @@ import com.example.project.database.repository.ActorParametersRepository;
 import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
 import com.example.project.database.repository.SimulationParametersRepository;
-import com.example.project.parametervalues.SimulationParametersValues;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import java.net.URL;
@@ -54,7 +51,7 @@ public class SummaryScreenController implements Initializable {
 
     private void updateConnectionParameters(RepositoryManager repositoryManager) {
         ConnectionParametersRepository repository =
-                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ConnectionParameters);
+                (ConnectionParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.CONNECTION_PARAMETERS);
         ConnectionParameters connectionParameters = repository.getConnectionParameters();
 
         String connectionPercentage = String.valueOf(connectionParameters.getConnectionExistencePercentage());
@@ -66,7 +63,7 @@ public class SummaryScreenController implements Initializable {
 
     private void updateActorsParameters(RepositoryManager repositoryManager) {
         ActorParametersRepository repository =
-                (ActorParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.ActorParameters);
+                (ActorParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.ACTOR_PARAMETERS);
         ActorParameters actorParameters = repository.getActorParameters();
 
         String rowNumber = String.valueOf(actorParameters.getNumberOfRows());
@@ -78,7 +75,7 @@ public class SummaryScreenController implements Initializable {
 
     private void updateSimulationParameters(RepositoryManager repositoryManager) {
         SimulationParametersRepository repository =
-                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByResource(Resource.SimulationParameters);
+                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
         SimulationParameters simulationParameters = repository.getSimulationParameters();
 
         String stepNumber = String.valueOf(simulationParameters.getNumberOfSteps());
