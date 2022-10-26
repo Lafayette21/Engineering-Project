@@ -1,6 +1,4 @@
-package com.example.project.database.model;
-
-import jakarta.persistence.*;
+package com.example.project.visualisation.model;
 
 import java.util.Objects;
 

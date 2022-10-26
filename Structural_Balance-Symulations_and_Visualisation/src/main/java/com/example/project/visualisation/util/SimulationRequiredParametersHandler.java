@@ -1,22 +1,21 @@
 package com.example.project.visualisation.util;
 
 import com.example.project.RepositoryName;
-import com.example.project.database.model.Actor;
+import com.example.project.visualisation.model.Actor;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.model.ConnectionParameters;
-import com.example.project.database.model.Relation;
+import com.example.project.visualisation.model.Relation;
 import com.example.project.database.repository.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
 
 public class SimulationRequiredParametersHandler {
-    private final RepositoryManager repositoryManager = RepositoryManager.getInstance();
-
     private List<Actor> actorList;
     private List<Relation> relationList;
 
     public SimulationRequiredParametersHandler(AnchorPane visualisationPanel) {
+        RepositoryManager repositoryManager = RepositoryManager.getInstance();
         setParametersValues(repositoryManager, visualisationPanel);
     }
 

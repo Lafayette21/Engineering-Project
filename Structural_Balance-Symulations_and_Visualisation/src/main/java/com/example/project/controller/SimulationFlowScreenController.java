@@ -1,7 +1,7 @@
 package com.example.project.controller;
 
-import com.example.project.database.model.Actor;
-import com.example.project.database.model.Relation;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.simulation.SimulationFlow;

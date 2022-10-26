@@ -1,7 +1,7 @@
 package com.example.project.visualisation.screen;
 
-import com.example.project.database.model.Actor;
-import com.example.project.database.model.Relation;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
 import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.visualisation.util.SimulationRequiredParametersHandler;
 import javafx.scene.layout.AnchorPane;

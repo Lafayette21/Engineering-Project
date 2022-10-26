@@ -2,10 +2,8 @@ package com.example.project.visualisation.util;
 
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.model.ConnectionParameters;
-import com.example.project.parametervalues.ActorsParametersValues;
-import com.example.project.parametervalues.ConnectionsParametersValues;
-import com.example.project.database.model.Actor;
-import com.example.project.database.model.Relation;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Relation;
 import org.junit.Test;
 
 import java.util.List;

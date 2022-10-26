@@ -1,9 +1,8 @@
 package com.example.project.visualisation.util;
 
 import com.example.project.database.model.ActorParameters;
-import com.example.project.parametervalues.ActorsParametersValues;
-import com.example.project.database.model.Actor;
-import com.example.project.database.model.Position;
+import com.example.project.visualisation.model.Actor;
+import com.example.project.visualisation.model.Position;
 import org.junit.Test;
 
 import java.util.List;

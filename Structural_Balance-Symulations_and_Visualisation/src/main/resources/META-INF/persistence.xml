@@ -4,8 +4,6 @@
         <class>com.example.project.database.model.ActorParameters</class>
         <class>com.example.project.database.model.ConnectionParameters</class>
         <class>com.example.project.database.model.SimulationParameters</class>
-        <class>com.example.project.database.model.Actor</class>
-        <class>com.example.project.database.model.Position</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
