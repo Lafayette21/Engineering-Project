@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class VisualisationScreenController implements ControlledScreen, Initializable {
+public class VisualisationScreenController implements ControlledScreen {
     private MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
     private final RepositoryManager repositoryManager = RepositoryManager.getInstance();
     private SimulationRequiredParametersHandler simulationRequiredParametersHandler;
@@ -70,11 +70,5 @@ public class VisualisationScreenController implements ControlledScreen, Initiali
     @Override
     public void setScreenParent(MainApplicationScreenController screenParent) {
         this.screenParent = screenParent;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.simulationRequiredParametersHandler = new SimulationRequiredParametersHandler(visualisationPanel);
-        VisualisationGenerator.generate(simulationRequiredParametersHandler, visualisationPanel);
     }
 }

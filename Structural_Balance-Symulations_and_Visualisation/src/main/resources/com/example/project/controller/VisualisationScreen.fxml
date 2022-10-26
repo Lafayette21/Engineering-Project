@@ -12,9 +12,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="138.0" layoutY="14.0" maxHeight="400.0" maxWidth="400.0" prefHeight="400.0" prefWidth="400.0">
-         <fx:include fx:id="visualisationPanel" source="VisualisationPanel.fxml" />
-      </AnchorPane>
+      <AnchorPane fx:id="visualisationPanel" layoutX="153.0" layoutY="48.0" maxHeight="400.0" maxWidth="400.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: lightblue;" />
       <Button fx:id="generateButton" layoutX="18.0" layoutY="80.0" mnemonicParsing="false" onAction="#generateVisualisation" prefHeight="27.0" prefWidth="87.0" text="Stwórz nową" />
       <Button fx:id="returnButton" layoutX="18.0" layoutY="133.0" mnemonicParsing="false" onAction="#changeScreenToVisualisationGeneratorScreen" prefHeight="27.0" prefWidth="116.0" text="Zmień parametry" />
       <Button fx:id="startButton" layoutX="18.0" layoutY="187.0" mnemonicParsing="false" onAction="#changeToSimulationFlowScreen" prefHeight="27.0" prefWidth="87.0" text="Rozpocznij" />
