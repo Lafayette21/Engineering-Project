@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        MainApplicationScreenController mainController = new MainApplicationScreenController();
+        MainApplicationScreenController mainController = MainApplicationScreenController.getInstance();
         prepareRepositoryManager(RepositoryManager.getInstance());
         loadScreens(mainController);
 
@@ -19,9 +19,6 @@ public class Main extends Application {
 
     private void loadScreens(MainApplicationScreenController mainController) {
         mainController.loadScreen(Resource.StartWindow);
-        mainController.loadScreen(Resource.VisualisationGenerator);
-        mainController.loadScreen(Resource.Visualisation);
-        mainController.loadScreen(Resource.SimulationFlow);
 
         mainController.setScreen(Resource.StartWindow);
     }
