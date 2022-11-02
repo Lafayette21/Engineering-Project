@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SimulationFlowScreenController implements ControlledScreen, Initializable {
-    private MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
+    private final MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
 
     @FXML
     private AnchorPane visualisationPanel;
@@ -33,11 +33,6 @@ public class SimulationFlowScreenController implements ControlledScreen, Initial
     private Button imageSaveButton;
 
     private SimulationFlow simulationFlow;
-
-    @Override
-    public void setScreenParent(MainApplicationScreenController screenParent) {
-        this.screenParent = screenParent;
-    }
 
     public void nextSimulationStep() {
         try {

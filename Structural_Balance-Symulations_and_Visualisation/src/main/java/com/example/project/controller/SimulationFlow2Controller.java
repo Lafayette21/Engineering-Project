@@ -12,9 +12,4 @@ public class SimulationFlow2Controller implements ControlledScreen{
     private ParameterTabController parameterTabController;
     @FXML
     private StateTabController stateTabController;
-
-    @Override
-    public void setScreenParent(MainApplicationScreenController screenParent) {
-
-    }
 }
