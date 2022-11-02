@@ -22,21 +22,19 @@ public class ContentScreensHandler {
         parameterScreens.put(resource, screen);
     }
 
-    boolean loadParametersScreen(Resource resource) {
+    void loadParametersScreen(Resource resource) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource.getResourceFileName()));
             Parent loadedScreen = myLoader.load();
             ParameterControlledScreen parameterControlledScreen = myLoader.getController();
             parameterControlledScreen.setScreenParent(parametersScreenController);
             addParameterScreen(resource, loadedScreen);
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
         }
     }
 
-    public boolean setContentScreen(Resource resource) {
+    public void setContentScreen(Resource resource) {
         AnchorPane contentScreen = parametersScreenController.getContentScreen();
         if (parameterScreens.get(resource) != null) {
             if (contentScreen == null) {
@@ -48,19 +46,14 @@ public class ContentScreensHandler {
             } else {
                 contentScreen.getChildren().add(parameterScreens.get(resource));
             }
-            return true;
         } else {
             System.out.println("Screen has not been loaded!");
-            return false;
         }
     }
 
-    public boolean unloadScreen(Resource resource) {
+    public void unloadScreen(Resource resource) {
         if (parameterScreens.remove(resource) == null) {
             System.out.println("Screen didn't exist");
-            return false;
-        } else {
-            return true;
         }
     }
 }
