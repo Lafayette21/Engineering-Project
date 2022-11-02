@@ -19,8 +19,6 @@ public class ParametersScreenController implements Initializable {
 
     private final ContentScreensHandler contentScreensHandler = new ContentScreensHandler(this);
 
-    private final ParametersValueHandler parametersValueHandler = new ParametersValueHandler();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createAndPrepareParametersScreenController();
@@ -48,10 +46,6 @@ public class ParametersScreenController implements Initializable {
 
     AnchorPane getContentScreen() {
         return contentScreen;
-    }
-
-    public ParametersValueHandler getParametersValueHandler() {
-        return parametersValueHandler;
     }
 
     private class ContentScreenChangeListener implements ChangeListener<String> {

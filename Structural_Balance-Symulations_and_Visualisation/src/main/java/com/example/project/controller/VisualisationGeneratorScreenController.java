@@ -18,13 +18,8 @@ public class VisualisationGeneratorScreenController extends AnchorPane implement
     private SummaryScreenController summaryScreenController;
 
     public void changeScreenToVisualisationScreen() {
-        sendParameterValueHandler();
         screenController.loadScreen(Resource.Visualisation);
         screenController.setScreen(Resource.Visualisation);
-    }
-
-    private void sendParameterValueHandler() {
-        screenController.setUserData(parametersScreenController.getParametersValueHandler());
     }
 
     @Override
