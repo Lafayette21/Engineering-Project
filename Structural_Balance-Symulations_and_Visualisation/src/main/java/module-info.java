@@ -7,6 +7,7 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires org.kordamp.ikonli.javafx;
     requires java.desktop;
     requires javafx.swing;
+    requires javafx.graphics;
     requires java.sql;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
