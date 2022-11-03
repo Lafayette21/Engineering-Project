@@ -4,20 +4,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="controlPanel" prefHeight="90.0" prefWidth="590.0" style="-fx-background-color: crimson;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.project.controller.simulationflow.ControlPanelController">
+<AnchorPane fx:id="controlPanel" prefHeight="90.0" prefWidth="590.0" style="-fx-background-color: crimson;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.ControlPanelController">
    <children>
-      <Button layoutX="42.0" layoutY="25.0" mnemonicParsing="false" text="Następny krok">
+      <Button fx:id="nextStepButton" layoutX="42.0" layoutY="25.0" mnemonicParsing="false" onAction="#nextStep" text="Następny krok">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="198.0" layoutY="25.0" mnemonicParsing="false" text="Poprzedni krok">
+      <Button fx:id="previousStepButton" layoutX="198.0" layoutY="25.0" mnemonicParsing="false" onAction="#previousStep" text="Poprzedni krok">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="366.0" layoutY="25.0" mnemonicParsing="false" text="Do końca">
+      <Button fx:id="skipToEndButton" layoutX="366.0" layoutY="25.0" mnemonicParsing="false" onAction="#skipToTheEnd" text="Do końca">
          <font>
             <Font size="18.0" />
          </font>
