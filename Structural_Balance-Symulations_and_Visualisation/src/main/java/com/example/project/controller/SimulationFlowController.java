@@ -4,18 +4,14 @@ import com.example.project.controller.simulationflow.ChartTabController;
 import com.example.project.controller.simulationflow.ControlPanelController;
 import com.example.project.controller.simulationflow.NetTabController;
 import com.example.project.controller.simulationflow.ParameterTabController;
-import com.example.project.database.model.SimulationParameters;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
-import com.example.project.visualisation.model.Actor;
-import com.example.project.visualisation.model.Relation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class SimulationFlow2Controller implements ControlledScreen, Initializable {
+public class SimulationFlowController implements ControlledScreen, Initializable {
     private final MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
 
     @FXML
@@ -27,12 +23,26 @@ public class SimulationFlow2Controller implements ControlledScreen, Initializabl
     @FXML
     private ControlPanelController controlPanelController;
 
+    public void nextStep(){
+        netTabController.nextSimulationStep();
+    }
+
+    public void previousStep(){
+        netTabController.previousSimulationStep();
+    }
+
+    public void skipToTheEnd(){
+        netTabController.skipToEnd();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        prepareInitialSimulationVisualisation();
+        controlPanelController.injectSimulationFlowController(this);
+    }
+
+    private void prepareInitialSimulationVisualisation() {
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
-        List<Actor> actorList = requiredValuesDTO.actorList();
-        List<Relation> relationList = requiredValuesDTO.relationList();
-        SimulationParameters parameters = requiredValuesDTO.simulationParameters();
-        netTabController.prepareInitialVisualisation(actorList, relationList, parameters);
+        netTabController.prepareInitialVisualisation(requiredValuesDTO);
     }
 }
