@@ -12,14 +12,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         MainApplicationScreenController mainController = MainApplicationScreenController.getInstance();
         prepareRepositoryManager(RepositoryManager.getInstance());
-        loadScreens(mainController);
+        loadStartScreen(mainController);
 
         prepareStartScreen(primaryStage, mainController);
     }
 
-    private void loadScreens(MainApplicationScreenController mainController) {
+    private void loadStartScreen(MainApplicationScreenController mainController) {
         mainController.loadScreen(Resource.StartWindow);
-
         mainController.setScreen(Resource.StartWindow);
     }
 
@@ -32,7 +31,7 @@ public class Main extends Application {
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
         Group root = new Group();
         root.getChildren().addAll(mainController);
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,600,520);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
