@@ -1,57 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0"
+            prefWidth="679.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.project.controller.SimulationFlow2Controller">
     <children>
-        <SplitPane dividerPositions="0.5" layoutX="53.0" layoutY="25.0" prefHeight="420.0" prefWidth="900.0">
-            <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                    <children>
-                        <AnchorPane fx:id="visualisationPanel" layoutX="23.0" layoutY="9.0" prefHeight="400.0"
-                                    prefWidth="400.0" style="-fx-background-color: lightblue;"/>
-                    </children>
-                </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="526.0">
-                    <children>
-                        <LineChart layoutX="23.0" layoutY="9.0" prefHeight="400.0" prefWidth="400.0">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM"/>
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis side="LEFT"/>
-                            </yAxis>
-                        </LineChart>
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
-        <TabPane layoutX="53.0" layoutY="451.0" prefHeight="122.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="590.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Działania">
+                <Tab text="Sieć">
                     <content>
-                        <fx:include fx:id="actionTab" source="simulationflow/ActionTab.fxml"/>
+                        <fx:include fx:id="netTab" source="simulationflow/NetTab.fxml"/>
                     </content>
                 </Tab>
-                <Tab text="Parametry">
+                <Tab text="Wykres">
+                    <content>
+                        <fx:include fx:id="chartTab" source="simulationflow/ChartTab.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Parametr">
                     <content>
                         <fx:include fx:id="parameterTab" source="simulationflow/ParameterTab.fxml"/>
                     </content>
                 </Tab>
-                <Tab text="Stan">
-                    <content>
-                        <fx:include fx:id="stateTab" source="simulationflow/StateTab.fxml"/>
-                    </content>
-                </Tab>
             </tabs>
         </TabPane>
+        <AnchorPane layoutX="14.0" layoutY="425.0" prefHeight="91.0" prefWidth="590.0">
+            <fx:include fx:id="controlPanel" source="simulationflow/ControlPanel.fxml"/>
+        </AnchorPane>
     </children>
 </AnchorPane>
