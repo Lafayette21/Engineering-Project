@@ -1,6 +1,5 @@
 package com.example.project.simulation;
 
-import com.example.project.database.model.SimulationParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 

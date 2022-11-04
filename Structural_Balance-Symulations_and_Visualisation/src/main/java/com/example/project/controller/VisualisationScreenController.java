@@ -1,13 +1,10 @@
 package com.example.project.controller;
 
-import com.example.project.RepositoryName;
 import com.example.project.Resource;
+import com.example.project.database.repository.RepositoryManager;
+import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
-import com.example.project.database.model.SimulationParameters;
-import com.example.project.database.repository.RepositoryManager;
-import com.example.project.database.repository.SimulationParametersRepository;
-import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.visualisation.screen.VisualisationGenerator;
 import com.example.project.visualisation.util.SimulationRequiredParametersHandler;
 import javafx.fxml.FXML;
