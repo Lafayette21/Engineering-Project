@@ -32,17 +32,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     @FXML
     private Button updateButton;
 
-    public void updateParameterValues() {
-        ParametersValueHandler valueHandler = screenParent.getParametersValueHandler();
-        int rowNumber = rowSpinner.getValue();
-        int columnNumber = columnSpinner.getValue();
-
-        ActorsParametersValues parametersValues = new ActorsParametersValues(rowNumber, columnNumber);
-        valueHandler.updateValues(Resource.ActorParameters, parametersValues);
-
-        updateActorsNumberTextField(rowNumber, columnNumber);
-    }
-
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {
         this.screenParent = screenParent;

@@ -17,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.List;
 
 public class VisualisationScreenController implements ControlledScreen {
-    private MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
+    private final MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
     private final RepositoryManager repositoryManager = RepositoryManager.getInstance();
     private SimulationRequiredParametersHandler simulationRequiredParametersHandler;
 
@@ -58,14 +58,6 @@ public class VisualisationScreenController implements ControlledScreen {
     private SimulationRequiredValuesDTO getSimulationRequiredValuesDTO() {
         List<Actor> actorList = simulationRequiredParametersHandler.getActorList();
         List<Relation> relationList = simulationRequiredParametersHandler.getRelationList();
-        SimulationParametersRepository simulationParametersRepository =
-                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
-        SimulationParameters simulationParameters = simulationParametersRepository.getSimulationParameters();
-        return new SimulationRequiredValuesDTO(actorList, relationList, simulationParameters);
-    }
-
-    @Override
-    public void setScreenParent(MainApplicationScreenController screenParent) {
-        this.screenParent = screenParent;
+        return new SimulationRequiredValuesDTO(actorList, relationList);
     }
 }

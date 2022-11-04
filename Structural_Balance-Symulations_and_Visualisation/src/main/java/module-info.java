@@ -7,6 +7,7 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires org.kordamp.ikonli.javafx;
     requires java.desktop;
     requires javafx.swing;
+    requires javafx.graphics;
     requires java.sql;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
@@ -17,6 +18,8 @@ module com.example.structural_balancesymulations_and_visualisation {
     opens com.example.project.controller to javafx.fxml;
     exports com.example.project.controller.parameters;
     opens com.example.project.controller.parameters to javafx.fxml;
+    exports com.example.project.controller.simulationflow;
+    opens com.example.project.controller.simulationflow to javafx.fxml;
     exports com.example.project.database.model;
     opens com.example.project.database.model;
     exports com.example.project.visualisation.model;

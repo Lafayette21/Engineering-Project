@@ -29,13 +29,6 @@ public class SimulationParametersScreenController implements ParameterControlled
         this.screenParent = screenParent;
     }
 
-    public void updateParametersValues() {
-        ParametersValueHandler valueHandler = screenParent.getParametersValueHandler();
-        SimulationParametersValues simulationParametersValues =
-                new SimulationParametersValues(stepNumberSpinner.getValue(), annealingSpinner.getValue());
-        valueHandler.updateValues(Resource.SimulationParameters, simulationParametersValues);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();

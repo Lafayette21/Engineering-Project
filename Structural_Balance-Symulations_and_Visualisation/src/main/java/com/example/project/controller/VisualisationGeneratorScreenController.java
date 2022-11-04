@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class VisualisationGeneratorScreenController extends AnchorPane implements ControlledScreen, Initializable {
-    private MainApplicationScreenController screenController = MainApplicationScreenController.getInstance();
+    private final MainApplicationScreenController screenController = MainApplicationScreenController.getInstance();
 
     @FXML
     private ParametersScreenController parametersScreenController;
@@ -18,18 +18,8 @@ public class VisualisationGeneratorScreenController extends AnchorPane implement
     private SummaryScreenController summaryScreenController;
 
     public void changeScreenToVisualisationScreen() {
-        sendParameterValueHandler();
         screenController.loadScreen(Resource.Visualisation);
         screenController.setScreen(Resource.Visualisation);
-    }
-
-    private void sendParameterValueHandler() {
-        screenController.setUserData(parametersScreenController.getParametersValueHandler());
-    }
-
-    @Override
-    public void setScreenParent(MainApplicationScreenController screenParent) {
-        screenController = screenParent;
     }
 
     @Override

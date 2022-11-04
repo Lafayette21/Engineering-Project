@@ -12,14 +12,14 @@ public class SimulationResolver {
     private static final int POSITIVE_RELATION_ANNOTATION = 1;
     private static final int NEGATIVE_RELATION_ANNOTATION = -1;
 
-    private final double annealingParameter;
+    private final double temperature;
     private final int numberOfActors;
 
     private ConnectionMatrix connectionMatrix;
     private RelationMatrix relationMatrix;
 
-    public SimulationResolver(double annealingParameter, int numberOfActors) {
-        this.annealingParameter = annealingParameter;
+    public SimulationResolver(double temperature, int numberOfActors) {
+        this.temperature = temperature;
         this.numberOfActors = numberOfActors;
     }
 
@@ -70,6 +70,6 @@ public class SimulationResolver {
                     connectionMatrix.get(k, secondActorId) *
                     relationMatrix.get(secondActorId, k);
         }
-        return 1 / (1 + Math.exp(-2 * ksi / annealingParameter));
+        return 1 / (1 + Math.exp(-2 * ksi / temperature));
     }
 }

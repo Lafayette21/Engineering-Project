@@ -37,13 +37,6 @@ public class ConnectionParametersScreenController implements ParameterControlled
         this.screenParent = screenParent;
     }
 
-    public void updateParametersValues() {
-        ParametersValueHandler valueHandler = screenParent.getParametersValueHandler();
-        ConnectionsParametersValues connectionsParametersValues =
-                new ConnectionsParametersValues(connectionExistenceSpinner.getValue(), positiveRatioSpinner.getValue());
-        valueHandler.updateValues(Resource.ConnectionParameters, connectionsParametersValues);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
