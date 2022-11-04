@@ -23,15 +23,15 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     @FXML
     private ControlPanelController controlPanelController;
 
-    public void nextStep(){
+    public void nextStep() {
         netTabController.nextSimulationStep();
     }
 
-    public void previousStep(){
+    public void previousStep() {
         netTabController.previousSimulationStep();
     }
 
-    public void skipToTheEnd(){
+    public void skipToTheEnd() {
         netTabController.skipToEnd();
     }
 

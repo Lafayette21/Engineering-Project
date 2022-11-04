@@ -4,11 +4,9 @@ import com.example.project.RepositoryName;
 import com.example.project.controller.parameters.ParametersScreenController;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.model.ConnectionParameters;
-import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.ActorParametersRepository;
 import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
-import com.example.project.database.repository.SimulationParametersRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -28,10 +26,6 @@ public class SummaryScreenController implements Initializable {
     private Label rowNumberLabel;
     @FXML
     private Label columnNumberLabel;
-    @FXML
-    private Label stepNumberLabel;
-    @FXML
-    private Label annealingLabel;
 
     public void injectParametersScreenController(ParametersScreenController parametersScreenController) {
         this.parametersScreenController = parametersScreenController;
@@ -46,7 +40,6 @@ public class SummaryScreenController implements Initializable {
 
         updateConnectionParameters(repositoryManager);
         updateActorsParameters(repositoryManager);
-        updateSimulationParameters(repositoryManager);
     }
 
     private void updateConnectionParameters(RepositoryManager repositoryManager) {
@@ -73,18 +66,6 @@ public class SummaryScreenController implements Initializable {
         columnNumberLabel.setText(columnNumber);
     }
 
-    private void updateSimulationParameters(RepositoryManager repositoryManager) {
-        SimulationParametersRepository repository =
-                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
-        SimulationParameters simulationParameters = repository.getSimulationParameters();
-
-        String stepNumber = String.valueOf(simulationParameters.getNumberOfSteps());
-        String annealing = String.valueOf(simulationParameters.getAnnealingParameter());
-
-        stepNumberLabel.setText(stepNumber);
-        annealingLabel.setText(annealing);
-    }
-
     public void generateSimulation() {
         screenParent.changeScreenToVisualisationScreen();
     }
@@ -94,6 +75,5 @@ public class SummaryScreenController implements Initializable {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
         updateActorsParameters(repositoryManager);
         updateConnectionParameters(repositoryManager);
-        updateSimulationParameters(repositoryManager);
     }
 }

@@ -32,7 +32,6 @@ public class ParametersScreenController implements Initializable {
     private void createAndPrepareParametersScreenController() {
         contentScreensHandler.loadParametersScreen(Resource.ActorParameters);
         contentScreensHandler.loadParametersScreen(Resource.ConnectionParameters);
-        contentScreensHandler.loadParametersScreen(Resource.SimulationParameters);
 
         contentScreensHandler.setContentScreen(Resource.ActorParameters);
     }
@@ -40,8 +39,7 @@ public class ParametersScreenController implements Initializable {
     private void createParametersLisView() {
         parametersListView.getItems()
                 .addAll(Resource.ActorParameters.getResourceName(),
-                        Resource.ConnectionParameters.getResourceName(),
-                        Resource.SimulationParameters.getResourceName());
+                        Resource.ConnectionParameters.getResourceName());
     }
 
     AnchorPane getContentScreen() {
