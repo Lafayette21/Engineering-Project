@@ -58,9 +58,6 @@ public class VisualisationScreenController implements ControlledScreen {
     private SimulationRequiredValuesDTO getSimulationRequiredValuesDTO() {
         List<Actor> actorList = simulationRequiredParametersHandler.getActorList();
         List<Relation> relationList = simulationRequiredParametersHandler.getRelationList();
-        SimulationParametersRepository simulationParametersRepository =
-                (SimulationParametersRepository) repositoryManager.getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
-        SimulationParameters simulationParameters = simulationParametersRepository.getSimulationParameters();
-        return new SimulationRequiredValuesDTO(actorList, relationList, simulationParameters);
+        return new SimulationRequiredValuesDTO(actorList, relationList);
     }
 }

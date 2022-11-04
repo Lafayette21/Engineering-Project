@@ -1,6 +1,9 @@
 package com.example.project.controller.simulationflow;
 
-import com.example.project.database.model.SimulationParameters;
+import com.example.project.RepositoryName;
+import com.example.project.database.model.NewSimulationParameters;
+import com.example.project.database.repository.NewSimulationParametersRepository;
+import com.example.project.database.repository.RepositoryManager;
 import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
@@ -14,6 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import java.util.List;
 
 public class NetTabController {
+    private final NewSimulationParametersRepository repository =
+            (NewSimulationParametersRepository) RepositoryManager.getInstance().getParameterRepositoryByName(RepositoryName.NEW_SIMULATION_PARAMETERS);
+
     @FXML
     private StatePanelController statePanelController;
 
@@ -25,7 +31,7 @@ public class NetTabController {
     public void prepareInitialVisualisation(SimulationRequiredValuesDTO requiredValues) {
         List<Actor> actorList = requiredValues.actorList();
         List<Relation> relationList = requiredValues.relationList();
-        SimulationParameters parameters = requiredValues.simulationParameters();
+        NewSimulationParameters parameters = repository.getSimulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, parameters);
         CanvasDrawer.draw(visualisationPanel, actorList, relationList);
     }

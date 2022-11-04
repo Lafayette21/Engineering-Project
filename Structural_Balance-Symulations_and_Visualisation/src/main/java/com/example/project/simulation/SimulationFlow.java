@@ -1,5 +1,6 @@
 package com.example.project.simulation;
 
+import com.example.project.database.model.NewSimulationParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.database.model.SimulationParameters;
@@ -18,23 +19,23 @@ public class SimulationFlow {
 
     private final Map<Integer, List<Relation>> simulationMap = new HashMap<>();
 
-    private final SimulationParameters simulationParameters;
+    private final NewSimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
     private Integer currentStepNumber = 1;
     private SimulationResolver simulationResolver;
 
-    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
+    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, NewSimulationParameters simulationParameters) {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
         this.simulationParameters = simulationParameters;
         setSimulationResolver(actorList, simulationParameters);
     }
 
-    private void setSimulationResolver(List<Actor> actorList, SimulationParameters simulationParametersValues) {
-        double annealingParameter = simulationParametersValues.getAnnealingParameter();
+    private void setSimulationResolver(List<Actor> actorList, NewSimulationParameters simulationParametersValues) {
+        double temperature = simulationParametersValues.getTemperature();
         int numberOfActors = actorList.size();
-        simulationResolver = new SimulationResolver(annealingParameter, numberOfActors);
+        simulationResolver = new SimulationResolver(temperature, numberOfActors);
     }
 
     public void nextStep(AnchorPane visualisationPanel) {
