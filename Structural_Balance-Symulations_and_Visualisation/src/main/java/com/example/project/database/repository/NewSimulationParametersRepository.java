@@ -1,7 +1,6 @@
 package com.example.project.database.repository;
 
 import com.example.project.database.model.NewSimulationParameters;
-import com.example.project.database.model.SimulationParameters;
 import jakarta.persistence.Query;
 
 public class NewSimulationParametersRepository extends ParameterRepository{
@@ -15,10 +14,10 @@ public class NewSimulationParametersRepository extends ParameterRepository{
         entityTransaction.commit();
     }
 
-    public SimulationParameters getSimulationParameters() {
+    public NewSimulationParameters getSimulationParameters() {
         Query query = entityManager.createQuery("select sp from NewSimulationParameters sp where sp.simulationParametersId ="
                 + SINGLE_ELEMENT_ID);
-        return (SimulationParameters) query.getSingleResult();
+        return (NewSimulationParameters) query.getSingleResult();
     }
 
     public void updateNumberOfSteps(Integer newNumberOfSteps) {

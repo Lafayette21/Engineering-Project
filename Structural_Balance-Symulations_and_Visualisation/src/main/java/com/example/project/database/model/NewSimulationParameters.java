@@ -18,8 +18,8 @@ public class NewSimulationParameters {
     public NewSimulationParameters() {
     }
 
-    public NewSimulationParameters(Integer simulationParametersId, double temperature, int time) {
-        this.simulationParametersId = simulationParametersId;
+    public NewSimulationParameters(int numberOfSteps, double temperature, int time) {
+        this.numberOfSteps = numberOfSteps;
         this.temperature = temperature;
         this.time = time;
     }
