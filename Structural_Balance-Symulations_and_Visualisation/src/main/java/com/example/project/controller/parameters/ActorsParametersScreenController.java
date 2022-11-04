@@ -1,16 +1,16 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.RepositoryName;
-import com.example.project.Resource;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.repository.ActorParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
-import com.example.project.parametervalues.ActorsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,8 +29,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private Spinner<Integer> rowSpinner;
     @FXML
     private Spinner<Integer> columnSpinner;
-    @FXML
-    private Button updateButton;
 
     @Override
     public void setScreenParent(ParametersScreenController screenParent) {

@@ -1,16 +1,13 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.RepositoryName;
-import com.example.project.Resource;
 import com.example.project.database.model.ConnectionParameters;
 import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
-import com.example.project.parametervalues.ConnectionsParametersValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 
@@ -27,8 +24,6 @@ public class ConnectionParametersScreenController implements ParameterControlled
     private Spinner<Integer> connectionExistenceSpinner;
     @FXML
     private Spinner<Integer> positiveRatioSpinner;
-    @FXML
-    private Button updateButton;
 
     private ParametersScreenController screenParent;
 

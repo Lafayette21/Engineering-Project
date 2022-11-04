@@ -26,10 +26,6 @@ public class SummaryScreenController implements Initializable {
     private Label rowNumberLabel;
     @FXML
     private Label columnNumberLabel;
-    @FXML
-    private Label stepNumberLabel;
-    @FXML
-    private Label annealingLabel;
 
     public void injectParametersScreenController(ParametersScreenController parametersScreenController) {
         this.parametersScreenController = parametersScreenController;

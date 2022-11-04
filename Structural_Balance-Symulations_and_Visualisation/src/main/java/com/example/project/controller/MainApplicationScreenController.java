@@ -22,8 +22,8 @@ public class MainApplicationScreenController extends AnchorPane {
         this.setWidth(WIDTH);
     }
 
-    public static MainApplicationScreenController getInstance(){
-        if (instance == null){
+    public static MainApplicationScreenController getInstance() {
+        if (instance == null) {
             instance = new MainApplicationScreenController();
         }
         return instance;

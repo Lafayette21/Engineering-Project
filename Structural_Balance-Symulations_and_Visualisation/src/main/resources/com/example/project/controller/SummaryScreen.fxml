@@ -16,69 +16,44 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="72.0" layoutY="109.0" text="Połączenia">
+      <Label layoutX="106.0" layoutY="109.0" text="Połączenia">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="148.0" text="Procent połączeń">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="18.0" layoutY="150.0" text="Procent połączeń">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="18.0" layoutY="187.0" text="Procent + do - ">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="connectionPercentageLabel" layoutX="164.0" layoutY="150.0" text="0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="posToNegPercentageLabel" layoutX="164.0" layoutY="187.0" text="0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="443.0" layoutY="109.0" text="Symulajca">
+      <Label layoutX="38.0" layoutY="200.0" text="Procent + do - ">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="399.0" layoutY="150.0" text="Ilość kroków:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="stepNumberLabel" layoutX="534.0" layoutY="150.0" text="50">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="annealingLabel" layoutX="534.0" layoutY="187.0" text="0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="403.0" layoutY="187.0" text="Wygaszanie">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="266.0" layoutY="109.0" text="Aktorzy">
+      <Label fx:id="connectionPercentageLabel" layoutX="211.0" layoutY="148.0" text="0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="228.0" layoutY="150.0" text="Ilość rzędów">
+      <Label fx:id="posToNegPercentageLabel" layoutX="211.0" layoutY="200.0" text="0">
          <font>
-            <Font size="16.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="rowNumberLabel" layoutX="342.0" layoutY="150.0" text="0">
+      <Label layoutX="390.0" layoutY="109.0" text="Aktorzy">
          <font>
-            <Font size="16.0" />
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="335.0" layoutY="150.0" text="Ilość rzędów">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="rowNumberLabel" layoutX="475.0" layoutY="150.0" text="0">
+         <font>
+            <Font size="20.0" />
          </font>
       </Label>
       <Button fx:id="genetateSimulaitionButton" layoutX="217.0" layoutY="301.0" mnemonicParsing="false" onAction="#generateSimulation" text="Stwórz wizualizację">
@@ -86,14 +61,14 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="228.0" layoutY="187.0" text="Ilość kolumn">
+      <Label layoutX="334.0" layoutY="202.0" text="Ilość kolumn">
          <font>
-            <Font size="16.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="columnNumberLabel" layoutX="342.0" layoutY="187.0" text="0">
+      <Label fx:id="columnNumberLabel" layoutX="475.0" layoutY="202.0" text="0">
          <font>
-            <Font size="16.0" />
+            <Font size="20.0" />
          </font>
       </Label>
    </children>
