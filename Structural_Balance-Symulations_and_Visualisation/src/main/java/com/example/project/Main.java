@@ -26,6 +26,7 @@ public class Main extends Application {
         repositoryManager.registerParameterRepository(RepositoryName.ACTOR_PARAMETERS, new ActorParametersRepository());
         repositoryManager.registerParameterRepository(RepositoryName.CONNECTION_PARAMETERS, new ConnectionParametersRepository());
         repositoryManager.registerParameterRepository(RepositoryName.SIMULATION_PARAMETERS, new SimulationParametersRepository());
+        repositoryManager.registerParameterRepository(RepositoryName.NEW_SIMULATION_PARAMETERS, new NewSimulationParametersRepository());
     }
 
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
