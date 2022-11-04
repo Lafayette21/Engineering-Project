@@ -1,6 +1,11 @@
 package com.example.project.controller.simulationflow;
 
+import com.example.project.RepositoryName;
+import com.example.project.database.model.NewSimulationParameters;
+import com.example.project.database.repository.NewSimulationParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
@@ -23,10 +28,20 @@ public class ParameterTabController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
+        NewSimulationParametersRepository repository = (NewSimulationParametersRepository) repositoryManager
+                        .getParameterRepositoryByName(RepositoryName.NEW_SIMULATION_PARAMETERS);
 
         setStepNumberSpinnerValueFactory();
         setTimeSpinnerValueFactory();
         setTemperatureSpinnerValueFactory();
+
+        NewSimulationParameters initialSimulationParameters =
+                new NewSimulationParameters(stepNumberSpinner.getValue(), temperatureSpinner.getValue(), timeSpinner.getValue());
+        repository.registerSimulationParameters(initialSimulationParameters);
+
+        stepNumberSpinner.valueProperty().addListener(new StepNumberSpinnerChangeListener(repository));
+        temperatureSpinner.valueProperty().addListener(new TemperatureSpinnerChangeListener(repository));
+        timeSpinner.valueProperty().addListener(new TimeSpinnerChangeListener(repository));
     }
 
     private void setStepNumberSpinnerValueFactory() {
@@ -58,4 +73,28 @@ public class ParameterTabController implements Initializable {
                 .DoubleSpinnerValueFactory(minSpinnerValue, maxSpinnerValue, initialSpinnerValue, stepSpinnerValue);
         temperatureSpinner.setValueFactory(valueFactory);
     }
+
+    private record StepNumberSpinnerChangeListener(NewSimulationParametersRepository repository)
+            implements ChangeListener<Integer> {
+        @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+                repository.updateNumberOfSteps(newValue);
+            }
+        }
+
+    private record TemperatureSpinnerChangeListener(NewSimulationParametersRepository repository)
+            implements ChangeListener<Double> {
+        @Override
+            public void changed(ObservableValue<? extends Double> observableValue, Double oldValue, Double newValue) {
+                repository.updateTemperature(newValue);
+            }
+        }
+
+    private record TimeSpinnerChangeListener(NewSimulationParametersRepository repository)
+            implements ChangeListener<Integer> {
+        @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+                repository.updateTime(newValue);
+            }
+        }
 }
