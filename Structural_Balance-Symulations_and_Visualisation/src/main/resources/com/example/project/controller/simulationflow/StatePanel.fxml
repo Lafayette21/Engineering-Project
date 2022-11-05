@@ -6,19 +6,39 @@
 
 <AnchorPane fx:id="statePanel" prefHeight="390.0" prefWidth="200.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.StatePanelController">
     <children>
-        <Label layoutX="16.0" layoutY="14.0" text="Obecny stan parametrów" textFill="WHITE">
+        <Label layoutX="13.0" layoutY="14.0" text="Stan parametrów" textFill="WHITE">
             <font>
-                <Font size="15.0" />
+                <Font size="23.0" />
             </font>
         </Label>
-      <Label layoutX="16.0" layoutY="49.0" text="Obecny krok" textFill="#f4ebeb">
+      <Label layoutX="13.0" layoutY="59.0" text="Krok" textFill="#f4ebeb">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="stepNumberLabel" layoutX="134.0" layoutY="49.0" text="0">
+      <Label fx:id="stepNumberLabel" layoutX="133.0" layoutY="61.0" text="0">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="115.0" text="Energia" textFill="#f4ebeb">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="energyLabel" layoutX="133.0" layoutY="117.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="180.0" text="Średnia" textFill="#f4ebeb">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="averageLabel" layoutX="133.0" layoutY="182.0" text="0">
+         <font>
+            <Font size="18.0" />
          </font>
       </Label>
     </children>

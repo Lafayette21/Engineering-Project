@@ -31,7 +31,7 @@ public class Main extends Application {
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
         Group root = new Group();
         root.getChildren().addAll(mainController);
-        Scene scene = new Scene(root,600,520);
+        Scene scene = new Scene(root,610,520);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
