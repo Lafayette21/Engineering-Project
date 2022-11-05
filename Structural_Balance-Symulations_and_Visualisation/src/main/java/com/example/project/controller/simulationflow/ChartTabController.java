@@ -3,7 +3,7 @@ package com.example.project.controller.simulationflow;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 
-public class ChartTabController implements TabController {
+public class ChartTabController implements TabController, StateControllable {
     @FXML
     public LineChart<Number, Number> stepToEnergyChart;
 
@@ -24,5 +24,10 @@ public class ChartTabController implements TabController {
     @Override
     public void skipToEnd() {
 
+    }
+
+    @Override
+    public StatePanelController getStatePanelController() {
+        return statePanelController;
     }
 }

@@ -14,7 +14,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ParameterTabController implements Initializable, TabController {
+public class ParameterTabController implements Initializable, TabController, StateControllable {
     @FXML
     private StatePanelController statePanelController;
 
@@ -87,6 +87,11 @@ public class ParameterTabController implements Initializable, TabController {
     @Override
     public void skipToEnd() {
 
+    }
+
+    @Override
+    public StatePanelController getStatePanelController() {
+        return statePanelController;
     }
 
     private record StepNumberSpinnerChangeListener(NewSimulationParametersRepository repository)

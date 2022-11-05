@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
 
-public class NetTabController implements TabController {
+public class NetTabController implements TabController, StateControllable {
     private final NewSimulationParametersRepository repository = (NewSimulationParametersRepository) RepositoryManager
             .getInstance().getParameterRepositoryByName(RepositoryName.NEW_SIMULATION_PARAMETERS);
 
@@ -33,7 +33,6 @@ public class NetTabController implements TabController {
 
     @Override
     public void nextSimulationStep() {
-        updateCurrentStepNumber();
         try {
             simulationFlow.nextStep(visualisationPanel);
         } catch (SimulationBalanceAchievedException e) {
@@ -52,11 +51,11 @@ public class NetTabController implements TabController {
 
     @Override
     public void previousSimulationStep() {
-        updateCurrentStepNumber();
         simulationFlow.previousStep(visualisationPanel);
     }
 
-    private void updateCurrentStepNumber() {
-        statePanelController.updateStepNumber(simulationFlow.getCurrentStepNumber());
+    @Override
+    public StatePanelController getStatePanelController() {
+        return statePanelController;
     }
 }
