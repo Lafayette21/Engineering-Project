@@ -93,4 +93,12 @@ public class SimulationFlow {
     public Integer getCurrentStepNumber() {
         return currentStepNumber;
     }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public List<Relation> getCurrentRelationList() {
+        return currentRelationList;
+    }
 }
