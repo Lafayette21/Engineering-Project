@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <SplitPane fx:id="chartTab" dividerPositions="0.66" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.ChartTabController">
     <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: royalblue;" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: royalblue;">
+         <children>
+            <LineChart fx:id="stepToEnergyChart" prefHeight="388.0" prefWidth="385.0" style="-fx-background-color: white;" title="Enregia od kroku">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children></AnchorPane>
       <fx:include fx:id="statePanel" source="StatePanel.fxml" />
     </items>
 </SplitPane>
