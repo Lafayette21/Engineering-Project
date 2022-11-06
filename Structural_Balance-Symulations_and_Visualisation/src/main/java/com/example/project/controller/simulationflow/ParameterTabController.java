@@ -75,17 +75,17 @@ public class ParameterTabController implements Initializable, TabController, Sta
     }
 
     @Override
-    public void nextSimulationStep() {
+    public void nextSimulationStep(SimulationParameters simulationParameters) {
 
     }
 
     @Override
-    public void previousSimulationStep() {
+    public void previousSimulationStep(SimulationParameters simulationParameters) {
 
     }
 
     @Override
-    public void skipToEnd() {
+    public void skipToEnd(SimulationParameters simulationParameters) {
 
     }
 

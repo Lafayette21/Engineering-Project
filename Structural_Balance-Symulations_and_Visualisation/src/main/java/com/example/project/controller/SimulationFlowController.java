@@ -33,15 +33,28 @@ public class SimulationFlowController implements ControlledScreen, Initializable
 
 
     public void nextStep() {
-        getAllControllers().forEach(TabController::nextSimulationStep);
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
+        getAllControllers().forEach(tabController -> tabController.nextSimulationStep(simulationParameters));
+        updateState();
     }
 
     public void previousStep() {
-        netTabController.previousSimulationStep();
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
+        netTabController.previousSimulationStep(simulationParameters);
+        updateState();
     }
 
     public void skipToTheEnd() {
-        netTabController.skipToEnd();
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
+        netTabController.skipToEnd(simulationParameters);
+        updateState();
+    }
+
+    private void updateState() {
+        getAllStateControllableControllers()
+                .stream()
+                .map(StateControllable::getStatePanelController)
+                .forEach(statePanelController -> statePanelController.updateStateOfSimulation(simulationFlow));
     }
 
     @Override
@@ -60,6 +73,10 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     }
 
     private List<TabController> getAllControllers() {
+        return List.of(this.netTabController, this.chartTabController, this.parameterTabController);
+    }
+
+    private List<StateControllable> getAllStateControllableControllers(){
         return List.of(this.netTabController, this.chartTabController, this.parameterTabController);
     }
 }

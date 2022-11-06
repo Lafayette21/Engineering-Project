@@ -1,5 +1,6 @@
 package com.example.project.controller.simulationflow;
 
+import com.example.project.database.model.SimulationParameters;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 
@@ -12,17 +13,17 @@ public class ChartTabController implements TabController, StateControllable {
 
 
     @Override
-    public void nextSimulationStep() {
+    public void nextSimulationStep(SimulationParameters simulationParameters) {
 
     }
 
     @Override
-    public void previousSimulationStep() {
+    public void previousSimulationStep(SimulationParameters simulationParameters) {
 
     }
 
     @Override
-    public void skipToEnd() {
+    public void skipToEnd(SimulationParameters simulationParameters) {
 
     }
 

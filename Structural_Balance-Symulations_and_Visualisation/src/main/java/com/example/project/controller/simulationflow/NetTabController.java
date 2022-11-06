@@ -33,26 +33,26 @@ public class NetTabController implements TabController, StateControllable {
     }
 
     @Override
-    public void nextSimulationStep() {
+    public void nextSimulationStep(SimulationParameters simulationParameters) {
         try {
-            simulationFlow.nextStep(visualisationPanel);
+            simulationFlow.nextStep(visualisationPanel, simulationParameters);
         } catch (SimulationBalanceAchievedException e) {
             new SimulationBalanceAlert().showAndWait();
         }
     }
 
     @Override
-    public void skipToEnd() {
-        try {
-            simulationFlow.skipToEnd(visualisationPanel);
-        } catch (SimulationBalanceAchievedException e) {
-            new SimulationBalanceAlert().showAndWait();
-        }
-    }
-
-    @Override
-    public void previousSimulationStep() {
+    public void previousSimulationStep(SimulationParameters simulationParameters) {
         simulationFlow.previousStep(visualisationPanel);
+    }
+
+    @Override
+    public void skipToEnd(SimulationParameters simulationParameters) {
+        try {
+            simulationFlow.skipToEnd(visualisationPanel, simulationParameters);
+        } catch (SimulationBalanceAchievedException e) {
+            new SimulationBalanceAlert().showAndWait();
+        }
     }
 
     @Override

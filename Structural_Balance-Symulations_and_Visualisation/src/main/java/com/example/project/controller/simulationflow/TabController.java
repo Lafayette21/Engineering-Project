@@ -1,9 +1,11 @@
 package com.example.project.controller.simulationflow;
 
+import com.example.project.database.model.SimulationParameters;
+
 public interface TabController {
-    void nextSimulationStep();
+    void nextSimulationStep(SimulationParameters simulationParameters);
 
-    void previousSimulationStep();
+    void previousSimulationStep(SimulationParameters simulationParameters);
 
-    void skipToEnd();
+    void skipToEnd(SimulationParameters simulationParameters);
 }
