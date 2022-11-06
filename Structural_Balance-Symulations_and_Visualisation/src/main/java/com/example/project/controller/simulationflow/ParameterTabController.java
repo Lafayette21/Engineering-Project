@@ -4,6 +4,7 @@ import com.example.project.RepositoryName;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
+import com.example.project.simulation.SimulationFlow;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -72,6 +73,11 @@ public class ParameterTabController implements Initializable, TabController, Sta
         SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory
                 .DoubleSpinnerValueFactory(minSpinnerValue, maxSpinnerValue, initialSpinnerValue, stepSpinnerValue);
         temperatureSpinner.setValueFactory(valueFactory);
+    }
+
+    @Override
+    public void prepareInitial(SimulationFlow simulationFlow) {
+
     }
 
     @Override

@@ -3,8 +3,8 @@ package com.example.project.controller;
 import com.example.project.RepositoryName;
 import com.example.project.controller.simulationflow.*;
 import com.example.project.database.model.SimulationParameters;
-import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
+import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
 import com.example.project.visualisation.model.Actor;
@@ -69,7 +69,8 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         List<Relation> relationList = requiredValuesDTO.relationList();
         SimulationParameters parameters = repository.getSimulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, parameters);
-        netTabController.prepareInitialVisualisation(actorList, relationList, simulationFlow);
+
+        getAllControllers().forEach(tabController -> tabController.prepareInitial(simulationFlow));
     }
 
     private List<TabController> getAllControllers() {

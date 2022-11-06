@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <SplitPane fx:id="chartTab" dividerPositions="0.66" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.ChartTabController">
     <items>
@@ -15,7 +16,10 @@
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis lowerBound="-1.0" side="LEFT" upperBound="1.0">
+                     <tickLabelFont>
+                        <Font size="10.0" />
+                     </tickLabelFont></NumberAxis>
               </yAxis>
             </LineChart>
          </children></AnchorPane>
