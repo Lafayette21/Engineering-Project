@@ -8,7 +8,7 @@ import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
-public class NetTabController implements TabController, StateControllable {
+public class NetSimulationTabController implements SimulationTabController, StateControllable {
     @FXML
     private StatePanelController statePanelController;
 

@@ -15,7 +15,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ParameterTabController implements Initializable, TabController, StateControllable {
+public class ParameterTabController implements Initializable, StateControllable {
     @FXML
     private StatePanelController statePanelController;
 
@@ -73,26 +73,6 @@ public class ParameterTabController implements Initializable, TabController, Sta
         SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory
                 .DoubleSpinnerValueFactory(minSpinnerValue, maxSpinnerValue, initialSpinnerValue, stepSpinnerValue);
         temperatureSpinner.setValueFactory(valueFactory);
-    }
-
-    @Override
-    public void prepareInitial(SimulationFlow simulationFlow) {
-
-    }
-
-    @Override
-    public void nextSimulationStep(SimulationParameters simulationParameters) {
-
-    }
-
-    @Override
-    public void previousSimulationStep(SimulationParameters simulationParameters) {
-
-    }
-
-    @Override
-    public void skipToEnd(SimulationParameters simulationParameters) {
-
     }
 
     @Override

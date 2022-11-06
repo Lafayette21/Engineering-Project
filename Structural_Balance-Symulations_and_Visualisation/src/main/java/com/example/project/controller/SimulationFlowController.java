@@ -21,9 +21,9 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     private final SimulationParametersRepository repository = (SimulationParametersRepository) RepositoryManager
             .getInstance().getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
     @FXML
-    private NetTabController netTabController;
+    private NetSimulationTabController netTabController;
     @FXML
-    private ChartTabController chartTabController;
+    private ChartSimulationTabController chartTabController;
     @FXML
     private ParameterTabController parameterTabController;
     @FXML
@@ -34,7 +34,7 @@ public class SimulationFlowController implements ControlledScreen, Initializable
 
     public void nextStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        getAllControllers().forEach(tabController -> tabController.nextSimulationStep(simulationParameters));
+        getAllControllers().forEach(simulationTabController -> simulationTabController.nextSimulationStep(simulationParameters));
         updateState();
     }
 
@@ -70,11 +70,11 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         SimulationParameters parameters = repository.getSimulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, parameters);
 
-        getAllControllers().forEach(tabController -> tabController.prepareInitial(simulationFlow));
+        getAllControllers().forEach(simulationTabController -> simulationTabController.prepareInitial(simulationFlow));
     }
 
-    private List<TabController> getAllControllers() {
-        return List.of(this.netTabController, this.chartTabController, this.parameterTabController);
+    private List<SimulationTabController> getAllControllers() {
+        return List.of(this.netTabController, this.chartTabController);
     }
 
     private List<StateControllable> getAllStateControllableControllers(){

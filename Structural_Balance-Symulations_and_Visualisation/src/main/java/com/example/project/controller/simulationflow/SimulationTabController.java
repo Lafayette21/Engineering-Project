@@ -3,7 +3,7 @@ package com.example.project.controller.simulationflow;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.simulation.SimulationFlow;
 
-public interface TabController {
+public interface SimulationTabController {
     void prepareInitial(SimulationFlow simulationFlow);
     void nextSimulationStep(SimulationParameters simulationParameters);
 

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane fx:id="netTab" dividerPositions="0.66" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.NetTabController">
+<SplitPane fx:id="netTab" dividerPositions="0.66" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.NetSimulationTabController">
   <items>
     <AnchorPane fx:id="visualisationPanel" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: lightblue;" />
       <fx:include fx:id="statePanel" source="StatePanel.fxml" />

@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChartTabController implements TabController, StateControllable, Initializable {
+public class ChartSimulationTabController implements SimulationTabController, StateControllable, Initializable {
     @FXML
     private StatePanelController statePanelController;
     @FXML
