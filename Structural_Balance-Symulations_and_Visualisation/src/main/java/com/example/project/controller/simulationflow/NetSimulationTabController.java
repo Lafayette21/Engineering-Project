@@ -8,7 +8,7 @@ import com.example.project.visualisation.screen.CanvasDrawer;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
-public class NetSimulationTabController implements SimulationTabController, StateControllable {
+public class NetSimulationTabController implements SimulationTabController, StateControllable, Savable {
     @FXML
     private StatePanelController statePanelController;
 
@@ -49,5 +49,10 @@ public class NetSimulationTabController implements SimulationTabController, Stat
     @Override
     public StatePanelController getStatePanelController() {
         return statePanelController;
+    }
+
+    @Override
+    public AnchorPane getVisualisationPanel() {
+        return visualisationPanel;
     }
 }

@@ -7,14 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChartSimulationTabController implements SimulationTabController, StateControllable, Initializable {
+public class ChartSimulationTabController implements SimulationTabController, StateControllable, Initializable, Savable {
     @FXML
     private StatePanelController statePanelController;
+    @FXML
+    public AnchorPane visualisationPanel;
     @FXML
     private LineChart<String, Double> stepToEnergyChart;
 
@@ -72,5 +75,10 @@ public class ChartSimulationTabController implements SimulationTabController, St
     public void initialize(URL url, ResourceBundle resourceBundle) {
         energySeries.setName("Energia");
         averageSeries.setName("Średnia");
+    }
+
+    @Override
+    public AnchorPane getVisualisationPanel() {
+        return visualisationPanel;
     }
 }
