@@ -2,8 +2,8 @@ package com.example.project.controller;
 
 import com.example.project.RepositoryName;
 import com.example.project.controller.simulationflow.*;
-import com.example.project.database.model.NewSimulationParameters;
-import com.example.project.database.repository.NewSimulationParametersRepository;
+import com.example.project.database.model.SimulationParameters;
+import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
@@ -18,8 +18,8 @@ import java.util.ResourceBundle;
 
 public class SimulationFlowController implements ControlledScreen, Initializable {
     private final MainApplicationScreenController screenParent = MainApplicationScreenController.getInstance();
-    private final NewSimulationParametersRepository repository = (NewSimulationParametersRepository) RepositoryManager
-            .getInstance().getParameterRepositoryByName(RepositoryName.NEW_SIMULATION_PARAMETERS);
+    private final SimulationParametersRepository repository = (SimulationParametersRepository) RepositoryManager
+            .getInstance().getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
     @FXML
     private NetTabController netTabController;
     @FXML
@@ -54,7 +54,7 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
-        NewSimulationParameters parameters = repository.getSimulationParameters();
+        SimulationParameters parameters = repository.getSimulationParameters();
         simulationFlow = new SimulationFlow(actorList, relationList, parameters);
         netTabController.prepareInitialVisualisation(actorList, relationList, simulationFlow);
     }

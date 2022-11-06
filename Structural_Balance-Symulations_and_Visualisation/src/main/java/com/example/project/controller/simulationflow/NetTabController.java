@@ -1,7 +1,8 @@
 package com.example.project.controller.simulationflow;
 
 import com.example.project.RepositoryName;
-import com.example.project.database.repository.NewSimulationParametersRepository;
+import com.example.project.database.model.SimulationParameters;
+import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
 import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.simulation.SimulationFlow;
@@ -15,8 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import java.util.List;
 
 public class NetTabController implements TabController, StateControllable {
-    private final NewSimulationParametersRepository repository = (NewSimulationParametersRepository) RepositoryManager
-            .getInstance().getParameterRepositoryByName(RepositoryName.NEW_SIMULATION_PARAMETERS);
+    private final SimulationParametersRepository repository = (SimulationParametersRepository) RepositoryManager
+            .getInstance().getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
 
     @FXML
     private StatePanelController statePanelController;

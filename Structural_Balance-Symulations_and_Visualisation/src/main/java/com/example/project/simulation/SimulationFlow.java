@@ -1,6 +1,6 @@
 package com.example.project.simulation;
 
-import com.example.project.database.model.NewSimulationParameters;
+import com.example.project.database.model.SimulationParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
@@ -18,13 +18,13 @@ public class SimulationFlow {
 
     private final Map<Integer, List<Relation>> simulationMap = new HashMap<>();
 
-    private final NewSimulationParameters simulationParameters;
+    private final SimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
     private Integer currentStepNumber = 1;
     private SimulationResolver simulationResolver;
 
-    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, NewSimulationParameters simulationParameters) {
+    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
         this.simulationParameters = simulationParameters;
