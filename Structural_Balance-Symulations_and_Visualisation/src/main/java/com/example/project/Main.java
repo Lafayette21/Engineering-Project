@@ -25,13 +25,13 @@ public class Main extends Application {
     private void prepareRepositoryManager(RepositoryManager repositoryManager) {
         repositoryManager.registerParameterRepository(RepositoryName.ACTOR_PARAMETERS, new ActorParametersRepository());
         repositoryManager.registerParameterRepository(RepositoryName.CONNECTION_PARAMETERS, new ConnectionParametersRepository());
-        repositoryManager.registerParameterRepository(RepositoryName.NEW_SIMULATION_PARAMETERS, new NewSimulationParametersRepository());
+        repositoryManager.registerParameterRepository(RepositoryName.SIMULATION_PARAMETERS, new SimulationParametersRepository());
     }
 
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
         Group root = new Group();
         root.getChildren().addAll(mainController);
-        Scene scene = new Scene(root,600,520);
+        Scene scene = new Scene(root,610,520);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "simulation_parameters")
-public class NewSimulationParameters {
+public class SimulationParameters {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer simulationParametersId;
@@ -15,10 +15,10 @@ public class NewSimulationParameters {
     @Column(name = "time")
     private int time;
 
-    public NewSimulationParameters() {
+    public SimulationParameters() {
     }
 
-    public NewSimulationParameters(int numberOfSteps, double temperature, int time) {
+    public SimulationParameters(int numberOfSteps, double temperature, int time) {
         this.numberOfSteps = numberOfSteps;
         this.temperature = temperature;
         this.time = time;

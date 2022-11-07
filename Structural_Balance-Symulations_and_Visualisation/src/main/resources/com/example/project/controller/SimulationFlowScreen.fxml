@@ -4,31 +4,29 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0"
-            prefWidth="679.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.project.controller.SimulationFlowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.SimulationFlowController">
     <children>
-        <TabPane layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="590.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane fx:id="selectionTabPane" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="590.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
+                <Tab text="Parametry">
+                    <content>
+                        <fx:include fx:id="parameterTab" source="simulationflow/ParameterTab.fxml" />
+                    </content>
+                </Tab>
                 <Tab text="Sieć">
                     <content>
-                        <fx:include fx:id="netTab" source="simulationflow/NetTab.fxml"/>
+                        <fx:include fx:id="netTab" source="simulationflow/NetTab.fxml" />
                     </content>
                 </Tab>
                 <Tab text="Wykres">
                     <content>
-                        <fx:include fx:id="chartTab" source="simulationflow/ChartTab.fxml"/>
-                    </content>
-                </Tab>
-                <Tab text="Parametr">
-                    <content>
-                        <fx:include fx:id="parameterTab" source="simulationflow/ParameterTab.fxml"/>
+                        <fx:include fx:id="chartTab" source="simulationflow/ChartTab.fxml" />
                     </content>
                 </Tab>
             </tabs>
         </TabPane>
         <AnchorPane layoutX="14.0" layoutY="425.0" prefHeight="91.0" prefWidth="590.0">
-            <fx:include fx:id="controlPanel" source="simulationflow/ControlPanel.fxml"/>
+            <fx:include fx:id="controlPanel" source="simulationflow/ControlPanel.fxml" />
         </AnchorPane>
     </children>
 </AnchorPane>

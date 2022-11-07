@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class ControlPanelController {
-    private SimulationFlowController simulationFlow2Controller;
+    private SimulationFlowController simulationFlowController;
 
     @FXML
     private Button nextStepButton;
@@ -13,21 +13,27 @@ public class ControlPanelController {
     public Button previousStepButton;
     @FXML
     private Button skipToEndButton;
+    @FXML
+    private Button saveImageButton;
 
     public void nextStep(){
-        simulationFlow2Controller.nextStep();
+        simulationFlowController.nextStep();
     }
 
     public void previousStep(){
-        simulationFlow2Controller.previousStep();
+        simulationFlowController.previousStep();
     }
 
     public void skipToTheEnd(){
-        simulationFlow2Controller.skipToTheEnd();
+        simulationFlowController.skipToTheEnd();
+    }
+
+    public void saveImage(){
+        simulationFlowController.saveImage();
     }
 
     public void injectSimulationFlowController(SimulationFlowController controller){
-        this.simulationFlow2Controller = controller;
+        this.simulationFlowController = controller;
     }
 
 }

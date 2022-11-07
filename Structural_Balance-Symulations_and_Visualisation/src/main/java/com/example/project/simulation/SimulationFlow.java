@@ -1,6 +1,6 @@
 package com.example.project.simulation;
 
-import com.example.project.database.model.NewSimulationParameters;
+import com.example.project.database.model.SimulationParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
@@ -18,46 +18,44 @@ public class SimulationFlow {
 
     private final Map<Integer, List<Relation>> simulationMap = new HashMap<>();
 
-    private final NewSimulationParameters simulationParameters;
+    private final SimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
     private Integer currentStepNumber = 1;
-    private SimulationResolver simulationResolver;
 
-    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, NewSimulationParameters simulationParameters) {
+    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
         this.simulationParameters = simulationParameters;
-        setSimulationResolver(actorList, simulationParameters);
     }
 
-    private void setSimulationResolver(List<Actor> actorList, NewSimulationParameters simulationParametersValues) {
-        double temperature = simulationParametersValues.getTemperature();
-        int numberOfActors = actorList.size();
-        simulationResolver = new SimulationResolver(temperature, numberOfActors);
-    }
-
-    public void nextStep(AnchorPane visualisationPanel) {
+    public void nextStep(AnchorPane visualisationPanel, SimulationParameters simulationParameters) {
+        SimulationResolver simulationResolver = getSimulationResolver(simulationParameters);
         currentStepNumber += 1;
-        if (isMoreThanLastStep()) {
-            showAlert(UPPER_LIMIT_HIT_MESSAGE);
-        } else {
-            moveToNextStep();
-            drawToCanvas(visualisationPanel);
-        }
+
+        moveToNextStep(simulationResolver);
+        drawToCanvas(visualisationPanel);
+    }
+
+    private SimulationResolver getSimulationResolver(SimulationParameters simulationParameters) {
+        double temperature = simulationParameters.getTemperature();
+        int numberOfActors = actorList.size();
+        return new SimulationResolver(temperature, numberOfActors);
     }
 
     private boolean isMoreThanLastStep() {
         return currentStepNumber > simulationParameters.getNumberOfSteps();
     }
 
-    public void skipToEnd(AnchorPane visualisationPanel) {
+    public void skipToEnd(AnchorPane visualisationPanel, SimulationParameters simulationParameters) {
+        SimulationResolver simulationResolver = getSimulationResolver(simulationParameters);
+
         IntStream.range(0, simulationParameters.getNumberOfSteps() + 1)
-                .forEach(step -> moveToNextStep());
+                .forEach(step -> moveToNextStep(simulationResolver));
         drawToCanvas(visualisationPanel);
     }
 
-    private void moveToNextStep() {
+    private void moveToNextStep(SimulationResolver simulationResolver) {
         if (simulationMap.containsKey(currentStepNumber)) {
             currentRelationList = simulationMap.get(currentStepNumber);
         } else {
@@ -92,5 +90,13 @@ public class SimulationFlow {
 
     public Integer getCurrentStepNumber() {
         return currentStepNumber;
+    }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public List<Relation> getCurrentRelationList() {
+        return currentRelationList;
     }
 }
