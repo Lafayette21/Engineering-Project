@@ -3,14 +3,14 @@ package com.example.project.visualisation.model;
 
 import javafx.scene.paint.Color;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 public enum TriadType {
-    FULL_POSITIVE(Color.CRIMSON, 3),
-    HALF_POSITIVE(Color.color(255, 102, 102), -1),
-    FULL_NEGATIVE(Color.ROYALBLUE, 1),
-    HALF_NEGATIVE(Color.color(153, 204, 255), -3);
+    FULL_POSITIVE(Color.FIREBRICK, 3),
+    HALF_POSITIVE(Color.LIGHTCORAL, -1),
+    FULL_NEGATIVE(Color.ROYALBLUE, -3),
+    HALF_NEGATIVE(Color.LIGHTBLUE, 1),
+    NONE(Color.GRAY, 0);
 
     private final Color color;
     private final Integer annotation;
@@ -28,7 +28,7 @@ public enum TriadType {
         return annotation;
     }
 
-    public static Stream<TriadType> getAllTypes(){
+    public static Stream<TriadType> getTriadTypes() {
         return Stream.of(TriadType.values());
     }
 }
