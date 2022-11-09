@@ -34,6 +34,10 @@ public class Relation {
         this.relationType = relationType;
     }
 
+    public boolean containsActor(Actor actor){
+        return firstActor.equals(actor) || secondActor.equals(actor);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
