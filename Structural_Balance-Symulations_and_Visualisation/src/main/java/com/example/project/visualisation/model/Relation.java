@@ -34,7 +34,14 @@ public class Relation {
         this.relationType = relationType;
     }
 
-    public boolean containsActor(Actor actor){
+    public boolean isNeighbouringRelation(Relation relation){
+        if (relation.equals(this)){
+            return false;
+        }
+        return containsActor(relation.getFirstActor()) || containsActor(relation.getSecondActor());
+    }
+
+    private boolean containsActor(Actor actor){
         return firstActor.equals(actor) || secondActor.equals(actor);
     }
 
