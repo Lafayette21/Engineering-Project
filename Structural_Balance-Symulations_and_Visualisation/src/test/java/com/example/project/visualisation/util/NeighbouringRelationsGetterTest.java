@@ -5,7 +5,6 @@ import com.example.project.visualisation.model.Relation;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,8 +17,8 @@ public class NeighbouringRelationsGetterTest {
         Relation relation4 = new Relation(new Actor(3), new Actor(4));
         List<Relation> relationList = List.of(relation1, relation2, relation3, relation4);
 
-        Set<Relation> actualRelationNeighbours = NeighbouringRelationsGetter.get(relation1, relationList);
-        Set<Relation> expectedRelationNeighbours = Set.of(relation2, relation3);
+        List<Relation> actualRelationNeighbours = NeighbouringRelationsGetter.get(relation1, relationList);
+        List<Relation> expectedRelationNeighbours = List.of(relation2, relation3);
 
         assertThat(actualRelationNeighbours).isEqualTo(expectedRelationNeighbours);
     }
