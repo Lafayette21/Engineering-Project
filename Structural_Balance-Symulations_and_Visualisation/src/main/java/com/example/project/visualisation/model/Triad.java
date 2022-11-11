@@ -1,8 +1,10 @@
 package com.example.project.visualisation.model;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Triad {
@@ -46,8 +48,19 @@ public class Triad {
                 .collect(Collectors.toList());
     }
 
-    private List<Relation> getRelations() {
-        return ImmutableList.of(relation1, relation2, relation3);
+    private Set<Relation> getRelations() {
+        return ImmutableSet.of(relation1, relation2, relation3);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Triad)) return false;
+        return getRelations().equals(((Triad) o).getRelations());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(relation1, relation2, relation3);
+    }
 }
