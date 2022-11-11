@@ -2,6 +2,7 @@ package com.example.project.visualisation.model;
 
 import com.google.common.collect.ImmutableSet;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -16,6 +17,12 @@ public class Triad {
         this.relation1 = relation1;
         this.relation2 = relation2;
         this.relation3 = relation3;
+    }
+
+    public Set<Actor> getTriadActors(){
+        Set<Actor> actors = new HashSet<>();
+        getRelations().stream().map(Relation::getRelationActors).forEach(actors::addAll);
+        return actors;
     }
 
     public TriadType getTypeLevel() {
@@ -48,15 +55,15 @@ public class Triad {
                 .collect(Collectors.toList());
     }
 
-    private Set<Relation> getRelations() {
-        return ImmutableSet.of(relation1, relation2, relation3);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Triad)) return false;
         return getRelations().equals(((Triad) o).getRelations());
+    }
+
+    public Set<Relation> getRelations() {
+        return ImmutableSet.of(relation1, relation2, relation3);
     }
 
     @Override

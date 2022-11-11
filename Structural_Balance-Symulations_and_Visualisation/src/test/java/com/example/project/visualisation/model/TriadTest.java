@@ -1,7 +1,8 @@
 package com.example.project.visualisation.model;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
+
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -21,7 +22,7 @@ public class TriadTest {
     }
 
     @Test
-    public void shouldGetNoneTriadTypeForTriad() {
+    public void shouldGetNoneTriadTypeForTriadWithNone() {
         Relation relation1 = createRelationWithType(RelationType.POSITIVE);
         Relation relation2 = createRelationWithType(RelationType.NONE);
         Relation relation3 = createRelationWithType(RelationType.POSITIVE);
@@ -47,8 +48,18 @@ public class TriadTest {
         assertThat(triad1.equals(triad2)).isTrue();
         assertThat(triad1.equals(triad3)).isTrue();
     }
+    @Test
+    public void shouldGetTriadActors(){
+        Triad triad = new Triad(createRelationWithActors(1, 2), createRelationWithActors(2, 3), createRelationWithActors(1, 3));
+
+        Set<Actor> actualTriadActorsSet = triad.getTriadActors();
+        Set<Actor> expectedTriadActorsSet = Set.of(new Actor(1), new Actor(2), new Actor(3));
+
+        assertThat(actualTriadActorsSet).isEqualTo(expectedTriadActorsSet);
+    }
 
     private Relation createRelationWithActors(int firstActorId, int secondActorId) {
         return new Relation(new Actor(firstActorId), new Actor(secondActorId));
     }
+
 }
