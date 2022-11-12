@@ -5,6 +5,7 @@ import com.example.project.database.repository.*;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -31,7 +32,8 @@ public class Main extends Application {
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
         Group root = new Group();
         root.getChildren().addAll(mainController);
-        Scene scene = new Scene(root,610,520);
+        Scene scene = new Scene(root, 610, 520);
+        scene.setFill(Color.rgb(33, 47, 61));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

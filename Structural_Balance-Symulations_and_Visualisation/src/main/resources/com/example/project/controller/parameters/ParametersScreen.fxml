@@ -10,10 +10,10 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="158.0" SplitPane.resizableWithParent="false">
                <children>
-                  <ListView fx:id="parametersListView" fixedCellSize="50.0" prefHeight="350.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
+                  <ListView fx:id="parametersListView" fixedCellSize="50.0" prefHeight="350.0" prefWidth="100.0" style="-fx-background-color: #5d6d7e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contentScreen" prefHeight="350.0" prefWidth="300.0" />
+            <AnchorPane fx:id="contentScreen" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: #2e4053;" />
         </items>
       </SplitPane>
    </children>
