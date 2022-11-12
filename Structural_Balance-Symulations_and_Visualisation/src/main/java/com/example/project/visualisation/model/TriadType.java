@@ -10,7 +10,7 @@ public enum TriadType {
     HALF_POSITIVE(Color.LIGHTCORAL, -1),
     FULL_NEGATIVE(Color.ROYALBLUE, -3),
     HALF_NEGATIVE(Color.CORNFLOWERBLUE, 1),
-    NONE(Color.GRAY, 0);
+    NONE(Color.LIGHTGRAY, 0);
 
     private final Color color;
     private final Integer annotation;
