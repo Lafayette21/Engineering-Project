@@ -7,14 +7,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
-import java.util.List;
+import java.util.Set;
 
 public class TriadDrawer {
     private TriadDrawer() {
         throw new InstantiationNotAllowedException();
     }
 
-    public static void drawTriadTriangle(AnchorPane visualisationPane, List<Triad> triadList){
+    public static void draw(AnchorPane visualisationPane, Set<Triad> triadList){
         for (Triad triad : triadList){
             Color typeLevelColor = triad.getTypeLevel().getColor();
             Polygon polygon = createPolygon(triad, typeLevelColor);
