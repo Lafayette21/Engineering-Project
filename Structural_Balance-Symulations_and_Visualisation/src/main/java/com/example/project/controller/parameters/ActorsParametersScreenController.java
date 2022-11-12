@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
@@ -24,7 +25,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private ParametersScreenController screenParent;
 
     @FXML
-    private TextField actorsNumberTextField;
+    public Label actorsNumberLabel;
     @FXML
     private Spinner<Integer> rowSpinner;
     @FXML
@@ -96,7 +97,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private void updateActorsNumberTextField(int rowNumber, int columnNumber) {
         int numberOfActors = rowNumber * columnNumber;
 
-        actorsNumberTextField.setText(String.valueOf(numberOfActors));
+        actorsNumberLabel.setText(String.valueOf(numberOfActors));
     }
 }
 

@@ -4,24 +4,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="controlPanel" prefHeight="90.0" prefWidth="590.0" style="-fx-background-color: crimson;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.ControlPanelController">
+<AnchorPane fx:id="controlPanel" prefHeight="90.0" prefWidth="590.0" style="-fx-background-color: TEAL;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.ControlPanelController">
    <children>
-      <Button fx:id="nextStepButton" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" onAction="#nextStep" text="Następny krok">
+      <Button fx:id="nextStepButton" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" onAction="#nextStep" style="-fx-background-color: white;" text="Następny krok">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="previousStepButton" layoutX="184.0" layoutY="25.0" mnemonicParsing="false" onAction="#previousStep" text="Poprzedni krok">
+      <Button fx:id="previousStepButton" layoutX="184.0" layoutY="25.0" mnemonicParsing="false" onAction="#previousStep" style="-fx-background-color: white;" text="Poprzedni krok">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="skipToEndButton" layoutX="341.0" layoutY="25.0" mnemonicParsing="false" onAction="#skipToTheEnd" text="Do końca">
+      <Button fx:id="skipToEndButton" layoutX="341.0" layoutY="25.0" mnemonicParsing="false" onAction="#skipToTheEnd" style="-fx-background-color: white;" text="Do końca">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="saveImageButton" layoutX="452.0" layoutY="25.0" mnemonicParsing="false" onAction="#saveImage" text="Zapisz obraz">
+      <Button fx:id="saveImageButton" layoutX="452.0" layoutY="25.0" mnemonicParsing="false" onAction="#saveImage" style="-fx-background-color: white;" text="Zapisz obraz">
          <font>
             <Font size="18.0" />
          </font>

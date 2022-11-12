@@ -5,24 +5,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="connectionParametersScreen" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ConnectionParametersScreenController">
+<AnchorPane fx:id="connectionParametersScreen" prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ConnectionParametersScreenController">
    <children>
-      <Label layoutX="93.0" layoutY="28.0" text="Ustawienia połączeń">
+      <Label layoutX="73.0" layoutY="27.0" text="Ustawienia połączeń" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font size="32.0" />
          </font>
       </Label>
-      <Label layoutX="29.0" layoutY="169.0" text="Procent pozytywnych">
+      <Label layoutX="32.0" layoutY="214.0" text="Procent pozytywnych" textFill="#fffcfc">
          <font>
-            <Font size="20.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="81.0" text="Procent istniejących połączeń">
+      <Label layoutX="25.0" layoutY="92.0" text="Procent istniejących połączeń" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <Spinner fx:id="connectionExistenceSpinner" editable="true" layoutX="126.0" layoutY="129.0" prefHeight="26.0" prefWidth="150.0" />
-      <Spinner fx:id="positiveRatioSpinner" editable="true" layoutX="124.0" layoutY="218.0" prefHeight="26.0" prefWidth="150.0" />
+      <Spinner fx:id="connectionExistenceSpinner" editable="true" layoutX="98.0" layoutY="160.0" prefHeight="33.0" prefWidth="178.0" />
+      <Spinner fx:id="positiveRatioSpinner" editable="true" layoutX="98.0" layoutY="278.0" prefHeight="33.0" prefWidth="178.0" />
    </children>
 </AnchorPane>

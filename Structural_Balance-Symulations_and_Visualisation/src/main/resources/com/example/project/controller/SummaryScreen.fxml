@@ -5,70 +5,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="summaryScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.SummaryScreenController">
+<AnchorPane fx:id="summaryScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.SummaryScreenController">
    <children>
-      <Button fx:id="updateButton" layoutX="199.0" layoutY="67.0" mnemonicParsing="false" onAction="#updateScreenValues" text="Aktualizuj podsumowanie">
+      <Button fx:id="updateButton" layoutX="173.0" layoutY="91.0" mnemonicParsing="false" onAction="#updateScreenValues" style="-fx-background-color: white;" text="Aktualizuj podsumowanie">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font></Button>
-      <Label alignment="CENTER" layoutY="23.0" prefHeight="18.0" prefWidth="600.0" text="Podsumowanie parametrów">
+      <Label alignment="CENTER" layoutY="14.0" prefHeight="18.0" prefWidth="600.0" text="Podsumowanie parametrów" textFill="#fffdfd">
          <font>
-            <Font size="24.0" />
+            <Font size="39.0" />
          </font>
       </Label>
-      <Label layoutX="106.0" layoutY="109.0" text="Połączenia">
+      <Label layoutX="85.0" layoutY="146.0" text="Połączenia" textFill="#fff9f9">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="198.0" text="Procent połączeń" textFill="#fff8f8">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="148.0" text="Procent połączeń">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="38.0" layoutY="200.0" text="Procent + do - ">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="connectionPercentageLabel" layoutX="211.0" layoutY="148.0" text="0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="posToNegPercentageLabel" layoutX="211.0" layoutY="200.0" text="0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="390.0" layoutY="109.0" text="Aktorzy">
+      <Label layoutX="28.0" layoutY="266.0" text="Procent pozytywnych " textFill="#fff9f9">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="335.0" layoutY="150.0" text="Ilość rzędów">
+      <Label fx:id="connectionPercentageLabel" layoutX="253.0" layoutY="198.0" text="0" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="rowNumberLabel" layoutX="475.0" layoutY="150.0" text="0">
+      <Label fx:id="posToNegPercentageLabel" layoutX="253.0" layoutY="266.0" text="0" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="genetateSimulaitionButton" layoutX="217.0" layoutY="301.0" mnemonicParsing="false" onAction="#generateSimulation" text="Stwórz wizualizację">
+      <Label layoutX="391.0" layoutY="146.0" text="Aktorzy" textFill="#faf6f6">
          <font>
-            <Font size="16.0" />
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="330.0" layoutY="206.0" text="Ilość rzędów" textFill="#f7f5f5">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="rowNumberLabel" layoutX="498.0" layoutY="198.0" text="0" textFill="#faf8f8">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="genetateSimulaitionButton" layoutX="173.0" layoutY="341.0" mnemonicParsing="false" onAction="#generateSimulation" prefHeight="43.0" prefWidth="254.0" style="-fx-background-color: #ffffff;" text="Stwórz wizualizację">
+         <font>
+            <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="334.0" layoutY="202.0" text="Ilość kolumn">
+      <Label layoutX="329.0" layoutY="266.0" text="Ilość kolumn" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="columnNumberLabel" layoutX="475.0" layoutY="202.0" text="0">
+      <Label fx:id="columnNumberLabel" layoutX="498.0" layoutY="266.0" text="0" textFill="#ece9e9">
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Label>
    </children>
