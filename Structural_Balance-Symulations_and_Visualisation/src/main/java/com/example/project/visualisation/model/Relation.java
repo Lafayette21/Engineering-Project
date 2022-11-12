@@ -1,5 +1,8 @@
 package com.example.project.visualisation.model;
 
+import com.google.common.collect.ImmutableList;
+
+import java.util.List;
 import java.util.Objects;
 
 public class Relation {
@@ -32,6 +35,21 @@ public class Relation {
 
     public void setRelationType(RelationType relationType) {
         this.relationType = relationType;
+    }
+
+    public boolean isNeighbouringRelation(Relation relation){
+        if (relation.equals(this)){
+            return false;
+        }
+        return containsActor(relation.getFirstActor()) || containsActor(relation.getSecondActor());
+    }
+
+    private boolean containsActor(Actor actor){
+        return firstActor.equals(actor) || secondActor.equals(actor);
+    }
+
+    public List<Actor> getRelationActors() {
+        return ImmutableList.of(this.firstActor, this.secondActor);
     }
 
     @Override

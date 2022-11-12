@@ -11,6 +11,7 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires java.sql;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
+    requires com.google.common;
 
     opens com.example.project to javafx.fxml;
     exports com.example.project;
