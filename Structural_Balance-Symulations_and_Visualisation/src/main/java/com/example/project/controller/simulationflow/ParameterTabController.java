@@ -56,8 +56,8 @@ public class ParameterTabController implements Initializable, StateControllable 
     }
 
     private void setTimeSpinnerValueFactory() {
-        int minSpinnerValue = 0;
-        int maxSpinnerValue = 60;
+        int minSpinnerValue = 1;
+        int maxSpinnerValue = 10;
         int initialSpinnerValue = 0;
         int stepSpinnerValue = 1;
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory
