@@ -30,6 +30,7 @@ public class SimulationFlow {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
         this.simulationParameters = simulationParameters;
+        simulationMap.put(currentStepNumber,currentRelationList);
     }
 
     public void nextStep(AnchorPane visualisationPanel, SimulationParameters simulationParameters) {
