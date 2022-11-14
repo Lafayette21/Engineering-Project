@@ -58,11 +58,18 @@ public class ChartSimulationTabController implements SimulationTabController, St
 
     @Override
     public void previousSimulationStep(SimulationParameters simulationParameters) {
+        int size = energySeries.getData().size();
+        energySeries.getData().remove(size-1);
+        stepToEnergyChart.getData().add(energySeries);
+    }
+
+    @Override
+    public void start(SimulationParameters simulationParameters) {
 
     }
 
     @Override
-    public void skipToEnd(SimulationParameters simulationParameters) {
+    public void pause() {
 
     }
 

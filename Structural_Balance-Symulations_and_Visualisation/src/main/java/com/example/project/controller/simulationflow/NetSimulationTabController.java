@@ -38,12 +38,17 @@ public class NetSimulationTabController implements SimulationTabController, Stat
     }
 
     @Override
-    public void skipToEnd(SimulationParameters simulationParameters) {
+    public void start(SimulationParameters simulationParameters) {
         try {
-            simulationFlow.skipToEnd(visualisationPanel, simulationParameters, statePanelController);
+            simulationFlow.startExecution(visualisationPanel, simulationParameters, statePanelController);
         } catch (SimulationBalanceAchievedException e) {
             new SimulationBalanceAlert().showAndWait();
         }
+    }
+
+    @Override
+    public void pause() {
+        simulationFlow.pauseExecution();
     }
 
     @Override

@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class ControlPanelController {
+    private static final String BUTTON_START_TEXT = "Rozpocznij";
+    private static final String BUTTON_PAUSE_TEXT = "Zatrzymaj";
+
     private SimulationFlowController simulationFlowController;
 
     @FXML
@@ -12,7 +15,7 @@ public class ControlPanelController {
     @FXML
     public Button previousStepButton;
     @FXML
-    private Button skipToEndButton;
+    private Button runButton;
     @FXML
     private Button saveImageButton;
 
@@ -24,8 +27,16 @@ public class ControlPanelController {
         simulationFlowController.previousStep();
     }
 
-    public void skipToTheEnd(){
-        simulationFlowController.skipToTheEnd();
+    public void start(){
+        simulationFlowController.start();
+        runButton.setText(BUTTON_PAUSE_TEXT);
+        runButton.setOnAction(event -> pause());
+    }
+
+    public void pause(){
+        simulationFlowController.pause();
+        runButton.setText(BUTTON_START_TEXT);
+        runButton.setOnAction(event -> start());
     }
 
     public void saveImage(){

@@ -53,9 +53,14 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         updateState();
     }
 
-    public void skipToTheEnd() {
+    public void start() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        netTabController.skipToEnd(simulationParameters);
+        getAllControllers().forEach(simulationTabController -> simulationTabController.start(simulationParameters));
+        updateState();
+    }
+
+    public void pause(){
+        getAllControllers().forEach(SimulationTabController::pause);
         updateState();
     }
 
