@@ -5,6 +5,7 @@ import com.example.project.database.model.SimulationParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Alert;
@@ -63,7 +64,7 @@ public class SimulationFlow {
                     drawToCanvas(visualisationPanel);
                 });
         timeline = new Timeline(keyFrame);
-        timeline.setCycleCount(simulationParameters.getNumberOfSteps());
+        timeline.setCycleCount(Animation.INDEFINITE);
         return timeline;
     }
 
