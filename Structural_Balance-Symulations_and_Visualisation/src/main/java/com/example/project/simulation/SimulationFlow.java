@@ -12,7 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,6 @@ public class SimulationFlow {
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
     private Integer currentStepNumber = 1;
-
     private Timeline timeline;
 
     public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {

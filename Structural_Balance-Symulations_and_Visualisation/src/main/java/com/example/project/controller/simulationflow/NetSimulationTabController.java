@@ -1,10 +1,9 @@
 package com.example.project.controller.simulationflow;
 
 import com.example.project.database.model.SimulationParameters;
-import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.simulation.SimulationFlow;
-import com.example.project.util.SimulationBalanceAlert;
 import com.example.project.visualisation.screen.CanvasDrawer;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -17,6 +16,8 @@ public class NetSimulationTabController implements SimulationTabController, Stat
 
     private SimulationFlow simulationFlow;
 
+    private Timeline timeline;
+
     @Override
     public void prepareInitial(SimulationFlow simulationFlow) {
         this.simulationFlow = simulationFlow;
@@ -25,11 +26,8 @@ public class NetSimulationTabController implements SimulationTabController, Stat
 
     @Override
     public void nextSimulationStep(SimulationParameters simulationParameters) {
-        try {
-            simulationFlow.nextStep(visualisationPanel, simulationParameters);
-        } catch (SimulationBalanceAchievedException e) {
-            new SimulationBalanceAlert().showAndWait();
-        }
+        simulationFlow.nextStep(visualisationPanel, simulationParameters);
+
     }
 
     @Override
@@ -39,11 +37,7 @@ public class NetSimulationTabController implements SimulationTabController, Stat
 
     @Override
     public void start(SimulationParameters simulationParameters) {
-        try {
-            simulationFlow.startExecution(visualisationPanel, simulationParameters, statePanelController);
-        } catch (SimulationBalanceAchievedException e) {
-            new SimulationBalanceAlert().showAndWait();
-        }
+        simulationFlow.startExecution(visualisationPanel, simulationParameters, statePanelController);
     }
 
     @Override
