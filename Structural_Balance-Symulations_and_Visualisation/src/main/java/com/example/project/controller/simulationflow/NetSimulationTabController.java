@@ -21,7 +21,7 @@ public class NetSimulationTabController implements SimulationTabController, Stat
     @Override
     public void prepareInitial(SimulationFlow simulationFlow) {
         this.simulationFlow = simulationFlow;
-        CanvasDrawer.draw(visualisationPanel, simulationFlow.getActorList(), simulationFlow.getCurrentRelationList());
+        CanvasDrawer.draw(visualisationPanel, simulationFlow.getActorList(), simulationFlow.getCurrentRelationList(), true);
     }
 
     @Override

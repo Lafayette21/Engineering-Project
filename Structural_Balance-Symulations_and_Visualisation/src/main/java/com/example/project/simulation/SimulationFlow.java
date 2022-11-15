@@ -94,7 +94,7 @@ public class SimulationFlow {
     }
 
     private void drawToCanvas(AnchorPane visualisationPanel) {
-        CanvasDrawer.draw(visualisationPanel, actorList, currentRelationList);
+        CanvasDrawer.draw(visualisationPanel, actorList, currentRelationList, true);
     }
 
     private void showAlert(String message) {
