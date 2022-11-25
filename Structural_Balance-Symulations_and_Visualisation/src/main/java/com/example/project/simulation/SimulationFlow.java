@@ -24,7 +24,7 @@ public class SimulationFlow {
     private final SimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
-    private Integer currentStepNumber = 1;
+    private Integer currentStepNumber = 0;
     private Timeline timeline;
 
     public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
