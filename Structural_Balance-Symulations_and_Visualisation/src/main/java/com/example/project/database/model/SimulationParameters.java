@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class SimulationParameters {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer simulationParametersId;
     @Column(name = "temperature")
     private double temperature;
