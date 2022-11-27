@@ -27,7 +27,7 @@ public class TriadDrawer {
         triad.getTriadActors().stream()
                 .map(Actor::getPosition)
                 .forEach(position -> polygon.getPoints()
-                            .addAll(position.getX(), position.getY())
+                            .addAll(position.x(), position.y())
                 );
         polygon.setFill(typeLevelColor);
         return polygon;
