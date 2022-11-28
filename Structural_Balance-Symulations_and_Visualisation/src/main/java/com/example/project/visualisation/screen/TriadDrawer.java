@@ -14,7 +14,7 @@ public class TriadDrawer {
         throw new InstantiationNotAllowedException();
     }
 
-    public static void draw(AnchorPane visualisationPane, Set<Triad> triadList){
+    public static void draw(Set<Triad> triadList, AnchorPane visualisationPane){
         for (Triad triad : triadList){
             Color typeLevelColor = triad.getTypeLevel().getColor();
             Polygon polygon = createPolygon(triad, typeLevelColor);

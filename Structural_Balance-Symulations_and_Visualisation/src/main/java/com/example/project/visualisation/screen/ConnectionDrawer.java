@@ -19,10 +19,9 @@ public class ConnectionDrawer {
     }
 
     public static void draw(List<Relation> relationList, AnchorPane panel) {
-        for (Relation relation : relationList) {
-            Line line = getLine(relation);
-            addLineToPanel(line, panel);
-        }
+        relationList.stream()
+                .map(ConnectionDrawer::getLine)
+                .forEach(line -> addLineToPanel(line,panel));
     }
 
     private static Line getLine(Relation relation) {

@@ -13,10 +13,11 @@ public class CanvasDrawer {
         throw new InstantiationNotAllowedException();
     }
 
-    public static void draw(AnchorPane visualisationPanel, List<Actor> actorList, List<Relation> relationList, boolean drawTriad) {
+    public static void draw(AnchorPane visualisationPanel, List<Actor> actorList, List<Relation> relationList,
+                            boolean drawTriad) {
         clearPanel(visualisationPanel);
         if (drawTriad){
-            TriadDrawer.draw(visualisationPanel, TriadFactory.createTriads(relationList));
+            TriadDrawer.draw(TriadFactory.createTriads(relationList), visualisationPanel);
         }
         ConnectionDrawer.draw(relationList, visualisationPanel);
         ActorDrawer.draw(actorList, visualisationPanel);
