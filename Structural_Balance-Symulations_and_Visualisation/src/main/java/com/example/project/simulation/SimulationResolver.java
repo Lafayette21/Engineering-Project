@@ -5,7 +5,7 @@ import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.model.RelationType;
 import com.example.project.visualisation.model.Triad;
-import com.example.project.visualisation.util.RelationMatrixToRelationListConverter;
+import com.example.project.util.RelationMatrixToRelationListConverter;
 import com.example.project.visualisation.util.TriadExtractor;
 
 import java.util.HashSet;
