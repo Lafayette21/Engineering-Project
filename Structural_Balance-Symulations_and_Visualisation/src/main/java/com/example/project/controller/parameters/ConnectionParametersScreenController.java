@@ -1,6 +1,7 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.RepositoryName;
+import com.example.project.controller.VisualisationGenerationScreen2Controller;
 import com.example.project.database.model.ConnectionParameters;
 import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
@@ -14,7 +15,9 @@ import javafx.scene.control.SpinnerValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ConnectionParametersScreenController implements Initializable {
+public class ConnectionParametersScreenController implements Initializable, ParameterScreen {
+    private VisualisationGenerationScreen2Controller screenParent;
+
     private static final int MIN_SPINNER_VALUE = 0;
     private static final int MAX_SPINNER_VALUE = 100;
     private static final int INITIAL_SPINNER_VALUE = 50;
@@ -24,6 +27,11 @@ public class ConnectionParametersScreenController implements Initializable {
     private Spinner<Integer> connectionExistenceSpinner;
     @FXML
     private Spinner<Integer> positiveRatioSpinner;
+
+    @Override
+    public void injectScreenParent(VisualisationGenerationScreen2Controller visualisationGenerationController){
+        this.screenParent = visualisationGenerationController;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,8 +57,8 @@ public class ConnectionParametersScreenController implements Initializable {
         spinner.setValueFactory(valueFactory);
     }
 
-    private static class ConnectionExistencePercentageChangeListener implements ChangeListener<Integer> {
-        ConnectionParametersRepository repository;
+    private class ConnectionExistencePercentageChangeListener implements ChangeListener<Integer> {
+        private final ConnectionParametersRepository repository;
 
         public ConnectionExistencePercentageChangeListener(ConnectionParametersRepository repository) {
             this.repository = repository;
@@ -58,6 +66,7 @@ public class ConnectionParametersScreenController implements Initializable {
 
         @Override
         public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            screenParent.updateConnectionPercentageLabel(newValue);
             repository.updateConnectionExistencePercentage(newValue);
         }
     }
