@@ -6,9 +6,6 @@ import com.example.project.visualisation.model.RelationType;
 import java.util.List;
 
 public class RelationMatrix {
-    private static final int POSITIVE_RELATION_ANNOTATION = 1;
-    private static final int NEGATIVE_RELATION_ANNOTATION = -1;
-
     private final List<Relation> relationList;
     private final int numberOfActors;
     private int[][] matrix;
@@ -30,10 +27,10 @@ public class RelationMatrix {
         int firstActorId = relation.getFirstActor().getActorId();
         int secondActorId = relation.getSecondActor().getActorId();
         if (isPositive(relation)) {
-            setMatrixValue(firstActorId, secondActorId, POSITIVE_RELATION_ANNOTATION);
+            setMatrixValue(firstActorId, secondActorId, RelationType.POSITIVE.getRelationAnnotation());
         }
         if (isNegative(relation)) {
-            setMatrixValue(firstActorId, secondActorId, NEGATIVE_RELATION_ANNOTATION);
+            setMatrixValue(firstActorId, secondActorId, RelationType.NEGATIVE.getRelationAnnotation());
         }
     }
 
