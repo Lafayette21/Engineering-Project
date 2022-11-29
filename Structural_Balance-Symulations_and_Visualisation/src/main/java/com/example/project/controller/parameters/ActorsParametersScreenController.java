@@ -16,13 +16,11 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ActorsParametersScreenController implements ParameterControlledScreen, Initializable {
+public class ActorsParametersScreenController implements Initializable {
     private static final int MIN_SPINNER_VALUE = 2;
     private static final int MAX_SPINNER_VALUE = 10;
     private static final int INITIAL_SPINNER_VALUE = 2;
     private static final int STEP_SPINNER_VALUE = 1;
-
-    private ParametersScreenController screenParent;
 
     @FXML
     public Label actorsNumberLabel;
@@ -30,11 +28,6 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     private Spinner<Integer> rowSpinner;
     @FXML
     private Spinner<Integer> columnSpinner;
-
-    @Override
-    public void setScreenParent(ParametersScreenController screenParent) {
-        this.screenParent = screenParent;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

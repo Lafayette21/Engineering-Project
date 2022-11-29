@@ -1,22 +1,15 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.RepositoryName;
-import com.example.project.controller.VisualisationGeneratorScreenController;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.model.ConnectionParameters;
 import com.example.project.database.repository.ActorParametersRepository;
 import com.example.project.database.repository.ConnectionParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class SummaryScreen2Controller {
-    private VisualisationGeneratorScreenController screenParent;
-
     @FXML
     private Label connectionPercentageLabel;
     @FXML
@@ -25,10 +18,6 @@ public class SummaryScreen2Controller {
     private Label rowNumberLabel;
     @FXML
     private Label columnNumberLabel;
-
-    public void injectParentScreenController(VisualisationGeneratorScreenController screenParent) {
-        this.screenParent = screenParent;
-    }
 
     public void updateScreenValues() {
         RepositoryManager repositoryManager = RepositoryManager.getInstance();
@@ -59,9 +48,5 @@ public class SummaryScreen2Controller {
 
         rowNumberLabel.setText(rowNumber);
         columnNumberLabel.setText(columnNumber);
-    }
-
-    public void generateSimulation() {
-        screenParent.changeScreenToVisualisationScreen();
     }
 }

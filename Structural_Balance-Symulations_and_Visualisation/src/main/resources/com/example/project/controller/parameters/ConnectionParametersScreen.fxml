@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="connectionParametersScreen" prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ConnectionParametersScreenController">
+<AnchorPane fx:id="connectionParametersScreen" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.ConnectionParametersScreenController">
    <children>
       <Label layoutX="73.0" layoutY="27.0" text="Ustawienia połączeń" textFill="WHITE">
          <font>

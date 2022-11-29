@@ -14,7 +14,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ConnectionParametersScreenController implements ParameterControlledScreen, Initializable {
+public class ConnectionParametersScreenController implements Initializable {
     private static final int MIN_SPINNER_VALUE = 0;
     private static final int MAX_SPINNER_VALUE = 100;
     private static final int INITIAL_SPINNER_VALUE = 50;
@@ -24,13 +24,6 @@ public class ConnectionParametersScreenController implements ParameterControlled
     private Spinner<Integer> connectionExistenceSpinner;
     @FXML
     private Spinner<Integer> positiveRatioSpinner;
-
-    private ParametersScreenController screenParent;
-
-    @Override
-    public void setScreenParent(ParametersScreenController screenParent) {
-        this.screenParent = screenParent;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
