@@ -7,10 +7,6 @@
 
 <AnchorPane fx:id="summaryScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="1200.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.SummaryScreen2Controller">
    <children>
-      <Button fx:id="updateButton" layoutX="663.0" layoutY="276.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Aktualizuj podsumowanie">
-         <font>
-            <Font size="20.0" />
-         </font></Button>
       <Label alignment="CENTER" layoutX="300.0" layoutY="28.0" prefHeight="18.0" prefWidth="600.0" text="Podsumowanie parametrów" textFill="#fffdfd">
          <font>
             <Font size="39.0" />
@@ -56,7 +52,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="genetateSimulaitionButton" layoutX="324.0" layoutY="276.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="254.0" style="-fx-background-color: #ffffff;" text="Stwórz wizualizację">
+      <Button fx:id="genetateSimulaitionButton" layoutX="473.0" layoutY="276.0" mnemonicParsing="false" onAction="#generateVisualisation" prefHeight="43.0" prefWidth="254.0" style="-fx-background-color: #ffffff;" text="Stwórz wizualizację">
          <font>
             <Font size="20.0" />
          </font>
