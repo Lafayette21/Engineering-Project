@@ -2,7 +2,19 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationGenerationScreen2Controller">
-
+   <children>
+      <AnchorPane layoutY="450.0" prefHeight="350.0" prefWidth="1200.0" style="-fx-background-color: crimson;">
+         <children>
+            <fx:include fx:id="summaryScreen2" source="parameters/SummaryScreen2.fxml" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: lightblue;">
+         <children>
+            <fx:include fx:id="actorParametersScreen" source="parameters/ActorsParametersScreen.fxml" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="600.0" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: wheat;">
+         <children>
+            <fx:include fx:id="connectionParametersScreen" source="parameters/ConnectionParametersScreen.fxml" />
+         </children></AnchorPane>
+   </children>
 </AnchorPane>
