@@ -1,9 +1,10 @@
 package com.example.project.controller.simulationflow;
 
 import com.example.project.database.model.SimulationParameters;
+import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.simulation.SimulationFlow;
+import com.example.project.util.SimulationBalanceAlert;
 import com.example.project.visualisation.screen.CanvasDrawer;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -16,18 +17,19 @@ public class NetSimulationTabController implements SimulationTabController, Stat
 
     private SimulationFlow simulationFlow;
 
-    private Timeline timeline;
-
     @Override
     public void prepareInitial(SimulationFlow simulationFlow) {
         this.simulationFlow = simulationFlow;
-        CanvasDrawer.draw(visualisationPanel, simulationFlow.getActorList(), simulationFlow.getCurrentRelationList(), true);
+        CanvasDrawer.draw(visualisationPanel, simulationFlow.getActorList(), simulationFlow.getCurrentRelationList());
     }
 
     @Override
     public void nextSimulationStep(SimulationParameters simulationParameters) {
-        simulationFlow.nextStep(visualisationPanel, simulationParameters);
-
+        try {
+            simulationFlow.nextStep(visualisationPanel, simulationParameters);
+        } catch (SimulationBalanceAchievedException e) {
+            new SimulationBalanceAlert().showAndWait();
+        }
     }
 
     @Override
@@ -36,13 +38,12 @@ public class NetSimulationTabController implements SimulationTabController, Stat
     }
 
     @Override
-    public void start(SimulationParameters simulationParameters) {
-        simulationFlow.startExecution(visualisationPanel, simulationParameters, statePanelController);
-    }
-
-    @Override
-    public void pause() {
-        simulationFlow.pauseExecution();
+    public void skipToEnd(SimulationParameters simulationParameters) {
+        try {
+            simulationFlow.skipToEnd(visualisationPanel, simulationParameters);
+        } catch (SimulationBalanceAchievedException e) {
+            new SimulationBalanceAlert().showAndWait();
+        }
     }
 
     @Override

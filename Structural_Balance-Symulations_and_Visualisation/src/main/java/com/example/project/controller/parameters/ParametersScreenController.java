@@ -38,8 +38,8 @@ public class ParametersScreenController implements Initializable {
 
     private void createParametersLisView() {
         parametersListView.getItems()
-                .addAll("Aktorzy",
-                        "Połączenia");
+                .addAll(Resource.ActorParameters.getResourceName(),
+                        Resource.ConnectionParameters.getResourceName());
     }
 
     AnchorPane getContentScreen() {
@@ -49,14 +49,18 @@ public class ParametersScreenController implements Initializable {
     private class ContentScreenChangeListener implements ChangeListener<String> {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            String actorsResourceName = "Aktorzy";
-            String connectionResourceName = "Połączenia";
+            String actorsResourceName = Resource.ActorParameters.getResourceName();
+            String connectionResourceName = Resource.ConnectionParameters.getResourceName();
+            String simulationResourceName = Resource.SimulationParameters.getResourceName();
 
             if (newValue.equals(actorsResourceName)) {
                 contentScreensHandler.setContentScreen(Resource.ActorParameters);
             }
             if (newValue.equals(connectionResourceName)) {
                 contentScreensHandler.setContentScreen(Resource.ConnectionParameters);
+            }
+            if (newValue.equals(simulationResourceName)) {
+                contentScreensHandler.setContentScreen(Resource.SimulationParameters);
             }
         }
     }

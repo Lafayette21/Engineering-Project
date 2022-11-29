@@ -53,14 +53,9 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         updateState();
     }
 
-    public void start() {
+    public void skipToTheEnd() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        getAllControllers().forEach(simulationTabController -> simulationTabController.start(simulationParameters));
-        updateState();
-    }
-
-    public void pause(){
-        getAllControllers().forEach(SimulationTabController::pause);
+        netTabController.skipToEnd(simulationParameters);
         updateState();
     }
 
@@ -99,7 +94,8 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
-        simulationFlow = new SimulationFlow(actorList, relationList);
+        SimulationParameters parameters = repository.getSimulationParameters();
+        simulationFlow = new SimulationFlow(actorList, relationList, parameters);
 
         getAllControllers().forEach(simulationTabController -> simulationTabController.prepareInitial(simulationFlow));
     }

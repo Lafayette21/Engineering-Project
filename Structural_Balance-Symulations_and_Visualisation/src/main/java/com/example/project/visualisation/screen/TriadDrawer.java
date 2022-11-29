@@ -14,7 +14,7 @@ public class TriadDrawer {
         throw new InstantiationNotAllowedException();
     }
 
-    public static void draw(Set<Triad> triadList, AnchorPane visualisationPane){
+    public static void draw(AnchorPane visualisationPane, Set<Triad> triadList){
         for (Triad triad : triadList){
             Color typeLevelColor = triad.getTypeLevel().getColor();
             Polygon polygon = createPolygon(triad, typeLevelColor);
@@ -27,7 +27,7 @@ public class TriadDrawer {
         triad.getTriadActors().stream()
                 .map(Actor::getPosition)
                 .forEach(position -> polygon.getPoints()
-                            .addAll(position.x(), position.y())
+                            .addAll(position.getX(), position.getY())
                 );
         polygon.setFill(typeLevelColor);
         return polygon;

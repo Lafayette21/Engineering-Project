@@ -8,7 +8,6 @@ import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.VisualisationGenerator;
 import com.example.project.visualisation.util.SimulationRequiredParametersHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
@@ -50,13 +49,7 @@ public class VisualisationScreenController implements ControlledScreen {
     }
 
     private void sendSimulationRequiredParameters() {
-        try {
-            screenParent.setUserData(getSimulationRequiredValuesDTO());
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Najpierw musisz stworzyć symulację!");
-            alert.showAndWait();
-        }
+        screenParent.setUserData(getSimulationRequiredValuesDTO());
     }
 
     private SimulationRequiredValuesDTO getSimulationRequiredValuesDTO() {

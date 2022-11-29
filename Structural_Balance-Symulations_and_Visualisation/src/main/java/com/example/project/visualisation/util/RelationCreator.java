@@ -24,7 +24,8 @@ public class RelationCreator {
         throw new InstantiationNotAllowedException();
     }
 
-    public static List<Relation> createRelations(ActorParameters actorValues, ConnectionParameters connectionValues,
+    public static List<Relation> createRelations(ActorParameters actorValues,
+                                                 ConnectionParameters connectionValues,
                                                  List<Actor> actorList) {
         setParameterValues(actorValues, connectionValues, actorList);
         List<Relation> relations = new ArrayList<>();

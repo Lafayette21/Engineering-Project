@@ -9,6 +9,5 @@ public interface SimulationTabController {
 
     void previousSimulationStep(SimulationParameters simulationParameters);
 
-    void start(SimulationParameters simulationParameters);
-    void pause();
+    void skipToEnd(SimulationParameters simulationParameters);
 }

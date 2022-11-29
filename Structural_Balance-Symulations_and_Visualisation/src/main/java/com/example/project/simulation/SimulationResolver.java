@@ -1,20 +1,17 @@
 package com.example.project.simulation;
 
-import com.example.project.util.SimulationBalanceAlert;
-import com.example.project.visualisation.model.Actor;
+import com.example.project.exception.SimulationBalanceAchievedException;
 import com.example.project.visualisation.model.Relation;
-import com.example.project.visualisation.model.RelationType;
-import com.example.project.visualisation.model.Triad;
-import com.example.project.util.RelationMatrixToRelationListConverter;
-import com.example.project.visualisation.util.TriadExtractor;
+import com.example.project.visualisation.util.RelationMatrixToRelationListConverter;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 public class SimulationResolver {
+    private static final int POSITIVE_RELATION_ANNOTATION = 1;
+    private static final int NEGATIVE_RELATION_ANNOTATION = -1;
+
     private final double temperature;
     private final int numberOfActors;
 
@@ -30,18 +27,14 @@ public class SimulationResolver {
         connectionMatrix = new ConnectionMatrix(currentRelationList, numberOfActors);
         relationMatrix = new RelationMatrix(currentRelationList, numberOfActors);
 
+        if (SimulationBalanceChecker.check(connectionMatrix, relationMatrix)) {
+            throw new SimulationBalanceAchievedException();
+        }
+
         IntStream.range(0, connectionMatrix.getNumberOfExistingRelations()).forEach(smallStep -> {
             SimulationActorIds actorIds = getActorIds();
-            if (temperature == 0) {
-                changeRelation(currentRelationList, actorIds);
-            } else {
-                changeRelation(actorIds);
-            }
+            changeRelation(actorIds);
         });
-
-        if (SimulationBalanceChecker.check(connectionMatrix, relationMatrix)) {
-            new SimulationBalanceAlert().showAndWait();
-        }
 
         return RelationMatrixToRelationListConverter.convert(relationMatrix, currentRelationList);
     }
@@ -57,50 +50,15 @@ public class SimulationResolver {
         return new SimulationActorIds(firstActorId, secondActorId);
     }
 
-    private void changeRelation(List<Relation> currentRelationList, SimulationActorIds actorIds) {
-        int firstActorId = actorIds.firstActorId();
-        int secondActorId = actorIds.secondActorId();
-        List<Actor> actors = getNeighbouringActors(currentRelationList, firstActorId, secondActorId);
-        int changeProbability = getProbability(firstActorId, secondActorId, actors);
-        if (changeProbability == RelationType.NEGATIVE.getRelationAnnotation()) {
-            relationMatrix.set(firstActorId, secondActorId, RelationType.NEGATIVE.getRelationAnnotation());
-        }
-        if (changeProbability == RelationType.POSITIVE.getRelationAnnotation()){
-            relationMatrix.set(firstActorId, secondActorId, RelationType.POSITIVE.getRelationAnnotation());
-        }
-    }
-
-    private int getProbability(int firstActorId, int secondActorId, List<Actor> actors) {
-        int xim = relationMatrix.get(firstActorId, actors.get(0).getActorId());
-        int xjm = relationMatrix.get(secondActorId, actors.get(0).getActorId());
-        int xin = relationMatrix.get(firstActorId, actors.get(1).getActorId());
-        int xjn = relationMatrix.get(secondActorId, actors.get(1).getActorId());
-        return Integer.signum(xim * xjm + xin * xjn);
-    }
-
-    private List<Actor> getNeighbouringActors(List<Relation> currentRelationList, int firstActorId, int secondActorId) {
-        Relation baseRelation = new Relation(new Actor(firstActorId), new Actor(secondActorId));
-        Set<Triad> triads = TriadExtractor.extract(baseRelation, currentRelationList);
-        Set<Actor> distinctActors = new HashSet<>();
-        triads.stream().map(Triad::getTriadActors).distinct().forEach(distinctActors::addAll);
-        return distinctActors.stream()
-                .filter(actor -> !isRelationActor(new Actor(firstActorId), new Actor(secondActorId), actor))
-                .toList();
-    }
-
-    private boolean isRelationActor(Actor firstActor, Actor secondActor, Actor actor) {
-        return actor.equals(firstActor) || actor.equals(secondActor);
-    }
-
     private void changeRelation(SimulationActorIds actorIds) {
         int firstActorId = actorIds.firstActorId();
         int secondActorId = actorIds.secondActorId();
         double changeProbability = getChangeProbability(firstActorId, secondActorId);
         double randomNumber = new Random().nextDouble();
         if (randomNumber < changeProbability) {
-            relationMatrix.set(firstActorId, secondActorId, RelationType.POSITIVE.getRelationAnnotation());
+            relationMatrix.set(firstActorId, secondActorId, POSITIVE_RELATION_ANNOTATION);
         } else {
-            relationMatrix.set(firstActorId, secondActorId, RelationType.NEGATIVE.getRelationAnnotation());
+            relationMatrix.set(firstActorId, secondActorId, NEGATIVE_RELATION_ANNOTATION);
         }
     }
 

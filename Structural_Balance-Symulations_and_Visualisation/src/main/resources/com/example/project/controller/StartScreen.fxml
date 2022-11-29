@@ -5,26 +5,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.StartScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="610.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.StartScreenController">
    <children>
-      <Button fx:id="startButton" layoutX="500.0" layoutY="418.0" mnemonicParsing="false" onAction="#changeScreenToVisualisationGenerator" prefHeight="73.0" prefWidth="246.0" style="-fx-background-color: #ffffff;" text="Start">
+      <Button fx:id="startButton" layoutX="206.0" layoutY="324.0" mnemonicParsing="false" onAction="#changeScreenToVisualisationGenerator" prefHeight="65.0" prefWidth="180.0" style="-fx-background-color: #ffffff;" text="Start">
          <font>
-            <Font size="46.0" />
+            <Font size="26.0" />
          </font>
       </Button>
-      <Label contentDisplay="CENTER" layoutX="333.0" layoutY="59.0" prefHeight="73.0" prefWidth="535.0" text="Symulacje i wizualizacje" textAlignment="CENTER" textFill="WHITE">
+      <Label contentDisplay="CENTER" layoutX="96.0" layoutY="55.0" prefHeight="55.0" prefWidth="400.0" text="Symulacje i wizualizacje" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="50.0" />
+            <Font size="38.0" />
          </font>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="252.0" layoutY="151.0" prefHeight="73.0" prefWidth="742.0" text="równowagi strukturalnej Heider'a" textAlignment="CENTER" textFill="WHITE">
+      <Label contentDisplay="CENTER" layoutX="24.0" layoutY="117.0" prefHeight="55.0" prefWidth="563.0" text="równowagi strukturalnej Heider'a" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="50.0" />
+            <Font size="38.0" />
          </font>
       </Label>
-      <Label layoutX="401.0" layoutY="266.0" text="Autor : Marcin Urbanowicz" textFill="WHITE">
+      <Label layoutX="153.0" layoutY="236.0" text="Autor : Marcin Urbanowicz" textFill="WHITE">
          <font>
-            <Font size="34.0" />
+            <Font size="26.0" />
          </font>
       </Label>
    </children>

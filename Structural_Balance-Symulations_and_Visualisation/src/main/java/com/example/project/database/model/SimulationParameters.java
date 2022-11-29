@@ -7,8 +7,9 @@ import jakarta.persistence.*;
 public class SimulationParameters {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer simulationParametersId;
+    @Column(name = "number_of_steps")
+    private int numberOfSteps;
     @Column(name = "temperature")
     private double temperature;
     @Column(name = "time")
@@ -17,7 +18,8 @@ public class SimulationParameters {
     public SimulationParameters() {
     }
 
-    public SimulationParameters(double temperature, int time) {
+    public SimulationParameters(int numberOfSteps, double temperature, int time) {
+        this.numberOfSteps = numberOfSteps;
         this.temperature = temperature;
         this.time = time;
     }
@@ -28,6 +30,14 @@ public class SimulationParameters {
 
     public void setSimulationParametersId(Integer simulationParametersId) {
         this.simulationParametersId = simulationParametersId;
+    }
+
+    public int getNumberOfSteps() {
+        return numberOfSteps;
+    }
+
+    public void setNumberOfSteps(int numberOfSteps) {
+        this.numberOfSteps = numberOfSteps;
     }
 
     public double getTemperature() {

@@ -1,4 +1,4 @@
-package com.example.project.util;
+package com.example.project.visualisation.util;
 
 import com.example.project.exception.InstantiationNotAllowedException;
 import com.example.project.simulation.RelationMatrix;

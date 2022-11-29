@@ -9,7 +9,6 @@ import java.io.Serializable;
 public class ActorParameters implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer actorParameterId;
     @Column(name = "number_of_rows")
     private int numberOfRows;

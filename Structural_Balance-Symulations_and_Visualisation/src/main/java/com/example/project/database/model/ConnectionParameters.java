@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 public class ConnectionParameters {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer connectionParameterId;
     @Column(name = "connection_existence_percentage")
     private int connectionExistencePercentage;

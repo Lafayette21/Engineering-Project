@@ -28,8 +28,8 @@ public class ActorDrawer {
 
     private static Circle createPoint(Position position) {
         Circle point = new Circle();
-        point.setCenterX(position.x());
-        point.setCenterY(position.y());
+        point.setCenterX(position.getX());
+        point.setCenterY(position.getY());
         point.setRadius(RADIUS);
         return point;
     }
