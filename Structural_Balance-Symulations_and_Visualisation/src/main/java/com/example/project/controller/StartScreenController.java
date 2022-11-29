@@ -11,7 +11,7 @@ public class StartScreenController implements ControlledScreen {
     private Button startButton;
 
     public void changeScreenToVisualisationGenerator() {
-        screenController.loadScreen(Resource.VisualisationGenerator);
-        screenController.setScreen(Resource.VisualisationGenerator);
+        screenController.loadScreen(Resource.VisualisationGenerator2);
+        screenController.setScreen(Resource.VisualisationGenerator2);
     }
 }

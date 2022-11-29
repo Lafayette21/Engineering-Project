@@ -3,6 +3,7 @@ package com.example.project;
 public enum Resource {
     StartWindow("StartScreen.fxml"),
     VisualisationGenerator("VisualisationGeneratorScreen.fxml"),
+    VisualisationGenerator2("VisualisationGeneratorScreen2.fxml"),
     Parameters("ParametersScreen.fxml"),
     Visualisation("VisualisationScreen.fxml"),
     SimulationFlow("SimulationFlowScreen.fxml"),
