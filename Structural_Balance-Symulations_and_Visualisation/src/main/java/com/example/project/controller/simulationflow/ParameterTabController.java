@@ -20,8 +20,6 @@ public class ParameterTabController implements Initializable, StateControllable 
     private StatePanelController statePanelController;
 
     @FXML
-    private Spinner<Integer> stepNumberSpinner;
-    @FXML
     private Spinner<Double> temperatureSpinner;
     @FXML
     private Spinner<Integer> timeSpinner;
@@ -32,32 +30,20 @@ public class ParameterTabController implements Initializable, StateControllable 
         SimulationParametersRepository repository = (SimulationParametersRepository) repositoryManager
                         .getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
 
-        setStepNumberSpinnerValueFactory();
         setTimeSpinnerValueFactory();
         setTemperatureSpinnerValueFactory();
 
         SimulationParameters initialSimulationParameters =
-                new SimulationParameters(stepNumberSpinner.getValue(), temperatureSpinner.getValue(), timeSpinner.getValue());
+                new SimulationParameters(temperatureSpinner.getValue(), timeSpinner.getValue());
         repository.registerSimulationParameters(initialSimulationParameters);
 
-        stepNumberSpinner.valueProperty().addListener(new StepNumberSpinnerChangeListener(repository));
         temperatureSpinner.valueProperty().addListener(new TemperatureSpinnerChangeListener(repository));
         timeSpinner.valueProperty().addListener(new TimeSpinnerChangeListener(repository));
     }
 
-    private void setStepNumberSpinnerValueFactory() {
-        int minSpinnerValue = 50;
-        int maxSpinnerValue = 300;
-        int initialSpinnerValue = 50;
-        int stepSpinnerValue = 25;
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory
-                .IntegerSpinnerValueFactory(minSpinnerValue, maxSpinnerValue, initialSpinnerValue, stepSpinnerValue);
-        stepNumberSpinner.setValueFactory(valueFactory);
-    }
-
     private void setTimeSpinnerValueFactory() {
-        int minSpinnerValue = 0;
-        int maxSpinnerValue = 60;
+        int minSpinnerValue = 1;
+        int maxSpinnerValue = 10;
         int initialSpinnerValue = 0;
         int stepSpinnerValue = 1;
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory
@@ -79,14 +65,6 @@ public class ParameterTabController implements Initializable, StateControllable 
     public StatePanelController getStatePanelController() {
         return statePanelController;
     }
-
-    private record StepNumberSpinnerChangeListener(SimulationParametersRepository repository)
-            implements ChangeListener<Integer> {
-        @Override
-            public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
-                repository.updateNumberOfSteps(newValue);
-            }
-        }
 
     private record TemperatureSpinnerChangeListener(SimulationParametersRepository repository)
             implements ChangeListener<Double> {

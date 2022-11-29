@@ -6,17 +6,17 @@
 
 <AnchorPane fx:id="controlPanel" prefHeight="90.0" prefWidth="590.0" style="-fx-background-color: TEAL;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.ControlPanelController">
    <children>
-      <Button fx:id="nextStepButton" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" onAction="#nextStep" style="-fx-background-color: white;" text="Następny krok">
+      <Button fx:id="nextStepButton" layoutX="20.0" layoutY="25.0" mnemonicParsing="false" onAction="#nextStep" style="-fx-background-color: white;" text="Następny krok">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="previousStepButton" layoutX="184.0" layoutY="25.0" mnemonicParsing="false" onAction="#previousStep" style="-fx-background-color: white;" text="Poprzedni krok">
+      <Button fx:id="previousStepButton" layoutX="171.0" layoutY="26.0" mnemonicParsing="false" onAction="#previousStep" style="-fx-background-color: white;" text="Poprzedni krok">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="skipToEndButton" layoutX="341.0" layoutY="25.0" mnemonicParsing="false" onAction="#skipToTheEnd" style="-fx-background-color: white;" text="Do końca">
+      <Button fx:id="runButton" layoutX="330.0" layoutY="25.0" mnemonicParsing="false" onAction="#start" style="-fx-background-color: white;" text="Rozpocznij">
          <font>
             <Font size="18.0" />
          </font>

@@ -16,6 +16,6 @@ public class VisualisationGenerator {
     public static void generate(SimulationRequiredParametersHandler simulationRequiredParametersHandler, AnchorPane visualisationPanel) {
         List<Actor> actorList = simulationRequiredParametersHandler.getActorList();
         List<Relation> relationList = simulationRequiredParametersHandler.getRelationList();
-        CanvasDrawer.draw(visualisationPanel, actorList, relationList);
+        CanvasDrawer.draw(visualisationPanel, actorList, relationList, false);
     }
 }

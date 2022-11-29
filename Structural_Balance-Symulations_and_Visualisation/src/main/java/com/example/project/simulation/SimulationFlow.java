@@ -1,38 +1,38 @@
 package com.example.project.simulation;
 
+import com.example.project.controller.simulationflow.StatePanelController;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import com.example.project.visualisation.screen.CanvasDrawer;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 public class SimulationFlow {
-    private static final String UPPER_LIMIT_HIT_MESSAGE = "Osiągnięto górny próg symulacji";
-    private static final String LOWER_LIMIT_HIT_MESSAGE = "Osiągnięto dolny próg symulacji";
-
     private final Map<Integer, List<Relation>> simulationMap = new HashMap<>();
 
-    private final SimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
-    private Integer currentStepNumber = 1;
+    private Integer currentStepNumber = 0;
+    private Timeline timeline;
 
-    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
+    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList) {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
-        this.simulationParameters = simulationParameters;
+        simulationMap.put(currentStepNumber, currentRelationList);
     }
 
     public void nextStep(AnchorPane visualisationPanel, SimulationParameters simulationParameters) {
         SimulationResolver simulationResolver = getSimulationResolver(simulationParameters);
         currentStepNumber += 1;
-
         moveToNextStep(simulationResolver);
         drawToCanvas(visualisationPanel);
     }
@@ -43,16 +43,27 @@ public class SimulationFlow {
         return new SimulationResolver(temperature, numberOfActors);
     }
 
-    private boolean isMoreThanLastStep() {
-        return currentStepNumber > simulationParameters.getNumberOfSteps();
+    public void startExecution(AnchorPane visualisationPanel, SimulationParameters simulationParameters, StatePanelController statePanelController) {
+        SimulationResolver simulationResolver = getSimulationResolver(simulationParameters);
+        Timeline timeline = createTimeline(visualisationPanel, simulationParameters, statePanelController, simulationResolver);
+        timeline.play();
     }
 
-    public void skipToEnd(AnchorPane visualisationPanel, SimulationParameters simulationParameters) {
-        SimulationResolver simulationResolver = getSimulationResolver(simulationParameters);
+    private Timeline createTimeline(AnchorPane visualisationPanel, SimulationParameters simulationParameters, StatePanelController statePanelController, SimulationResolver simulationResolver) {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(simulationParameters.getTime()),
+                event -> {
+                    currentStepNumber += 1;
+                    moveToNextStep(simulationResolver);
+                    statePanelController.updateStateOfSimulation(this);
+                    drawToCanvas(visualisationPanel);
+                });
+        timeline = new Timeline(keyFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        return timeline;
+    }
 
-        IntStream.range(0, simulationParameters.getNumberOfSteps() + 1)
-                .forEach(step -> moveToNextStep(simulationResolver));
-        drawToCanvas(visualisationPanel);
+    public void pauseExecution(){
+        timeline.stop();
     }
 
     private void moveToNextStep(SimulationResolver simulationResolver) {
@@ -66,7 +77,7 @@ public class SimulationFlow {
 
     public void previousStep(AnchorPane visualisationPanel) {
         if (isFirstStep()) {
-            showAlert(LOWER_LIMIT_HIT_MESSAGE);
+            showLowerBoundHitAlert();
         } else {
             currentStepNumber -= 1;
             currentRelationList = simulationMap.get(currentStepNumber);
@@ -79,12 +90,12 @@ public class SimulationFlow {
     }
 
     private void drawToCanvas(AnchorPane visualisationPanel) {
-        CanvasDrawer.draw(visualisationPanel, actorList, currentRelationList);
+        CanvasDrawer.draw(visualisationPanel, actorList, currentRelationList, true);
     }
 
-    private void showAlert(String message) {
+    private void showLowerBoundHitAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText(String.format("Pobieranie kroku symulacji nie powiodło się, z powodu: %s", message));
+        alert.setContentText("Pobieranie kroku symulacji nie powiodło się, z powodu: Osiągnięcia dolnego progu symulacji");
         alert.showAndWait();
     }
 

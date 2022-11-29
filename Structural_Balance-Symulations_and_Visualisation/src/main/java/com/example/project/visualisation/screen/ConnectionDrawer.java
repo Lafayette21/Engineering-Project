@@ -19,10 +19,9 @@ public class ConnectionDrawer {
     }
 
     public static void draw(List<Relation> relationList, AnchorPane panel) {
-        for (Relation relation : relationList) {
-            Line line = getLine(relation);
-            addLineToPanel(line, panel);
-        }
+        relationList.stream()
+                .map(ConnectionDrawer::getLine)
+                .forEach(line -> addLineToPanel(line,panel));
     }
 
     private static Line getLine(Relation relation) {
@@ -36,8 +35,8 @@ public class ConnectionDrawer {
     private static Line createLine(Relation relation) {
         Position firstActorPosition = relation.getFirstActor().getPosition();
         Position secondActorPosition = relation.getSecondActor().getPosition();
-        return new Line(firstActorPosition.getX(), firstActorPosition.getY(),
-                secondActorPosition.getX(), secondActorPosition.getY());
+        return new Line(firstActorPosition.x(), firstActorPosition.y(),
+                secondActorPosition.x(), secondActorPosition.y());
     }
 
     private static void changeColorAndAdjustRelationType(Relation relation, Line line) {

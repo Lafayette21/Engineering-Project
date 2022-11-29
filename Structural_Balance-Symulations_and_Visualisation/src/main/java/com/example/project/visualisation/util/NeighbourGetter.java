@@ -1,6 +1,7 @@
 package com.example.project.visualisation.util;
 
 import com.example.project.visualisation.model.Actor;
+import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,11 +20,12 @@ public class NeighbourGetter {
     public List<Integer> getNeighbours(Actor actor) {
         int actorId = actor.getActorId();
 
-        ArrayList<Integer> neighboursList = new ArrayList<>();
-        neighboursList.addAll(getSameRowNeighbours(actorId));
-        neighboursList.addAll(getUpperRowNeighbours(actorId));
-        neighboursList.addAll(getLowerRowNeighbours(actorId));
-        return neighboursList.stream().sorted(Integer::compareTo).collect(Collectors.toList());
+        List<Integer> neighbourIdList = ImmutableList.<Integer>builder()
+                .addAll(getSameRowNeighbours(actorId))
+                .addAll(getUpperRowNeighbours(actorId))
+                .addAll(getLowerRowNeighbours(actorId))
+                .build();
+        return neighbourIdList.stream().sorted(Integer::compareTo).collect(Collectors.toList());
     }
 
     private List<Integer> getSameRowNeighbours(int actorId) {
