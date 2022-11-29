@@ -17,20 +17,16 @@ import java.util.List;
 import java.util.Map;
 
 public class SimulationFlow {
-    private static final String LOWER_LIMIT_HIT_MESSAGE = "Osiągnięto dolny próg symulacji";
-
     private final Map<Integer, List<Relation>> simulationMap = new HashMap<>();
 
-    private final SimulationParameters simulationParameters;
     private final List<Actor> actorList;
     private List<Relation> currentRelationList;
     private Integer currentStepNumber = 0;
     private Timeline timeline;
 
-    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList, SimulationParameters simulationParameters) {
+    public SimulationFlow(List<Actor> actorList, List<Relation> currentRelationList) {
         this.actorList = actorList;
         this.currentRelationList = currentRelationList;
-        this.simulationParameters = simulationParameters;
         simulationMap.put(currentStepNumber, currentRelationList);
     }
 
@@ -81,7 +77,7 @@ public class SimulationFlow {
 
     public void previousStep(AnchorPane visualisationPanel) {
         if (isFirstStep()) {
-            showAlert(LOWER_LIMIT_HIT_MESSAGE);
+            showLowerBoundHitAlert();
         } else {
             currentStepNumber -= 1;
             currentRelationList = simulationMap.get(currentStepNumber);
@@ -97,9 +93,9 @@ public class SimulationFlow {
         CanvasDrawer.draw(visualisationPanel, actorList, currentRelationList, true);
     }
 
-    private void showAlert(String message) {
+    private void showLowerBoundHitAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText(String.format("Pobieranie kroku symulacji nie powiodło się, z powodu: %s", message));
+        alert.setContentText("Pobieranie kroku symulacji nie powiodło się, z powodu: Osiągnięcia dolnego progu symulacji");
         alert.showAndWait();
     }
 

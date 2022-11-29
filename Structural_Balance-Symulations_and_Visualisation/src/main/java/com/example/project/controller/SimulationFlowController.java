@@ -99,8 +99,7 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
-        SimulationParameters parameters = repository.getSimulationParameters();
-        simulationFlow = new SimulationFlow(actorList, relationList, parameters);
+        simulationFlow = new SimulationFlow(actorList, relationList);
 
         getAllControllers().forEach(simulationTabController -> simulationTabController.prepareInitial(simulationFlow));
     }
