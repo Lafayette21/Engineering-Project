@@ -36,6 +36,14 @@ public class VisualisationGenerationScreen2Controller implements ControlledScree
         summaryScreen2Controller.setPositivePercentageLabelValue(updatedValue);
     }
 
+    public void updateRowNumberLabel(int updatedValue) {
+        summaryScreen2Controller.setRowNumberValue(updatedValue);
+    }
+
+    public void updateColumnNumberLabel(int updatedValue) {
+        summaryScreen2Controller.setColumnNumberLabelValue(updatedValue);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

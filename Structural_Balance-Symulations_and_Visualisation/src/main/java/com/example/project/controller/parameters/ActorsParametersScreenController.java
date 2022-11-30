@@ -71,6 +71,7 @@ public class ActorsParametersScreenController implements Initializable, Paramete
 
         @Override
         public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            screenParent.updateRowNumberLabel(newValue);
             repository.updateNumberOfRow(newValue);
             setValueOnActorsNumberTextField(repository);
         }
@@ -85,6 +86,7 @@ public class ActorsParametersScreenController implements Initializable, Paramete
 
         @Override
         public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            screenParent.updateColumnNumberLabel(newValue);
             repository.updateNumberOfColumns(newValue);
             setValueOnActorsNumberTextField(repository);
         }

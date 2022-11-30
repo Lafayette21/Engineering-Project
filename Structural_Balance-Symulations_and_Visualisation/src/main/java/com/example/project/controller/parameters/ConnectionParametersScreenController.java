@@ -71,8 +71,8 @@ public class ConnectionParametersScreenController implements Initializable, Para
         }
     }
 
-    private static class PositiveRatioChangeListener implements ChangeListener<Integer> {
-        ConnectionParametersRepository repository;
+    private class PositiveRatioChangeListener implements ChangeListener<Integer> {
+        private final ConnectionParametersRepository repository;
 
         public PositiveRatioChangeListener(ConnectionParametersRepository repository) {
             this.repository = repository;
@@ -80,6 +80,7 @@ public class ConnectionParametersScreenController implements Initializable, Para
 
         @Override
         public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            screenParent.updatePositivePercentageLabel(newValue);
             repository.updatePositiveConnectionsPercentage(newValue);
         }
     }
