@@ -32,10 +32,7 @@ public class ActorsParametersScreenController implements Initializable, Paramete
     @FXML
     private Spinner<Integer> columnSpinner;
 
-    @Override
-    public void injectScreenParent(VisualisationGenerationScreen2Controller visualisationGenerationController) {
-        this.screenParent = visualisationGenerationController;
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,6 +55,11 @@ public class ActorsParametersScreenController implements Initializable, Paramete
                 .IntegerSpinnerValueFactory(MIN_SPINNER_VALUE, MAX_SPINNER_VALUE, INITIAL_SPINNER_VALUE, STEP_SPINNER_VALUE);
 
         spinner.setValueFactory(valueFactory);
+    }
+
+    @Override
+    public void injectScreenParent(VisualisationGenerationScreen2Controller visualisationGenerationController) {
+        this.screenParent = visualisationGenerationController;
     }
 
     private class RowSpinnerChangeListener implements ChangeListener<Integer> {

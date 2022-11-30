@@ -32,17 +32,17 @@ public class VisualisationGenerationScreen2Controller implements ControlledScree
         summaryScreen2Controller.setConnectionPercentageLabelValue(updatedValue);
     }
 
+    public void updatePositivePercentageLabel(int updatedValue) {
+        summaryScreen2Controller.setPositivePercentageLabelValue(updatedValue);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        summaryScreen2Controller.injectScreenParent(this);
-        connectionParametersScreenController.injectScreenParent(this);
-//        actorsParametersScreenController.injectScreenParent(this);
-
-//        getParameterScreens().forEach(parameterScreen -> parameterScreen.injectScreenParent(this));
+        getParameterScreens().forEach(parameterScreen -> parameterScreen.injectScreenParent(this));
     }
 
-    private List<ParameterScreen> getParameterScreens(){
+    private List<ParameterScreen> getParameterScreens() {
         return ImmutableList.of(actorsParametersScreenController, connectionParametersScreenController, summaryScreen2Controller);
     }
 }
