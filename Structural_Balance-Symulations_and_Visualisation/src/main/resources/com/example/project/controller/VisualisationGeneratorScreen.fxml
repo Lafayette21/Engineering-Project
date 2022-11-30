@@ -7,7 +7,7 @@
             fx:controller="com.example.project.controller.VisualisationGenerationScreen2Controller">
     <children>
         <AnchorPane layoutY="450.0" prefHeight="350.0" prefWidth="1200.0" style="-fx-background-color: crimson;">
-            <fx:include fx:id="summaryScreen2" source="parameters/SummaryScreen2.fxml"/>
+            <fx:include fx:id="summaryScreen2" source="parameters/SummaryScreen.fxml"/>
         </AnchorPane>
         <AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: lightblue;">
             <fx:include fx:id="actorsParametersScreen" source="parameters/ActorsParametersScreen.fxml"/>

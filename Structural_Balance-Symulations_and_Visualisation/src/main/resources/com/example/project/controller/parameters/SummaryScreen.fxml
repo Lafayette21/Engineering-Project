@@ -5,9 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="summaryScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="350.0" prefWidth="1200.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.SummaryScreen2Controller">
+<AnchorPane fx:id="summaryScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="1200.0" style="-fx-background-color: #2e4053;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.parameters.SummaryScreen2Controller">
    <children>
       <Label alignment="CENTER" layoutX="300.0" layoutY="28.0" prefHeight="18.0" prefWidth="600.0" text="Podsumowanie parametrów" textFill="#fffdfd">
          <font>
@@ -29,12 +27,12 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="connectionPercentageLabel" layoutX="294.0" layoutY="127.0" text="0" textFill="WHITE">
+      <Label fx:id="connectionPercentageLabel" layoutX="294.0" layoutY="127.0" text="50" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="positivePercentageLabel" layoutX="294.0" layoutY="205.0" text="0" textFill="WHITE">
+      <Label fx:id="positivePercentageLabel" layoutX="294.0" layoutY="205.0" text="50" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
@@ -49,7 +47,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="rowNumberLabel" layoutX="1072.0" layoutY="143.0" text="0" textFill="#faf8f8">
+      <Label fx:id="rowNumberLabel" layoutX="1072.0" layoutY="143.0" text="2" textFill="#faf8f8">
          <font>
             <Font size="22.0" />
          </font>
@@ -64,7 +62,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="columnNumberLabel" layoutX="1072.0" layoutY="205.0" text="0" textFill="#ece9e9">
+      <Label fx:id="columnNumberLabel" layoutX="1072.0" layoutY="205.0" text="2" textFill="#ece9e9">
          <font>
             <Font size="22.0" />
          </font>
