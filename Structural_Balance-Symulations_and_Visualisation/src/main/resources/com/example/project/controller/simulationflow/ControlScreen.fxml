@@ -21,5 +21,15 @@
             <Font size="17.0" />
          </font>
       </Button>
+      <Button fx:id="saveChartButton" layoutX="22.0" layoutY="238.0" mnemonicParsing="false" onAction="#saveChartImage" text="Zapisz Wykres">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveNetButton" layoutX="22.0" layoutY="300.0" mnemonicParsing="false" onAction="#saveNetImage" text="Zapisz Sieć">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

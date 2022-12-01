@@ -7,10 +7,12 @@ import com.example.project.database.repository.RepositoryManager;
 import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.simulation.SimulationFlow;
 import com.example.project.simulation.SimulationRequiredValuesDTO;
+import com.example.project.util.ImageSaver;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.List;
@@ -53,10 +55,18 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
         getSimulationControllers().forEach(SimulationTabController::pause);
     }
 
-    public void saveImage() {
-
+    public void saveImage(String resource) {
+        if (resource.equals("Net")){
+            saveVisualisationPanel(netScreenController);
+        } else {
+            saveVisualisationPanel(chartScreenController);
+        }
     }
 
+    private void saveVisualisationPanel(Savable savable) {
+        AnchorPane visualisationPanel = savable.getVisualisationPanel();
+        ImageSaver.save(visualisationPanel, simulationFlow.getCurrentStepNumber());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

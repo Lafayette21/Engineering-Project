@@ -1,5 +1,6 @@
 package com.example.project.controller.simulationflow;
 
+import com.example.project.Resource;
 import com.example.project.controller.SimulationFlowController2;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +15,10 @@ public class ControlScreenController {
     private Button nextStepButton;
     @FXML
     private Button runButton;
+    @FXML
+    private Button saveChartButton;
+    @FXML
+    private Button saveNetButton;
 
     private SimulationFlowController2 parentController;
 
@@ -41,7 +46,11 @@ public class ControlScreenController {
         runButton.setOnAction(event -> start());
     }
 
-    public void saveImage(){
-        parentController.saveImage();
+    public void saveNetImage(){
+        parentController.saveImage("Net");
     }
+    public void saveChartImage(){
+        parentController.saveImage("Chart");
+    }
+
 }
