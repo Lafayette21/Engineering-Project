@@ -5,10 +5,12 @@ import com.example.project.simulation.SimulationFlow;
 
 public interface SimulationTabController {
     void prepareInitial(SimulationFlow simulationFlow);
+
     void nextSimulationStep(SimulationParameters simulationParameters);
 
     void previousSimulationStep(SimulationParameters simulationParameters);
 
     void start(SimulationParameters simulationParameters);
+
     void pause();
 }

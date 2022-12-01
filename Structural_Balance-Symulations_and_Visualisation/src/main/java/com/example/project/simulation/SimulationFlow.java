@@ -85,7 +85,7 @@ public class SimulationFlow {
     }
 
     private boolean isFirstStep() {
-        return currentStepNumber == 1;
+        return currentStepNumber == 0;
     }
 
     private void drawToCanvas(AnchorPane visualisationPanel) {
