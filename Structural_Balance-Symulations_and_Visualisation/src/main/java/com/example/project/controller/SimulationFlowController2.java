@@ -36,7 +36,7 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
 
     public void nextStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        netScreenController.nextSimulationStep(simulationParameters);
+        getSimulationControllers().forEach(controller->controller.nextSimulationStep(simulationParameters));
     }
 
     public void previousStep() {
@@ -60,6 +60,10 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
         List<Relation> relationList = requiredValuesDTO.relationList();
         simulationFlow = new SimulationFlow(actorList, relationList);
 
-        netScreenController.prepareInitial(simulationFlow);
+        getSimulationControllers().forEach(controller -> controller.prepareInitial(simulationFlow));
+    }
+
+    private List<SimulationTabController> getSimulationControllers() {
+        return List.of(this.netScreenController, this.chartScreenController);
     }
 }
