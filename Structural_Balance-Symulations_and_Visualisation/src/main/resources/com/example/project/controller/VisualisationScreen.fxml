@@ -12,7 +12,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="visualisationPanel" layoutX="465.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="680.0" prefWidth="700.0" style="-fx-background-color: azure;" />
+      <AnchorPane fx:id="visualisationPanel" layoutX="465.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="490.0" prefWidth="470.0" style="-fx-background-color: azure;" />
       <Button fx:id="generateButton" layoutX="212.0" layoutY="108.0" mnemonicParsing="false" onAction="#generateVisualisation" prefHeight="38.0" prefWidth="154.0" text="Stwórz nową">
          <font>
             <Font size="16.0" />
