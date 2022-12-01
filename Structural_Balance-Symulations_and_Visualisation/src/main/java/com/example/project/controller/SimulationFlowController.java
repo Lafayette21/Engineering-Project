@@ -36,23 +36,19 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     public void nextStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
         getAllControllers().forEach(simulationTabController -> simulationTabController.nextSimulationStep(simulationParameters));
-        updateState();
     }
 
     public void previousStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        updateState();
     }
 
     public void start() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
         getAllControllers().forEach(simulationTabController -> simulationTabController.start(simulationParameters));
-        updateState();
     }
 
     public void pause() {
         getAllControllers().forEach(SimulationTabController::pause);
-        updateState();
     }
 
     public void saveImage() {
@@ -66,13 +62,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     private void saveVisualisationPanel(Savable savable) {
         AnchorPane visualisationPanel = savable.getVisualisationPanel();
         ImageSaver.save(visualisationPanel, simulationFlow.getCurrentStepNumber());
-    }
-
-    private void updateState() {
-        getAllStateControllableControllers()
-                .stream()
-                .map(StateControllable::getStatePanelController)
-                .forEach(statePanelController -> statePanelController.updateStateOfSimulation(simulationFlow));
     }
 
     @Override
@@ -90,10 +79,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     }
 
     private List<SimulationTabController> getAllControllers() {
-        return List.of();
-    }
-
-    private List<StateControllable> getAllStateControllableControllers() {
         return List.of();
     }
 }
