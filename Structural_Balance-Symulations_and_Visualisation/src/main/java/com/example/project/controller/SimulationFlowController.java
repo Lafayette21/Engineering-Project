@@ -34,8 +34,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     @FXML
     private ChartSimulationTabController chartTabController;
     @FXML
-    private ParameterTabController parameterTabController;
-    @FXML
     private ControlPanelController controlPanelController;
 
     private SimulationFlow simulationFlow;
@@ -109,6 +107,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     }
 
     private List<StateControllable> getAllStateControllableControllers() {
-        return List.of(this.netTabController, this.chartTabController, this.parameterTabController);
+        return List.of(this.netTabController, this.chartTabController);
     }
 }

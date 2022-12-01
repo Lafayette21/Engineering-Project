@@ -22,7 +22,7 @@ public class NetScreenController implements SimulationTabController {
 
     @Override
     public void nextSimulationStep(SimulationParameters simulationParameters) {
-
+        simulationFlow.nextStep(visualisationPanel, simulationParameters);
     }
 
     @Override

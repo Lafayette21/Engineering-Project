@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.RepositoryName;
 import com.example.project.controller.simulationflow.*;
+import com.example.project.database.model.SimulationParameters;
 import com.example.project.database.repository.RepositoryManager;
 import com.example.project.database.repository.SimulationParametersRepository;
 import com.example.project.simulation.SimulationFlow;
@@ -33,8 +34,27 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
 
     private SimulationFlow simulationFlow;
 
+    public void nextStep() {
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
+        netScreenController.nextSimulationStep(simulationParameters);
+    }
+
+    public void previousStep() {
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
+    }
+
+    public void start() {
+        SimulationParameters simulationParameters = repository.getSimulationParameters();
+    }
+
+    public void pause(){
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        controlScreenController.injectScreenController(this);
+
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
