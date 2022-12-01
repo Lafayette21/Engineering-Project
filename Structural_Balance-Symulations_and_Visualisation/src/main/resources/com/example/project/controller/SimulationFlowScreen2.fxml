@@ -2,13 +2,24 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.project.controller.SimulationFlowController2">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.SimulationFlowController2">
    <children>
-      <AnchorPane layoutX="31.0" layoutY="38.0" prefHeight="490.0" prefWidth="470.0" style="-fx-background-color: lightblue;" />
-      <AnchorPane layoutX="528.0" layoutY="38.0" prefHeight="490.0" prefWidth="470.0" style="-fx-background-color: lightblue;" />
-      <AnchorPane layoutX="1018.0" layoutY="38.0" prefHeight="490.0" prefWidth="160.0" style="-fx-background-color: lightgray;" />
-      <AnchorPane layoutX="31.0" layoutY="544.0" prefHeight="200.0" prefWidth="970.0" style="-fx-background-color: wheat;" />
+      <AnchorPane layoutX="31.0" layoutY="38.0" prefHeight="490.0" prefWidth="470.0">
+         <fx:include fx:id="netScreen" source="simulationflow/NetScreen.fxml"/>
+      </AnchorPane>
+      <AnchorPane layoutX="516.0" layoutY="38.0" prefHeight="490.0" prefWidth="470.0">
+         <fx:include fx:id="chartScreen" source="simulationflow/ChartScreen.fxml"/>
+      </AnchorPane>
+      <AnchorPane layoutX="1004.0" layoutY="38.0" prefHeight="490.0" prefWidth="160.0"
+                  style="-fx-background-color: lightgray;">
+         <fx:include source="simulationflow/ControlPanel.fxml"/>
+      </AnchorPane>
+      <AnchorPane layoutX="31.0" layoutY="544.0" prefHeight="240.0" prefWidth="470.0"
+                  style="-fx-background-color: wheat;">
+         <fx:include source="simulationflow/StatePanel.fxml"/>
+      </AnchorPane>
+      <AnchorPane layoutX="516.0" layoutY="544.0" prefHeight="240.0" prefWidth="650.0">
+         <fx:include source="simulationflow/ParameterTab.fxml"/>
+      </AnchorPane>
    </children>
 </AnchorPane>
