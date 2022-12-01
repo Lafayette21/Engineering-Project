@@ -11,5 +11,15 @@
             <Font size="17.0" />
          </font>
       </Button>
+      <Button fx:id="previousStepButton" layoutX="14.0" layoutY="99.0" mnemonicParsing="false" onAction="#previousStep" text="Poprzedni krok">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="runButton" layoutX="14.0" layoutY="163.0" mnemonicParsing="false" onAction="#start" text="Rozpocznij">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
