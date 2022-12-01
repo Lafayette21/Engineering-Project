@@ -1,9 +1,6 @@
 package com.example.project.controller;
 
-import com.example.project.controller.simulationflow.ChartScreenController;
-import com.example.project.controller.simulationflow.ControlScreenController;
-import com.example.project.controller.simulationflow.NetScreenController;
-import com.example.project.controller.simulationflow.StatePanelController;
+import com.example.project.controller.simulationflow.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -19,6 +16,8 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
     private StatePanelController statePanelController;
     @FXML
     private ControlScreenController controlScreenController;
+    @FXML
+    private ParameterScreenController parameterScreenController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
