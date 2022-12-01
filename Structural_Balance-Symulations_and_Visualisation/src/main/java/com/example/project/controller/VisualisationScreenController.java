@@ -43,20 +43,20 @@ public class VisualisationScreenController implements ControlledScreen {
     }
 
     public void changeToSimulationFlowScreen() {
-        clearVisualisationPanel();
-        sendSimulationRequiredParameters();
-        screenParent.loadScreen(Resource.SimulationFlow);
-        screenParent.setScreen(Resource.SimulationFlow);
+        try {
+            clearVisualisationPanel();
+            screenParent.setUserData(getSimulationRequiredValuesDTO());
+            screenParent.loadScreen(Resource.SimulationFlow2);
+            screenParent.setScreen(Resource.SimulationFlow2);
+        } catch (NullPointerException e) {
+            showSimulationNotCreatedAlert();
+        }
     }
 
-    private void sendSimulationRequiredParameters() {
-        try {
-            screenParent.setUserData(getSimulationRequiredValuesDTO());
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Najpierw musisz stworzyć symulację!");
-            alert.showAndWait();
-        }
+    private void showSimulationNotCreatedAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Najpierw musisz stworzyć symulację!");
+        alert.showAndWait();
     }
 
     private SimulationRequiredValuesDTO getSimulationRequiredValuesDTO() {
