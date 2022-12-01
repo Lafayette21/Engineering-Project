@@ -29,8 +29,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
 
     @FXML
     private TabPane selectionTabPane;
-    @FXML
-    private ChartSimulationTabController chartTabController;
 
     private SimulationFlow simulationFlow;
 
@@ -52,20 +50,17 @@ public class SimulationFlowController implements ControlledScreen, Initializable
         updateState();
     }
 
-    public void pause(){
+    public void pause() {
         getAllControllers().forEach(SimulationTabController::pause);
         updateState();
     }
 
     public void saveImage() {
         SingleSelectionModel<Tab> selectionModel = selectionTabPane.getSelectionModel();
-        if (selectionModel.isSelected(2)) {
-            saveVisualisationPanel(chartTabController);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Nie mozna zapisac tego ekranu");
-            alert.showAndWait();
-        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Nie mozna zapisac tego ekranu");
+        alert.showAndWait();
     }
 
     private void saveVisualisationPanel(Savable savable) {
@@ -95,10 +90,10 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     }
 
     private List<SimulationTabController> getAllControllers() {
-        return List.of(this.chartTabController);
+        return List.of();
     }
 
     private List<StateControllable> getAllStateControllableControllers() {
-        return List.of(this.chartTabController);
+        return List.of();
     }
 }

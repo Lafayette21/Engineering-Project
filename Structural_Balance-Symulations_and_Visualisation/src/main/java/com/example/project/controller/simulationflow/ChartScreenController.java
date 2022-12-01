@@ -3,14 +3,20 @@ package com.example.project.controller.simulationflow;
 import com.example.project.database.model.SimulationParameters;
 import com.example.project.simulation.*;
 import com.example.project.visualisation.model.Relation;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.util.Duration;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ChartScreenController implements SimulationTabController{
+public class ChartScreenController implements SimulationTabController, Initializable {
     @FXML
     private LineChart<String, Double> chart;
 
@@ -57,16 +63,28 @@ public class ChartScreenController implements SimulationTabController{
 
     @Override
     public void previousSimulationStep(SimulationParameters simulationParameters) {
-
+        int size = energySeries.getData().size();
+        energySeries.getData().remove(size - 1);
+        chart.getData().remove(size - 1);
     }
 
     @Override
     public void start(SimulationParameters simulationParameters) {
-
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(simulationParameters.getTime()),
+                event -> nextSimulationStep(simulationParameters));
+        timeline = new Timeline(keyFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     @Override
     public void pause() {
+        timeline.stop();
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        energySeries.setName("Energia");
+        averageSeries.setName("Średnia");
     }
 }
