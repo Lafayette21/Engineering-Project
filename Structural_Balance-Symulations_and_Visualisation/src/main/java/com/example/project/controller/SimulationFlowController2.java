@@ -73,6 +73,6 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
     }
 
     private List<SimulationTabController> getSimulationControllers() {
-        return List.of(this.netScreenController, this.chartScreenController);
+        return List.of(this.netScreenController, this.chartScreenController, this.statePanelController);
     }
 }
