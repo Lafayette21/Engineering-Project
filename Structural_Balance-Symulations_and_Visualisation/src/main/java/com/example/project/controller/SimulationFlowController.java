@@ -30,8 +30,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     @FXML
     private TabPane selectionTabPane;
     @FXML
-    private NetSimulationTabController netTabController;
-    @FXML
     private ChartSimulationTabController chartTabController;
 
     private SimulationFlow simulationFlow;
@@ -45,7 +43,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
 
     public void previousStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        netTabController.previousSimulationStep(simulationParameters);
         updateState();
     }
 
@@ -62,9 +59,7 @@ public class SimulationFlowController implements ControlledScreen, Initializable
 
     public void saveImage() {
         SingleSelectionModel<Tab> selectionModel = selectionTabPane.getSelectionModel();
-        if (selectionModel.isSelected(1)) {
-            saveVisualisationPanel(netTabController);
-        } else if (selectionModel.isSelected(2)) {
+        if (selectionModel.isSelected(2)) {
             saveVisualisationPanel(chartTabController);
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -100,10 +95,10 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     }
 
     private List<SimulationTabController> getAllControllers() {
-        return List.of(this.netTabController, this.chartTabController);
+        return List.of(this.chartTabController);
     }
 
     private List<StateControllable> getAllStateControllableControllers() {
-        return List.of(this.netTabController, this.chartTabController);
+        return List.of(this.chartTabController);
     }
 }
