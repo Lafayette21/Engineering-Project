@@ -27,17 +27,17 @@ public class NetScreenController implements SimulationTabController {
 
     @Override
     public void previousSimulationStep(SimulationParameters simulationParameters) {
-
+        simulationFlow.previousStep(visualisationPanel);
     }
 
     @Override
     public void start(SimulationParameters simulationParameters) {
-
+        simulationFlow.startExecution(visualisationPanel, simulationParameters);
     }
 
     @Override
     public void pause() {
-
+        simulationFlow.pauseExecution();
     }
 
     public AnchorPane getVisualisationPanel() {

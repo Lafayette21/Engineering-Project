@@ -41,26 +41,35 @@ public class SimulationFlowController2 implements ControlledScreen, Initializabl
 
     public void previousStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
+        getSimulationControllers().forEach(controller->controller.previousSimulationStep(simulationParameters));
     }
 
     public void start() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
+        getSimulationControllers().forEach(controller->controller.start(simulationParameters));
     }
 
     public void pause(){
+        getSimulationControllers().forEach(SimulationTabController::pause);
+    }
+
+    public void saveImage() {
+
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         controlScreenController.injectScreenController(this);
+        setSimulationFlow();
+        getSimulationControllers().forEach(controller -> controller.prepareInitial(simulationFlow));
+    }
 
+    private void setSimulationFlow() {
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
         simulationFlow = new SimulationFlow(actorList, relationList);
-
-        getSimulationControllers().forEach(controller -> controller.prepareInitial(simulationFlow));
     }
 
     private List<SimulationTabController> getSimulationControllers() {
