@@ -6,7 +6,6 @@ public enum Resource {
     Parameters("ParametersScreen.fxml"),
     Visualisation("VisualisationScreen.fxml"),
     SimulationFlow("SimulationFlowScreen.fxml"),
-    SimulationFlow2("SimulationFlowScreen2.fxml"),
     ActorParameters("ActorsParametersScreen.fxml"),
     ConnectionParameters("ConnectionParametersScreen.fxml"),
     SimulationParameters("SimulationParametersScreen.fxml");

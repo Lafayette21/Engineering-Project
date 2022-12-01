@@ -46,8 +46,8 @@ public class VisualisationScreenController implements ControlledScreen {
         try {
             clearVisualisationPanel();
             screenParent.setUserData(getSimulationRequiredValuesDTO());
-            screenParent.loadScreen(Resource.SimulationFlow2);
-            screenParent.setScreen(Resource.SimulationFlow2);
+            screenParent.loadScreen(Resource.SimulationFlow);
+            screenParent.setScreen(Resource.SimulationFlow);
         } catch (NullPointerException e) {
             showSimulationNotCreatedAlert();
         }

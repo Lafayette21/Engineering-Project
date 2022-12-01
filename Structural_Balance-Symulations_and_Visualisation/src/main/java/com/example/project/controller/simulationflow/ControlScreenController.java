@@ -1,7 +1,6 @@
 package com.example.project.controller.simulationflow;
 
-import com.example.project.Resource;
-import com.example.project.controller.SimulationFlowController2;
+import com.example.project.controller.SimulationFlowController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -20,10 +19,10 @@ public class ControlScreenController {
     @FXML
     private Button saveNetButton;
 
-    private SimulationFlowController2 parentController;
+    private SimulationFlowController parentController;
 
-    public void injectScreenController(SimulationFlowController2 simulationFlowController2){
-        this.parentController = simulationFlowController2;
+    public void injectScreenController(SimulationFlowController simulationFlowController){
+        this.parentController = simulationFlowController;
     }
 
     public void nextStep(){

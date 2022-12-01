@@ -12,10 +12,6 @@ import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Relation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -28,35 +24,43 @@ public class SimulationFlowController implements ControlledScreen, Initializable
             .getInstance().getParameterRepositoryByName(RepositoryName.SIMULATION_PARAMETERS);
 
     @FXML
-    private TabPane selectionTabPane;
+    private NetScreenController netScreenController;
+    @FXML
+    private ChartScreenController chartScreenController;
+    @FXML
+    private StatePanelController statePanelController;
+    @FXML
+    private ControlScreenController controlScreenController;
+    @FXML
+    private ParameterScreenController parameterScreenController;
 
     private SimulationFlow simulationFlow;
 
-
     public void nextStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        getAllControllers().forEach(simulationTabController -> simulationTabController.nextSimulationStep(simulationParameters));
+        getSimulationControllers().forEach(controller->controller.nextSimulationStep(simulationParameters));
     }
 
     public void previousStep() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
+        getSimulationControllers().forEach(controller->controller.previousSimulationStep(simulationParameters));
     }
 
     public void start() {
         SimulationParameters simulationParameters = repository.getSimulationParameters();
-        getAllControllers().forEach(simulationTabController -> simulationTabController.start(simulationParameters));
+        getSimulationControllers().forEach(controller->controller.start(simulationParameters));
     }
 
-    public void pause() {
-        getAllControllers().forEach(SimulationTabController::pause);
+    public void pause(){
+        getSimulationControllers().forEach(SimulationTabController::pause);
     }
 
-    public void saveImage() {
-        SingleSelectionModel<Tab> selectionModel = selectionTabPane.getSelectionModel();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Nie mozna zapisac tego ekranu");
-        alert.showAndWait();
+    public void saveImage(String resource) {
+        if (resource.equals("Net")){
+            saveVisualisationPanel(netScreenController);
+        } else {
+            saveVisualisationPanel(chartScreenController);
+        }
     }
 
     private void saveVisualisationPanel(Savable savable) {
@@ -66,19 +70,19 @@ public class SimulationFlowController implements ControlledScreen, Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        prepareInitialSimulationVisualisation();
+        controlScreenController.injectScreenController(this);
+        setSimulationFlow();
+        getSimulationControllers().forEach(controller -> controller.prepareInitial(simulationFlow));
     }
 
-    private void prepareInitialSimulationVisualisation() {
+    private void setSimulationFlow() {
         SimulationRequiredValuesDTO requiredValuesDTO = (SimulationRequiredValuesDTO) screenParent.getUserData();
         List<Actor> actorList = requiredValuesDTO.actorList();
         List<Relation> relationList = requiredValuesDTO.relationList();
         simulationFlow = new SimulationFlow(actorList, relationList);
-
-        getAllControllers().forEach(simulationTabController -> simulationTabController.prepareInitial(simulationFlow));
     }
 
-    private List<SimulationTabController> getAllControllers() {
-        return List.of();
+    private List<SimulationTabController> getSimulationControllers() {
+        return List.of(this.netScreenController, this.chartScreenController, this.statePanelController);
     }
 }
