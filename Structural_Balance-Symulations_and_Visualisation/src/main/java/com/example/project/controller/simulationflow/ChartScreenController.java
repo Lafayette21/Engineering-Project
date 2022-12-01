@@ -66,9 +66,14 @@ public class ChartScreenController implements SimulationTabController, Savable, 
 
     @Override
     public void previousSimulationStep(SimulationParameters simulationParameters) {
-        int size = energySeries.getData().size();
-        energySeries.getData().remove(size - 1);
-        chart.getData().remove(size - 1);
+        removeLastPointFromSeries(averageSeries);
+        removeLastPointFromSeries(energySeries);
+    }
+
+    private void removeLastPointFromSeries(XYChart.Series<String, Double> series) {
+        int size = series.getData().size();
+        series.getData().remove(size - 1);
+        chart.getData().add(series);
     }
 
     @Override
