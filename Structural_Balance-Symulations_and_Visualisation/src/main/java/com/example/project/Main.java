@@ -32,9 +32,12 @@ public class Main extends Application {
     private void prepareStartScreen(Stage primaryStage, MainApplicationScreenController mainController) {
         Group root = new Group();
         root.getChildren().addAll(mainController);
+
         Scene scene = new Scene(root, 1200, 800);
         scene.setFill(Color.rgb(33, 47, 61));
+
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
