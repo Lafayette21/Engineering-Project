@@ -7,7 +7,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
-public class NetScreenController implements SimulationTabController {
+public class NetScreenController implements SimulationTabController, Savable {
     @FXML
     private AnchorPane visualisationPanel;
 
@@ -40,6 +40,7 @@ public class NetScreenController implements SimulationTabController {
         simulationFlow.pauseExecution();
     }
 
+    @Override
     public AnchorPane getVisualisationPanel() {
         return visualisationPanel;
     }

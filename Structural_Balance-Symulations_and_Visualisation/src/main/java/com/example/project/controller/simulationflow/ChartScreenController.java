@@ -10,13 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChartScreenController implements SimulationTabController, Initializable {
+public class ChartScreenController implements SimulationTabController, Savable, Initializable {
+    @FXML
+    private AnchorPane visualisationPanel;
     @FXML
     private LineChart<String, Double> chart;
 
@@ -86,5 +89,10 @@ public class ChartScreenController implements SimulationTabController, Initializ
     public void initialize(URL url, ResourceBundle resourceBundle) {
         energySeries.setName("Energia");
         averageSeries.setName("Średnia");
+    }
+
+    @Override
+    public AnchorPane getVisualisationPanel() {
+        return visualisationPanel;
     }
 }
