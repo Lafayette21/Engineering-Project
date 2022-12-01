@@ -40,4 +40,8 @@ public class ControlScreenController {
         runButton.setText(BUTTON_START_TEXT);
         runButton.setOnAction(event -> start());
     }
+
+    public void saveImage(){
+        parentController.saveImage();
+    }
 }

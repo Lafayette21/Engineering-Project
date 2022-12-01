@@ -37,7 +37,7 @@ public class NetSimulationTabController implements SimulationTabController, Stat
 
     @Override
     public void start(SimulationParameters simulationParameters) {
-        simulationFlow.startExecution(visualisationPanel, simulationParameters, statePanelController);
+        simulationFlow.startExecution(visualisationPanel, simulationParameters);
     }
 
     @Override

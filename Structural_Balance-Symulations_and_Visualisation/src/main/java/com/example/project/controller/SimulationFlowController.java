@@ -33,8 +33,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     private NetSimulationTabController netTabController;
     @FXML
     private ChartSimulationTabController chartTabController;
-    @FXML
-    private ControlPanelController controlPanelController;
 
     private SimulationFlow simulationFlow;
 
@@ -90,7 +88,6 @@ public class SimulationFlowController implements ControlledScreen, Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         prepareInitialSimulationVisualisation();
-        controlPanelController.injectSimulationFlowController(this);
     }
 
     private void prepareInitialSimulationVisualisation() {
