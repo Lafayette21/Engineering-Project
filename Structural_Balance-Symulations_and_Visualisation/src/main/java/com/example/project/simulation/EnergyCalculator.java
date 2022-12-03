@@ -10,17 +10,8 @@ public class EnergyCalculator {
         throw new InstantiationNotAllowedException();
     }
 
-    public static double calculate(ConnectionMatrix connMatrix, RelationMatrix relMatrix){
+    public static double calculate(ConnectionMatrix connMatrix, RelationMatrix relMatrix) {
         setMatrices(connMatrix, relMatrix);
-        return calculateEnergy();
-    }
-
-    private static void setMatrices(ConnectionMatrix connMatrix, RelationMatrix relMatrix) {
-        connectionMatrix = connMatrix;
-        relationMatrix = relMatrix;
-    }
-
-    private static double calculateEnergy() {
         double sum = 0;
         double delta = 0;
         for (int i = 0; i < connectionMatrix.getNumberOfActors(); i++) {
@@ -32,6 +23,11 @@ public class EnergyCalculator {
             }
         }
         return -(sum / delta);
+    }
+
+    private static void setMatrices(ConnectionMatrix connMatrix, RelationMatrix relMatrix) {
+        connectionMatrix = connMatrix;
+        relationMatrix = relMatrix;
     }
 
     private static int calculateStepSum(int i, int j, int k) {
