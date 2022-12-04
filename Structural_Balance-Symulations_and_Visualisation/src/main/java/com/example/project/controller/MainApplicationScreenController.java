@@ -9,17 +9,12 @@ import javafx.scene.layout.AnchorPane;
 import java.util.HashMap;
 
 public class MainApplicationScreenController extends AnchorPane {
-    private static final double HEIGHT = 800.0;
-    private static final double WIDTH = 1200.0;
-
     private final HashMap<Resource, Node> screens = new HashMap<>();
 
     private static MainApplicationScreenController instance;
 
     private MainApplicationScreenController() {
         super();
-        this.setHeight(HEIGHT);
-        this.setWidth(WIDTH);
     }
 
     public static MainApplicationScreenController getInstance() {
