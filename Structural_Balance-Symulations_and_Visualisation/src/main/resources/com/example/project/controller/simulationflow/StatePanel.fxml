@@ -6,39 +6,39 @@
 
 <AnchorPane fx:id="statePanel" prefHeight="240.0" prefWidth="470.0" style="-fx-background-color: #1a5276;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.simulationflow.StatePanelController">
     <children>
-        <Label layoutX="13.0" layoutY="14.0" text="Stan parametrów" textFill="WHITE">
+        <Label layoutX="122.0" layoutY="14.0" text="Stan parametrów" textFill="WHITE">
             <font>
-                <Font size="23.0" />
+                <Font size="30.0" />
             </font>
         </Label>
-      <Label layoutX="13.0" layoutY="59.0" text="Krok" textFill="#f4ebeb">
+      <Label layoutX="157.0" layoutY="70.0" text="Krok" textFill="#f4ebeb">
          <font>
-            <Font size="20.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="stepNumberLabel" layoutX="133.0" layoutY="61.0" text="0" textFill="WHITE">
+      <Label fx:id="stepNumberLabel" layoutX="275.0" layoutY="69.0" text="0" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="17.0" layoutY="115.0" text="Energia" textFill="#f4ebeb">
+      <Label layoutX="154.0" layoutY="120.0" text="Energia" textFill="#f4ebeb">
          <font>
-            <Font size="20.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="energyLabel" layoutX="133.0" layoutY="117.0" text="0" textFill="WHITE">
+      <Label fx:id="energyLabel" layoutX="275.0" layoutY="120.0" text="0" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="17.0" layoutY="180.0" text="Średnia" textFill="#f4ebeb">
+      <Label layoutX="154.0" layoutY="180.0" text="Średnia" textFill="#f4ebeb">
          <font>
-            <Font size="20.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="averageLabel" layoutX="133.0" layoutY="182.0" text="0" textFill="WHITE">
+      <Label fx:id="averageLabel" layoutX="275.0" layoutY="180.0" text="0" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="26.0" />
          </font>
       </Label>
     </children>
