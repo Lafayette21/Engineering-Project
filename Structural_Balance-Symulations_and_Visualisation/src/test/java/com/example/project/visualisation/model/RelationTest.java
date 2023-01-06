@@ -10,7 +10,6 @@ public class RelationTest {
         Relation relation1 = new Relation(new Actor(1), new Actor(2));
         Relation relation2 = new Relation(new Actor(1), new Actor(3));
 
-
         assertThat(relation1.isNeighbouringRelation(relation2)).isTrue();
     }
 
@@ -22,6 +21,13 @@ public class RelationTest {
 
         assertThat(relation1.isNeighbouringRelation(relation2)).isFalse();
         assertThat(relation1.isNeighbouringRelation(relation3)).isFalse();
+    }
 
+    @Test
+    public void shouldReturnTrueWhenRelationAreEqual(){
+      Relation relation1 = new Relation(new Actor(1), new Actor(2));
+      Relation relation2 = new Relation(new Actor(2), new Actor(1));
+
+      assertThat(relation1).isEqualTo(relation2);
     }
 }

@@ -19,8 +19,6 @@ public class RelationCreatorTest {
     private static final int CONNECTION_CREATION_PERCENTAGE = 100;
     private static final int POS_TO_NEG_PERCENTAGE = 50;
 
-    private RelationCreator relationCreator;
-
     @Test
     public void shouldCreateRelations() {
         List<Actor> actorList = IntStream.range(1, NUMBER_OF_ACTORS + 1)

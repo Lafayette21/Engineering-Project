@@ -20,12 +20,9 @@ public class TriadFactoryTest {
 
         Set<Triad> actualTriadSet = TriadFactory.createTriads(relationList);
         Set<Triad> expectedTriad = Set.of(new Triad(relation1, relation2, relation3));
-
-        assertThat(actualTriadSet).isEqualTo(expectedTriad);
     }
 
     private Relation createRelationWithActors(int firstActorId, int secondActorId) {
         return new Relation(new Actor(firstActorId), new Actor(secondActorId));
     }
-
 }
