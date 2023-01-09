@@ -4,47 +4,52 @@ import com.example.project.controller.SimulationFlowController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ControlPanelController {
+public class ControlScreenController {
     private static final String BUTTON_START_TEXT = "Rozpocznij";
     private static final String BUTTON_PAUSE_TEXT = "Zatrzymaj";
 
-    private SimulationFlowController simulationFlowController;
-
+    @FXML
+    private Button previousStepButton;
     @FXML
     private Button nextStepButton;
     @FXML
-    public Button previousStepButton;
-    @FXML
     private Button runButton;
     @FXML
-    private Button saveImageButton;
+    private Button saveChartButton;
+    @FXML
+    private Button saveNetButton;
+
+    private SimulationFlowController parentController;
+
+    public void injectScreenController(SimulationFlowController simulationFlowController){
+        this.parentController = simulationFlowController;
+    }
 
     public void nextStep(){
-        simulationFlowController.nextStep();
+        parentController.nextStep();
     }
 
     public void previousStep(){
-        simulationFlowController.previousStep();
+        parentController.previousStep();
     }
 
     public void start(){
-        simulationFlowController.start();
+        parentController.start();
         runButton.setText(BUTTON_PAUSE_TEXT);
         runButton.setOnAction(event -> pause());
     }
 
     public void pause(){
-        simulationFlowController.pause();
+        parentController.pause();
         runButton.setText(BUTTON_START_TEXT);
         runButton.setOnAction(event -> start());
     }
 
-    public void saveImage(){
-        simulationFlowController.saveImage();
+    public void saveNetImage(){
+        parentController.saveImage("Net");
     }
-
-    public void injectSimulationFlowController(SimulationFlowController controller){
-        this.simulationFlowController = controller;
+    public void saveChartImage(){
+        parentController.saveImage("Chart");
     }
 
 }

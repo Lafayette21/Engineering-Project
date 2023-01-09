@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #212f3d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationGeneratorScreenController">
-   <children>
-      <TabPane layoutX="14.0" layoutY="11.0" prefHeight="470.0" prefWidth="572.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Parametry">
-               <content>
-                  <fx:include fx:id="parametersScreen" source="parameters/ParametersScreen.fxml" />
-               </content>
-          </Tab>
-          <Tab text="Podsumowanie">
-               <content>
-                  <fx:include fx:id="summaryScreen" source="SummaryScreen.fxml" />
-               </content></Tab>
-        </tabs>
-      </TabPane>
-   </children>
-   <cursor>
-      <Cursor fx:constant="DEFAULT" />
-   </cursor>
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationGenerationScreen2Controller">
+    <children>
+        <AnchorPane layoutX="600.0" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: crimson;">
+            <fx:include fx:id="summaryScreen2" prefHeight="800.0" prefWidth="600.0" source="parameters/SummaryScreen.fxml" />
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;">
+            <fx:include fx:id="actorsParametersScreen" source="parameters/ActorsParametersScreen.fxml" />
+        </AnchorPane>
+        <AnchorPane layoutY="400.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: wheat;">
+            <fx:include fx:id="connectionParametersScreen" source="parameters/ConnectionParametersScreen.fxml" />
+        </AnchorPane>
+    </children>
 </AnchorPane>

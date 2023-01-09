@@ -43,18 +43,17 @@ public class SimulationFlow {
         return new SimulationResolver(temperature, numberOfActors);
     }
 
-    public void startExecution(AnchorPane visualisationPanel, SimulationParameters simulationParameters, StatePanelController statePanelController) {
+    public void startExecution(AnchorPane visualisationPanel, SimulationParameters simulationParameters) {
         SimulationResolver simulationResolver = getSimulationResolver(simulationParameters);
-        Timeline timeline = createTimeline(visualisationPanel, simulationParameters, statePanelController, simulationResolver);
+        Timeline timeline = createTimeline(visualisationPanel, simulationParameters, simulationResolver);
         timeline.play();
     }
 
-    private Timeline createTimeline(AnchorPane visualisationPanel, SimulationParameters simulationParameters, StatePanelController statePanelController, SimulationResolver simulationResolver) {
+    private Timeline createTimeline(AnchorPane visualisationPanel, SimulationParameters simulationParameters, SimulationResolver simulationResolver) {
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(simulationParameters.getTime()),
                 event -> {
                     currentStepNumber += 1;
                     moveToNextStep(simulationResolver);
-                    statePanelController.updateStateOfSimulation(this);
                     drawToCanvas(visualisationPanel);
                 });
         timeline = new Timeline(keyFrame);
@@ -86,7 +85,7 @@ public class SimulationFlow {
     }
 
     private boolean isFirstStep() {
-        return currentStepNumber == 1;
+        return currentStepNumber == 0;
     }
 
     private void drawToCanvas(AnchorPane visualisationPanel) {

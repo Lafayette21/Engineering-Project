@@ -7,15 +7,11 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
-public class NetSimulationTabController implements SimulationTabController, StateControllable, Savable {
-    @FXML
-    private StatePanelController statePanelController;
-
+public class NetScreenController implements SimulationTabController, Savable {
     @FXML
     private AnchorPane visualisationPanel;
 
     private SimulationFlow simulationFlow;
-
     private Timeline timeline;
 
     @Override
@@ -27,7 +23,6 @@ public class NetSimulationTabController implements SimulationTabController, Stat
     @Override
     public void nextSimulationStep(SimulationParameters simulationParameters) {
         simulationFlow.nextStep(visualisationPanel, simulationParameters);
-
     }
 
     @Override
@@ -37,17 +32,12 @@ public class NetSimulationTabController implements SimulationTabController, Stat
 
     @Override
     public void start(SimulationParameters simulationParameters) {
-        simulationFlow.startExecution(visualisationPanel, simulationParameters, statePanelController);
+        simulationFlow.startExecution(visualisationPanel, simulationParameters);
     }
 
     @Override
     public void pause() {
         simulationFlow.pauseExecution();
-    }
-
-    @Override
-    public StatePanelController getStatePanelController() {
-        return statePanelController;
     }
 
     @Override

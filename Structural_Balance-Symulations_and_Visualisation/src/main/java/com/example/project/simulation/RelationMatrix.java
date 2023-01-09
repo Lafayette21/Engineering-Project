@@ -6,21 +6,17 @@ import com.example.project.visualisation.model.RelationType;
 import java.util.List;
 
 public class RelationMatrix {
-    private final List<Relation> relationList;
     private final int numberOfActors;
     private int[][] matrix;
 
     public RelationMatrix(List<Relation> relationList, int numberOfActors) {
-        this.relationList = relationList;
         this.numberOfActors = numberOfActors;
-        createRelationMatrix();
+        createRelationMatrix(relationList);
     }
 
-    private void createRelationMatrix() {
+    private void createRelationMatrix(List<Relation> relationList) {
         matrix = new int[numberOfActors][numberOfActors];
-        for (Relation relation : relationList) {
-            setRelationInMatrix(relation);
-        }
+        relationList.forEach(this::setRelationInMatrix);
     }
 
     private void setRelationInMatrix(Relation relation) {
@@ -51,12 +47,12 @@ public class RelationMatrix {
         return matrix[firstActorId - 1][secondActorId - 1];
     }
 
-    public void set(int firstActorId, int secondActorId, int value) {
+    void set(int firstActorId, int secondActorId, int value) {
         matrix[firstActorId - 1][secondActorId - 1] = value;
         matrix[secondActorId - 1][firstActorId - 1] = value;
     }
 
-    public int[][] getMatrix() {
+    int[][] getMatrix() {
         return matrix;
     }
 

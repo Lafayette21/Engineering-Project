@@ -1,6 +1,7 @@
 package com.example.project.controller.parameters;
 
 import com.example.project.RepositoryName;
+import com.example.project.controller.VisualisationGenerationScreen2Controller;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.database.repository.ActorParametersRepository;
 import com.example.project.database.repository.RepositoryManager;
@@ -16,13 +17,13 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ActorsParametersScreenController implements ParameterControlledScreen, Initializable {
+public class ActorsParametersScreenController implements Initializable, ParameterScreen {
+    private VisualisationGenerationScreen2Controller screenParent;
+
     private static final int MIN_SPINNER_VALUE = 2;
     private static final int MAX_SPINNER_VALUE = 10;
     private static final int INITIAL_SPINNER_VALUE = 2;
     private static final int STEP_SPINNER_VALUE = 1;
-
-    private ParametersScreenController screenParent;
 
     @FXML
     public Label actorsNumberLabel;
@@ -31,10 +32,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
     @FXML
     private Spinner<Integer> columnSpinner;
 
-    @Override
-    public void setScreenParent(ParametersScreenController screenParent) {
-        this.screenParent = screenParent;
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +57,11 @@ public class ActorsParametersScreenController implements ParameterControlledScre
         spinner.setValueFactory(valueFactory);
     }
 
+    @Override
+    public void injectScreenParent(VisualisationGenerationScreen2Controller visualisationGenerationController) {
+        this.screenParent = visualisationGenerationController;
+    }
+
     private class RowSpinnerChangeListener implements ChangeListener<Integer> {
         private final ActorParametersRepository repository;
 
@@ -68,6 +71,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
         @Override
         public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            screenParent.updateRowNumberLabel(newValue);
             repository.updateNumberOfRow(newValue);
             setValueOnActorsNumberTextField(repository);
         }
@@ -82,6 +86,7 @@ public class ActorsParametersScreenController implements ParameterControlledScre
 
         @Override
         public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+            screenParent.updateColumnNumberLabel(newValue);
             repository.updateNumberOfColumns(newValue);
             setValueOnActorsNumberTextField(repository);
         }

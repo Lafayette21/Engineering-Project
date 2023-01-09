@@ -17,13 +17,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChartSimulationTabController implements SimulationTabController, StateControllable, Initializable, Savable {
+public class ChartScreenController implements SimulationTabController, Savable, Initializable {
     @FXML
-    private StatePanelController statePanelController;
+    private AnchorPane visualisationPanel;
     @FXML
-    public AnchorPane visualisationPanel;
-    @FXML
-    private LineChart<String, Double> stepToEnergyChart;
+    private LineChart<String, Double> chart;
 
     XYChart.Series<String, Double> energySeries = new XYChart.Series<>();
     XYChart.Series<String, Double> averageSeries = new XYChart.Series<>();
@@ -34,25 +32,6 @@ public class ChartSimulationTabController implements SimulationTabController, St
     @Override
     public void prepareInitial(SimulationFlow simulationFlow) {
         this.simulationFlow = simulationFlow;
-    }
-
-    @Override
-    public void previousSimulationStep(SimulationParameters simulationParameters) {
-        int size = energySeries.getData().size();
-        energySeries.getData().remove(size - 1);
-        stepToEnergyChart.getData().remove(size - 1);
-    }
-
-    @Override
-    public void start(SimulationParameters simulationParameters) {
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(simulationParameters.getTime()),
-                event -> {
-            nextSimulationStep(simulationParameters);
-            statePanelController.updateStateOfSimulation(simulationFlow);
-        });
-        timeline = new Timeline(keyFrame);
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
     }
 
     @Override
@@ -76,23 +55,39 @@ public class ChartSimulationTabController implements SimulationTabController, St
     private void addAverageSeriesToChart(double average) {
         Integer stepNumber = simulationFlow.getCurrentStepNumber();
         averageSeries.getData().add(new XYChart.Data<>(stepNumber.toString(), average));
-        stepToEnergyChart.getData().add(averageSeries);
+        chart.getData().add(averageSeries);
     }
 
     private void addEnergySeriesToChart(double energy) {
         Integer stepNumber = simulationFlow.getCurrentStepNumber();
         energySeries.getData().add(new XYChart.Data<>(stepNumber.toString(), energy));
-        stepToEnergyChart.getData().add(energySeries);
+        chart.getData().add(energySeries);
+    }
+
+    @Override
+    public void previousSimulationStep(SimulationParameters simulationParameters) {
+        removeLastPointFromSeries(averageSeries);
+        removeLastPointFromSeries(energySeries);
+    }
+
+    private void removeLastPointFromSeries(XYChart.Series<String, Double> series) {
+        int size = series.getData().size();
+        series.getData().remove(size - 1);
+        chart.getData().add(series);
+    }
+
+    @Override
+    public void start(SimulationParameters simulationParameters) {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(simulationParameters.getTime()),
+                event -> nextSimulationStep(simulationParameters));
+        timeline = new Timeline(keyFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     @Override
     public void pause() {
         timeline.stop();
-    }
-
-    @Override
-    public StatePanelController getStatePanelController() {
-        return statePanelController;
     }
 
     @Override

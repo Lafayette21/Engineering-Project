@@ -11,6 +11,4 @@ public class SimulationBalanceAlert extends Alert {
         this.setContentText(MESSAGE);
         this.setTitle(TITLE);
     }
-
-
 }

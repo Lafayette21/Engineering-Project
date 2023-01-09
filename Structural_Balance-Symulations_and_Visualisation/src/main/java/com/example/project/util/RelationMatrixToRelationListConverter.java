@@ -11,15 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class RelationMatrixToRelationListConverter {
-    private static int[][] matrix;
+    private static RelationMatrix relationMatrix;
     private static List<Relation> relationList;
 
     private RelationMatrixToRelationListConverter() {
         throw new InstantiationNotAllowedException();
     }
 
-    public static List<Relation> convert(RelationMatrix relationMatrix, List<Relation> comparativeRelationList) {
-        setStaticParameters(relationMatrix, comparativeRelationList);
+    public static List<Relation> convert(RelationMatrix matrix, List<Relation> comparativeRelationList) {
+        setStaticParameters(matrix, comparativeRelationList);
         int numberOfActors = relationMatrix.getNumberOfActors();
 
         List<Relation> relations = new ArrayList<>();
@@ -33,8 +33,8 @@ public class RelationMatrixToRelationListConverter {
         return relations;
     }
 
-    private static void setStaticParameters(RelationMatrix relationMatrix, List<Relation> comparativeRelationList) {
-        matrix = relationMatrix.getMatrix();
+    private static void setStaticParameters(RelationMatrix matrix, List<Relation> comparativeRelationList) {
+        relationMatrix = matrix;
         relationList = comparativeRelationList;
     }
 
@@ -46,10 +46,10 @@ public class RelationMatrixToRelationListConverter {
     private static Relation getRelation(int firstActorId, int secondActorId) {
         Actor firstActor = getActorFromRelation(firstActorId);
         Actor secondActor = getActorFromRelation(secondActorId);
-        if (matrix[firstActorId - 1][secondActorId - 1] == 0) {
+        if (relationMatrix.get(firstActorId, secondActorId) == 0) {
             return new Relation(firstActor, secondActor, RelationType.NONE);
         }
-        if (matrix[firstActorId - 1][secondActorId - 1] == -1) {
+        if (relationMatrix.get(firstActorId, secondActorId) == -1) {
             return new Relation(firstActor, secondActor, RelationType.NEGATIVE);
         }
         return new Relation(firstActor, secondActor, RelationType.POSITIVE);

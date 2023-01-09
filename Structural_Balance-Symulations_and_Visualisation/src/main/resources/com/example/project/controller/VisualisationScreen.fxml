@@ -5,88 +5,57 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="520.0" maxWidth="600.0" minHeight="520.0" minWidth="600.0" prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: #212f3d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationScreenController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #212f3d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controller.VisualisationScreenController">
    <children>
-      <Label layoutX="124.0" layoutY="14.0" text="Generowanie wizualizacji" textFill="WHITE">
+      <Label layoutX="255.0" layoutY="25.0" text="Generowanie wizualizacji" textFill="WHITE">
          <font>
-            <Font size="32.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="visualisationPanel" layoutX="180.0" layoutY="62.0" maxHeight="400.0" maxWidth="400.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: azure;" />
-      <Button fx:id="generateButton" layoutX="23.0" layoutY="468.0" mnemonicParsing="false" onAction="#generateVisualisation" prefHeight="38.0" prefWidth="142.0" text="Stwórz nową">
+      <AnchorPane fx:id="visualisationPanel" layoutX="162.0" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="490.0" prefWidth="470.0" style="-fx-background-color: azure;" />
+      <Button fx:id="generateButton" layoutX="85.0" layoutY="621.0" mnemonicParsing="false" onAction="#generateVisualisation" prefHeight="38.0" prefWidth="154.0" text="Stwórz nową">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button fx:id="returnButton" layoutX="229.0" layoutY="469.0" mnemonicParsing="false" onAction="#changeScreenToVisualisationGeneratorScreen" prefHeight="37.0" prefWidth="142.0" text="Zmień parametry">
+      <Button fx:id="returnButton" layoutX="320.0" layoutY="622.0" mnemonicParsing="false" onAction="#changeScreenToVisualisationGeneratorScreen" prefHeight="37.0" prefWidth="154.0" text="Zmień parametry">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button fx:id="startButton" layoutX="428.0" layoutY="469.0" mnemonicParsing="false" onAction="#changeToSimulationFlowScreen" prefHeight="37.0" prefWidth="142.0" text="Rozpocznij">
+      <Button fx:id="startButton" layoutX="555.0" layoutY="622.0" mnemonicParsing="false" onAction="#changeToSimulationFlowScreen" prefHeight="37.0" prefWidth="154.0" text="Rozpocznij">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Label layoutX="52.0" layoutY="61.0" text="Legenda" textFill="WHITE">
+      <Label layoutX="738.0" layoutY="160.0" text="Legenda" textFill="WHITE">
          <font>
-            <Font size="22.0" />
+            <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="100.0" text="Relacje" textFill="WHITE">
+      <Label layoutX="685.0" layoutY="251.0" style="-fx-background-color: red;" text="Label" textFill="RED">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="795.0" layoutY="248.0" text="Pozytywna" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="248.0" text="Triady" textFill="WHITE">
+      <Label layoutX="792.0" layoutY="326.0" text="Negatywna" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="24.0" layoutY="142.0" style="-fx-background-color: red;" text="Label" textFill="#e40e0e" />
-      <Label layoutX="84.0" layoutY="138.0" text="Pozytywna" textFill="WHITE">
+      <Label layoutX="792.0" layoutY="400.0" text="Brak" textFill="WHITE">
          <font>
-            <Font size="17.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="82.0" layoutY="175.0" text="Negatywna" textFill="WHITE">
+      <Label layoutX="685.0" layoutY="326.0" style="-fx-background-color: blue;" text="Label" textFill="#1a00ff">
          <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="214.0" text="Brak" textFill="WHITE">
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="685.0" layoutY="400.0" style="-fx-background-color: gray;" text="Label" textFill="#7e7c89">
          <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="24.0" layoutY="180.0" style="-fx-background-color: blue;" text="Label" textFill="#2810e3" />
-      <Label layoutX="24.0" layoutY="219.0" style="-fx-background-color: gray;" text="Label" textFill="#7e7c89" />
-      <Label layoutX="24.0" layoutY="283.0" style="-fx-background-color: firebrick;" text="Label" textFill="#a91717" />
-      <Label layoutX="24.0" layoutY="324.0" style="-fx-background-color: lightCoral;" text="Label" textFill="LIGHTCORAL" />
-      <Label layoutX="24.0" layoutY="362.0" style="-fx-background-color: lightgray;" text="Label" textFill="#ddd2d2" />
-      <Label layoutX="24.0" layoutY="401.0" style="-fx-background-color: cornflowerblue;" text="Label" textFill="#7e8bff" />
-      <Label layoutX="24.0" layoutY="441.0" style="-fx-background-color: royalblue;" text="Label" textFill="#5659e1" />
-      <Label layoutX="65.0" layoutY="279.0" text="Pozytywna C" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="66.0" layoutY="320.0" text="Pozytywna" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="67.0" layoutY="358.0" text="Brak" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="64.0" layoutY="397.0" text="Negatywna" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="63.0" layoutY="437.0" text="Negatywna C" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
+            <Font size="20.0" />
+         </font></Label>
    </children>
 </AnchorPane>
