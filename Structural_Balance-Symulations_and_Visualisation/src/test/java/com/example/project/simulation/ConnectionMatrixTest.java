@@ -2,7 +2,7 @@ package com.example.project.simulation;
 
 
 import com.example.project.visualisation.model.Relation;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

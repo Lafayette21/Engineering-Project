@@ -3,7 +3,7 @@ package com.example.project.visualisation.util;
 import com.example.project.database.model.ActorParameters;
 import com.example.project.visualisation.model.Actor;
 import com.example.project.visualisation.model.Position;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
