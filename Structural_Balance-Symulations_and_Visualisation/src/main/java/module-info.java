@@ -11,7 +11,6 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires javafx.base;
     requires org.controlsfx.controls;
     requires org.hibernate.orm.core;
-    requires org.kordamp.ikonli.javafx;
 
     exports com.example.project;
     opens com.example.project to javafx.fxml;
