@@ -4,7 +4,7 @@ import com.example.project.simulation.RelationMatrix;
 import com.example.project.simulation.SampleRelationListFactory;
 import com.example.project.util.RelationMatrixToRelationListConverter;
 import com.example.project.visualisation.model.Relation;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
