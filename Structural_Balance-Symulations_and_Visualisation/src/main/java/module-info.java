@@ -13,13 +13,13 @@ module com.example.structural_balancesymulations_and_visualisation {
     requires org.hibernate.orm.core;
 
     exports com.example.project;
-    opens com.example.project to javafx.fxml;
+    opens com.example.project;
     exports com.example.project.controller;
-    opens com.example.project.controller to javafx.fxml;
+    opens com.example.project.controller;
     exports com.example.project.controller.parameters;
-    opens com.example.project.controller.parameters to javafx.fxml;
+    opens com.example.project.controller.parameters;
     exports com.example.project.controller.simulationflow;
-    opens com.example.project.controller.simulationflow to javafx.fxml;
+    opens com.example.project.controller.simulationflow;
 
     exports com.example.project.database.model;
     opens com.example.project.database.model;
