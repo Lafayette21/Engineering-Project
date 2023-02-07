@@ -3,7 +3,7 @@ My project for Bachelor of Engineering
 
 In order to run project from with maven use:
   
-  <sub> mvn javafx:run </sub>
+   ***mvn javafx:run***
   
 JAR generation:
 
